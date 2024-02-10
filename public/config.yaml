@@ -1,0 +1,26 @@
+name: ClientWorker 
+cleaninterval: 1000*30 # 每30秒检测并清理一次缓存
+# ClientWorker热补丁
+hotpatch:
+  - https://raw.githubusercontent.com/ChenYFan/ClientWorker/gh-pages/cw.js
+  - https://cdn.jsdelivr.net/gh/ChenYFan/ClientWorker/cw.js
+catch_rules:
+    # 并发博客
+  - rule: _
+    transform_rules:
+      - search: _
+        replace:
+          - phosoft.cn
+          - netlify.phosoft.cn
+          - cloudflarepage.phosoft.cn
+          - _
+        action: fetch
+        fetch:
+          status: .*
+          engine: parallel
+          preflight: false
+          timeout: 30000
+  - rule: .*
+    transform_rules:
+      - search: _
+        action: skip
