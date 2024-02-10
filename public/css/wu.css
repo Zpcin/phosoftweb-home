@@ -1,0 +1,85 @@
+@font-face {
+    font-family: 'HarmonyOS_Sans_Medium';
+    src: url("../fonts/HarmonyOS_Sans_Medium.ttf");
+}
+*{
+    margin: 0;
+    word-break:break-all;
+}
+.wu-content{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: calc(100% - 40px);
+    height: auto;
+    min-height: calc(100% - 40px);
+    padding: 20px;
+    margin: 0;
+}
+.wu-divide{
+    position: relative;
+    width: 100%;
+}
+.wu-block{
+    position: relative;
+    top: 0px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+.wu-shadow{
+    box-shadow: 0 0 10px rgba(85, 85, 85, 0.4);
+    transition: all 0.2s ease;
+}
+.wu-shadow:hover{
+    box-shadow: 0 0 20px rgba(85, 85, 85, 0.4);
+}
+.wu-box{
+    width: calc(100% - 40px);
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+.wu-box:hover{
+    transform: scale(0.99);
+}
+.wu-links a,.wu-not a{
+    text-decoration: none;
+    color: rgb(33,37,41);
+    transition: all 0.2s ease;
+}
+.wu-links a:hover, .wu-not a:hover{
+    text-decoration: underline;
+    color: rgb(97, 103, 110);
+}
+.wu-links a{
+    margin: 5px;
+}
+.wu-notice{
+    background-color: rgb(194, 93, 93);
+    padding: 10px;
+    color: white;
+    border-left: rgb(114, 45, 45) 3px solid;
+    margin: 10px 0;
+}
+/* font */
+.wu-h1{
+    font-size: 30px;
+}
+.wu-h2{
+    font-size: 23px;
+}
+.wu-h3{
+    font-size: 18px;
+}
+.wu-a{
+    text-decoration: none;
+    color: rgb(33,37,41);
+}
+
+.wu-mw{
+    width: calc(100% - 20px);
+}
+.wu-hw{
+    width: calc(50% - 23px);
+}
