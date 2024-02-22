@@ -29,4 +29,4 @@ catch_rules: #转换规则
             status: 200
             engine: parallel
             preflight: false
-            timeout: 30000
+            timeout: 5000
