@@ -13,7 +13,7 @@ catch_rules:
           - phosoft.cn
           - netlify.phosoft.cn
           - cloudflarepage.phosoft.cn
-          - https://phosoftweb-home-phosoft-61af00d8bdb427ac667f569518a84fdd3466e22.gitlab.io
+          - phosoftweb-home-phosoft-61af00d8bdb427ac667f569518a84fdd3466e22.gitlab.io
           - _
         action: fetch
         fetch:
