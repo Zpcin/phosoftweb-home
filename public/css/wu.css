@@ -8,8 +8,8 @@
 }
 .wu-content{
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     width: calc(100% - 40px);
     height: auto;
     min-height: calc(100% - 40px);
@@ -22,7 +22,7 @@
 }
 .wu-block{
     position: relative;
-    top: 0px;
+    top: 0;
     margin: 10px;
     display: inline-block;
     vertical-align: top;
@@ -82,4 +82,23 @@
 }
 .wu-hw{
     width: calc(50% - 23px);
+}
+/* Ensure specified elements do not wrap on smaller screens */
+.no-wrap {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+/* Adjust font size for smaller screens */
+@media (max-width: 800px) {
+    .no-wrap {
+        font-size: 16px; /* Adjust font size to fit within the box */
+    }
+    .wu-h1.no-wrap {
+        font-size: 24px; /* Adjust font size for .wu-h1 elements */
+    }
+    .wu-h2.no-wrap {
+        font-size: 20px; /* Adjust font size for .wu-h2 elements */
+    }
 }

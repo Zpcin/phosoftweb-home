@@ -28,7 +28,6 @@
 |  __/| | | | (_) \__ \ (_) |  _| |_ 
 |_|   |_| |_|\___/|___/\___/|_|  \__|
                                      `);</script>
-        <script>console.log(`PhosoftWeb Line`);</script>
         <script>console.log(`不断创新，永不停息`);</script>
         <script>console.log(`WWe always innovate, never stop!，我们是 PhosoftStudio，欢迎各陆（易语言，HTML，CSS，.NET，VB）大佬，不嫌弃的话，随时可以加入，点击链接加入群聊【Phosoft 工作室官方公开】：https://jq.qq.com/?_wv=1027&k=STqaquQz`);</script>                     
     </head>
@@ -37,20 +36,20 @@
             <div class="wu-block wu-mw">
                 <div class="wu-box wu-shadow">
                     <div class="wu-divide" style="height: 90px;"></div>
-                    <b class="wu-h2">欢迎来到</b><br>
-                    <b class="wu-h1">PhosoftWebPages</b>
+                    <b class="wu-h2 no-wrap">欢迎来到</b><br>
+                    <b class="wu-h1 no-wrap">PhosoftWebPages</b>
                     <h1></h1>
                 </div>
             </div>
-            <div class="wu-block" style="width: calc(65% - 23px);" id="video">
+            <div class="wu-block" id="video" style="width: calc(65% - 23px);">
                 <div class="wu-box wu-shadow">
-                    <b class="wu-h2">下面是 PhosoftWeb Line 宣传片</b>
+                    <b class="wu-h2 no-wrap">下面是 PhosoftWeb Line 宣传片</b>
                     <div class="wu-divide" style="height: 10px;"></div>
                     <video width="100%" src="./video/video.mp4" controls></video>
                     <a href="https://www.bilibili.com/video/av522186335">
                         <div style="padding-top: 5px; width: 100%; height: 20px;">
                             <img src="./img/bilibili.svg" style="margin-left: 10px; height: 20px; display: inline-block; position: relative; float: left;" alt="bilibili logo">
-                            <span style="float: left; color: black; margin-left: 10px; font-family: 'HarmonyOS_Sans_Medium';">进入bilibili，一起交流！</span>
+                            <span style="float: left; color: black; margin-left: 10px; font-family: 'HarmonyOS_Sans_Medium',serif;">进入bilibili，一起交流！</span>
                         </div>
                     </a>
                 </div>
@@ -79,17 +78,19 @@
             </div>
             <div class="wu-block wu-mw">
                 <div class="wu-box wu-shadow">
-                    <p>&copy;<script type="text/javascript">document.write (new Date ().getFullYear ());</script> - 张一&amp;Phosoft 版权所有</p>
-                    <p>此网站由 <a href="https://vercel.com/">Vercel</a>&nbsp;强力驱动</p>
-                    <a href="https://111111.eu.org/" style="text-decoration: none; color: rgb(20, 20, 20);"><img src="https://111111.eu.org/assets/img/ICS.svg" style="float: left; height: 23px; margin-right: 5px;" alt="ICS"><p>认ISC-20220807-01</p></a>
+                    <p class="no-wrap">&copy;<script type="text/javascript">
+    document.write(new Date().getFullYear().toString());
+</script> - 张一&amp;Phosoft 版权所有</p>
+                    <p class="no-wrap">此网站由 <a href="https://vercel.com/">Vercel</a>&nbsp;强力驱动</p>
+                    <a href="https://111111.eu.org/" style="text-decoration: none; color: rgb(20, 20, 20);"><img src="https://111111.eu.org/assets/img/ICS.svg" style="float: left; height: 23px; margin-right: 5px;" alt="ICS"><p class="no-wrap">认ISC-20220807-01</p></a>
                 </div>
             </div>
         </div>
         <script>
            function sizeEvent(){
-    var video = document.getElementById("video");
-    var notice = document.getElementById("notice");
-    if(window.innerWidth < 800){
+               let video = document.getElementById("video");
+               let notice = document.getElementById("notice");
+               if(window.innerWidth < 800){
         video.style.width = "calc(100% - 20px)";
         notice.style.width = "calc(100% - 20px)";
     }
