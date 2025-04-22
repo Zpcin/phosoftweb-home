@@ -1,18 +1,126 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="zh-CN">
 <head>
-	<link rel="icon" href="./img/A-logo.svg">
 	<meta charset="UTF-8">
-	<title>PhosoftStudio WebPages-IE303</title>
+	<title>PhosoftStudio WebPages - 浏览器不兼容</title>
+	<link rel="icon" href="./img/A-logo.svg">
 	<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-<script>LA.init({id: "JlNLVSQScJkH113J",ck: "JlNLVSQScJkH113J",autoTrack:true})</script>
+	<script>LA.init({id: "JlNLVSQScJkH113J",ck: "JlNLVSQScJkH113J",autoTrack:true})</script>
+	<style type="text/css">
+		body {
+			font-family: Arial, "Microsoft YaHei", sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+			color: #333;
+		}
+		.container {
+			width: 80%;
+			max-width: 800px;
+			margin: 50px auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
+		h1 {
+			color: #e74c3c;
+			text-align: center;
+			margin-bottom: 20px;
+			font-size: 24px;
+		}
+		.message {
+			line-height: 1.6;
+			margin-bottom: 30px;
+			padding: 0 20px;
+			text-align: center;
+		}
+		.browsers {
+			text-align: center;
+			margin: 30px 0;
+		}
+		.browser-option {
+			display: inline-block;
+			margin: 0 15px;
+			text-align: center;
+			vertical-align: top;
+		}
+		.browser-option img {
+			width: 64px;
+			height: 64px;
+			margin-bottom: 10px;
+		}
+		.browser-option a {
+			color: #3498db;
+			text-decoration: none;
+			display: block;
+		}
+		.browser-option a:hover {
+			text-decoration: underline;
+		}
+		.footer {
+			margin-top: 40px;
+			text-align: center;
+			border-top: 1px solid #eee;
+			padding-top: 20px;
+			font-size: 12px;
+			color: #777;
+		}
+		.feedback {
+			margin-top: 20px;
+			text-align: center;
+		}
+		.feedback a {
+			display: inline-block;
+			padding: 8px 20px;
+			background-color: #3498db;
+			color: white;
+			text-decoration: none;
+			border-radius: 3px;
+		}
+	</style>
+	<!--[if lte IE 8]>
+	<style type="text/css">
+		.container { border: 1px solid #ccc; }
+		.browser-option { display: inline; margin: 0 10px; }
+		.browser-option img { display: block; margin: 0 auto 10px; }
+		.feedback a { background-color: #3498db; padding: 5px 15px; }
+	</style>
+	<![endif]-->
 </head>
 <body>
-	 <h1>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; 不支持“Windows Internet Explorer”</h1>	
-	 <a> 建议使用<a>
-	  <a href="https://www.microsoft.com/zh-cn/edge">Microsoft Edge</a>&nbsp;&nbsp;
-	  <a href="https://www.google.cn/chrome/">Google Chrome</a>&nbsp;&nbsp;
-	  <a href="https://www.mozilla.org/zh-CN/firefox/">Mozilla Firefox</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  <a href="https://support.qq.com/product/137357">反馈</a> 
-</body>		
+	<div class="container">
+		<h1>您的浏览器不受支持</h1>
+		
+		<div class="message">
+			<p>很抱歉，PhosoftStudio WebPages 不支持您当前使用的浏览器。</p>
+			<p>为了获得更好的浏览体验，请使用以下现代浏览器访问我们的网站：</p>
+		</div>
+		
+		<div class="browsers">
+			<div class="browser-option">
+				<img src="./img/edge.png" alt="Microsoft Edge" onerror="this.src='./img/A-logo.svg';this.style.background='#0078D7';">
+				<a href="https://www.microsoft.com/zh-cn/edge">Microsoft Edge</a>
+			</div>
+			
+			<div class="browser-option">
+				<img src="./img/chrome.png" alt="Google Chrome" onerror="this.src='./img/A-logo.svg';this.style.background='#4285F4';">
+				<a href="https://www.google.cn/chrome/">Google Chrome</a>
+			</div>
+			
+			<div class="browser-option">
+				<img src="./img/firefox.png" alt="Mozilla Firefox" onerror="this.src='./img/A-logo.svg';this.style.background='#FF9500';">
+				<a href="https://www.mozilla.org/zh-CN/firefox/">Mozilla Firefox</a>
+			</div>
+		</div>
+		
+		<div class="feedback">
+			<a href="https://support.qq.com/product/137357">问题反馈</a>
+		</div>
+		
+		<div class="footer">
+			<p>&copy; <script>document.write(new Date().getFullYear());</script> PhosoftStudio - 版权所有</p>
+		</div>
+	</div>
+</body>
 </html>

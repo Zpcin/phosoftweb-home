@@ -2,11 +2,14 @@
     font-family: 'HarmonyOS_Sans_Medium';
     src: url("../fonts/HarmonyOS_Sans_Medium.ttf");
 }
-*{
+
+* {
     margin: 0;
-    word-break:break-all;
+    word-break: break-all;
 }
-.wu-content{
+
+/* 主页面内容的主要容器类 */
+.wu-content {
     position: absolute;
     left: 0;
     top: 0;
@@ -16,89 +19,152 @@
     padding: 20px;
     margin: 0;
 }
-.wu-divide{
+
+.wu-divide {
     position: relative;
     width: 100%;
 }
-.wu-block{
+
+/* 内联显示项目的通用块样式 */
+.wu-block {
     position: relative;
     top: 0;
     margin: 10px;
     display: inline-block;
     vertical-align: top;
 }
-.wu-shadow{
+
+.wu-shadow {
     box-shadow: 0 0 10px rgba(85, 85, 85, 0.4);
     transition: all 0.2s ease;
 }
-.wu-shadow:hover{
+
+/* 在悬停时添加微妙的阴影效果 */
+.wu-shadow:hover {
     box-shadow: 0 0 20px rgba(85, 85, 85, 0.4);
 }
-.wu-box{
+
+/* 常规框样式（宽度、填充、边框） */
+.wu-box {
     width: calc(100% - 40px);
     height: auto;
     padding: 20px;
     border-radius: 10px;
 }
-.wu-box:hover{
+
+.wu-box:hover {
     transform: scale(0.99);
 }
-.wu-links a,.wu-not a{
+
+/* 链接样式 */
+.wu-links a, 
+.wu-not a {
     text-decoration: none;
     color: rgb(33,37,41);
     transition: all 0.2s ease;
 }
-.wu-links a:hover, .wu-not a:hover{
+
+.wu-links a:hover, 
+.wu-not a:hover {
     text-decoration: underline;
     color: rgb(97, 103, 110);
 }
-.wu-links a{
+
+.wu-links a {
     margin: 5px;
 }
-.wu-notice{
+
+/* 带有背景和颜色的注意块样式 */
+.wu-notice {
     background-color: rgb(194, 93, 93);
     padding: 10px;
     color: white;
     border-left: rgb(114, 45, 45) 3px solid;
     margin: 10px 0;
 }
-/* font */
-.wu-h1{
+
+/* 字体样式 */
+.wu-h1 {
     font-size: 30px;
 }
-.wu-h2{
+
+.wu-h2 {
     font-size: 23px;
 }
-.wu-h3{
+
+.wu-h3 {
     font-size: 18px;
 }
-.wu-a{
+
+.wu-a {
     text-decoration: none;
     color: rgb(33,37,41);
 }
 
-.wu-mw{
+/* 宽度类 */
+.wu-mw {
     width: calc(100% - 20px);
 }
-.wu-hw{
+
+.wu-hw {
     width: calc(50% - 23px);
 }
-/* Ensure specified elements do not wrap on smaller screens */
+
+/* 实用程序：确保文本不换行，使用省略号溢出 */
 .no-wrap {
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide overflow text */
-    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    white-space: nowrap; /* 防止文本换行 */
+    overflow: hidden; /* 隐藏溢出文本 */
+    text-overflow: ellipsis; /* 为溢出文本添加省略号 */
 }
 
-/* Adjust font size for smaller screens */
+/* 标签样式 */
+.tag {
+    display: inline-block;
+    padding: 5px 15px;
+    background: #f0f2f5;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+/* 项目项样式 */
+.project-item {
+    padding: 20px;
+    margin: 15px 0;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+/* 联系方式样式 */
+.contact-methods p {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+/* 响应式设计 */
 @media (max-width: 800px) {
     .no-wrap {
-        font-size: 16px; /* Adjust font size to fit within the box */
+        font-size: 16px; /* 调整字体大小以适应框内 */
     }
+    
     .wu-h1.no-wrap {
-        font-size: 24px; /* Adjust font size for .wu-h1 elements */
+        font-size: 24px; /* 调整 .wu-h1 元素的字体大小 */
     }
+    
     .wu-h2.no-wrap {
-        font-size: 20px; /* Adjust font size for .wu-h2 elements */
+        font-size: 20px; /* 调整 .wu-h2 元素的字体大小 */
+    }
+}
+
+@media (max-width: 480px) {
+    .profile img {
+        width: 80px;
+    }
+
+    .nav-item {
+        padding: 12px;
+        font-size: 16px;
     }
 }
