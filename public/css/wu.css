@@ -156,6 +156,17 @@
     .wu-h2.no-wrap {
         font-size: 20px; /* 调整 .wu-h2 元素的字体大小 */
     }
+    
+    /* 视频标题特别处理 */
+    #video .wu-h2.no-wrap {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    #video .wu-h2.no-wrap {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -167,4 +178,13 @@
         padding: 12px;
         font-size: 16px;
     }
+    
+    #video .wu-h2.no-wrap {
+        font-size: 14px;
+    }
+}
+
+/* 特别处理视频区块的标题 */
+#video .wu-box {
+    overflow: hidden;
 }
