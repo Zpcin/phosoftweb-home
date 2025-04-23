@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about.html 内容管理</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cog"></i> about.html 内容管理系统</h1>
+            <div class="actions">
+                <button id="addSection" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> 添加新板块
+                </button>
+                <button id="saveChanges" class="btn btn-success">
+                    <i class="fas fa-save"></i> 保存所有更改
+                </button>
+            </div>
+        </header>
+        
+        <div class="notification" id="notification"></div>
+        
+        <div class="guide-box">
+            <h3><i class="fas fa-info-circle"></i> Markdown编辑指南</h3>
+            <ul>
+                <li><strong>加粗文本</strong>: **文本** 或 __文本__</li>
+                <li><em>斜体文本</em>: *文本* 或 _文本_</li>
+                <li><a href="#">链接</a>: [链接文字](链接地址)</li>
+                <li>标题: # 一级标题, ## 二级标题, ### 三级标题</li>
+                <li>列表: - 列表项</li>
+                <li>行内代码: `代码`</li>
+                <li>代码块: ```代码块内容```</li>
+                <li>所有换行会自动转换为&lt;br&gt;标签</li>
+            </ul>
+        </div>
+        
+        <main id="sectionsContainer">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i> 正在加载内容...
+            </div>
+        </main>
+    </div>
+    
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <h2>确认操作</h2>
+            <p id="confirmMessage"></p>
+            <div class="modal-actions">
+                <button id="confirmYes" class="btn btn-danger">确认</button>
+                <button id="confirmNo" class="btn">取消</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
