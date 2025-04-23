@@ -1,17 +1,25 @@
 <!DOCTYPE html>
+<!-- 关于页面 - 介绍网站信息、技术栈和其他相关内容 -->
 <html lang="zh">
 <head>
+    <!-- 页面元信息配置 -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>关于 - TEST</title>
+    <!-- 样式表引用 -->
     <link rel="stylesheet" href="./css/wu.css">
     <link rel="stylesheet" href="./css/about.css">
     <link rel="icon" href="./img/A-logo.svg">
+    <!-- 灰度模式脚本 -->
     <script src="./js/grayscale.js"></script>
 </head>
 <body>
+    <!-- 侧边栏导航，通过JS动态加载 -->
     <div id="sidebar"></div>
+    
+    <!-- 主要内容区域，包含多个信息板块 -->
     <div id="content">
+        <!-- 1板块 -->
         <div class="info-section">
             <div class="info-title">网站介绍</div>
             <div class="info-content">
@@ -20,6 +28,8 @@
                 通过精简的代码和优雅的设计，希望给访客带来良好的浏览体验。本页信息目前无效
             </div>
         </div>
+        
+        <!-- 2板块 -->
         <div class="info-section">
             <div class="info-title">技术栈</div>
             <div class="info-content">
@@ -29,6 +39,8 @@
                 - 静态网页托管
             </div>
         </div>
+        
+        <!-- 3板块 -->
         <div class="info-section">
             <div class="info-title">设计理念</div>
             <div class="info-content">
@@ -37,6 +49,8 @@
                 追求"我是baka"的设计哲学。
             </div>
         </div>
+        
+        <!-- 4板块 -->
         <div class="info-section">
             <div class="info-title">网站结构</div>
             <div class="info-content">
@@ -48,6 +62,8 @@
                 - 捐助：支持作者
             </div>
         </div>
+        
+        <!-- 5板块 -->
         <div class="info-section">
             <div class="info-title">更新日志</div>
             <div class="info-content">
@@ -56,6 +72,8 @@
                 2023年4月：网站初版上线
             </div>
         </div>
+        
+        <!-- 6板块 -->
         <div class="info-section">
             <div class="info-title">访问统计</div>
             <div class="info-content">
@@ -63,18 +81,24 @@
                 尊重用户隐私是我的首要原则。
             </div>
         </div>
+        
+        <!-- 7板块 -->
         <div class="info-section">
             <div class="info-title">版权声明</div>
             <div class="info-content">
                 网站内容采用 <a href="" target="_blank">ba-ka-11</a> 许可协议。<br><br>
             </div>
         </div>
+        
+        <!-- 8信息 -->
         <div class="info-section">
             <div class="info-title">网站托管</div>
             <div class="info-content">
                 本站托管于vercel。<br><br>
             </div>
         </div>
+        
+        <!-- 9板块 -->
         <div class="info-section">
             <div class="info-title">联系方式</div>
             <div class="info-content">
@@ -84,11 +108,14 @@
             </div>
         </div>
     </div>
+    
+    <!-- 导航按钮区域，用于在不同信息板块间切换 -->
     <div class="nav-buttons">
         <button class="btn btn-disabled" id="prev-btn">上一条</button>
         <button class="btn" id="next-btn">下一条</button>
     </div>
 
+    <!-- 页面交互脚本，处理信息板块的切换逻辑 -->
     <script src="./js/about.js"></script>
 </body>
 </html>
