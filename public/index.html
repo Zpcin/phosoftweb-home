@@ -3,36 +3,56 @@
     <head>
         <meta charset="UTF-8">
         <title>PhosoftStudio WebPages</title>
+        <!-- SEO 元标签 -->
         <meta name="msvalidate.01" content="93B7BB0E96BAC477F6402852111B6680" />
         <meta name="keywords" content="PhosoftStudio">
         <meta name="description" content="PhosoftWebPages 是 PhosoftStudio 开发的一些网页">
         <meta name="author" content="yuanzui_cf">
         <meta name="refresh" content="3">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- 样式和网站图标 -->
         <link rel="stylesheet" href="./css/wu.css">
         <link rel="icon" href="./img/A-logo.svg">
-               <!-- <link rel="icon" href="https://gitlab.com/uploads/-/system/group/avatar/15493510/QQ%E5%9B%BE%E7%89%8720220117233528.jpg?width=512"> -->
+        <!-- 老图标
+        <link rel="icon" href="https://gitlab.com/uploads/-/system/group/avatar/15493510/QQ%E5%9B%BE%E7%89%8720220117233528.jpg?width=512">
+        -->
+        
+        <!-- 特效脚本 -->
         <script src="./js/grayscale.js"></script>
+        
+        <!-- 第三方服务集成 -->
         <script src="https://code.tidio.co/bowhirwyldd4f4z8ebab0dsupl375oim.js" async></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9614412023637049"
      crossorigin="anonymous"></script>
+        
+        <!-- 统计和性能监控 -->
         <script charset="UTF-8" id="LA_COLLECT" src="https://sdk.51.la/js-sdk-pro.min.js"></script>
         <script>LA.init({id: "JlNLVSQScJkH113J",ck: "JlNLVSQScJkH113J",autoTrack:true})</script>
         <script src="https://sdk.51.la/perf/js-sdk-perf.min.js" crossorigin="anonymous"></script>
         <script>
             new LingQue.Monitor().init({id:"JlNWsmTFj3QOaARK",sendSuspicious:true});
-</script>
-        <script>console.log(` ____  _                      __ _   
-|  _ \| |__   ___  ___  ___  / _| |_ 
+        </script>
+        
+        <!-- 控制台输出信息 -->
+        <script>
+            // ASCII 艺术 Logo
+            console.log(` ____  _                      __ _
+|  _ \| |__   ___  ___  ___  / _| |_
 | |_) | '_ \ / _ \/ __|/ _ \| |_| __|
-|  __/| | | | (_) \__ \ (_) |  _| |_ 
+|  __/| | | | (_) \__ \ (_) |  _| |_
 |_|   |_| |_|\___/|___/\___/|_|  \__|
-                                     `);</script>
-        <script>console.log(`不断创新，永不停息`);</script>
-        <script>console.log(`WWe always innovate, never stop!，我们是 PhosoftStudio，欢迎各陆（易语言，HTML，CSS，.NET，VB）大佬，不嫌弃的话，随时可以加入，点击链接加入群聊【Phosoft 工作室官方公开】：https://jq.qq.com/?_wv=1027&k=STqaquQz`);</script>
+                                     `);
+            // 公司标语
+            console.log(`不断创新，永不停息`);
+            // 公司介绍和联系方式
+            console.log(`We always innovate, never stop!，我们是 PhosoftStudio，点击链接加入群聊【Phosoft 工作室官方公开】：https://jq.qq.com/?_wv=1027&k=STqaquQz`);
+        </script>
     </head>
     <body>
+        <!-- 主要内容区域 -->
         <div class="wu-content">
+            <!-- 网站标题块 -->
             <div class="wu-block wu-mw">
                 <div class="wu-box wu-shadow">
                     <div class="wu-divide" style="height: 90px;"></div>
@@ -41,6 +61,8 @@
                     <h1></h1>
                 </div>
             </div>
+            
+            <!-- 视频展示区块 -->
             <div class="wu-block" id="video" style="width: calc(65% - 23px);">
                 <div class="wu-box wu-shadow">
                     <b class="wu-h2 no-wrap">下面是 PhosoftWeb Line 宣传片</b>
@@ -54,6 +76,8 @@
                     </a>
                 </div>
             </div>
+            
+            <!-- 公告区块 -->
             <div class="wu-block" style="width: calc(35% - 23px);" id="notice">
                 <div class="wu-box wu-shadow">
                     <div class="wu-divide" style="height: 40px;"></div>
@@ -66,6 +90,8 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- 友情链接区块 -->
             <div class="wu-block wu-mw">
                 <div class="wu-box wu-shadow">
                     <div class="wu-divide" style="height: 20px;"></div>
@@ -76,6 +102,8 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- 页脚区块 -->
             <div class="wu-block wu-mw">
                 <div class="wu-box wu-shadow">
                     <p class="no-wrap">&copy;<script type="text/javascript">
@@ -86,30 +114,33 @@
                 </div>
             </div>
         </div>
+
+        <!-- 响应式布局脚本 -->
         <script>
            function sizeEvent(){
                let video = document.getElementById("video");
                let notice = document.getElementById("notice");
                if(window.innerWidth < 800){
-        video.style.width = "calc(100% - 20px)";
-        notice.style.width = "calc(100% - 20px)";
-    }
-    else if(window.innerWidth >= 800){
-        video.style.width = "calc(65% - 23px)";
-        notice.style.width = "calc(35% - 23px)";
-    }
-}
-function init(){
-    sizeEvent();
-}
-init();
-window.addEventListener("resize", sizeEvent);
-
+                   video.style.width = "calc(100% - 20px)";
+                   notice.style.width = "calc(100% - 20px)";
+               }
+               else if(window.innerWidth >= 800){
+                   video.style.width = "calc(65% - 23px)";
+                   notice.style.width = "calc(35% - 23px)";
+               }
+           }
+           function init(){
+               sizeEvent();
+           }
+           init();
+           window.addEventListener("resize", sizeEvent);
         </script>
-<!--[if IE]>
-<script>
-location.replace("/IE303.html");
-</script>
-<![endif]-->
+
+        <!-- IE浏览器重定向 -->
+        <!--[if IE]>
+        <script>
+            location.replace("/IE303.html");
+        </script>
+        <![endif]-->
     </body>
 </html>

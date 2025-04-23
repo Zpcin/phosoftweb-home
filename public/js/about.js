@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
             playTextAnimations(elem);
         }
 
-        sideItem.addEventListener("click", () => {
+        sideItem.addEventListener("click", (e) => {
+            // 阻止默认行为和事件冒泡
+            e.preventDefault();
+            e.stopPropagation();
+            
             // 找到当前活动元素并移除活动状态
             const currentActive = document.getElementsByClassName("active-content")[0];
             currentActive.classList.remove("active-content");
@@ -29,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // 左侧导航状态更新
             document.getElementsByClassName("active-item")[0].classList.remove("active-item");
             sideItem.classList.add("active-item");
+            
+            // 确保激活的导航项可见
+            ensureNavItemVisible(sideItem);
             
             // 延迟添加新活动元素的类，创建平滑过渡
             setTimeout(() => {
@@ -41,6 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         document.getElementById("sidebar").appendChild(sideItem);
+    }
+
+    // 确保导航项在侧边栏中可见
+    function ensureNavItemVisible(navItem) {
+        navItem.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "nearest"
+        });
     }
 
     // 为所有内容区域准备文本动画
@@ -137,12 +153,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 上一条按钮事件
-    document.getElementById("prev-btn").addEventListener("click", () => {
+    document.getElementById("prev-btn").addEventListener("click", (e) => {
+        e.preventDefault(); // 阻止默认行为
         navigateTo('prev');
     });
 
     // 下一条按钮事件
-    document.getElementById("next-btn").addEventListener("click", () => {
+    document.getElementById("next-btn").addEventListener("click", (e) => {
+        e.preventDefault(); // 阻止默认行为
         navigateTo('next');
     });
 
@@ -154,14 +172,23 @@ document.addEventListener('DOMContentLoaded', function() {
                         currentItem.previousElementSibling;
         
         if (targetItem) {
+            // 确保导航项在侧边栏中可见
+            ensureNavItemVisible(targetItem);
+            
             // 只在移动端（窗口宽度 ≤ 800px）应用滑动动画
             if (window.innerWidth <= 800) {
                 document.getElementById("content").classList.remove("slide-left", "slide-right");
                 document.getElementById("content").classList.add(direction === 'next' ? "slide-left" : "slide-right");
                 
                 setTimeout(() => {
-                    targetItem.scrollIntoView();
-                    targetItem.click();
+                    // 修改：使用更精确的滚动方式，防止滚动到视图外
+                    if (window.innerWidth <= 480) {
+                        // 移动端，仅更新UI状态，不进行滚动
+                        targetItem.click();
+                    } else {
+                        // 平板设备，使用平滑滚动
+                        targetItem.click();
+                    }
                     
                     // 移除过渡动画类
                     setTimeout(() => {
@@ -170,7 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 50);
             } else {
                 // 桌面端直接切换，无需动画
-                targetItem.scrollIntoView();
                 targetItem.click();
             }
         }
@@ -201,16 +227,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById("content").addEventListener('touchstart', function(e) {
         touchStartX = e.changedTouches[0].screenX;
-    }, false);
+    }, {passive: false});
 
     document.getElementById("content").addEventListener('touchend', function(e) {
         touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, false);
+        handleSwipe(e);
+    }, {passive: false});
 
-    function handleSwipe() {
+    function handleSwipe(e) {
         const swipeDistance = touchEndX - touchStartX;
         if (Math.abs(swipeDistance) < minSwipeDistance) return; // 滑动距离太小，忽略
+
+        // 阻止默认行为
+        if (e) e.preventDefault();
 
         if (swipeDistance > 0) {
             // 右滑，显示上一项
@@ -230,4 +259,3 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
     });
 });
-

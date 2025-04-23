@@ -250,7 +250,8 @@ body, html {
     #content {
         width: 100%;
         position: relative;
-        touch-action: pan-y; /* 优化移动端触摸体验，允许垂直滚动 */
+        touch-action: none; /* 修改: 禁用默认触摸行为 */
+        overscroll-behavior: contain; /* 添加: 防止过度滚动 */
     }
 
     .nav-buttons {

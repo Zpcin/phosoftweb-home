@@ -57,14 +57,14 @@
 }
 
 /* 链接样式 */
-.wu-links a, 
+.wu-links a,
 .wu-not a {
     text-decoration: none;
     color: rgb(33,37,41);
     transition: all 0.2s ease;
 }
 
-.wu-links a:hover, 
+.wu-links a:hover,
 .wu-not a:hover {
     text-decoration: underline;
     color: rgb(97, 103, 110);
@@ -148,24 +148,24 @@
     .no-wrap {
         font-size: 16px; /* 调整字体大小以适应框内 */
     }
-    
+
     .wu-h1.no-wrap {
         font-size: 24px; /* 调整 .wu-h1 元素的字体大小 */
     }
-    
+
     .wu-h2.no-wrap {
         font-size: 20px; /* 调整 .wu-h2 元素的字体大小 */
     }
-    
+
     /* 视频标题特别处理 */
     #video .wu-h2.no-wrap {
-        font-size: 18px;
+        font-size: 20px;
     }
 }
 
 @media (max-width: 600px) {
     #video .wu-h2.no-wrap {
-        font-size: 16px;
+        font-size: 16px; /* 确保不小于"进入bilibili，一起交流！"的字体大小 */
     }
 }
 
@@ -178,9 +178,9 @@
         padding: 12px;
         font-size: 16px;
     }
-    
+
     #video .wu-h2.no-wrap {
-        font-size: 14px;
+        font-size: 16px; /* 修改：保持16px，不再缩小到14px */
     }
 }
 
@@ -188,3 +188,4 @@
 #video .wu-box {
     overflow: hidden;
 }
+

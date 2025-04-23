@@ -1,48 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<urlset>
-<url>
-<loc><![CDATA[https://phosoft.cn]]></loc>
-<lastmod>2022-03-19</lastmod>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc><![CDATA[https://phosoft.cn/dsp.html]]></loc>
-<lastmod>2022-03-19</lastmod>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc><![CDATA[https://phosoft.cn/jx.html]]></loc>
-<lastmod>2022-03-19</lastmod>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc><![CDATA[https://forum.phosoft.cn]]></loc>
-<lastmod>2022-03-19</lastmod>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc><![CDATA[https://game.phosoft.cn/]]></loc>
-<lastmod>2022-05-08</lastmod>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc><![CDATA[https://about.phosoft.cn]]></loc>
-<lastmod>2022-08-17</lastmod>
-<changefreq>weekly</changefreq>
-</url> 
-<url>
-<loc><![CDATA[https://sponsor.phosoft.cn/]]></loc>
-<lastmod>2022-08-17</lastmod>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc><![CDATA[https://hydroe.phosoft.cn/]]></loc>
-<lastmod>2022-09-01</lastmod>
-<changefreq>weekly</changefreq>
-</url>
-<url>
-<loc><![CDATA[https://tc.phosoft.cn/]]></loc>
-<lastmod>2022-09-01</lastmod>
-<changefreq>weekly</changefreq>
-</url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://phosoft.cn</loc>
+    <lastmod>2024-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://phosoft.cn/about.html</loc>
+    <lastmod>2024-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://sponsor.phosoft.cn/</loc>
+    <lastmod>2024-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
 </urlset>
