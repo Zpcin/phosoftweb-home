@@ -20,7 +20,7 @@ phosoftweb-home/
 │   │   ├── A-logo.svg   # Phosoft图标
 │   │   └── bilibili.svg # 哔哩哔哩图标
 │   ├── fonts/
-    │    └── HarmonyOS_Sans_Medium.ttf # 字体文件       
+│    │    └── HarmonyOS_Sans_Medium.ttf # 字体文件       
 │   ├── video/           # 视频资源
 │   │   └── video.mp4    # 视频
 │   ├── index.html       # 网站首页
