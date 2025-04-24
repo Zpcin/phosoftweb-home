@@ -1,64 +1,60 @@
-Example plain HTML site using GitLab Pages.
+# PhosoftWeb 个人主页
 
-Learn more about GitLab Pages at https://pages.gitlab.io and the official
-documentation https://docs.gitlab.com/ce/user/project/pages/.
+## 项目介绍
 
----
+这是一个基于纯HTML、CSS和JavaScript构建的个人网站项目，包含主页、关于页等内容。项目支持响应式布局，适配不同设备屏幕大小。
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
-- [GitLab CI](#gitlab-ci)
-- [GitLab User or Group Pages](#gitlab-user-or-group-pages)
-- [Did you fork this project?](#did-you-fork-this-project)
-- [Troubleshooting](#troubleshooting)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-## GitLab CI
-
-This project's static Pages are built by [GitLab CI][ci], following the steps
-defined in [`.gitlab-ci.yml`](.gitlab-ci.yml):
+## 目录结构
 
 ```
-image: busybox
-
-pages:
-  stage: deploy
-  script:
-  - echo 'Nothing to do...'
-  artifacts:
-    paths:
-    - public
-    expire_in: 1 day
-  rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+phosoftweb-home/
+├── public/              # 网站主要文件
+│   ├── css/             # 样式表文件
+│   ├── js/              # JavaScript文件
+│   ├── img/             # 图片资源
+│   ├── fonts/           # 字体文件
+│   ├── video/           # 视频资源
+│   ├── index.html       # 网站首页
+│   ├── about.html       # 关于页面
+│   └── IE303.html       # IE浏览器不兼容提示页
+├── set/                 # 内容管理系统
+│   ├── public/          # 管理系统前端
+│   └── server.js        # 管理系统后端
+└── README.md            # 项目说明文档
 ```
 
-The above example expects to put all your HTML files in the `public/` directory.
+## 技术栈
 
-## GitLab User or Group Pages
+- 前端：HTML5、CSS3、JavaScript
+- 字体：HarmonyOS Sans
+- 管理系统：Express.js、Cheerio
 
-To use this project as your user/group website, you will need one additional
-step: just rename your project to `namespace.gitlab.io`, where `namespace` is
-your `username` or `groupname`. This can be done by navigating to your
-project's **Settings**.
+## 功能特点
 
-Read more about [user/group Pages][userpages] and [project Pages][projpages].
+- 响应式设计，适配桌面和移动设备
+- 动画过渡效果增强用户体验
+- 灰度模式支持
+- 触摸屏滑动操作支持
+- 内置内容管理系统，便于维护关于页内容
 
-## Did you fork this project?
+## 部署方式
 
-If you forked this project for your own use, please go to your project's
-**Settings** and remove the forking relationship, which won't be necessary
-unless you want to contribute back to the upstream project.
+1. 静态部署：将`public`目录部署到任意静态网站托管服务
+2. 使用GitLab Pages或Vercel等平台自动部署
 
-## Troubleshooting
+## 使用内容管理系统
 
-1. CSS is missing! That means that you have wrongly set up the CSS URL in your
-   HTML files. Have a look at the [index.html] for an example.
+1. 安装依赖：`npm install`
+2. 启动管理服务：`node set/server.js`
+3. 访问：`http://localhost:3000`
+4. 通过界面编辑关于页内容，点击保存即可更新网站
 
-[ci]: https://about.gitlab.com/gitlab-ci/
-[index.html]: https://gitlab.com/pages/plain-html/blob/master/public/index.html
-[userpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#user-or-group-pages
-[projpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#project-pages
+## 开发与扩展
+
+- 添加新页面：在`public`目录创建HTML文件
+- 修改样式：编辑`css`目录下的样式文件
+- 增加功能：在`js`目录添加脚本文件
+
+## 兼容性
+
+网站支持现代浏览器，对不兼容的浏览器（如IE）会显示特殊提示页面。
