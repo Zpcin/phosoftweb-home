@@ -10,15 +10,29 @@
 phosoftweb-home/
 ├── public/              # 网站主要文件
 │   ├── css/             # 样式表文件
+│   │   ├── 404.css      # 404错误页面样式
+│   │   ├── about.css    # 关于页面样式
+│   │   └── wu.css       # 公共样式
 │   ├── js/              # JavaScript文件
+│   │   ├── about.js     # 关于页面脚本
+│   │   └── grayscale.js # 灰度滤镜脚本
 │   ├── img/             # 图片资源
-│   ├── fonts/           # 字体文件
+│   │   ├── A-logo.svg   # Phosoft图标
+│   │   └── bilibili.svg # 哔哩哔哩图标
+│   ├── fonts/
+    │    └── HarmonyOS_Sans_Medium.ttf # 字体文件       
 │   ├── video/           # 视频资源
+│   │   └── video.mp4    # 视频
 │   ├── index.html       # 网站首页
 │   ├── about.html       # 关于页面
-│   └── IE303.html       # IE浏览器不兼容提示页
+│   ├── IE303.html       # IE浏览器不兼容提示页
+│   └── 404.html         # 404错误页面
 ├── set/                 # 内容管理系统
 │   ├── public/          # 管理系统前端
+│   │   ├── styles.css   # 管理系统样式
+│   │   ├── script.js    # 管理系统脚本
+│   │   └── index.html   # 管理系统首页
+│   │   package.json     # 管理系统依赖
 │   └── server.js        # 管理系统后端
 └── README.md            # 项目说明文档
 ```
@@ -33,7 +47,7 @@ phosoftweb-home/
 
 - 响应式设计，适配桌面和移动设备
 - 动画过渡效果增强用户体验
-- 灰度模式支持
+- 特定纪念日自动应用灰度滤镜
 - 触摸屏滑动操作支持
 - 内置内容管理系统，便于维护关于页内容
 
