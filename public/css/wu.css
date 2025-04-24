@@ -189,3 +189,8 @@
     overflow: hidden;
 }
 
+/* 页脚版权信息链接样式 - 使其看起来像普通文本 */
+.wu-box p.no-wrap a {
+    text-decoration: none;
+    color: inherit;
+}
