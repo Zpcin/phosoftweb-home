@@ -5,8 +5,11 @@ const cheerio = require('cheerio');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// 中间件设置
-app.use(express.static(path.join(__dirname, 'public')));
+// 中间件设置 - 修复静态文件路径配置
+// 管理系统静态文件
+app.use('/', express.static(path.join(__dirname, 'public')));
+// 主站静态文件 - 仅用于预览，不使用此路径提供服务
+app.use('/site', express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 
 // 获取 about.html 中的所有信息板块
@@ -28,7 +31,7 @@ app.get('/api/sections', (req, res) => {
         res.json(sections);
     } catch (error) {
         console.error('读取文件失败:', error);
-        res.status(500).json({ error: '读取文件失败' });
+        res.status(500).json({ error: '读取文件失败', details: error.message });
     }
 });
 
@@ -57,10 +60,20 @@ app.post('/api/sections', (req, res) => {
         res.json({ success: true });
     } catch (error) {
         console.error('保存文件失败:', error);
-        res.status(500).json({ error: '保存文件失败' });
+        res.status(500).json({ error: '保存文件失败', details: error.message });
     }
+});
+
+// 添加一个调试端点
+app.get('/api/debug', (req, res) => {
+    res.json({
+        aboutHtmlPath: path.resolve(__dirname, '../public/about.html'),
+        exists: fs.existsSync(path.resolve(__dirname, '../public/about.html')),
+        dirname: __dirname
+    });
 });
 
 app.listen(PORT, () => {
     console.log(`管理服务器运行在 http://localhost:${PORT}`);
+    console.log(`主站静态预览: http://localhost:${PORT}/site`);
 });

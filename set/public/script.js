@@ -21,16 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmNoBtn.addEventListener('click', () => closeConfirmModal());
     confirmYesBtn.addEventListener('click', handleConfirm);
     
-    // HTML转Markdown
+    // HTML转Markdown - 改进版
     function htmlToMarkdown(html) {
         if (!html) return '';
         
-        // 创建临时DOM元素解析HTML
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = html;
+        // 清理HTML中的多余空格
+        let content = html.trim();
         
-        // 预处理：将<br>标签转换为特殊标记
-        let content = html.replace(/<br\s*\/?>/gi, '\n');
+        // 预处理：将<br>标签转换为换行符
+        content = content.replace(/<br\s*\/?>/gi, '\n');
         
         // 转换链接
         content = content.replace(/<a\s+(?:[^>]*?\s+)?href="([^"]*)"(?:\s+[^>]*?)?>([^<]*)<\/a>/gi, '[$2]($1)');
@@ -63,12 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
                          .replace(/&gt;/g, '>')
                          .replace(/&amp;/g, '&')
                          .replace(/&quot;/g, '"')
-                         .replace(/&#39;/g, "'");
+                         .replace(/&#39;/g, "'")
+                         .replace(/&nbsp;/g, ' ');
         
         return content;
     }
     
-    // Markdown转HTML
+    // Markdown转HTML - 改进版
     function markdownToHtml(markdown) {
         if (!markdown) return '';
         
@@ -79,9 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // 转换加粗 **粗体** 或 __粗体__
             .replace(/(\*\*|__)(.*?)\1/g, '<strong>$2</strong>')
             // 转换斜体 *斜体* 或 _斜体_
-            .replace(/(\*|_)(.*?)\1/g, '<em>$2</em>')
+            .replace(/([*_])((?!\1).+?)\1/g, '<em>$2</em>')
             // 转换链接 [链接文本](链接地址)
-            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+            .replace(/\[([^\]]+)]\(([^)]+)\)/g, '<a href="${2}">${1}</a>')
             // 转换标题 # 标题
             .replace(/^# (.*$)/gm, '<h1>$1</h1>')
             .replace(/^## (.*$)/gm, '<h2>$1</h2>')
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 转换列表 - 项目
             .replace(/^\s*-\s(.*)$/gm, '<li>$1</li>')
             // 转换代码 `代码`
-            .replace(/`(.*?)`/g, '<code>$1</code>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
             // 转换代码块 ```代码块```
             .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
             
@@ -289,21 +289,24 @@ document.addEventListener('DOMContentLoaded', () => {
         confirmModal.style.display = 'none';
     }
     
-    // 保存所有更改
+    // 保存所有更改 - 添加错误处理和调试信息
     async function saveAllChanges() {
-        // 收集当前表单中的数据，并将Markdown转为HTML
-        const updatedSections = [];
-        document.querySelectorAll('.section-card').forEach((card, i) => {
-            const markdownContent = card.querySelector('.section-content').value;
-            const htmlContent = markdownToHtml(markdownContent);
-            
-            updatedSections.push({
-                title: card.querySelector('.section-title').value,
-                content: htmlContent
-            });
-        });
-        
         try {
+            // 显示保存中通知
+            showNotification('正在保存更改...', 'info');
+            
+            // 收集当前表单中的数据，并将Markdown转为HTML
+            const updatedSections = [];
+            document.querySelectorAll('.section-card').forEach((card, i) => {
+                const markdownContent = card.querySelector('.section-content').value;
+                const htmlContent = markdownToHtml(markdownContent);
+                
+                updatedSections.push({
+                    title: card.querySelector('.section-title').value,
+                    content: htmlContent
+                });
+            });
+            
             const response = await fetch('/api/sections', {
                 method: 'POST',
                 headers: {
@@ -312,14 +315,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(updatedSections)
             });
             
-            if (!response.ok) throw new Error('保存失败');
-            
             const result = await response.json();
+            
+            if (!response.ok) {
+                throw new Error(result.error || '保存失败');
+            }
+            
             if (result.success) {
                 showNotification('所有更改已成功保存', 'success');
                 sections = updatedSections;
+            } else {
+                throw new Error('保存出现问题');
             }
         } catch (error) {
+            console.error('保存错误:', error);
             showNotification('保存失败: ' + error.message, 'error');
         }
     }
@@ -337,64 +346,66 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 初始化拖放功能
     function initializeDragAndDrop() {
-        const sectionContainer = document.getElementById('sectionsContainer');
-        let draggedItem = null;
+        let draggingElement = null;
         
-        document.querySelectorAll('.section-card').forEach(card => {
-            const handle = card.querySelector('.move-handle');
-            
-            handle.addEventListener('mousedown', function() {
-                draggedItem = card;
-                setTimeout(() => {
-                    card.classList.add('sortable-ghost');
-                }, 0);
-            });
-            
-            card.addEventListener('dragstart', function(e) {
-                e.preventDefault(); // 禁用默认拖拽效果
-            });
-            
-            document.addEventListener('mouseup', function() {
-                if (draggedItem) {
-                    draggedItem.classList.remove('sortable-ghost');
-                    draggedItem = null;
-                }
-            });
-            
-            document.addEventListener('mousemove', function(e) {
-                if (!draggedItem) return;
+        // 为所有移动手柄添加事件
+        document.querySelectorAll('.section-card .move-handle').forEach(handle => {
+            handle.addEventListener('mousedown', e => {
+                e.preventDefault();
                 
-                const cards = [...document.querySelectorAll('.section-card')];
-                const currentIndex = cards.indexOf(draggedItem);
+                // 获取整个卡片元素
+                const card = handle.closest('.section-card');
+                draggingElement = card;
+                card.classList.add('dragging');
                 
-                cards.forEach((otherCard, index) => {
-                    if (otherCard === draggedItem) return;
-                    
-                    const rect = otherCard.getBoundingClientRect();
-                    const mouseInCard = e.clientY > rect.top && e.clientY < rect.bottom;
-                    
-                    if (mouseInCard) {
-                        if (index < currentIndex) {
-                            // 向上移动
-                            sectionContainer.insertBefore(draggedItem, otherCard);
-                        } else {
-                            // 向下移动
-                            sectionContainer.insertBefore(draggedItem, otherCard.nextSibling);
-                        }
-                        
-                        // 重新排序数据数组
-                        const newSections = [];
-                        document.querySelectorAll('.section-card').forEach((card, idx) => {
-                            const oldIndex = parseInt(card.dataset.id);
-                            newSections[idx] = sections[oldIndex];
-                        });
-                        sections = newSections;
-                        
-                        // 重新渲染以更新索引和按钮状态
-                        renderSections();
-                    }
-                });
+                // 开始拖动时记录鼠标位置
+                document.addEventListener('mousemove', onMouseMove);
+                document.addEventListener('mouseup', onMouseUp);
             });
         });
+        
+        function onMouseMove(e) {
+            if (!draggingElement) return;
+            
+            const container = document.getElementById('sectionsContainer');
+            const cards = [...container.querySelectorAll('.section-card:not(.dragging)')];
+            
+            // 找到要插入的位置
+            const cardBelow = cards.find(card => {
+                const box = card.getBoundingClientRect();
+                return e.clientY < box.top + box.height / 2;
+            });
+            
+            // 移动元素
+            if (cardBelow) {
+                container.insertBefore(draggingElement, cardBelow);
+            } else {
+                container.appendChild(draggingElement);
+            }
+        }
+        
+        function onMouseUp() {
+            if (!draggingElement) return;
+            
+            // 移除拖动样式
+            draggingElement.classList.remove('dragging');
+            
+            // 更新数据模型
+            const newSections = [];
+            document.querySelectorAll('.section-card').forEach(card => {
+                const index = parseInt(card.dataset.id);
+                newSections.push(sections[index]);
+            });
+            
+            sections = newSections;
+            renderSections();
+            
+            // 清理
+            draggingElement = null;
+            
+            // 移除事件监听器
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        }
     }
 });

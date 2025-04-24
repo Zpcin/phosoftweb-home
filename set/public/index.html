@@ -18,10 +18,14 @@
                 <button id="saveChanges" class="btn btn-success">
                     <i class="fas fa-save"></i> 保存所有更改
                 </button>
+                <button id="checkConnection" class="btn btn-warning">
+                    <i class="fas fa-sync"></i> 检查连接
+                </button>
             </div>
         </header>
         
         <div class="notification" id="notification"></div>
+        <div class="system-status" id="systemStatus"></div>
         
         <div class="guide-box">
             <h3><i class="fas fa-info-circle"></i> Markdown编辑指南</h3>
@@ -55,6 +59,22 @@
         </div>
     </div>
     
+    <script>
+        // 添加系统状态检查
+        document.getElementById('checkConnection').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/api/debug');
+                const data = await response.json();
+                document.getElementById('systemStatus').innerHTML = 
+                    `<pre>API状态: 正常\nAbout.html路径: ${data.aboutHtmlPath}\n文件存在: ${data.exists ? '是' : '否'}</pre>`;
+                document.getElementById('systemStatus').style.display = 'block';
+            } catch (error) {
+                document.getElementById('systemStatus').innerHTML = 
+                    `<pre>API状态: 错误\n错误信息: ${error.message}</pre>`;
+                document.getElementById('systemStatus').style.display = 'block';
+            }
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
