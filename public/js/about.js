@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化文本动画元素
     prepareTextAnimations();
     
+    // 跟踪当前按下的键
+    const keysPressed = new Set();
+
     // 生成左侧目录
     for (let i = 0; i < document.getElementById("content").children.length; i += 1) {
         let elem = document.getElementById("content").children[i];
@@ -249,6 +252,49 @@ document.addEventListener('DOMContentLoaded', function() {
             navigateTo('next');
         }
     }
+
+    // 添加键盘方向键支持
+    document.addEventListener('keydown', function(e) {
+        // 记录按下的键
+        keysPressed.add(e.key);
+
+        if (e.key === 'ArrowUp') {
+            e.preventDefault(); // 防止页面滚动
+            navigateTo('prev'); // 上方向键 -> 上一条
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault(); // 防止页面滚动
+            navigateTo('next'); // 下方向键 -> 下一条
+        } else if (/^[1-9]$/.test(e.key)) {
+            // 检查是否按下了1-9的数字键
+            e.preventDefault();
+            const index = parseInt(e.key) - 1; // 将键值转换为索引（从0开始）
+            const sidebarItems = document.querySelectorAll("#sidebar .info-section");
+
+            // 确保索引在有效范围内
+            if (index < sidebarItems.length) {
+                // 直接触发对应索引项的点击事件
+                sidebarItems[index].click();
+            }
+        }
+
+        // 检查是否同时按下了"1"和"0"键
+        if (keysPressed.has('1') && keysPressed.has('0')) {
+            e.preventDefault();
+            const sidebarItems = document.querySelectorAll("#sidebar .info-section");
+            // 如果有第10个板块，跳转到它
+            if (sidebarItems.length >= 10) {
+                sidebarItems[9].click(); // 索引为9的是第10个元素
+
+                // 清除按键状态，防止重复触发
+                keysPressed.clear();
+            }
+        }
+    });
+
+    // 清除按键记录
+    document.addEventListener('keyup', function(e) {
+        keysPressed.delete(e.key);
+    });
 
     // 防止拖拽和右键
     document.addEventListener("contextmenu", (e) => {
