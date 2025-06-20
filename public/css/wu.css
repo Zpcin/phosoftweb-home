@@ -19,13 +19,14 @@ body {
 /* 主页面内容的主要容器类 */
 .wu-content {
     position: absolute;
-    left: 0;
+    left: 50%;
     top: 0;
     width: calc(100% - 40px);
     height: auto;
     min-height: calc(100% - 40px);
     padding: 20px;
     margin: 0;
+    transform: translateX(-50%); /* 使容器水平居中 */
 }
 
 .wu-divide {
