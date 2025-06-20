@@ -49,7 +49,7 @@ const PHOSOFTWEB_LANG_MAP = {
       'sponsor': '贊助我哋',
       'search': 'Phosoft搜索頁',
       'forum': 'Phosoft論壇頁',
-      'game': 'Phosoft遊戲頁-掃���',
+      'game': 'Phosoft遊戲頁-掃草',
       'ugly': '醜備用論壇頁'
     },
     footer: '版權所有',
@@ -89,7 +89,7 @@ const PHOSOFTWEB_LANG_MAP = {
     about: '關於',
     // 额外配置
     config: {
-      enableGeoIp: true,          // 是否启用 IP 地理位置检测
+      enableGeoIp: true,          // 是否启用 IP 地理位置检��
       disableBrowserLangDetect: false  // 是否禁用浏览器语言检测
     }
   },
@@ -121,7 +121,7 @@ const PHOSOFTWEB_LANG_MAP = {
     // 额外配置
     config: {
       enableGeoIp: false,          // 英文版默认不启用 IP 检测
-      disableBrowserLangDetect: false  // 是否禁用浏览器语言检测
+      disableBrowserLangDetect: false  // 是否禁用��览器语言检测
     }
   },
   'en-sg': {
@@ -191,7 +191,36 @@ const PHOSOFTWEB_LANG_MAP = {
       enableGeoIp: true,          // 是否启用 IP 地理位置检测
       disableBrowserLangDetect: false  // 是否禁用浏览器语言检测
     }
-  }
+  },
+  'wenyan': {
+    welcome: '迎汝至',
+    site: 'Phosoft網頁',
+    promo: '下有PhosoftWeb Line宣傳片',
+    bilibili: '往bilibili，共論之！',
+    notice: '告示',
+    noticeEn: '告示',
+    noticeContent: ['QwQ~', '此乃告示'],
+    friends: '友鏈',
+    friendsTip: '下列諸鏈，或有不通，尚祈見諒！',
+    linkTexts: {
+      'bullshit': '狗屁不通文生器',
+      'hitokoto': 'Hitokoto - 一言',
+      'youget': '視頻下載器',
+      'sponsor': '資助吾等',
+      'search': 'Phosoft搜頁',
+      'forum': 'Phosoft論壇',
+      'game': 'Phosoft戲頁-掃草',
+      'ugly': '備用論壇'
+    },
+    footer: '版權所屬',
+    powered: '本網由 <a href="https://vercel.com/">Vercel</a> 助力',
+    year: new Date().getFullYear(),
+    about: '關於',
+    config: {
+      enableGeoIp: false,
+      disableBrowserLangDetect: false
+    }
+  },
 };
 
 // IP地址和地区映射到语言的配置
@@ -229,13 +258,13 @@ function checkUrlParams() {
 
 // 从ipapi.co获取IP信息
 function fetchIpInfo() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     // 检查当前语言配置是否启用IP检测
     const currentLang = getPhosoftwebLang();
     const config = getLangConfig(currentLang);
 
     if (!config.enableGeoIp) {
-      console.log(`语言 ${currentLang} 未启用IP地理位置检测`);
+      console.log(`语言 ${currentLang} 未启���IP地理位置检测`);
       resolve(null);
       return;
     }
@@ -253,12 +282,17 @@ function fetchIpInfo() {
           data.region_code = 'CN(tw)';
           data.region = 'CN(tw)';
         }
-        // 控制台输出时将country相关字段全部映射为region相关字段
+        // 控制台输出时将country相关字段全部映射为region相关字段，避免未解析变量
         const dataForLog = { ...data };
-        if (dataForLog.country) dataForLog.region = dataForLog.country;
-        if (dataForLog.country_code) dataForLog.region_code = dataForLog.country_code;
-        if (dataForLog.country_name) dataForLog.region_name = dataForLog.country_name;
-        // 删除country相关字段，保证控制台只显示region
+        if (typeof dataForLog.country !== 'undefined') dataForLog.region = dataForLog.country;
+        if (typeof dataForLog.country_code !== 'undefined') dataForLog.region_code = dataForLog.country_code;
+        if (typeof dataForLog.country_name !== 'undefined') dataForLog.region_name = dataForLog.country_name;
+        if (typeof dataForLog.country_code_iso3 !== 'undefined') dataForLog.region_code_iso3 = dataForLog.country_code_iso3;
+        if (typeof dataForLog.country_capital !== 'undefined') dataForLog.region_capital = dataForLog.country_capital;
+        if (typeof dataForLog.country_tld !== 'undefined') dataForLog.region_tld = dataForLog.country_tld;
+        if (typeof dataForLog.country_area !== 'undefined') dataForLog.region_area = dataForLog.country_area;
+        if (typeof dataForLog.country_population !== 'undefined') dataForLog.region_population = dataForLog.country_population;
+        // 删除country相关字段，保证控制台只显示region，避免未解析变量
         delete dataForLog.country;
         delete dataForLog.country_code;
         delete dataForLog.country_name;
@@ -269,7 +303,7 @@ function fetchIpInfo() {
         delete dataForLog.country_population;
         console.log('IP地理位置信息:', dataForLog);
         // 验证API返回的数据格式
-        if (!data || !data.country_code) {
+        if (!data || !('country_code' in data)) {
           console.warn('IP API返回数据格式不正确:', data);
           resolve(null);
           return;
@@ -278,7 +312,7 @@ function fetchIpInfo() {
       })
       .catch(error => {
         console.error('获取IP信息失败:', error);
-        resolve(null); // 失败时返回null但不中断流程
+        resolve(null);
       });
   });
 }
@@ -293,7 +327,7 @@ function getPhosoftwebLang() {
   // 默认语言识别结果
   let detectedLang = 'en';
 
-  // 根据浏览器语言初步判断
+  // 根据浏览器���言初步判断
   if (browserLang === 'zh-tw') detectedLang = 'zh-tw';
   else if (browserLang === 'zh-hk' || browserLang === 'zh-mo') detectedLang = 'zh-hk';
   else if (browserLang.startsWith('zh')) detectedLang = 'zh-cn';
@@ -363,7 +397,7 @@ async function applyGeoIpLang() {
     console.error('IP语言检测失败:', error);
   }
 
-  // 无论IP检测成功与否，都应用语言
+  // 无论IP检测成功与否，都应��语言
   applyPhosoftwebLang();
 }
 
@@ -412,7 +446,7 @@ function applyPhosoftwebLang() {
       friendsTip.textContent = map.friendsTip;
     }
 
-    // 链接文字翻译
+    // 链接文字���译
     if (map.linkTexts) {
       const links = friendsBlock.querySelectorAll('.wu-links a');
       links.forEach(link => {
