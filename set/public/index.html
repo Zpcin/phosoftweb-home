@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>about.html 内容管理</title>
+    <title data-i18n="title">about.html 内容管理</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="lang.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-cog"></i> about.html 内容管理系统</h1>
+            <h1 data-i18n="title"><i class="fas fa-cog"></i> about.html 内容管理系统</h1>
             <div class="actions">
-                <button id="addSection" class="btn btn-primary">
+                <button id="addSection" class="btn btn-primary" data-i18n="addSection">
                     <i class="fas fa-plus"></i> 添加新板块
                 </button>
-                <button id="saveChanges" class="btn btn-success">
+                <button id="saveChanges" class="btn btn-success" data-i18n="saveChanges">
                     <i class="fas fa-save"></i> 保存所有更改
                 </button>
-                <button id="checkConnection" class="btn btn-warning">
+                <button id="checkConnection" class="btn btn-warning" data-i18n="checkConnection">
                     <i class="fas fa-sync"></i> 检查连接
                 </button>
             </div>
@@ -28,16 +29,16 @@
         <div class="system-status" id="systemStatus"></div>
         
         <div class="guide-box">
-            <h3><i class="fas fa-info-circle"></i> Markdown编辑指南</h3>
+            <h3 data-i18n="guideTitle"><i class="fas fa-info-circle"></i> Markdown编辑指南</h3>
             <ul>
-                <li><strong>加粗文本</strong>: **文本** 或 __文本__</li>
-                <li><em>斜体文本</em>: *文本* 或 _文本_</li>
-                <li><a href="#">链接</a>: [链接文字](链接地址)</li>
-                <li>标题: # 一级标题, ## 二级标题, ### 三级标题</li>
-                <li>列表: - 列表项</li>
-                <li>行内代码: `代码`</li>
-                <li>代码块: ```代码块内容```</li>
-                <li>所有换行会自动转换为&lt;br&gt;标签</li>
+                <li data-i18n-guide><strong>加粗文本</strong>: **文本** 或 __文本__</li>
+                <li data-i18n-guide><em>斜体文本</em>: *文本* 或 _文本_</li>
+                <li data-i18n-guide><a href="#">链接</a>: [链接文字](链接地址)</li>
+                <li data-i18n-guide>标题: # 一级标题, ## 二级标题, ### 三级标题</li>
+                <li data-i18n-guide>列表: - 列表项</li>
+                <li data-i18n-guide>行内代码: `代码`</li>
+                <li data-i18n-guide>代码块: ```代码块内容```</li>
+                <li data-i18n-guide>所有换行会自动转换为&lt;br&gt;标签</li>
             </ul>
         </div>
         
@@ -75,6 +76,7 @@
             }
         });
     </script>
+    <script src="lang.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

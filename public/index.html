@@ -13,6 +13,7 @@
 
         <!-- 样式和网站图标 -->
         <link rel="stylesheet" href="./css/wu.css">
+        <link rel="stylesheet" href="./css/lang-responsive.css">
         <link rel="icon" href="./img/A-logo.svg">
         <!-- 老图标
         <link rel="icon" href="https://gitlab.com/uploads/-/system/group/avatar/15493510/QQ%E5%9B%BE%E7%89%8720220117233528.jpg?width=512">
@@ -20,6 +21,7 @@
 
         <!-- 特效脚本 -->
         <script src="./js/grayscale.js"></script>
+        <script src="./js/lang.js"></script>
 
         <!-- 第三方服务集成 -->
         <script src="https://code.tidio.co/bowhirwyldd4f4z8ebab0dsupl375oim.js" async></script>
@@ -68,11 +70,9 @@
                     <b class="wu-h2 no-wrap">下面是 PhosoftWeb Line 宣传片</b>
                     <div class="wu-divide" style="height: 10px;"></div>
                     <video width="100%" src="./video/video.mp4" controls></video>
-                    <a href="https://www.bilibili.com/video/av522186335">
-                        <div style="padding-top: 5px; width: 100%; height: 20px;">
-                            <img src="./img/bilibili.svg" style="margin-left: 10px; height: 20px; display: inline-block; position: relative; float: left;" alt="bilibili logo">
-                            <span style="float: left; color: black; margin-left: 10px; font-family: 'HarmonyOS_Sans_Medium';">进入bilibili，一起交流！</span>
-                        </div>
+                    <a href="https://www.bilibili.com/video/av522186335" class="bilibili-link">
+                        <img src="./img/bilibili.svg" alt="bilibili logo">
+                        <span id="bilibili-text">进入bilibili，一起交流！</span>
                     </a>
                 </div>
             </div>
@@ -92,7 +92,7 @@
             </div>
 
             <!-- 友情链接区块 -->
-            <div class="wu-block wu-mw">
+            <div class="wu-block wu-mw" id="friendLinks">
                 <div class="wu-box wu-shadow">
                     <div class="wu-divide" style="height: 20px;"></div>
                     <b class="wu-h2">友情链接</b>
@@ -144,4 +144,3 @@
         <![endif]-->
     </body>
 </html>
-

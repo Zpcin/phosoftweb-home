@@ -1,0 +1,167 @@
+/* 语言适配的响应式样式 */
+
+/* bilibili 链接样式 - 确保图标和文字在同一行 */
+.bilibili-link {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.bilibili-link img {
+  height: 20px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+#bilibili-text {
+  color: black;
+  font-family: 'HarmonyOS_Sans_Medium';
+  flex-shrink: 1;
+  white-space: nowrap;
+}
+
+/* 日语和英语版本的文本大小调整 */
+html[lang="en"] #bilibili-text,
+html[lang="ja"] #bilibili-text {
+  font-size: 0.9rem;
+  letter-spacing: -0.2px;
+}
+
+/* 基础样式 - 所有屏幕尺寸通用 */
+/* 日语宣传片标题在所有屏幕尺寸下都缩小字体 */
+html[lang="ja"] #video .wu-h2.no-wrap {
+  font-size: 1.3rem;
+  letter-spacing: -0.5px;
+  padding-right: 5px;
+}
+
+/* 日语版本长文本标题在所有屏幕尺寸下的特殊处理 */
+html[lang="ja"] .wu-block.wu-mw:last-child .wu-box p.no-wrap a {
+  font-size: 0.95rem;
+  letter-spacing: -0.5px;
+}
+
+/* 基础样式 */
+html[lang="en"] .wu-h2,
+html[lang="ja"] .wu-h2 {
+  word-break: normal;
+  hyphens: auto;
+}
+
+html[lang="en"] .wu-links a,
+html[lang="ja"] .wu-links a {
+  word-break: normal;
+}
+
+/* 特别处理视频区域标题和页脚文本 */
+html[lang="en"] .wu-block.wu-mw:last-child .wu-box p.no-wrap,
+html[lang="ja"] .wu-block.wu-mw:last-child .wu-box p.no-wrap {
+  line-height: 1.3;
+}
+
+/* 移动设备适配 */
+@media (max-width: 768px) {
+  /* 英文版本字体缩小 */
+  html[lang="en"] .wu-h1 {
+    font-size: 1.8rem;
+  }
+
+  html[lang="en"] .wu-h2 {
+    font-size: 1.4rem;
+  }
+
+  html[lang="en"] #video .wu-h2.no-wrap {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+  }
+
+  html[lang="en"] .wu-links a {
+    font-size: 0.9rem;
+  }
+
+  /* 英文版页脚优化 */
+  html[lang="en"] .wu-block.wu-mw:last-child .wu-box p.no-wrap {
+    font-size: 0.85rem;
+  }
+
+  /* 日语版本字体缩小 */
+  html[lang="ja"] .wu-h1 {
+    font-size: 1.7rem;
+  }
+
+  html[lang="ja"] .wu-h2 {
+    font-size: 1.3rem;
+  }
+
+  html[lang="ja"] #video .wu-h2.no-wrap {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    letter-spacing: -0.8px;
+  }
+
+  /* 日语版页脚优化 */
+  html[lang="ja"] .wu-block.wu-mw:last-child .wu-box p.no-wrap {
+    font-size: 0.8rem;
+    letter-spacing: -0.8px;
+  }
+
+  html[lang="ja"] .wu-links a {
+    font-size: 0.85rem;
+  }
+
+  /* 友情链接区域在移动端优化 */
+  #friendLinks .wu-links a {
+    display: inline-block;
+    margin: 4px 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(50% - 12px);
+  }
+}
+
+/* 超小屏幕设备适配 */
+@media (max-width: 480px) {
+  html[lang="en"] .wu-h1,
+  html[lang="ja"] .wu-h1 {
+    font-size: 1.5rem;
+  }
+
+  html[lang="en"] .wu-h2,
+  html[lang="ja"] .wu-h2 {
+    font-size: 1.1rem;
+  }
+
+  html[lang="en"] #video .wu-h2.no-wrap {
+    font-size: 0.85rem;
+    letter-spacing: -0.5px;
+  }
+
+  html[lang="ja"] #video .wu-h2.no-wrap {
+    font-size: 0.8rem;
+    letter-spacing: -1px;
+  }
+
+  /* 超小屏幕页脚优化 */
+  html[lang="en"] .wu-block.wu-mw:last-child .wu-box p.no-wrap,
+  html[lang="ja"] .wu-block.wu-mw:last-child .wu-box p.no-wrap {
+    font-size: 0.75rem;
+    margin-bottom: 3px;
+  }
+
+  html[lang="ja"] .wu-block.wu-mw:last-child .wu-box p.no-wrap a {
+    font-size: 0.7rem;
+    letter-spacing: -1px;
+  }
+
+  /* 所有语言在超小屏幕上的友情链接优化 */
+  #friendLinks .wu-links a {
+    max-width: 100%;
+    margin: 3px 0;
+    display: block;
+  }
+}
