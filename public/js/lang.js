@@ -26,6 +26,32 @@ const PHOSOFTWEB_LANG_MAP = {
     year: new Date().getFullYear(),
     about: '关于'
   },
+  'zh-hk': {
+    welcome: '歡迎來到',
+    site: 'PhosoftWebPages',
+    promo: '呢度係 PhosoftWeb Line 嘅宣傳片',
+    bilibili: '入去bilibili，一齊交流啦！',
+    notice: '公告',
+    noticeEn: 'Notice',
+    noticeContent: ['QwQ~', '呢個係公告'],
+    friends: '友情連結',
+    friendsTip: '以下連結可能會死，請見諒！',
+    // 链接文字翻译
+    linkTexts: {
+      'bullshit': '垃圾文章生成器',
+      'hitokoto': 'Hitokoto - 一言',
+      'youget': '影片下載工具',
+      'sponsor': '贊助我哋',
+      'search': 'Phosoft搜索頁',
+      'forum': 'Phosoft論壇頁',
+      'game': 'Phosoft遊戲頁-掃草',
+      'ugly': '醜備用論壇頁'
+    },
+    footer: '版權所有',
+    powered: '呢個網站由 <a href="https://vercel.com/">Vercel</a>&nbsp;強力驅動',
+    year: new Date().getFullYear(),
+    about: '關於'
+  },
   'en': {
     welcome: 'Welcome to',
     site: 'PhosoftWebPages',
@@ -49,6 +75,32 @@ const PHOSOFTWEB_LANG_MAP = {
     },
     footer: 'All rights reserved',
     powered: 'Powered by <a href="https://vercel.com/">Vercel</a>',
+    year: new Date().getFullYear(),
+    about: 'About'
+  },
+  'en-sg': {
+    welcome: 'Welcome lah to',
+    site: 'PhosoftWebPages',
+    promo: 'Here got PhosoftWeb Line promo video lor',
+    bilibili: 'Go Bilibili together can?',
+    notice: 'Announcement',
+    noticeEn: 'Notice',
+    noticeContent: ['QwQ~', 'Got announcement here'],
+    friends: 'Friend Links',
+    friendsTip: 'These links sometimes die one, please understand!',
+    // 链接文字翻译
+    linkTexts: {
+      'bullshit': 'Nonsense Generator lor',
+      'hitokoto': 'Hitokoto - One Word ah',
+      'youget': 'Video Downloader Tool',
+      'sponsor': 'Support Us lah',
+      'search': 'Phosoft Search Page',
+      'forum': 'Phosoft Forum',
+      'game': 'Phosoft Game - Scan Grass',
+      'ugly': 'Backup Forum Page lah'
+    },
+    footer: 'All rights reserved',
+    powered: 'Powered by <a href="https://vercel.com/">Vercel</a> one',
     year: new Date().getFullYear(),
     about: 'About'
   },
@@ -89,6 +141,8 @@ const PHOSOFTWEB_LANG_MAP = {
 function getPhosoftwebLang() {
   if (window._forceLang) return window._forceLang;
   const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  // 根据浏览器语言自动检测粤语用户
+  if (lang === 'zh-hk' || lang === 'zh-tw' || lang === 'zh-mo') return 'zh-hk';
   if (lang.startsWith('zh')) return 'zh-cn';
   if (lang.startsWith('ja')) return 'ja';
   return 'en';
@@ -188,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.setLang = function(lang) {
-  if (!['zh-cn','en','ja'].includes(lang)) return;
+  if (!['zh-cn','zh-hk','en','en-sg','ja'].includes(lang)) return;
   window._forceLang = lang;
   applyPhosoftwebLang();
 };
