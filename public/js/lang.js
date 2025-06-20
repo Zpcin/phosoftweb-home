@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.setLang = function(lang) {
-  if (!['zh-cn','zh-hk','zh-tw','en','en-sg','ja'].includes(lang)) return;
+  if (!['zh-cn','zh-hk','zh-tw','en','en-sg','ja','wenyan'].includes(lang)) return;
   window._forceLang = lang;
   applyPhosoftwebLang();
 };
