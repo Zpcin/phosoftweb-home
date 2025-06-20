@@ -6,6 +6,14 @@
 * {
     margin: 0;
     word-break: break-all;
+    box-sizing: border-box; /* 添加盒模型属性 */
+}
+
+body {
+    font-family: 'HarmonyOS_Sans_Medium', sans-serif; /* 全局字体设置 */
+    background-color: #f8f9fa; /* 添加轻微背景色 */
+    color: #212529; /* 统一文字颜色 */
+    line-height: 1.5; /* 改善行高 */
 }
 
 /* 主页面内容的主要容器类 */
@@ -32,16 +40,19 @@
     margin: 10px;
     display: inline-block;
     vertical-align: top;
+    transition: transform 0.3s ease; /* 添加块级元素过渡效果 */
 }
 
 .wu-shadow {
-    box-shadow: 0 0 10px rgba(85, 85, 85, 0.4);
-    transition: all 0.2s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* 更现代的阴影效果 */
+    transition: all 0.3s ease; /* 平滑过渡效果 */
+    border: 1px solid rgba(0, 0, 0, 0.03); /* 微妙边框 */
 }
 
 /* 在悬停时添加微妙的阴影效果 */
 .wu-shadow:hover {
-    box-shadow: 0 0 20px rgba(85, 85, 85, 0.4);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px); /* 上浮效果 */
 }
 
 /* 常规框样式（宽度、填充、边框） */
@@ -49,7 +60,8 @@
     width: calc(100% - 40px);
     height: auto;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px; /* 增加圆角 */
+    background-color: #fff; /* 明确的背景色 */
 }
 
 .wu-box:hover {
@@ -62,12 +74,16 @@
     text-decoration: none;
     color: rgb(33,37,41);
     transition: all 0.2s ease;
+    padding: 3px 8px; /* 增加内边距便于点击 */
+    border-radius: 4px; /* 轻微圆角 */
+    display: inline-block; /* 使内边距生效 */
 }
 
 .wu-links a:hover,
 .wu-not a:hover {
-    text-decoration: underline;
-    color: rgb(97, 103, 110);
+    text-decoration: none; /* 移除下划线 */
+    color: #fff; /* 高对比度 */
+    background: linear-gradient(90deg, #3a95e4, #4aa0e8); /* 渐变背景 */
 }
 
 .wu-links a {
@@ -77,23 +93,29 @@
 /* 带有背景和颜色的注意块样式 */
 .wu-notice {
     background-color: rgb(194, 93, 93);
-    padding: 10px;
+    padding: 12px 15px; /* 增加内边距 */
     color: white;
-    border-left: rgb(114, 45, 45) 3px solid;
-    margin: 10px 0;
+    border-left: rgb(114, 45, 45) 5px solid; /* 加粗边框 */
+    margin: 15px 0;
+    border-radius: 0 6px 6px 0; /* 右侧圆角 */
 }
 
 /* 字体样式 */
 .wu-h1 {
-    font-size: 30px;
+    font-size: 32px; /* 更大字体 */
+    font-weight: bold;
+    margin-bottom: 10px; /* 增加间距 */
 }
 
 .wu-h2 {
-    font-size: 23px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
 .wu-h3 {
     font-size: 18px;
+    margin-bottom: 6px;
 }
 
 .wu-a {
@@ -125,6 +147,12 @@
     border-radius: 20px;
     margin: 5px;
     font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background: #e0e2e5;
+    transform: translateY(-2px);
 }
 
 /* 项目项样式 */
@@ -133,14 +161,26 @@
     margin: 15px 0;
     background: #f8f9fa;
     border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.project-item:hover {
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 /* 联系方式样式 */
 .contact-methods p {
     margin: 10px 0;
-    padding: 10px;
+    padding: 12px 15px;
     background: #f8f9fa;
     border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.contact-methods p:hover {
+    background: #fff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
 /* 响应式设计 */
@@ -150,22 +190,37 @@
     }
 
     .wu-h1.no-wrap {
-        font-size: 24px; /* 调整 .wu-h1 元素的字体大小 */
+        font-size: 26px; /* 调整 .wu-h1 元素的字体大小 */
     }
 
     .wu-h2.no-wrap {
-        font-size: 20px; /* 调整 .wu-h2 元素的字体大小 */
+        font-size: 22px; /* 调整 .wu-h2 元素的字体大小 */
     }
 
     /* 视频标题特别处理 */
     #video .wu-h2.no-wrap {
         font-size: 20px;
     }
+
+    /* 平板设备特别优化 */
+    .wu-block {
+        margin: 8px;
+    }
+
+    .wu-box {
+        padding: 15px;
+        width: calc(100% - 30px);
+    }
 }
 
 @media (max-width: 600px) {
     #video .wu-h2.no-wrap {
-        font-size: 16px; /* 确保不小于"进入bilibili，一起交流！"的字体大小 */
+        font-size: 18px;
+    }
+
+    .wu-links a {
+        margin: 4px 2px;
+        font-size: 14px;
     }
 }
 
@@ -180,7 +235,29 @@
     }
 
     #video .wu-h2.no-wrap {
-        font-size: 16px; /* 修改：保持16px，不再缩小到14px */
+        font-size: 16px;
+    }
+
+    /* 移动设备额外优化 */
+    .wu-block {
+        margin: 5px 0;
+        width: 100% !important; /* 强制单列布局 */
+    }
+
+    .wu-hw {
+        width: 100% !important;
+    }
+
+    .wu-box {
+        border-radius: 10px;
+        padding: 15px;
+        width: calc(100% - 20px);
+    }
+
+    .wu-links a {
+        padding: 6px;
+        margin: 3px 1px;
+        font-size: 13px;
     }
 }
 
@@ -193,4 +270,27 @@
 .wu-box p.no-wrap a {
     text-decoration: none;
     color: inherit;
+}
+
+/* 添加页面载入动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wu-content {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* 为友情链接区添加悬浮效果 */
+.wu-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }

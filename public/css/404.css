@@ -6,11 +6,27 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    color: #212529;
 }
 .error-container {
     text-align: center;
     max-width: 600px;
     padding: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    animation: fadeIn 0.6s ease-out;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .error-header {
     display: flex;
@@ -23,6 +39,13 @@ body {
     font-weight: bold;
     margin: 0;
     color: #212529;
+    position: relative;
+    animation: shake 1s ease-in-out 1s;
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
 }
 .error-face {
     font-size: 160px;
@@ -30,19 +53,40 @@ body {
     margin-left: 15px;
     margin-right: 45px; /* 增加右侧边距，让表情和404数字分开 */
     color: #212529;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 .error-message {
     font-size: 24px;
     margin: 20px 0;
     color: #495057;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards 0.3s;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 .error-desc {
     font-size: 16px;
     margin-bottom: 30px;
     color: #6c757d;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards 0.5s;
 }
 .error-links {
     margin-top: 30px;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease forwards 0.7s;
 }
 .error-links a {
     display: inline-block;
@@ -53,11 +97,11 @@ body {
     text-decoration: none;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(85, 85, 85, 0.2);
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 .error-links a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(85, 85, 85, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(85, 85, 85, 0.3);
 }
 .primary-link {
     background: linear-gradient(90deg, #3a95e4, #4aa0e8) !important;
@@ -67,7 +111,7 @@ body {
 /* 移动端适配 */
 @media (max-width: 768px) {
     .error-container {
-        padding: 20px;
+        padding: 30px;
         max-width: 90%;
     }
     
@@ -99,6 +143,11 @@ body {
 }
 
 @media (max-width: 480px) {
+    .error-container {
+        padding: 20px;
+        margin: 15px;
+    }
+
     .error-face {
         font-size: 80px;
     }
