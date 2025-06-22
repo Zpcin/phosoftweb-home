@@ -140,7 +140,7 @@ ____  _                      __ _
     about: '關於',
     // 额外配置
     config: {
-      enableGeoIp: true,          // 是否启用 IP 地理位置检��
+      enableGeoIp: true,          // 是否启用 IP 地理位置检测
       disableBrowserLangDetect: false  // 是否禁用浏览器语言检测
     },
     // 控制台输出
@@ -193,7 +193,7 @@ ____  _                      __ _
     // 额外配置
     config: {
       enableGeoIp: false,          // 英文版默认不启用 IP 检测
-      disableBrowserLangDetect: false  // 是否禁用��览器语言检测
+      disableBrowserLangDetect: false  // 是否禁用浏览器语言检测
     },
     // 控制台输出
     console: {
@@ -406,7 +406,7 @@ function fetchIpInfo() {
     const config = getLangConfig(currentLang);
 
     if (!config.enableGeoIp) {
-      console.log(`语言 ${currentLang} 未启���IP地理位置检测`);
+      console.log(`语言 ${currentLang} 未启用IP地理位置检测`);
       resolve(null);
       return;
     }
@@ -469,7 +469,7 @@ function getPhosoftwebLang() {
   // 默认语言识别结果
   let detectedLang = 'en';
 
-  // 根据浏览器���言初步判断
+  // 根据浏览器语言初步判断
   if (browserLang === 'zh-tw') detectedLang = 'zh-tw';
   else if (browserLang === 'zh-hk' || browserLang === 'zh-mo') detectedLang = 'zh-hk';
   else if (browserLang.startsWith('zh')) detectedLang = 'zh-cn';
@@ -539,7 +539,7 @@ async function applyGeoIpLang() {
     console.error('IP语言检测失败:', error);
   }
 
-  // 无论IP检测成功与否，都应��语言
+  // 无论IP检测成功与否，都应用语言
   applyPhosoftwebLang();
 }
 
