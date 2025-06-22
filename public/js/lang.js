@@ -19,7 +19,16 @@ const PHOSOFTWEB_LANG_MAP = {
       'search': 'Phosoft搜索页',
       'forum': 'Phosoft论坛页',
       'game': 'Phosoft游戏页-扫草',
-      'ugly': '丑备用论坛页'
+      'ugly': '丑备用论坛页',
+      // 添加个人网站链接翻译
+      'official': 'PhosoftStudio 官方网站',
+      'chensite': 'ChenZR的小破站',
+      'damonsite': 'What_Damon的窝',
+      'zpcin': 'Zpcin个人网站',
+      'pigeon': '鸽子的屑网站',
+      'grassdev': '生草開發組',
+      'grasstheme': '生草主题官方博客',
+      'chenxinlei': '陈鑫磊的博客'
     },
     footer: '版权所有',
     powered: '此网站由 <a href="https://vercel.com/">Vercel</a>&nbsp;强力驱动',
@@ -50,7 +59,16 @@ const PHOSOFTWEB_LANG_MAP = {
       'search': 'Phosoft搜索頁',
       'forum': 'Phosoft論壇頁',
       'game': 'Phosoft遊戲頁-掃草',
-      'ugly': '醜備用論壇頁'
+      'ugly': '醜備用論壇頁',
+      // 添加个人网站链接翻译
+      'official': 'PhosoftStudio 官方網站',
+      'chensite': 'ChenZR嘅小破站',
+      'damonsite': 'What_Damon嘅窩',
+      'zpcin': 'Zpcin個人網站',
+      'pigeon': '鴿子嘅屑網站',
+      'grassdev': '生草開發組',
+      'grasstheme': '生草主題官方博客',
+      'chenxinlei': '陳鑫磊嘅博客'
     },
     footer: '版權所有',
     powered: '呢個網站由 <a href="https://vercel.com/">Vercel</a>&nbsp;強力驅動',
@@ -81,7 +99,16 @@ const PHOSOFTWEB_LANG_MAP = {
       'search': 'Phosoft搜索頁',
       'forum': 'Phosoft論壇頁',
       'game': 'Phosoft遊戲頁-掃草',
-      'ugly': '備用論壇頁'
+      'ugly': '備用論壇頁',
+      // 添加个人网站链接翻译
+      'official': 'PhosoftStudio 官方網站',
+      'chensite': 'ChenZR的小破站',
+      'damonsite': 'What_Damon的窩',
+      'zpcin': 'Zpcin個人網站',
+      'pigeon': '鴿子的垃圾網站',
+      'grassdev': '生草開發組',
+      'grasstheme': '生草主題官方部落格',
+      'chenxinlei': '陳鑫磊的部落格'
     },
     footer: '版權所有',
     powered: '本網站由 <a href="https://vercel.com/">Vercel</a>&nbsp;強力驅動',
@@ -112,7 +139,16 @@ const PHOSOFTWEB_LANG_MAP = {
       'search': 'Phosoft Search',
       'forum': 'Phosoft Forum',
       'game': 'Phosoft Game - Scan Grass',
-      'ugly': 'Ugly Backup Forum'
+      'ugly': 'Ugly Backup Forum',
+      // 添加个人网站链接翻译
+      'official': 'PhosoftStudio Official Website',
+      'chensite': "ChenZR's Little Site",
+      'damonsite': "What_Damon's Home",
+      'zpcin': "Zpcin's Personal Website",
+      'pigeon': "Pigeon's Humble Website",
+      'grassdev': 'Grass Development Group',
+      'grasstheme': 'Grass Theme Official Blog',
+      'chenxinlei': "Chen Xinlei's Blog"
     },
     footer: 'All rights reserved',
     powered: 'Powered by <a href="https://vercel.com/">Vercel</a>',
@@ -143,7 +179,16 @@ const PHOSOFTWEB_LANG_MAP = {
       'search': 'Phosoft Search Page',
       'forum': 'Phosoft Forum',
       'game': 'Phosoft Game - Scan Grass',
-      'ugly': 'Backup Forum Page lah'
+      'ugly': 'Backup Forum Page lah',
+      // 添加个人网站链接翻译
+      'official': 'PhosoftStudio Official Website lah',
+      'chensite': "ChenZR's Small Site one",
+      'damonsite': "What_Damon's Crib",
+      'zpcin': "Zpcin Personal Page",
+      'pigeon': "Pigeon's Simple Website lah",
+      'grassdev': 'Grass Dev Group ah',
+      'grasstheme': 'Grass Theme Blog',
+      'chenxinlei': "Chen Xinlei Blog"
     },
     footer: 'All rights reserved',
     powered: 'Powered by <a href="https://vercel.com/">Vercel</a> one',
@@ -174,7 +219,16 @@ const PHOSOFTWEB_LANG_MAP = {
       'search': 'フォソフト検索ページ',
       'forum': 'フォソフトフォーラム',
       'game': 'フォソフトゲーム-草スキャン',
-      'ugly': 'バックアップフォーラム'
+      'ugly': 'バックアップフォーラム',
+      // 添加个人网站链接翻译
+      'official': 'フォソフトスタジオ公式サイト',
+      'chensite': 'ChenZRの小さなサイト',
+      'damonsite': 'What_Damonの巣',
+      'zpcin': 'Zpcinの個人サイト',
+      'pigeon': '鳩の簡素なサイト',
+      'grassdev': '草開発グループ',
+      'grasstheme': '草テーマ公式ブログ',
+      'chenxinlei': '陳鑫磊のブログ'
     },
     footer: '著作権所有',
     powered: '<a href="https://vercel.com/">Vercel</a> により強力に提供',
@@ -210,7 +264,16 @@ const PHOSOFTWEB_LANG_MAP = {
       'search': 'Phosoft搜頁',
       'forum': 'Phosoft論壇',
       'game': 'Phosoft戲頁-掃草',
-      'ugly': '備用論壇'
+      'ugly': '備用論壇',
+      // 添加个人网站链接翻译
+      'official': 'PhosoftStudio 官方之地',
+      'chensite': 'ChenZR之陋室',
+      'damonsite': 'What_Damon之居',
+      'zpcin': 'Zpcin個人之地',
+      'pigeon': '鴿子之簡陋網址',
+      'grassdev': '生草之作坊',
+      'grasstheme': '生草主題官方志',
+      'chenxinlei': '陳鑫磊之文集'
     },
     footer: '版權所屬',
     powered: '本網由 <a href="https://vercel.com/">Vercel</a> 助力',
@@ -446,7 +509,7 @@ function applyPhosoftwebLang() {
       friendsTip.textContent = map.friendsTip;
     }
 
-    // 链接文字���译
+    // 链接文字翻译
     if (map.linkTexts) {
       const links = friendsBlock.querySelectorAll('.wu-links a');
       links.forEach(link => {
@@ -471,7 +534,24 @@ function applyPhosoftwebLang() {
         } else if (href.includes('ugly-standby')) {
           link.textContent = map.linkTexts.ugly;
         }
-        // 专有名词和个人网站保持原样
+        // 添加个人网站链接翻译
+        else if (href.includes('about.phosoft.cn')) {
+          link.textContent = map.linkTexts.official;
+        } else if (href.includes('chenzr')) {
+          link.textContent = map.linkTexts.chensite;
+        } else if (href.includes('damon233')) {
+          link.textContent = map.linkTexts.damonsite;
+        } else if (href.includes('zhang2333')) {
+          link.textContent = map.linkTexts.zpcin;
+        } else if (href.includes('imfmkli')) {
+          link.textContent = map.linkTexts.pigeon;
+        } else if (href.includes('mystu.net')) {
+          link.textContent = map.linkTexts.grassdev;
+        } else if (href.includes('theme.estu.site')) {
+          link.textContent = map.linkTexts.grasstheme;
+        } else if (href.includes('cxl2020mc')) {
+          link.textContent = map.linkTexts.chenxinlei;
+        }
       });
     }
   }
