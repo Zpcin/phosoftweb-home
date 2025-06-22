@@ -308,12 +308,11 @@ ____  _                      __ _
     // 控制台输出
     console: {
       logo: `
-  _____ ___  ____   ___  _____ _   _ _____ ___  
- |  ___/ _ \\/ ___| / _ \\|  ___| | | |_   _/ _ \\ 
- | |_ | | | \\___ \\| | | | |_  | | | | | || | | |
- |  _|| |_| |___) | |_| |  _| | |_| | | || |_| |
- |_|   \\___/|____/ \\___/|_|    \\___/  |_| \\___/ 
-                                                
+____  _                      __ _
+|  _ \\| |__   ___  ___  ___  / _| |_
+| |_) | '_ \\ / _ \\/ __|/ _ \\| |_| __|
+|  __/| | | | (_) \\__ \\ (_) |  _| |_
+|_|   |_| |_|\\___/|___/\\___/|_|  \\__|
       `,
       slogan: '絶え間ない革新、決して止まらない',
       intro: '常に革新し、決して止まりません！私たちはPhosoftStudioです。リンクをクリックしてQQグループ【Phosoft スタジオ公式】に参加してください：https://jq.qq.com/?_wv=1027&k=STqaquQz'
@@ -358,13 +357,8 @@ ____  _                      __ _
     },
     // 控制台输出
     console: {
-      logo: `
-____  _                      __ _
-|  _ \\| |__   ___  ___  ___  / _| |_
-| |_) | '_ \\ / _ \\/ __|/ _ \\| |_| __|
-|  __/| | | | (_) \\__ \\ (_) |  _| |_
-|_|   |_| |_|\\___/|___/\\___/|_|  \\__|
-      `,
+      logo: `鳳梭軟`,
+      logoStyle: 'font-size: 60px; font-weight: bold; color: #000;',
       slogan: '創新不息，行進不止',
       intro: '吾輩日新又新，未嘗稍歇。鳳梭工坊是也，按此入群【鳳梭工坊官方】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
     }
@@ -658,7 +652,12 @@ function applyPhosoftwebLang() {
   if (consoleInfo) {
     // 如果有定义 ASCII 艺术 Logo，则先输出 Logo
     if (consoleInfo.logo) {
-      console.log(consoleInfo.logo);
+      // 检查是否有自定义样式
+      if (consoleInfo.logoStyle) {
+        console.log(`%c${consoleInfo.logo}`, consoleInfo.logoStyle);
+      } else {
+        console.log(consoleInfo.logo);
+      }
     }
     console.log(`%c${consoleInfo.slogan}`, 'font-size: 16px; font-weight: bold;');
     console.log(consoleInfo.intro);
