@@ -38,6 +38,18 @@ const PHOSOFTWEB_LANG_MAP = {
     config: {
       enableGeoIp: false,          // 是否启用 IP 地理位置检测
       disableBrowserLangDetect: false  // 是否禁用浏览器语言检测
+    },
+    // 控制台输出
+    console: {
+      logo: `
+____  _                      __ _
+|  _ \\| |__   ___  ___  ___  / _| |_
+| |_) | '_ \\ / _ \\/ __|/ _ \\| |_| __|
+|  __/| | | | (_) \\__ \\ (_) |  _| |_
+|_|   |_| |_|\\___/|___/\\___/|_|  \\__|
+      `,
+      slogan: '不断创新，永不停息',
+      intro: 'We always innovate, never stop!，我们是 PhosoftStudio，点击链接加入群聊【Phosoft 工作室官方公开】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
     }
   },
   'zh-hk': {
@@ -78,6 +90,18 @@ const PHOSOFTWEB_LANG_MAP = {
     config: {
       enableGeoIp: true,          // 是否启用 IP 地理位置检测
       disableBrowserLangDetect: false  // 是否禁用浏览器语言检测
+    },
+    // 控制台输出
+    console: {
+      logo: `
+____  _                      __ _
+|  _ \\| |__   ___  ___  ___  / _| |_
+| |_) | '_ \\ / _ \\/ __|/ _ \\| |_| __|
+|  __/| | | | (_) \\__ \\ (_) |  _| |_
+|_|   |_| |_|\\___/|___/\\___/|_|  \\__|
+      `,
+      slogan: '不斷創新，永不停息',
+      intro: 'We always innovate, never stop!，我哋係 PhosoftStudio，撳連結加入群聊【Phosoft 工作室官方公開】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
     }
   },
   'zh-tw': {
@@ -118,6 +142,18 @@ const PHOSOFTWEB_LANG_MAP = {
     config: {
       enableGeoIp: true,          // 是否启用 IP 地理位置检��
       disableBrowserLangDetect: false  // 是否禁用浏览器语言检测
+    },
+    // 控制台输出
+    console: {
+      logo: `
+____  _                      __ _
+|  _ \\| |__   ___  ___  ___  / _| |_
+| |_) | '_ \\ / _ \\/ __|/ _ \\| |_| __|
+|  __/| | | | (_) \\__ \\ (_) |  _| |_
+|_|   |_| |_|\\___/|___/\\___/|_|  \\__|
+      `,
+      slogan: '不斷創新，永不停息',
+      intro: 'We always innovate, never stop!，我們是 PhosoftStudio，點擊連結加入群聊【Phosoft 工作室官方公開】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
     }
   },
   'en': {
@@ -158,6 +194,18 @@ const PHOSOFTWEB_LANG_MAP = {
     config: {
       enableGeoIp: false,          // 英文版默认不启用 IP 检测
       disableBrowserLangDetect: false  // 是否禁用��览器语言检测
+    },
+    // 控制台输出
+    console: {
+      logo: `
+____  _                      __ _
+|  _ \\| |__   ___  ___  ___  / _| |_
+| |_) | '_ \\ / _ \\/ __|/ _ \\| |_| __|
+|  __/| | | | (_) \\__ \\ (_) |  _| |_
+|_|   |_| |_|\\___/|___/\\___/|_|  \\__|
+      `,
+      slogan: 'Constant Innovation, Never Stopping',
+      intro: 'We always innovate, never stop! We are PhosoftStudio, click the link to join our QQ group [Phosoft Studio Official]: https://jq.qq.com/?_wv=1027&k=STqaquQz'
     }
   },
   'en-sg': {
@@ -198,6 +246,18 @@ const PHOSOFTWEB_LANG_MAP = {
     config: {
       enableGeoIp: true,          // 新加坡英语启用 IP 检测
       disableBrowserLangDetect: true   // 新加坡英语禁用浏览器语言检测
+    },
+    // 控制台输出
+    console: {
+      logo: `
+____  _                      __ _
+|  _ \\| |__   ___  ___  ___  / _| |_
+| |_) | '_ \\ / _ \\/ __|/ _ \\| |_| __|
+|  __/| | | | (_) \\__ \\ (_) |  _| |_
+|_|   |_| |_|\\___/|___/\\___/|_|  \\__|
+      `,
+      slogan: 'Always Innovating lah, Never Stopping one',
+      intro: 'We always innovate, never stop! We are PhosoftStudio, click link to join our QQ group [Phosoft Studio Official] can?: https://jq.qq.com/?_wv=1027&k=STqaquQz'
     }
   },
   'ja': {
@@ -244,6 +304,19 @@ const PHOSOFTWEB_LANG_MAP = {
     config: {
       enableGeoIp: true,          // 是否启用 IP 地理位置检测
       disableBrowserLangDetect: false  // 是否禁用浏览器语言检测
+    },
+    // 控制台输出
+    console: {
+      logo: `
+  _____ ___  ____   ___  _____ _   _ _____ ___  
+ |  ___/ _ \\/ ___| / _ \\|  ___| | | |_   _/ _ \\ 
+ | |_ | | | \\___ \\| | | | |_  | | | | | || | | |
+ |  _|| |_| |___) | |_| |  _| | |_| | | || |_| |
+ |_|   \\___/|____/ \\___/|_|    \\___/  |_| \\___/ 
+                                                
+      `,
+      slogan: '絶え間ない革新、決して止まらない',
+      intro: '常に革新し、決して止まりません！私たちはPhosoftStudioです。リンクをクリックしてQQグループ【Phosoft スタジオ公式】に参加してください：https://jq.qq.com/?_wv=1027&k=STqaquQz'
     }
   },
   'wenyan': {
@@ -282,6 +355,18 @@ const PHOSOFTWEB_LANG_MAP = {
     config: {
       enableGeoIp: false,
       disableBrowserLangDetect: false
+    },
+    // 控制台输出
+    console: {
+      logo: `
+____  _                      __ _
+|  _ \\| |__   ___  ___  ___  / _| |_
+| |_) | '_ \\ / _ \\/ __|/ _ \\| |_| __|
+|  __/| | | | (_) \\__ \\ (_) |  _| |_
+|_|   |_| |_|\\___/|___/\\___/|_|  \\__|
+      `,
+      slogan: '創新不息，行進不止',
+      intro: '吾輩日新又新，未嘗稍歇。鳳梭工坊是也，按此入群【鳳梭工坊官方】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
     }
   },
 };
@@ -566,6 +651,17 @@ function applyPhosoftwebLang() {
   const about = document.querySelector('.wu-block.wu-mw:last-child .wu-box.wu-shadow p.no-wrap a');
   if (about && about.textContent.includes('版权所有')) {
     about.textContent = about.textContent.replace('版权所有', map.footer);
+  }
+
+  // 控制台输出
+  const consoleInfo = map.console;
+  if (consoleInfo) {
+    // 如果有定义 ASCII 艺术 Logo，则先输出 Logo
+    if (consoleInfo.logo) {
+      console.log(consoleInfo.logo);
+    }
+    console.log(`%c${consoleInfo.slogan}`, 'font-size: 16px; font-weight: bold;');
+    console.log(consoleInfo.intro);
   }
 }
 
