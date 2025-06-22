@@ -158,7 +158,7 @@ const PHOSOFTWEB_LANG_MAP = {
   'ja': {
     welcome: 'ようこそ',
     site: 'フォソフトウェブページズ',
-    promo: 'こちらは フォソフトウェブ Line のプ��モーションビデオです',
+    promo: 'フォソフトウェブ Line 紹介映像',
     bilibili: 'Bilibiliで一緒に交流しましょう！',
     notice: 'お知らせ',
     noticeEn: 'Nōtisu',

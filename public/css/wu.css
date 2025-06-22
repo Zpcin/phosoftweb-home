@@ -3,6 +3,21 @@
     src: url("../fonts/HarmonyOS_Sans_Medium.ttf");
 }
 
+/* 为繁体中文和日语添加更好的字体支持 */
+html {
+    font-family: 'HarmonyOS_Sans_Medium', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+/* 繁体中文专用字体设置 */
+html[lang="zh-tw"], html[lang="zh-hk"] {
+    font-family: 'HarmonyOS_Sans_Medium', 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', 'Source Han Sans TC', sans-serif;
+}
+
+/* 日语专用字体设置 */
+html[lang="ja"] {
+    font-family: 'HarmonyOS_Sans_Medium', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', 'Noto Sans JP', 'Source Han Sans JP', sans-serif;
+}
+
 * {
     margin: 0;
     word-break: break-all;
@@ -10,10 +25,13 @@
 }
 
 body {
-    font-family: 'HarmonyOS_Sans_Medium', sans-serif; /* 全局字体设置 */
+    font-family: inherit; /* 继承html元素的字体设置 */
     background-color: #f8f9fa; /* 添加轻微背景色 */
     color: #212529; /* 统一文字颜色 */
     line-height: 1.5; /* 改善行高 */
+    -webkit-font-smoothing: antialiased; /* 平滑字体 */
+    -moz-osx-font-smoothing: grayscale; /* Firefox平滑字体 */
+    text-rendering: optimizeLegibility; /* 优化字体渲染 */
 }
 
 /* 主页面内容的主要容器类 */
@@ -38,7 +56,7 @@ body {
 .wu-block {
     position: relative;
     top: 0;
-    margin: 10px;
+    margin: 10px 0;
     display: inline-block;
     vertical-align: top;
     transition: transform 0.3s ease; /* 添加块级元素过渡效果 */
@@ -205,12 +223,18 @@ body {
 
     /* 平板设备特别优化 */
     .wu-block {
-        margin: 8px;
+        margin: 8px 0;
     }
 
     .wu-box {
         padding: 15px;
+        width: 100%;
+    }
+
+    /* 减少内容容器边距 */
+    .wu-content {
         width: calc(100% - 30px);
+        padding: 15px;
     }
 }
 
@@ -222,6 +246,12 @@ body {
     .wu-links a {
         margin: 4px 2px;
         font-size: 14px;
+    }
+
+    /* 进一步减少内容容器边距 */
+    .wu-content {
+        width: calc(100% - 20px);
+        padding: 10px;
     }
 }
 
@@ -251,14 +281,20 @@ body {
 
     .wu-box {
         border-radius: 10px;
-        padding: 15px;
-        width: calc(100% - 20px);
+        padding: 12px;
+        width: 100%;
     }
 
     .wu-links a {
         padding: 6px;
         margin: 3px 1px;
         font-size: 13px;
+    }
+
+    /* 移动设备最小边距 */
+    .wu-content {
+        width: calc(100% - 16px);
+        padding: 8px;
     }
 }
 
