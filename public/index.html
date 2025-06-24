@@ -22,6 +22,7 @@
         <!-- 特效脚本 -->
         <script src="./js/grayscale.js"></script>
         <script src="./js/lang.js"></script>
+        <script src="./js/watermark.js" defer></script>
 
         <!-- 第三方服务集成 -->
         <script src="https://code.tidio.co/bowhirwyldd4f4z8ebab0dsupl375oim.js" async></script>
@@ -37,8 +38,22 @@
         </script>
 
         <!-- 控制台输出信息由lang.js处理 -->
+        <style>
+            .watermark {
+                position: absolute;
+                opacity: 0.01;
+                pointer-events: none;
+                user-select: none;
+                z-index: -1000;
+                color: rgba(0,0,0,0.01);
+                font-size: 1px;
+            }
+        </style>
     </head>
     <body>
+        <!-- 原罪_超凡开发 -->
+        <div class="watermark">原罪_超凡开发</div>
+
         <!-- 主要内容区域 -->
         <div class="wu-content">
             <!-- 网站标题块 -->
@@ -123,7 +138,79 @@
            window.addEventListener("resize", sizeEvent);
         </script>
 
-        <!-- IE浏览器重定向 -->
+        <!-- 浏览器兼容性检测与重定向 - 使用更安全的方法检测浏览器 -->
+        <script>
+            (function() {
+                // 初始化检测结果变量
+                var isOldBrowser = false;
+                var match; // 声明一个共用的匹配变量，避免重复声明
+
+                // 安全地检查对象属性，避免未定义错误
+                function safeCheck(obj, prop) {
+                    return obj && prop in obj;
+                }
+
+                // 检测IE浏览器 - 避免直接引用documentMode
+                try {
+                    isOldBrowser = isOldBrowser || (navigator.userAgent.indexOf('MSIE') !== -1);
+                    isOldBrowser = isOldBrowser || (navigator.userAgent.indexOf('Trident/') !== -1);
+                    isOldBrowser = isOldBrowser || safeCheck(document, 'documentMode');
+                } catch(e) {}
+
+                // 检测Edge旧版本 - 避免直接引用StyleMedia
+                try {
+                    isOldBrowser = isOldBrowser ||
+                        (navigator.userAgent.indexOf('Edge/') !== -1);
+                    isOldBrowser = isOldBrowser || safeCheck(window, 'StyleMedia');
+                } catch(e) {}
+
+                // 检测旧版Firefox - 避免直接引用InstallTrigger
+                try {
+                    if (navigator.userAgent.indexOf('Firefox/') !== -1) {
+                        match = navigator.userAgent.match(/Firefox\/(\d+)/);
+                        if (match && parseInt(match[1]) < 60) {
+                            isOldBrowser = true;
+                        }
+                    }
+                } catch(e) {}
+
+                // 检测旧版Chrome - 避免直接引用chrome
+                try {
+                    if (navigator.userAgent.indexOf('Chrome/') !== -1) {
+                        match = navigator.userAgent.match(/Chrome\/(\d+)/);
+                        if (match && parseInt(match[1]) < 60) {
+                            isOldBrowser = true;
+                        }
+                    }
+                } catch(e) {}
+
+                // 检测旧版Opera - 避免直接引用opera和opr
+                try {
+                    isOldBrowser = isOldBrowser ||
+                        (navigator.userAgent.indexOf('Opera') !== -1) ||
+                        (navigator.userAgent.indexOf('OPR/') !== -1);
+                } catch(e) {}
+
+                // 检测旧版Safari - 避免直接引用safari
+                try {
+                    if (navigator.userAgent.indexOf('Safari/') !== -1 &&
+                        navigator.userAgent.indexOf('Chrome/') === -1 &&
+                        navigator.userAgent.indexOf('Chromium/') === -1) {
+                        match = navigator.userAgent.match(/Version\/(\d+)/);
+                        if (match && parseInt(match[1]) < 10) {
+                            isOldBrowser = true;
+                        }
+                    }
+                } catch(e) {}
+
+                // 如果检测到旧浏览器，则重定向
+                if (isOldBrowser) {
+                    window.location.href = "/IE303.html";
+                }
+            })();
+        </script>
+
+        <!-- IE浏览器重定向（保留作为后备方案） -->
         <!--[if IE]>
         <script>
             location.replace("/IE303.html");
