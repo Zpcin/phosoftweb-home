@@ -1,4 +1,70 @@
+// about页面多语言支持
+const ABOUT_LANG_MAP = {
+  'zh-cn': {
+    about: '关于',
+    prev: '上一条',
+    next: '下一条',
+    pageTitle: '关于 - Zpcin'
+  },
+  'zh-hk': {
+    about: '關於',
+    prev: '上一條',
+    next: '下一條',
+    pageTitle: '關於 - Zpcin'
+  },
+  'zh-tw': {
+    about: '關於',
+    prev: '上一則',
+    next: '下一則',
+    pageTitle: '關於 - Zpcin'
+  },
+  'en': {
+    about: 'About',
+    prev: 'Previous',
+    next: 'Next',
+    pageTitle: 'About - Zpcin'
+  },
+  'en-sg': {
+    about: 'About',
+    prev: 'Previous one',
+    next: 'Next one lah',
+    pageTitle: 'About - Zpcin ah'
+  },
+  'ja': {
+    about: 'について',
+    prev: '前へ',
+    next: '次へ',
+    pageTitle: 'Zpcinについて'
+  },
+  'wenyan': {
+    about: '論',
+    prev: '前章',
+    next: '後章',
+    pageTitle: '論Zpcin'
+  }
+};
+
+// 应用about页面的多语言设置
+function applyAboutLang() {
+  // 获取当前语言
+  const lang = window._forceLang || 'zh-cn';
+  const langData = ABOUT_LANG_MAP[lang] || ABOUT_LANG_MAP['zh-cn'];
+
+  // 设置页面标题
+  document.title = langData.pageTitle;
+
+  // 设置导航按钮文字
+  const prevBtn = document.getElementById('prev-btn');
+  if (prevBtn) prevBtn.textContent = langData.prev;
+
+  const nextBtn = document.getElementById('next-btn');
+  if (nextBtn) nextBtn.textContent = langData.next;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    // 应用多语言设置
+    applyAboutLang();
+
     // 初始化文本动画元素
     prepareTextAnimations();
     
@@ -11,8 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let sideItem = document.createElement("div");
 
         sideItem.classList.add("info-section");
-        sideItem.innerText = "关于" + elem.children[0].innerText + "...";
-        elem.children[0].innerText = "关于「" + elem.children[0].innerText + "」";
+
+        // 使用多语言版本的"关于"文本
+        let aboutText = window._forceLang ? ABOUT_LANG_MAP[window._forceLang]?.about || '关于' : '关于';
+        sideItem.innerText = aboutText + elem.children[0].innerText + "...";
+        elem.children[0].innerText = aboutText + "「" + elem.children[0].innerText + "」";
 
         if (i === 0) {
             sideItem.classList.add("active-item");
