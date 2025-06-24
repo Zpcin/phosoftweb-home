@@ -1,0 +1,44 @@
+/* 考试倒计时样式 */
+.exam-countdown {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 8px 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'HarmonyOS_Sans_Medium', Arial, sans-serif;
+    font-size: 14px;
+    z-index: 1000;
+    text-align: center;
+    line-height: 1.4;
+    border-left: 3px solid #4a89dc;
+    transition: all 0.3s ease;
+}
+
+.exam-countdown:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.exam-title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.exam-days {
+    color: #4a89dc;
+    font-weight: bold;
+}
+
+/* 移动设备适配 */
+@media (max-width: 768px) {
+    .exam-countdown {
+        bottom: 10px;
+        top: auto;
+        right: 10px;
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}

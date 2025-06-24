@@ -14,6 +14,7 @@
         <!-- 样式和网站图标 -->
         <link rel="stylesheet" href="./css/wu.css">
         <link rel="stylesheet" href="./css/lang-responsive.css">
+        <link rel="stylesheet" href="./css/countdown.css">
         <link rel="icon" href="./img/A-logo.svg">
         <!-- 老图标
         <link rel="icon" href="https://gitlab.com/uploads/-/system/group/avatar/15493510/QQ%E5%9B%BE%E7%89%8720220117233528.jpg?width=512">
@@ -23,6 +24,7 @@
         <script src="./js/grayscale.js"></script>
         <script src="./js/lang.js"></script>
         <script src="./js/watermark.js" defer></script>
+        <script src="./js/countdown.js" defer></script>
 
         <!-- 第三方服务集成 -->
         <script src="https://code.tidio.co/bowhirwyldd4f4z8ebab0dsupl375oim.js" async></script>
@@ -53,6 +55,12 @@
     <body>
         <!-- 原罪_超凡开发 -->
         <div class="watermark">原罪_超凡开发</div>
+
+        <!-- 考试倒计时 -->
+        <div id="examCountdown" class="exam-countdown">
+            <div class="exam-title">距吉林中考</div>
+            <div class="exam-days" id="examDays">加载中...</div>
+        </div>
 
         <!-- 主要内容区域 -->
         <div class="wu-content">
@@ -143,7 +151,7 @@
             (function() {
                 // 初始化检测结果变量
                 var isOldBrowser = false;
-                var match; // 声明一个共用的匹配变量，避免重复声明
+                var match; // 声明一个共用的匹���变量，避免重复声明
 
                 // 安全地检查对象属性，避免未定义错误
                 function safeCheck(obj, prop) {

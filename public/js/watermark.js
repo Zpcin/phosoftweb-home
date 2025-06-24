@@ -1,8 +1,14 @@
 /**
- * 隐形水印生成器
- * 生成肉眼几乎不可见的水印，使用极低不透明度的文本
+ * 隐形水印脚本
+ * 在页面上添加几乎不可见的水印
  */
 (function() {
+    // 初始化函数
+    function initialize() {
+        // 创建隐形水印
+        createLightWatermark();
+    }
+
     // 创建几乎不可见的水印
     function createLightWatermark() {
         const watermarkText = "原罪_超凡开发";
@@ -60,6 +66,7 @@
                 // 添加一个几乎不可见的段落
                 const p = document.createElement('p');
                 p.textContent = watermarkText;
+                p.className = 'watermark-p';
                 p.style.position = 'absolute';
                 p.style.opacity = '0.005'; // 极低不透明度
                 p.style.color = 'rgba(0, 0, 0, 0.01)';
@@ -83,10 +90,10 @@
         };
     }
 
-    // 页面加载完成后执行水印创建
+    // 页面加载完成后执行初始化
     if (document.readyState === 'complete') {
-        createLightWatermark();
+        initialize();
     } else {
-        window.addEventListener('load', createLightWatermark);
+        window.addEventListener('load', initialize);
     }
 })();
