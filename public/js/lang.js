@@ -363,6 +363,110 @@ ____  _                      __ _
       intro: '吾輩日新又新，未嘗稍歇。鳳梭工坊是也，按此入群【鳳梭工坊官方】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
     }
   },
+  'pinyin': {
+    welcome: 'Huānyíng lái dào',
+    site: 'PhosoftWebPages',
+    promo: 'Xiàmiàn shì PhosoftWeb Line xuānchuánpiàn',
+    bilibili: 'Jìnrù bilibili, yìqǐ jiāoliú!',
+    notice: 'Gōnggào',
+    noticeEn: 'Notice',
+    noticeContent: ['QwQ~', 'Zhè shì gōnggào'],
+    friends: 'Yǒuqíng liánjiē',
+    friendsTip: 'Yǐxià liánjiē jūn yǒu kěnéng guà diào, qǐng liàngjiě!',
+    // 链接文字翻译
+    linkTexts: {
+      'bullshit': 'Gǒupì bùtōng wénzhāng shēngchéngqì',
+      'hitokoto': 'Hitokoto - Yīyán',
+      'youget': 'Shìpín jiěxī xiàzǎi gōngjù',
+      'sponsor': 'Zànzhù wǒmen',
+      'search': 'Phosoft sōusuǒ yè',
+      'forum': 'Phosoft lùntán yè',
+      'game': 'Phosoft yóuxì yè - Sǎocǎo',
+      'ugly': 'Chǒu bèiyòng lùntán yè',
+      // 添加个人网站链接翻译
+      'official': 'PhosoftStudio guānfāng wǎngzhàn',
+      'chensite': 'ChenZR de xiǎopò zhàn',
+      'damonsite': 'What_Damon de wō',
+      'zpcin': 'Zpcin gèrén wǎngzhàn',
+      'pigeon': 'Gēzi de xiè wǎngzhàn',
+      'grassdev': 'Shēngcǎo kāifā zǔ',
+      'grasstheme': 'Shēngcǎo zhǔtí guānfāng bókè',
+      'chenxinlei': 'Chén Xīnlěi de bókè'
+    },
+    footer: 'Bǎnquán suǒyǒu',
+    powered: 'Cǐ wǎngzhàn yóu <a href="https://vercel.com/">Vercel</a>&nbsp;qiánglì qūdòng',
+    year: new Date().getFullYear(),
+    about: 'Guānyú',
+    // 额外配置
+    config: {
+      enableGeoIp: false,
+      disableBrowserLangDetect: false
+    },
+    // 控制台输出
+    console: {
+      logo: `
+____  _                      __ _
+|  _ \\| |__   ___  ___  ___  / _| |_
+| |_) | '_ \\ / _ \\/ __|/ _ \\| |_| __|
+|  __/| | | | (_) \\__ \\ (_) |  _| |_
+|_|   |_| |_|\\___/|___/\\___/|_|  \\__|
+      `,
+      slogan: 'Bùduàn chuàngxīn, yǒngbù tíngxī',
+      intro: 'We always innovate, never stop!, wǒmen shì PhosoftStudio, diǎnjī liánjiē jiārù qúnliáo [Phosoft gōngzuòshì guānfāng gōngkāi]: https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    }
+  },
+  'zhuyin': {
+    welcome: 'ㄏㄨㄢ ㄧㄥˊ ㄌㄞˊ ㄉㄠˋ',
+    site: 'PhosoftWebPages',
+    promo: 'ㄒㄧㄚˋ ㄇㄧㄢˋ ㄕˋ PhosoftWeb Line ㄒㄩㄢ ㄔㄨㄢˊ ㄆㄧㄢˋ',
+    bilibili: 'ㄐㄧㄣˋ ㄖㄨˋ bilibili，ㄧˊ ㄑㄧˇ ㄐㄧㄠ ㄌㄧㄡˊ！',
+    notice: 'ㄍㄨㄥ ㄍㄠˋ',
+    noticeEn: 'Notice',
+    noticeContent: ['QwQ~', 'ㄓㄜˋ ㄕˋ ㄍㄨㄥ ㄍㄠˋ'],
+    friends: 'ㄧㄡˇ ㄑㄧㄥˊ ㄌㄧㄢˊ ㄐㄧㄝ',
+    friendsTip: 'ㄧˇ ㄒㄧㄚˋ ㄌㄧㄢˊ ㄐㄧㄝ ㄐㄩㄣ ㄧㄡˇ ㄎㄜˇ ㄋㄥˊ ㄍㄨㄚˋ ㄉㄧㄠˋ，ㄑㄧㄥˇ ㄌㄧㄤˋ ㄐㄧㄝˇ！',
+    // 链接文字翻译
+    linkTexts: {
+      'bullshit': 'ㄍㄡˇ ㄆㄧˊ ㄅㄨˋ ㄊㄨㄥ ㄨㄣˊ ㄓㄤ ㄕㄥ ㄔㄥˊ ㄑㄧˋ',
+      'hitokoto': 'Hitokoto - ㄧˊ ㄧㄢˊ',
+      'youget': 'ㄕˋ ㄆㄧㄣˊ ㄐㄧㄝˇ ㄒㄧ ㄒㄧㄚˋ ㄗㄞˇ ㄍㄨㄥ ㄐㄩˋ',
+      'sponsor': 'ㄗㄢˋ ㄓㄨˋ ㄨㄛˇ ㄇㄣˊ',
+      'search': 'Phosoft ㄙㄡ ㄙㄨㄛˇ ㄧㄝˋ',
+      'forum': 'Phosoft ㄌㄨㄣˊ ㄊㄢˊ ㄧㄝˋ',
+      'game': 'Phosoft ㄧㄡˊ ㄒㄧˋ ㄧㄝˋ - ㄙㄠˇ ㄘㄠˇ',
+      'ugly': 'ㄔㄡˇ ㄅㄟˋ ㄩㄥˋ ㄌㄨㄣˊ ㄊㄢˊ ㄧㄝˋ',
+      // 添加个人网站链接翻译
+      'official': 'PhosoftStudio ㄍㄨㄢ ㄈㄤ ㄨㄤˇ ㄓㄢˋ',
+      'chensite': 'ChenZR ㄉㄜ˙ ㄒㄧㄠˇ ㄆㄛˋ ㄓㄢˋ',
+      'damonsite': 'What_Damon ㄉㄜ˙ ㄨㄛ',
+      'zpcin': 'Zpcin ㄍㄜˋ ㄖㄣˊ ㄨㄤˇ ㄓㄢˋ',
+      'pigeon': 'ㄍㄜ ㄗ˙ ㄉㄜ˙ ㄒㄧㄝˋ ㄨㄤˇ ㄓㄢˋ',
+      'grassdev': 'ㄕㄥ ㄘㄠˇ ㄎㄞ ㄈㄚ ㄗㄨˇ',
+      'grasstheme': 'ㄕㄥ ㄘㄠˇ ㄓㄨˇ ㄊㄧˊ ㄍㄨㄢ ㄈㄤ ㄅㄛˊ ㄎㄜˋ',
+      'chenxinlei': 'ㄔㄣˊ ㄒㄧㄣ ㄌㄟˇ ㄉㄜ˙ ㄅㄛˊ ㄎㄜˋ'
+    },
+    footer: 'ㄅㄢˇ ㄑㄩㄢˊ ㄙㄨㄛˇ ㄧㄡˇ',
+    powered: 'ㄘˊ ㄨㄤˇ ㄓㄢˋ ㄧㄡˇ <a href="https://vercel.com/">Vercel</a>&nbsp;ㄑㄧㄤˊ ㄌㄧˋ ㄑㄩˋ ㄉㄨㄥˋ',
+    year: new Date().getFullYear(),
+    about: 'ㄍㄨㄢ ㄩˊ',
+    // 额外配置
+    config: {
+      enableGeoIp: false,
+      disableBrowserLangDetect: false
+    },
+    // 控制台输出
+    console: {
+      logo: `
+____  _                      __ _
+|  _ \\| |__   ___  ___  ___  / _| |_
+| |_) | '_ \\ / _ \\/ __|/ _ \\| |_| __|
+|  __/| | | | (_) \\__ \\ (_) |  _| |_
+|_|   |_| |_|\\___/|___/\\___/|_|  \\__|
+      `,
+      slogan: 'ㄅㄨˋ ㄉㄨㄢˋ ㄔㄨㄤˋ ㄒㄧㄣ，ㄩㄥˇ ㄅㄨˋ ㄊㄧㄥˊ ㄒㄧ',
+      intro: 'We always innovate, never stop!, ㄨㄛˇ ㄇㄣˊ ㄕˋ PhosoftStudio，ㄉㄧㄢˇ ㄐㄧ ㄌㄧㄢˊ ㄐㄧㄝ ㄐㄧㄚ ㄖㄨˋ ㄑㄩㄣˊ ㄌㄧㄠˊ【Phosoft ㄍㄨㄥ ㄗㄨㄛˋ ㄕˋ ㄍㄨㄢ ㄈㄤ ㄍㄨㄥ ㄎㄞ】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    }
+  },
 };
 
 // IP地址和地区映射到语言的配置
@@ -670,7 +774,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.setLang = function(lang) {
-  if (!['zh-cn','zh-hk','zh-tw','en','en-sg','ja','wenyan'].includes(lang)) return;
+  if (!['zh-cn','zh-hk','zh-tw','en','en-sg','ja','wenyan','pinyin','zhuyin'].includes(lang)) return;
   window._forceLang = lang;
   applyPhosoftwebLang();
 };
