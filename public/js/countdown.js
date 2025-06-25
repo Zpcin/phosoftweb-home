@@ -46,8 +46,7 @@
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
         window._isMobileDevice = isMobile;
 
-        // 无需额外设置样式，全部使用CSS媒体查询控制
-        console.log(`[倒计时] 当前设备类型: ${isMobile ? '移动设备' : '桌面设备'}, 窗口宽度: ${window.innerWidth}px`);
+        // 不再输出设备类型日志
     }
 
     // 计算并应用倒计时元素的精确位置
@@ -372,20 +371,67 @@
 
         // 根据地区设置样式
         if (!isInJilin) {
-            // 非吉林地区隐藏原倒计时
-            countdownElement.style.display = 'none';
-
-            // 添加Windows风格的水印文字
-            addWindowsStyleWatermark(examTitle, formattedDays);
+            // 修改为：非吉林地区也显示普通倒计时，不再显示水印
+            countdownElement.style.display = 'block';
 
             // 非吉林地区也需要隐藏加载动画
             if (loadingOverlay && !window._loadingHidden) {
                 hideLoading();
             }
+
+            // 检查是否需要显示倒计时
+            if (document.readyState === 'complete' && !window._countdownShown && !window._countdownAnimationPending) {
+                // 标记动画处理中，避免重复触发
+                window._countdownAnimationPending = true;
+
+                // 延迟显示，确保页面布局已经稳定
+                setTimeout(() => {
+                    // 再次检查页面是否已经完全稳定
+                    if (document.readyState === 'complete') {
+                        // 先隐藏加载动画
+                        hideLoading();
+
+                        // 再显示倒计时
+                        setTimeout(() => {
+                            showCountdown();
+                        }, 300);
+                    }
+                }, 1000); // 增加延迟时间，确保页面布局稳定
+            }
+
+            // 仅在页面加载后首次添加退出动画
+            if (window._countdownShown && !window._countdownAnimationAdded) {
+                window._countdownAnimationAdded = true;
+
+                // 5秒后开始退出动画
+                setTimeout(() => {
+                    // 添加过渡效果
+                    countdownElement.style.transition = 'all 1.5s ease-in-out';
+
+                    // 检查是否为移动端（宽度小于等于768px）
+                    const isMobile = window.innerWidth <= 768;
+
+                    // 根据设备设置不同的移出方向
+                    if (isMobile) {
+                        // 移动端向下移出
+                        countdownElement.style.transform = 'translateY(150%)';
+                    } else {
+                        // 桌面端向上移出
+                        countdownElement.style.transform = 'translateY(-150%)';
+                    }
+
+                    countdownElement.style.opacity = '0';
+                    countdownElement.style.visibility = 'hidden';
+
+                    // 动画完成后隐藏元素
+                    setTimeout(() => {
+                        countdownElement.style.display = 'none';
+                    }, 1500);
+                }, 5000);
+            }
         } else {
-            // 吉林地区显示正常倒计时并移除Windows风格水印文字
+            // 吉林地区显示正常倒计时
             countdownElement.style.display = 'block';
-            removeWindowsStyleWatermark();
 
             // 检查是否需要显示倒计时
             if (document.readyState === 'complete' && !window._countdownShown && !window._countdownAnimationPending) {
