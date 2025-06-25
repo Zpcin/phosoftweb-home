@@ -331,8 +331,18 @@
                     // 添加过渡效果
                     countdownElement.style.transition = 'all 1.5s ease-in-out';
 
-                    // 设置移出屏幕的效果
-                    countdownElement.style.transform = 'translateY(-150%)';
+                    // 检查是否为移动端（宽度小于等于768px）
+                    const isMobile = window.innerWidth <= 768;
+
+                    // 根据设备设置不同的移出方向
+                    if (isMobile) {
+                        // 移动端向下移出
+                        countdownElement.style.transform = 'translateY(150%)';
+                    } else {
+                        // 桌面端向上移出
+                        countdownElement.style.transform = 'translateY(-150%)';
+                    }
+
                     countdownElement.style.opacity = '0';
 
                     // 动画完成后隐藏元素
