@@ -23,6 +23,9 @@
 
     // 初始化函数
     function initialize() {
+        // 设置设备类型标识
+        detectDeviceType();
+
         // 注册控制台调试命令
         registerDebugCommands();
 
@@ -34,6 +37,72 @@
             // 每秒更新一次倒计时
             setInterval(updateExamCountdown, 1000);
         });
+
+        // 监听窗口大小变化，重新检测设备类型
+        window.addEventListener('resize', function() {
+            detectDeviceType();
+        });
+    }
+
+    // 检测设备类型并应用相应样式
+    function detectDeviceType() {
+        const countdownElement = document.getElementById('examCountdown');
+        if (!countdownElement) return;
+
+        // 使用原生媒体查询判断设备类型
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        window._isMobileDevice = isMobile;
+
+        // 无需额外设置样式，全部使用CSS媒体查询控制
+        console.log(`[倒计时] 当前设备类型: ${isMobile ? '移动设备' : '桌面设备'}, 窗口宽度: ${window.innerWidth}px`);
+    }
+
+    // 计算并应用倒计时元素的精确位置
+    function positionCountdownElement(isFirstTime = false) {
+        const countdownElement = document.getElementById('examCountdown');
+        if (!countdownElement) return;
+
+        // 确定设备类型
+        const isMobile = window.innerWidth <= 768;
+        window._isMobileDevice = isMobile;
+
+        // 设置样式
+        if (isFirstTime) {
+            // 首次定位时，先隐藏元素，确保尺寸计算准确
+            countdownElement.style.opacity = '0';
+            countdownElement.style.visibility = 'hidden';
+            countdownElement.style.display = 'block'; // 必须先显示才能计算尺寸
+
+            // 根据设备类型设置字体大小和内边距
+            if (isMobile) {
+                countdownElement.style.fontSize = '12px';
+                countdownElement.style.padding = '6px 10px';
+            } else {
+                countdownElement.style.fontSize = '14px';
+                countdownElement.style.padding = '8px 15px';
+            }
+
+            // 强制浏览器重新计算布局
+            void countdownElement.offsetWidth;
+        }
+
+        // 根据设备类型设置位置
+        if (isMobile) {
+            countdownElement.style.top = 'auto';
+            countdownElement.style.bottom = '10px';
+            countdownElement.style.right = '10px';
+            countdownElement.style.left = 'auto';
+        } else {
+            countdownElement.style.top = '10px';
+            countdownElement.style.bottom = 'auto';
+            countdownElement.style.right = '10px';
+            countdownElement.style.left = 'auto';
+        }
+
+        // 强制应用样式
+        countdownElement.style.transform = 'none !important';
+
+        return countdownElement;
     }
 
     // 注册控制台调试命令
@@ -247,6 +316,7 @@
     function updateExamCountdown() {
         const countdownElement = document.getElementById('examCountdown');
         const daysElement = document.getElementById('examDays');
+        const loadingOverlay = document.getElementById('loadingOverlay');
 
         if (!countdownElement || !daysElement) return;
 
@@ -317,13 +387,38 @@
 
             // 添加Windows风格的水印文字
             addWindowsStyleWatermark(examTitle, formattedDays);
+
+            // 非吉林地区也需要隐藏加载动画
+            if (loadingOverlay && !window._loadingHidden) {
+                hideLoading();
+            }
         } else {
             // 吉林地区显示正常倒计时并移除Windows风格水印文字
             countdownElement.style.display = 'block';
             removeWindowsStyleWatermark();
 
+            // 检查是否需要显示倒计时
+            if (document.readyState === 'complete' && !window._countdownShown && !window._countdownAnimationPending) {
+                // 标记动画处理中，避免重复触发
+                window._countdownAnimationPending = true;
+
+                // 延迟显示，确保页面布局已经稳定
+                setTimeout(() => {
+                    // 再次检查页面是否已经完全稳定
+                    if (document.readyState === 'complete') {
+                        // 先隐藏加载动画
+                        hideLoading();
+
+                        // 再显示倒计时
+                        setTimeout(() => {
+                            showCountdown(countdownElement);
+                        }, 300);
+                    }
+                }, 1000); // 增加延迟时间，确保页面布局稳定
+            }
+
             // 仅在页面加载后首次添加退出动画
-            if (!window._countdownAnimationAdded) {
+            if (window._countdownShown && !window._countdownAnimationAdded) {
                 window._countdownAnimationAdded = true;
 
                 // 5秒后开始退出动画
@@ -338,12 +433,13 @@
                     if (isMobile) {
                         // 移动端向下移出
                         countdownElement.style.transform = 'translateY(150%)';
-                    } else {
+                      } else {
                         // 桌面端向上移出
                         countdownElement.style.transform = 'translateY(-150%)';
-                    }
+                      }
 
                     countdownElement.style.opacity = '0';
+                    countdownElement.style.visibility = 'hidden';
 
                     // 动画完成后隐藏元素
                     setTimeout(() => {
@@ -355,6 +451,47 @@
 
         // 不再更新页面标题显示倒计时
         // document.title = `${examTitle}: ${days}天 ${hours}时 - PhosoftWebPages`;
+    }
+
+    // 隐藏加载动画
+    function hideLoading() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            window._loadingHidden = true;
+            loadingOverlay.style.opacity = '0';
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 500);
+        }
+    }
+
+    // 显示倒计时元素
+    function showCountdown(countdownElement) {
+        // 先进行位置计算，传入true表示这是首次定位
+        const element = positionCountdownElement(true);
+
+        // 等待DOM更新并重新计算位置
+        setTimeout(() => {
+            // 再显示倒计时
+            window._countdownShown = true;
+
+            // 简单的淡入效果
+            element.style.transition = 'opacity 0.5s ease-in-out';
+            element.style.opacity = '1';
+            element.style.visibility = 'visible';
+            element.style.display = 'block';
+
+            // 确保位置锁定
+            if (window._isMobileDevice) {
+                element.style.top = 'auto';
+                element.style.bottom = '10px';
+            } else {
+                element.style.top = '10px';
+                element.style.bottom = 'auto';
+            }
+            element.style.right = '10px';
+            element.style.transform = 'none';
+        }, 50); // 短暂延迟确保DOM更新
     }
 
     // 添加Windows风格的水印文字

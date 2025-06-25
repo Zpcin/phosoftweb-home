@@ -1,0 +1,50 @@
+/* 加载动画样式 */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(74, 137, 220, 0.2);
+    border-top: 5px solid #4a89dc;
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+}
+
+.loading-text {
+    position: absolute;
+    margin-top: 80px;
+    font-family: 'HarmonyOS_Sans_Medium', Arial, sans-serif;
+    color: #4a89dc;
+    font-size: 16px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 媒体查询适配移动设备 */
+@media (max-width: 768px) {
+    .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border-width: 4px;
+    }
+
+    .loading-text {
+        margin-top: 60px;
+        font-size: 14px;
+    }
+}
