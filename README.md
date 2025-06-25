@@ -12,6 +12,8 @@
 - 英语（en, en-sg）
 - 日语（ja）
 - 文言文（wenyan）
+- 拼音（pinyin）
+- 注音符号（zhuyin）
 
 ### 语言切换方式
 - 默认根据浏览器语言自动切换。
@@ -24,6 +26,35 @@
 - `public/css/lang-responsive.css`：多语言下的响应式样式优化。
 - `set/public/lang.js`：后台管理系统的多语言包。
 
+## 考试倒计时功能
+
+网站集成了考试倒计时功能，会根据用户地理位置显示不同的倒计时信息：
+
+### 功能特点
+- 吉林省内用户显示中考/高考倒计时
+- 自动根据时间显示2025年中考或2028年高考倒计时
+- 移动端和桌面端有不同的显示位置和动画效果
+- 短暂显示后会自动消失，避免干扰用户浏览
+
+### 技术实现
+- 通过IP地址API检测用户所在地区
+- 计算精确到小数点后5位的剩余天数
+- 响应式设计，在移动设备上位于页面底部
+
+### 调试命令
+- `setRegion('地区名')` - 设置用户地区
+- `setJilin()` - 快速设置为吉林省
+- `setNonJilin()` - 快速设置为非吉林地区
+- `testZhongkaoOver()` - 测试中考后时间场景
+- `testBeforeZhongkao()` - 测试中考前时间场景
+- `resetTestDate()` - 重置为真实时间
+- `resetRegion()` - 重置为自动检测
+- `showRegionStatus()` - 显示当前状态
+
+### 相关文件
+- `public/js/countdown.js`：倒计时核心逻辑
+- `public/css/countdown.css`：倒计时样式表
+
 ## 目录结构
 
 ```
@@ -32,12 +63,15 @@ phosoftweb-home/
 │   ├── css/             # 样式表文件
 │   │   ├── 404.css      # 404错误页面样式
 │   │   ├── about.css    # 关于页面样式
+│   │   ├── countdown.css # 倒计时功能样式
 │   │   ├── lang-responsive.css # 多语言响应式样式
 │   │   └── wu.css       # 公共样式
 │   ├── js/              # JavaScript文件
 │   │   ├── about.js     # 关于页面脚本
+│   │   ├── countdown.js # 考试倒计时脚本
 │   │   ├── grayscale.js # 灰度滤镜脚本
-│   │   └── lang.js      # 多语言切换脚本
+│   │   ├── lang.js      # 多语言切换脚本
+│   │   └── watermark.js # 水印效果脚本
 │   ├── img/             # 图片资源
 │   │   ├── A-logo.svg   # Phosoft图标
 │   │   └── bilibili.svg # 哔哩哔哩图标
@@ -76,6 +110,7 @@ phosoftweb-home/
 - 动画过渡效果增强用户体验
 - 特定纪念日自动应用灰度滤镜
 - 触摸屏滑动操作支持
+- 考试倒计时功能，区域性个性化显示
 - 内置内容管理系统，便于维护关于页内容
 
 ## 部署方式
@@ -95,7 +130,6 @@ phosoftweb-home/
 - 添加新页面：在`public`目录创建HTML文件
 - 修改样式：编辑`css`目录下的样式文件
 - 增加功能：在`js`目录添加脚本文件
-
 ## 兼容性
 
 网站支持现代浏览器，对不兼容的浏览器（如IE）会显示特殊提示页面。
