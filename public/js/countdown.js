@@ -249,6 +249,68 @@
             return `当前地区: ${userRegion} (${isInJilin ? '吉林' : '非吉林'})`;
         };
 
+        // 添加显示考试倒计时五秒调试命令
+        window.showCountdownFiveSeconds = function() {
+            console.log('[倒计时调试] 开始显示当前考试倒计时五秒...');
+
+            // 获取倒计时元素
+            const countdownElement = document.getElementById('examCountdown');
+            if (!countdownElement) {
+                console.error('[倒计时调试] 找不到倒计时元素');
+                return '找不到倒计时元素';
+            }
+
+            // 重置任何可能影响显示的标志
+            window._countdownShown = false;
+            window._countdownAnimationPending = false;
+            window._countdownAnimationAdded = false;
+
+            // 确保倒计时元素可见
+            countdownElement.style.transition = '';
+            countdownElement.style.transform = 'none';
+            countdownElement.style.display = 'block';
+            countdownElement.style.opacity = '1';
+            countdownElement.style.visibility = 'visible';
+
+            // 重新定位倒计时元素
+            positionCountdownElement();
+
+            // 立即更新倒计时内容
+            updateExamCountdown();
+
+            // 强制显示5秒
+            console.log('[倒计时调试] 倒计时将显示5秒钟');
+
+            // 5秒后自动隐藏
+            setTimeout(() => {
+                // 添加过渡效果
+                countdownElement.style.transition = 'all 1.5s ease-in-out';
+
+                // 检查是否为移动端
+                const isMobile = window.innerWidth <= 768;
+
+                // 根据设备设置不同的移出方向
+                if (isMobile) {
+                    // 移动端向下移出
+                    countdownElement.style.transform = 'translateY(150%)';
+                } else {
+                    // 桌面端向上移出
+                    countdownElement.style.transform = 'translateY(-150%)';
+                }
+
+                countdownElement.style.opacity = '0';
+                countdownElement.style.visibility = 'hidden';
+
+                // 动画完成后隐藏元素
+                setTimeout(() => {
+                    countdownElement.style.display = 'none';
+                    console.log('[倒计时调试] 倒计时五秒显示结束');
+                }, 1500);
+            }, 5000);
+
+            return '考试倒计时已显示，将在5秒后自动隐藏';
+        };
+
         // 输出帮助信息
         console.log('-----------------------------------------------------');
         console.log('倒计时地区调试命令已加载，可用命令:');
@@ -260,6 +322,7 @@
         console.log('resetTestDate() - 重置为真实时间');
         console.log('resetRegion() - 重置为自动检测');
         console.log('showRegionStatus() - 显示当前状态');
+        console.log('showCountdownFiveSeconds() - 显示当前考试倒计时五秒');
         console.log('-----------------------------------------------------');
     }
 
@@ -455,7 +518,7 @@
                     // 添加过渡效果
                     countdownElement.style.transition = 'all 1.5s ease-in-out';
 
-                    // 检查是否为移动端（宽度小于等于768px）
+                    // 检查是否为移动端
                     const isMobile = window.innerWidth <= 768;
 
                     // 根据设备设置不同的移出方向
