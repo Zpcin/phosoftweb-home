@@ -90,8 +90,7 @@
         if (!countdownElement) return;
 
         // 使用原生媒体查询判断设备类型
-        const isMobile = window.matchMedia('(max-width: 768px)').matches;
-        window._isMobileDevice = isMobile;
+        window._isMobileDevice = window.matchMedia('(max-width: 768px)').matches;
 
         // 不再输出设备类型日志
     }
@@ -638,58 +637,6 @@
             element.style.right = '10px';
             element.style.transform = 'none';
         }, 50); // 短暂延迟确保DOM更新
-    }
-
-    // 添加Windows风格的水印文字
-    function addWindowsStyleWatermark(examTitle, daysValue) {
-        // 移除现有的水印，避免重复创建
-        removeWindowsStyleWatermark();
-
-        // 创建右下角的水印
-        const watermarkBottom = document.createElement('div');
-        watermarkBottom.className = 'windows-style-watermark';
-
-        // 设置Windows风格水印的样式
-        Object.assign(watermarkBottom.style, {
-            position: 'fixed',
-            bottom: '20px',
-            right: '20px',
-            zIndex: '1000',
-            pointerEvents: 'none',
-            userSelect: 'none',
-            fontSize: '8px', // 非常小的字体
-            fontFamily: 'Arial, sans-serif',
-            color: 'rgba(119, 119, 119, 0.5)', // Windows风格的灰色
-            opacity: '0.8',
-            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.1)',
-            backgroundColor: 'transparent',
-            padding: '10px',
-            textAlign: 'right',
-            lineHeight: '1.5'
-        });
-
-        // 设置水印内容，改为"吉林(年份)中考/高考"
-        let examName;
-        if (examTitle.includes("2025中考")) {
-            examName = "吉林2025中考";
-        } else {
-            examName = "吉林2028高考";
-        }
-
-        watermarkBottom.innerHTML = `${examName}: ${daysValue}天`;
-
-        // 添加到body
-        document.body.appendChild(watermarkBottom);
-    }
-
-    // 移除Windows风格的水印文字
-    function removeWindowsStyleWatermark() {
-        const watermarks = document.querySelectorAll('.windows-style-watermark, .windows-style-watermark-top');
-        watermarks.forEach(watermark => {
-            if (watermark && watermark.parentNode) {
-                watermark.parentNode.removeChild(watermark);
-            }
-        });
     }
 
     // 创建详细倒计时显示元素
