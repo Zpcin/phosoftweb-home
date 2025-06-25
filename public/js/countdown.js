@@ -3,9 +3,6 @@
  * 显示2025年中考或2028年高考的倒计时
  */
 (function() {
-    // 考试配置和日期信息
-    let examConfig = null;
-
     // 是否在吉林省（仅用于调试信息）
     let isInJilin = false;
     let userRegion = '未知';
@@ -13,12 +10,8 @@
     // 是否通过控制台命令设置了地区
     let isManuallySet = false;
 
-    // 默认考试类型
-    let examMode = '中考'; // 中考或高考
-
     // 固定考试日期
     const jilinZhongkaoDate = new Date('2025-06-27T00:00:00'); // 吉林中考日期
-    const jilinGaokaoDate = new Date('2025-06-07T00:00:00');   // 吉林高考日期 - 2025年
     const futureGaokaoDate = new Date('2028-06-07T00:00:00');  // 未来高考日期 - 2028年
 
     // 初始化函数
@@ -109,9 +102,6 @@
     function registerDebugCommands() {
         // 在window对象上定义设置地区的方法
         window.setRegion = function(region) {
-            const prevRegion = userRegion;
-            const prevIsJilin = isInJilin;
-
             userRegion = region || '未知';
 
             // 判断是否为吉林
@@ -247,7 +237,7 @@
                             (ipData.region && ipData.region.includes('吉林')));
 
                 // 保存用户地区信息用于调试
-                userRegion = ipData ? (ipData.region || ipData.country_name || '未知') : '未知';
+                userRegion = ipData ? (ipData.region || ipData.region_name || '未知') : '未知';
 
                 // 控制台调试输出
                 console.log('[倒计时地区调试] 用户地区:', userRegion);
@@ -276,7 +266,7 @@
                             (data.region && data.region.includes('吉林')));
 
                 // 保存用户地区信息用于调试
-                userRegion = data ? (data.region || data.country_name || '未知') : '未知';
+                userRegion = data ? (data.region || data.region_name || '未知') : '未知';
 
                 // 控制台调试输出
                 console.log('[倒计时地区调试] 用户地区:', userRegion, '(备用API)');
@@ -411,7 +401,7 @@
 
                         // 再显示倒计时
                         setTimeout(() => {
-                            showCountdown(countdownElement);
+                            showCountdown();
                         }, 300);
                     }
                 }, 1000); // 增加延迟时间，确保页面布局稳定
@@ -466,7 +456,7 @@
     }
 
     // 显示倒计时元素
-    function showCountdown(countdownElement) {
+    function showCountdown() {
         // 先进行位置计算，传入true表示这是首次定位
         const element = positionCountdownElement(true);
 
