@@ -1,6 +1,7 @@
 /**
  * 考试倒计时脚本
  * 显示2025年中考或2028年高考的倒计时
+ * 支持多语言显示
  */
 (function() {
     // 是否在吉林省（仅用于调试信息）
@@ -10,6 +11,10 @@
     // 是否通过控制台命令设置了地区
     let isManuallySet = false;
 
+    // 当前语言
+    let currentLang = 'zh-cn';
+    let translations = {};
+
     // 固定考试日期
     const jilinZhongkaoDate = new Date('2025-06-27T00:00:00'); // 吉林中考日期
     const futureGaokaoDate = new Date('2028-06-07T00:00:00');  // 未来高考日期 - 2028年
@@ -18,6 +23,9 @@
     function initialize() {
         // 设置设备类型标识
         detectDeviceType();
+
+        // 获取当前语言并加载翻译
+        loadTranslations();
 
         // 注册控制台调试命令
         registerDebugCommands();
@@ -35,6 +43,45 @@
         window.addEventListener('resize', function() {
             detectDeviceType();
         });
+
+        // 监听语言变化事件
+        document.addEventListener('languageChanged', function(e) {
+            if (e.detail && e.detail.lang) {
+                loadTranslations(e.detail.lang);
+                updateExamCountdown();
+            }
+        });
+    }
+
+    // 加载当前语言的翻译
+    function loadTranslations(lang) {
+        // 如果明确指定了语言，就使用指定的语言
+        if (lang) {
+            currentLang = lang;
+        }
+        // 否则，尝试从全局变量获取当前语言
+        else if (window.currentLang) {
+            currentLang = window.currentLang;
+        }
+
+        // 使用countdown-lang.js中的函数获取翻译
+        if (window.getCountdownTranslation) {
+            translations = window.getCountdownTranslation(currentLang);
+        } else {
+            // 如果翻译函数不可用，使用默认的简体中文
+            translations = {
+                jilinZhongkao: '距吉林中考',
+                zhongkao: '距2025中考',
+                gaokao: '距2028高考',
+                days: '天',
+                hours: '时',
+                minutes: '分',
+                seconds: '秒',
+                over: '已过'
+            };
+        }
+
+        console.log('[倒计时多语言] 当前语言:', currentLang);
     }
 
     // 检测设备类型并应用相应样式
@@ -321,14 +368,14 @@
         if (isZhongkaoOver) {
             // 如果2025年中考已过，显示2028年高考倒计时
             targetDate = futureGaokaoDate;
-            examTitle = "距2028高考";
+            examTitle = translations.gaokao;
 
             // 使用标准字体大小
             titleElement.style.fontSize = '1em';
         } else {
             // 如果2025年中考还没过，显示2025年中考倒计时
             targetDate = jilinZhongkaoDate;
-            examTitle = "距2025中考";
+            examTitle = translations.zhongkao;
 
             // 非吉林地区使用较小字体
             titleElement.style.fontSize = '0.85em';
@@ -339,7 +386,7 @@
 
         // 如果考试已经过去，显示相应信息
         if (diffTime < 0) {
-            titleElement.textContent = examTitle + "已过";
+            titleElement.textContent = examTitle + translations.over;
             daysElement.textContent = "0.00000";
             return;
         }
@@ -366,7 +413,7 @@
         // 添加详细时间显示，仅精确到秒
         const detailsElement = countdownElement.querySelector('.exam-details') || createDetailsElement(countdownElement);
         detailsElement.innerHTML = `
-            <span>${days}天 ${hours}时 ${minutes}分 ${seconds}秒</span>
+            <span>${days}${translations.days} ${hours}${translations.hours} ${minutes}${translations.minutes} ${seconds}${translations.seconds}</span>
         `;
 
         // 根据地区设置样式

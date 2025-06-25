@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(255, 255, 255); /* 改为完全不透明的背景 */
+    background-color: rgb(255, 255, 255); /* 完全不透明的背景 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,13 +15,54 @@
     user-select: none; /* 防止用户选择文本 */
 }
 
-.loading-spinner {
-    width: 60px;
-    height: 60px;
-    border: 5px solid rgba(74, 137, 220, 0.2);
-    border-top: 5px solid #4a89dc;
+/* 三个跳动的圆点容器 */
+.loading-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 每个圆点的基本样式 */
+.dot {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    background-color: #4a89dc; /* 蓝色圆点 */
     border-radius: 50%;
-    animation: spin 1.5s linear infinite;
+    display: inline-block;
+    animation: bounce 1.4s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    /* 使用更柔和的贝塞尔曲线让动画更Q弹 */
+}
+
+/* 为每个圆点设置不同的动画延迟，创造跳动效果 */
+.dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+/* 更Q弹的跳动动画 */
+@keyframes bounce {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    20% {
+        transform: translateY(-5px) scale(0.9); /* 起跳时稍微压缩 */
+    }
+    40% {
+        transform: translateY(-25px) scale(1.1); /* 最高点稍微膨胀 */
+    }
+    60% {
+        transform: translateY(-12px) scale(1);
+    }
+    80% {
+        transform: translateY(0) scale(0.95); /* 落地时压缩效果 */
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
 }
 
 .loading-text {
@@ -32,21 +73,37 @@
     font-size: 16px;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 /* 媒体查询适配移动设备 */
 @media (max-width: 768px) {
-    .loading-spinner {
-        width: 40px;
-        height: 40px;
-        border-width: 4px;
+    .dot {
+        width: 15px;
+        height: 15px;
+        margin: 0 8px;
     }
 
     .loading-text {
         margin-top: 60px;
         font-size: 14px;
+    }
+
+    @keyframes bounce {
+        0% {
+            transform: translateY(0) scale(1);
+        }
+        20% {
+            transform: translateY(-3px) scale(0.9);
+        }
+        40% {
+            transform: translateY(-15px) scale(1.1);
+        }
+        60% {
+            transform: translateY(-8px) scale(1);
+        }
+        80% {
+            transform: translateY(0) scale(0.95);
+        }
+        100% {
+            transform: translateY(0) scale(1);
+        }
     }
 }
