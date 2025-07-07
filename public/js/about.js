@@ -66,8 +66,10 @@ document.addEventListener('DOMContentLoaded', function() {
     applyAboutLang();
 
     // 初始化文本动画元素
-    prepareTextAnimations();
-    
+    setTimeout(function() {
+        prepareTextAnimations();
+    }, 200);
+
     // 跟踪当前按下的键
     const keysPressed = new Set();
 
@@ -81,13 +83,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // 使用多语言版本的"关于"文本
         let aboutText = window._forceLang ? ABOUT_LANG_MAP[window._forceLang]?.about || '关于' : '关于';
         sideItem.innerText = aboutText + elem.children[0].innerText + "...";
-        elem.children[0].innerText = aboutText + "「" + elem.children[0].innerText + "」";
+
+        // 防止内容初始化后被再次修改
+        if (!elem.getAttribute('data-original-title')) {
+            elem.setAttribute('data-original-title', elem.children[0].innerText);
+            elem.children[0].innerText = aboutText + "「" + elem.children[0].innerText + "」";
+        }
 
         if (i === 0) {
             sideItem.classList.add("active-item");
             elem.classList.add("active-content");
             // 初始激活的内容立即播放动画
-            playTextAnimations(elem);
+            setTimeout(function() {
+                playTextAnimations(elem);
+            }, 300);
         }
 
         sideItem.addEventListener("click", (e) => {
@@ -97,13 +106,17 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 找到当前活动元素并移除活动状态
             const currentActive = document.getElementsByClassName("active-content")[0];
-            currentActive.classList.remove("active-content");
-            
-            // 移除当前活动元素的所有动画类
-            resetTextAnimations(currentActive);
-            
+            if (currentActive) {
+                currentActive.classList.remove("active-content");
+                // 移除当前活动元素的所有动画类
+                resetTextAnimations(currentActive);
+            }
+
             // 左侧导航状态更新
-            document.getElementsByClassName("active-item")[0].classList.remove("active-item");
+            const activeItem = document.getElementsByClassName("active-item")[0];
+            if (activeItem) {
+                activeItem.classList.remove("active-item");
+            }
             sideItem.classList.add("active-item");
             
             // 确保激活的导航项可见
