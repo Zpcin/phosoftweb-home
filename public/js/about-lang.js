@@ -9,15 +9,15 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我的名字",
-      "content": "我是溪夏坡Zpcin，这个名字中\"Zpcin\"读作 /ˈzɪpsɪn/，<br>源于我姓氏首字母(Z)加PC(个人电脑)再加in，<br>溪夏坡我妈开玩笑是农村西下坡的地方是新加坡，<br>然后有我想要的感觉。<br><br>"
+      "content": "我是溪夏坡Zpcin，这个名字中\"Zpcin\"读作 /ˈzɪpsɪn/，<br>                源于我姓氏首字母(Z)加PC(个人电脑)再加in，<br>                溪夏坡我妈开玩笑是农村西下坡的地方是新加坡，<br>                然后有我想要的感觉。<br>                <br>"
     },
     {
       "title": "所在地",
-      "content": "我是吉林省松原市前郭尔罗斯<br>蒙古族自治县人，一个小县城。<br>"
+      "content": "我是吉林省松原市前郭尔罗斯<br>                蒙古族自治县人，一个小县城。<br>"
     },
     {
       "title": "我的学校",
-      "content": "现在在前郭尔罗斯蒙古族自治县第三中学，<br>小学：前郭 钻井（两天）—&gt;五小（一年）——&gt;哈达<br><br><br>"
+      "content": "现在在前郭尔罗斯蒙古族自治县第三中学，<br>                小学：前郭 钻井（两天）—>五小（一年）——>哈达<br><br>               <br>"
     },
     {
       "title": "我的身体",
@@ -25,11 +25,11 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我的学习",
-      "content": "没办法的事情，废了<br>"
+      "content": "没办法的事情，比大部分人好<br>"
     },
     {
       "title": "旅游经历",
-      "content": "尽管生活在小县城，但我去过不少地方，<br>包括朝鲜、俄罗斯、香港和上海等地。<br>香港和上海是初中时期妈妈为鼓励我而安排的<br>香港印象最深我喜欢刷卡和地铁<br><br><br>"
+      "content": "尽管生活在小县城，但我去过不少地方，<br>                包括朝鲜、俄罗斯、香港和上海等地。<br>                香港和上海是初中时期妈妈为鼓励我而安排的<br>                香港印象最深我喜欢刷卡和地铁<br><br><br>"
     },
     {
       "title": "我的兴趣",
@@ -37,11 +37,11 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我和网络",
-      "content": "2019年我注册了B站账号，这对我影响很大，让我接触到了更多知识，<br>然后我加了很多QQ群现实中没人说话，<br>讨厌短视频和打打杀杀的游戏<br>"
+      "content": "2019年我注册了B站账号，这对我影响很大，让我接触到了更多知识，<br>                然后我加了很多QQ群现实中没人说话，<br>                讨厌短视频和打打杀杀的游戏<br>"
     },
     {
       "title": "联系方式",
-      "content": "如果您有任何问题或建议，可以通过以下方式联系我：<br><br>邮箱：yi3677@qq.com"
+      "content": "如果您有任何问题或建议，可以通过以下方式联系我：<br><br>                邮箱：yi3677@qq.com"
     }
   ],
   "zh-hk": [
@@ -210,90 +210,6 @@ const ABOUT_TRANSLATIONS = {
     {
       "title": "連絡先",
       "content": "ご質問やご提案がございましたら、以下の方法でご連絡ください：<br><br>メール：yi3677@qq.com"
-    }
-  ],
-  "en-sg": [
-    {
-      "title": "Website Introduction lah",
-      "content": "This is my personal website lor, made for fun one, based on networking and AI writing<br>"
-    },
-    {
-      "title": "My Name ah",
-      "content": "I am Xixiapo Zpcin, where \"Zpcin\" is pronounced as /ˈzɪpsɪn/ ok,<br>derived from my surname's initial (Z) plus PC (Personal Computer) plus 'in' lah,<br>Xixiapo was my mom's joke that the 'Western Downhill' village is Singapore,<br>and it gives me the feeling I want lor.<br><br>"
-    },
-    {
-      "title": "Location",
-      "content": "I'm from Qian Gorlos Mongol Autonomous County,<br>Songyuan City, Jilin Province, a small county lah.<br>"
-    },
-    {
-      "title": "My School one",
-      "content": "I'm currently at the Third Middle School of Qian Gorlos Mongol Autonomous County,<br>Elementary school: Qianguo Drilling (two days) -> No.5 Elementary (one year) -> Hada<br><br><br>"
-    },
-    {
-      "title": "My Health can",
-      "content": "When I smell smoke, my body feels terrible one, my head hurts, and I itch all over,<br>Cannot tahan, cannot study, no way around it lah.<br>"
-    },
-    {
-      "title": "My Studies ah",
-      "content": "It's a hopeless situation lah, it's been ruined<br>"
-    },
-    {
-      "title": "Travel Experiences",
-      "content": "Despite living in a small county, I've been to many places lor,<br>including North Korea, Russia, Hong Kong, and Shanghai.<br>Hong Kong and Shanghai were arranged by my mom during middle school to encourage me.<br>Hong Kong left the deepest impression; I like using cards and the MRT there very shiok.<br><br><br>"
-    },
-    {
-      "title": "My Interests lah",
-      "content": "I like rail transit, bank cards, transit cards, and banknotes from different regions<br><br><br>"
-    },
-    {
-      "title": "Me and the Internet",
-      "content": "I registered a Bilibili account in 2019, which has greatly influenced me and exposed me to more knowledge,<br>Then I joined many QQ groups though nobody talks in real life one,<br>I dislike short videos and violent games can<br>"
-    },
-    {
-      "title": "Contact Information",
-      "content": "If you have any questions or suggestions, you can contact me through ah:<br><br>Email: yi3677@qq.com"
-    }
-  ],
-  "wenyan": [
-    {
-      "title": "網址介紹",
-      "content": "此乃吾之私居，遊戲製也，基於交遊與機智撰寫<br>"
-    },
-    {
-      "title": "吾之名號",
-      "content": "吾乃溪夏坡Zpcin，其名之「Zpcin」讀作 /ˈzɪpsɪn/，<br>源於吾姓之首字(Z)加電算機(PC)再加入(in)，<br>溪夏坡者，吾母戲言鄉間西下坡之地乃新嘉坡也，<br>遂契吾所欲之意。<br><br>"
-    },
-    {
-      "title": "居處",
-      "content": "吾乃吉林松原前郭爾羅斯<br>蒙古族自治縣人也，一小邑耳。<br>"
-    },
-    {
-      "title": "吾之學府",
-      "content": "今在前郭爾羅斯蒙古族自治縣第三中學，<br>蒙學：前郭鑽井（兩日）—&gt;五小（一年）——&gt;哈達<br><br><br>"
-    },
-    {
-      "title": "吾之身體",
-      "content": "吾聞煙氣則身甚不適，頭痛，遍體癢，<br>不能忍，不能學，無可奈何。<br>"
-    },
-    {
-      "title": "吾之學業",
-      "content": "無可奈何之事，廢矣<br>"
-    },
-    {
-      "title": "遊歷見聞",
-      "content": "雖居小邑，然吾遊歷頗廣，<br>曾至朝鮮、俄羅斯、香港及上海等地。<br>香港與上海乃吾母為勉勵吾而安排於中學之時<br>香港印象最深吾喜刷卡與地下鐵<br><br><br>"
-    },
-    {
-      "title": "吾之嗜好",
-      "content": "吾好軌道交通，銀行卡，公共交通卡，他方紙幣<br><br><br>"
-    },
-    {
-      "title": "吾與網絡",
-      "content": "二零一九年吾註冊B站賬號，此事對吾影響甚巨，使吾得以接觸更多知識，<br>後吾加入諸多QQ群然現實中無人言語，<br>厭短視頻與打殺遊戲<br>"
-    },
-    {
-      "title": "聯繫方式",
-      "content": "若有疑問或建議，可通過以下方式聯繫吾：<br><br>郵箱：yi3677@qq.com"
     }
   ]
 };

@@ -25,7 +25,9 @@ app.get('/api/languages', (req, res) => {
                 'zh-hk': '繁体中文(香港)',
                 'zh-tw': '繁体中文(台湾)',
                 'en': 'English',
-                'ja': '日本語'
+                'ja': '日本語',
+                'en-sg': 'Singlish',
+                'wenyan': '文言文'
             };
 
             return {
@@ -128,6 +130,143 @@ if (typeof module !== 'undefined' && module.exports) {
 }`;
 
         fs.writeFileSync(translationsPath, translationsContent);
+
+        // 同时更新 about-lang.js 文件，使页面可以直接加载多语言内容
+        const aboutLangPath = path.join(__dirname, '../public/js/about-lang.js');
+        const aboutLangContent = `// 关于页面多语言内容切换脚本
+
+// 关于页面多语言内容配置
+const ABOUT_TRANSLATIONS = ${JSON.stringify(ABOUT_TRANSLATIONS, null, 2)};
+
+// 从已有的翻译对象获取多语言内容
+let aboutTranslations = ABOUT_TRANSLATIONS;
+
+// 获取当前语言
+function getCurrentLang() {
+  // 从全局设置或window._forceLang获取语言
+  return window._forceLang || 'zh-cn';
+}
+
+// 应用内容翻译
+function applyContentTranslations() {
+  // 获取当前语言
+  const currentLang = getCurrentLang();
+
+  // 获取当前语言的翻译数据，如果没有则使用中文
+  const translations = aboutTranslations[currentLang] || aboutTranslations['zh-cn'];
+
+  if (!translations) {
+    console.warn(\`未找到 \${currentLang} 语言的翻译数据\`);
+    return;
+  }
+
+  // 先保存当前活动项，以便后续恢复
+  const currentActiveSection = document.querySelector('.active-content');
+  let activeIndex = 0;
+  if (currentActiveSection) {
+    const sections = Array.from(document.querySelectorAll('#content .info-section'));
+    activeIndex = sections.indexOf(currentActiveSection);
+    if (activeIndex < 0) activeIndex = 0;
+  }
+
+  // 获取所有信息板块
+  const sections = document.querySelectorAll('#content .info-section');
+
+  // 应用翻译
+  sections.forEach((section, index) => {
+    // 只处理存在的翻译项
+    if (translations[index]) {
+      const titleEl = section.querySelector('.info-title');
+      const contentEl = section.querySelector('.info-content');
+
+      if (titleEl && contentEl) {
+        // 保存原始标题供侧边栏使用
+        const originalTitle = translations[index].title;
+        section.setAttribute('data-original-title', originalTitle);
+
+        // 应用翻译的标题和内容
+        titleEl.innerHTML = translations[index].title;
+        contentEl.innerHTML = translations[index].content;
+      }
+    }
+  });
+
+  // 更新左侧导航标题
+  updateSidebarTitles();
+
+  // 确保预设的动画类被应用
+  setTimeout(function() {
+    // 如果prepareTextAnimations函数存在，则调用它
+    if (typeof prepareTextAnimations === 'function') {
+      prepareTextAnimations();
+
+      // 恢复当前活动的内容和动画
+      const newActiveSections = document.querySelectorAll('#content .info-section');
+      if (newActiveSections.length > 0) {
+        const newActiveSection = newActiveSections[activeIndex < newActiveSections.length ? activeIndex : 0];
+        if (newActiveSection && typeof playTextAnimations === 'function') {
+          playTextAnimations(newActiveSection);
+        }
+      }
+    }
+  }, 100);
+}
+
+// 更新侧边栏标题
+function updateSidebarTitles() {
+  const sidebarItems = document.querySelectorAll("#sidebar .info-section");
+  const contentSections = document.querySelectorAll("#content .info-section");
+  const currentLang = getCurrentLang();
+  const langData = ABOUT_LANG_MAP[currentLang] || ABOUT_LANG_MAP['zh-cn'];
+  const aboutText = langData?.about || '关于';
+
+  sidebarItems.forEach((item, index) => {
+    if (contentSections[index]) {
+      const titleText = contentSections[index].getAttribute('data-original-title') ||
+                       contentSections[index].querySelector('.info-title')?.textContent || '';
+      item.innerText = aboutText + titleText + "...";
+    }
+  });
+}
+
+// 监听语言变更事件
+function setupLanguageChangeListener() {
+  // 创建一个自定义事件监听器，当语言改变时更新内容
+  document.addEventListener('language-changed', function() {
+    applyContentTranslations();
+    // 应用UI元素翻译（来自about.js中的applyAboutLang函数）
+    if (typeof applyAboutLang === 'function') {
+      applyAboutLang();
+    }
+  });
+}
+
+// 初始化
+document.addEventListener('DOMContentLoaded', function() {
+  // 确保页面完全加载后才应用翻译
+  setTimeout(function() {
+    applyContentTranslations();
+    setupLanguageChangeListener();
+  }, 300);
+});
+
+// 提供全局方法以便从其他脚本调用
+window.changeAboutLanguage = function(lang) {
+  if (lang && typeof lang === 'string') {
+    window._forceLang = lang;
+    applyContentTranslations();
+    // 触发语言变更事件
+    document.dispatchEvent(new CustomEvent('language-changed'));
+
+    // 记录到控制台
+    console.log(\`语言已切换到: \${lang}\`);
+    return true;
+  }
+  return false;
+};
+`;
+
+        fs.writeFileSync(aboutLangPath, aboutLangContent);
 
         res.json({ success: true, lang: lang });
     } catch (error) {
