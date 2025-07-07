@@ -622,7 +622,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // 收集当前表单中的数据，并将Markdown转为HTML
             const updatedSections = collectSectionData();
 
-            const response = await fetch('/api/sections', {
+            // 确保正确传递当前编辑的语言
+            const response = await fetch(`/api/sections?lang=${currentLang}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -642,7 +643,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (result.success) {
                 changesMade = false;
                 resetSaveButton();
-                showNotification(langData.saveSuccess || '所有更改已成功保存', 'success');
+                showNotification(langData.saveSuccess || `${getLanguageName(currentLang)}内容已成功保存`, 'success');
                 sections = updatedSections;
                 lastSaveTime = new Date();
 
@@ -667,6 +668,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
+    // 获取语言名称
+    function getLanguageName(langCode) {
+        const langNames = {
+            'zh-cn': '简体中文',
+            'zh-hk': '繁体中文(香港)',
+            'zh-tw': '繁体中文(台湾)',
+            'en': 'English',
+            'ja': '日本語',
+            'en-sg': 'Singlish',
+            'wenyan': '文言文'
+        };
+        return langNames[langCode] || langCode;
+    }
+
     // 显示通知
     function showNotification(message, type, duration = 3000) {
         // 清除之前的定时器

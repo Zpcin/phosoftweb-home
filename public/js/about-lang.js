@@ -1,4 +1,6 @@
 // 关于页面多语言内容切换脚本
+// 最后更新时间: 2025-07-07T04:05:58.558Z
+// 最后更新语言: en
 
 // 关于页面多语言内容配置
 const ABOUT_TRANSLATIONS = {
@@ -59,7 +61,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我嘅學校",
-      "content": "而家喺前郭爾羅斯蒙古族自治縣第三中學，<br>小學：前郭 鑽井（兩日）—&gt;五小（一年）——&gt;哈達<br><br><br>"
+      "content": "而家喺前郭爾羅斯蒙古族自治縣第三中學，<br>小學：前郭 鑽井（兩日）—>五小（一年）——>哈達<br><br><br>"
     },
     {
       "title": "我嘅身體",
@@ -67,7 +69,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我嘅學習",
-      "content": "冇辦法嘅事情，廢咗<br>"
+      "content": "冇辦法嘅事情，好過大部分人<br>"
     },
     {
       "title": "旅遊經歷",
@@ -101,7 +103,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我的學校",
-      "content": "現在在前郭爾羅斯蒙古族自治縣第三中學，<br>小學：前郭 鑽井（兩天）—&gt;五小（一年）——&gt;哈達<br><br><br>"
+      "content": "現在在前郭爾羅斯蒙古族自治縣第三中學，<br>小學：前郭 鑽井（兩天）—>五小（一年）——>哈達<br><br><br>"
     },
     {
       "title": "我的身體",
@@ -109,7 +111,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我的學習",
-      "content": "沒辦法的事情，廢了<br>"
+      "content": "沒辦法的事情，比大部分人好<br>"
     },
     {
       "title": "旅遊經歷",
@@ -151,7 +153,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "My Studies",
-      "content": "It's a hopeless situation, it's been ruined<br>"
+      "content": "It's a hopeless situation, it's better than most people.<br>"
     },
     {
       "title": "Travel Experiences",
@@ -193,7 +195,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "私の勉強",
-      "content": "どうしようもない状況で、台無しになりました<br>"
+      "content": "どうしようもない状況で、それはほとんどの人より優れている。"
     },
     {
       "title": "旅行経験",

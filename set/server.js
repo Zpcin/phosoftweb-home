@@ -85,10 +85,102 @@ app.post('/api/sections', (req, res) => {
     try {
         // 检查是否指定了语言
         const lang = req.query.lang || 'zh-cn';
+        console.log(`正在保存 ${lang} 语言内容 - 请求URL: ${req.originalUrl}`);
+
+        // 保存前创建一个备份，确保不会丢失其他语言的内容
+        const originalTranslations = JSON.parse(JSON.stringify(ABOUT_TRANSLATIONS));
+
+        // 在修改前验证内容结构是否正确
+        if (!Array.isArray(req.body) || req.body.length === 0) {
+            throw new Error('无效的内容格式，必须是包含标题和内容的数组');
+        }
+
+        // 验证每个部分是否都有title和content字段
+        req.body.forEach((section, index) => {
+            if (!section.title || !section.content) {
+                throw new Error(`第${index + 1}个部分缺少标题或内容`);
+            }
+        });
+
+        // 语言内容特征检测，防止错误保存
+        const isJapanese = (text) => {
+            // 检测日语特有字符（平假名、片假名、一部分汉字）
+            return /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/.test(text) &&
+                   /[\u3040-\u309F\u30A0-\u30FF]/.test(text); // 必须包含假名
+        };
+
+        const isChinese = (text) => {
+            // 检测中文字符
+            return /[\u4E00-\u9FFF\u3400-\u4DBF]/.test(text) &&
+                   !/[\u3040-\u309F\u30A0-\u30FF]/.test(text); // 不应包含假名
+        };
+
+        const isEnglish = (text) => {
+            // 检测英文内容（主要是拉丁字母）
+            return /[a-zA-Z]/.test(text) &&
+                   text.length > 20 &&
+                   !/[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/.test(text);
+        };
+
+        // 通过内容特征检测实际语言
+        const sampleTitle = req.body[0]?.title || '';
+        const sampleContent = req.body[0]?.content || '';
+        const detectedSample = sampleTitle + sampleContent;
+
+        if (isJapanese(detectedSample) && lang !== 'ja') {
+            console.warn(`⚠️ 警告: 检测到内容可能是日语，但当前选择的语言是${lang}`);
+
+            // 如果用户真的想修改非日语内容，需要确认
+            if (!req.query.forceLanguage) {
+                return res.status(400).json({
+                    error: '内容与选择的语言不匹配',
+                    details: '检测到内容可能是日语，但您选择的语言是' + lang,
+                    suggestion: '如果您确定要将日语内容保存为' + lang + '语言，请添加参数forceLanguage=true',
+                    detectedLanguage: 'ja'
+                });
+            }
+        } else if (isChinese(detectedSample) && !['zh-cn', 'zh-tw', 'zh-hk'].includes(lang)) {
+            console.warn(`⚠️ 警告: 检测到内容可能是中文，但当前选择的语言是${lang}`);
+
+            // 如果用户真的想修改非中文内容，需要确认
+            if (!req.query.forceLanguage) {
+                return res.status(400).json({
+                    error: '内容与选择的语言不匹配',
+                    details: '检测到内容可能是中文，但您选择的语言是' + lang,
+                    suggestion: '如果您确定要将中文内容保存为' + lang + '语言，请添加参数forceLanguage=true',
+                    detectedLanguage: 'zh'
+                });
+            }
+        } else if (isEnglish(detectedSample) && lang !== 'en' && lang !== 'en-sg') {
+            console.warn(`⚠️ 警告: 检测到内容可能是英文，但当前选择的语言是${lang}`);
+
+            // 如果用户真的想修改非英文内容，需要确认
+            if (!req.query.forceLanguage) {
+                return res.status(400).json({
+                    error: '内容与选择的语言不匹配',
+                    details: '检测到内容可能是英文，但您选择的语言是' + lang,
+                    suggestion: '如果您确定要将英文内容保存为' + lang + '语言，请添加参数forceLanguage=true',
+                    detectedLanguage: 'en'
+                });
+            }
+        }
+
+        console.log(`✅ 语言检测通过或已强制确认，继续保存${lang}语言内容`);
 
         // 默认语言内容更新到HTML文件
         if (lang === 'zh-cn') {
             const aboutHtmlPath = path.join(__dirname, '../public/about.html');
+
+            // 首先备份HTML文件
+            const backupPath = path.join(__dirname, '../public/about.html.bak');
+            try {
+                fs.copyFileSync(aboutHtmlPath, backupPath);
+                console.log('已创建about.html备份文件');
+            } catch (backupError) {
+                console.warn('创建备份文件失败:', backupError);
+                // 继续执行，不中断流程
+            }
+
             let html = fs.readFileSync(aboutHtmlPath, 'utf-8');
             const $ = cheerio.load(html);
 
@@ -108,20 +200,88 @@ app.post('/api/sections', (req, res) => {
             // 保存修改后的HTML
             fs.writeFileSync(aboutHtmlPath, $.html());
 
-            // 同时更新多语言内容
+            // 只更新当前语言的内容，不影响其他语言
             ABOUT_TRANSLATIONS[lang] = req.body;
+            console.log(`成功更新HTML文件和${lang}语言内容`);
         } else {
             // 非默认语言只更新多语言内容
             if (ABOUT_TRANSLATIONS[lang]) {
+                // 只更新当前语言的内容，不影响其他语言
                 ABOUT_TRANSLATIONS[lang] = req.body;
+                console.log(`成功更新${lang}语言内容`);
             } else {
                 return res.status(404).json({ error: '不支持的语言', lang: lang });
             }
         }
 
-        // 将所有多语言内容保存到文件
+        // 检查各语言内容结构，确保格式一致
+        const sectionCount = ABOUT_TRANSLATIONS['zh-cn'].length;
+        Object.keys(ABOUT_TRANSLATIONS).forEach(langKey => {
+            if (ABOUT_TRANSLATIONS[langKey].length !== sectionCount) {
+                console.warn(`警告: ${langKey}语言的部分数量(${ABOUT_TRANSLATIONS[langKey].length})与中文不一致(${sectionCount})`);
+            }
+        });
+
+        // 防止语言内容错误交叉（检查语言内容是否被错误混淆）
+        Object.keys(ABOUT_TRANSLATIONS).forEach(langKey => {
+            if (langKey === lang) return; // 跳过当前正在编辑的语言
+
+            // 检查内容是否与当前编辑的语言完全相同（可能表示错误覆盖）
+            if (JSON.stringify(ABOUT_TRANSLATIONS[langKey]) === JSON.stringify(ABOUT_TRANSLATIONS[lang])) {
+                // 如果内容完全相同且不是同一语言，恢复原始内容
+                console.warn(`检测到${langKey}语言内容与${lang}完全相同，可能是错误覆盖，正在恢复...`);
+                ABOUT_TRANSLATIONS[langKey] = originalTranslations[langKey];
+            }
+        });
+
+        // 特别检查日语和中文内容
+        if (lang === 'ja' && JSON.stringify(ABOUT_TRANSLATIONS['zh-cn']) === JSON.stringify(ABOUT_TRANSLATIONS['ja'])) {
+            console.log('检测到zh-cn内容被错误设置为日语内容，正在恢复...');
+            // 恢复中文内容
+            ABOUT_TRANSLATIONS['zh-cn'] = originalTranslations['zh-cn'];
+        }
+
+        // 额外检查: 通过内容特征二次验证所有语言
+        for (const checkLang of Object.keys(ABOUT_TRANSLATIONS)) {
+            if (checkLang === lang) continue; // 跳过当前编辑的语言
+
+            const sampleText = ABOUT_TRANSLATIONS[checkLang][0]?.title + ABOUT_TRANSLATIONS[checkLang][0]?.content;
+
+            // 检查是否有语言错位
+            if (isJapanese(sampleText) && checkLang !== 'ja') {
+                console.warn(`检测到${checkLang}中包含日语内容，可能错误覆盖，正在恢复...`);
+                ABOUT_TRANSLATIONS[checkLang] = originalTranslations[checkLang];
+            } else if (isChinese(sampleText) && !['zh-cn', 'zh-tw', 'zh-hk'].includes(checkLang)) {
+                console.warn(`检测到${checkLang}中包含中文内容，可能错误覆盖，正在恢复...`);
+                ABOUT_TRANSLATIONS[checkLang] = originalTranslations[checkLang];
+            } else if (isEnglish(sampleText) && !['en', 'en-sg'].includes(checkLang)) {
+                console.warn(`检测到${checkLang}中包含英文内容，可能错误覆盖，正在恢复...`);
+                ABOUT_TRANSLATIONS[checkLang] = originalTranslations[checkLang];
+            }
+        }
+
+        // 创建about-translations.js备份
+        const translationsBackupPath = path.join(__dirname, 'about-translations.js.bak');
+        try {
+            fs.writeFileSync(translationsBackupPath, `// 备份时间: ${new Date().toISOString()}
+// about页面多语言内容配置备份
+const ABOUT_TRANSLATIONS = ${JSON.stringify(originalTranslations, null, 2)};
+
+// 导出模块
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { ABOUT_TRANSLATIONS };
+}`);
+            console.log('已创建translations备份文件');
+        } catch (backupError) {
+            console.warn('创建translations备份文件失败:', backupError);
+            // 继续执行，不中断流程
+        }
+
+        // 保存所有语言内容到文件
         const translationsPath = path.join(__dirname, 'about-translations.js');
         const translationsContent = `// about页面多语言内容配置
+// 最后更新时间: ${new Date().toISOString()}
+// 最后更新语言: ${lang}
 const ABOUT_TRANSLATIONS = ${JSON.stringify(ABOUT_TRANSLATIONS, null, 2)};
 
 // 导出模块
@@ -133,7 +293,21 @@ if (typeof module !== 'undefined' && module.exports) {
 
         // 同时更新 about-lang.js 文件，使页面可以直接加载多语言内容
         const aboutLangPath = path.join(__dirname, '../public/js/about-lang.js');
+
+        // 首先备份 about-lang.js 文件
+        const langBackupPath = path.join(__dirname, '../public/js/about-lang.js.bak');
+        try {
+            fs.copyFileSync(aboutLangPath, langBackupPath);
+            console.log('已创建about-lang.js备份文件');
+        } catch (backupError) {
+            console.warn('创建about-lang.js备份文件失败:', backupError);
+            // 继续执行，不中断流程
+        }
+
+        // 生成前端脚本，注意这是写入文件的内容，不是要在服务器执行的代码
         const aboutLangContent = `// 关于页面多语言内容切换脚本
+// 最后更新时间: ${new Date().toISOString()}
+// 最后更新语言: ${lang}
 
 // 关于页面多语言内容配置
 const ABOUT_TRANSLATIONS = ${JSON.stringify(ABOUT_TRANSLATIONS, null, 2)};
@@ -263,15 +437,42 @@ window.changeAboutLanguage = function(lang) {
     return true;
   }
   return false;
-};
-`;
+};`;
 
+        // 写入about-lang.js文件
         fs.writeFileSync(aboutLangPath, aboutLangContent);
 
-        res.json({ success: true, lang: lang });
+        // 记录已保存的语言
+        console.log(`✅ ${lang} 语言内容已成功保存`);
+        res.json({
+            success: true,
+            lang: lang,
+            info: '成功保存并更新所有相关文件，并创建了备份文件'
+        });
     } catch (error) {
         console.error('保存文件失败:', error);
-        res.status(500).json({ error: '保存文件失败', details: error.message });
+
+        // 提供更详细的错误信息
+        const errorDetails = {
+            message: error.message,
+            stack: error.stack,
+            time: new Date().toISOString()
+        };
+
+        // 记录详细错误日志
+        try {
+            const errorLogPath = path.join(__dirname, 'error.log');
+            fs.appendFileSync(errorLogPath,
+                `\n[${new Date().toISOString()}] 保存错误:\n${JSON.stringify(errorDetails, null, 2)}\n`);
+        } catch (logError) {
+            console.error('无法记录错误日志:', logError);
+        }
+
+        res.status(500).json({
+            error: '保存文件失败',
+            details: error.message,
+            suggestion: '请检查内容格式是否正确，如果问题持续存在，请联系管理员'
+        });
     }
 });
 
