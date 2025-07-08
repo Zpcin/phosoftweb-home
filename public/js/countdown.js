@@ -55,8 +55,15 @@
 
     // 加载当前语言的翻译
     function loadTranslations(lang) {
+        // 首先尝试从URL参数获取语言
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+
         // 如果明确指定了语言，就使用指定的语言
-        if (lang) {
+        if (urlLang) {
+            currentLang = urlLang;
+        }
+        else if (lang) {
             currentLang = lang;
         }
         // 否则，尝试从全局变量获取当前语言
@@ -81,7 +88,7 @@
             };
         }
 
-        console.log('[倒计时多语言] 当前语言:', currentLang);
+        console.log('[倒计时] 当前语言:', currentLang);
     }
 
     // 检测设备类型并应用相应样式

@@ -103,11 +103,21 @@ const COUNTDOWN_TRANSLATIONS = {
  * @returns {Object} 翻译对象
  */
 window.getCountdownTranslation = function(lang) {
+  // 检查 URL 参数中是否有语言设置
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+
+  // 优先使用 URL 参数中的语言
+  const finalLang = urlLang || lang || 'zh-cn';
+
   // 如果提供的语言不存在，则使用英语作为默认语言
-  if (!lang || !COUNTDOWN_TRANSLATIONS[lang]) {
+  if (!COUNTDOWN_TRANSLATIONS[finalLang]) {
+    console.log('[倒计时多语言] 未找到语言:', finalLang, '使用默认语言:zh-cn');
     return COUNTDOWN_TRANSLATIONS['zh-cn'];
   }
-  return COUNTDOWN_TRANSLATIONS[lang];
+
+  console.log('[倒计时多语言] 使用语言:', finalLang);
+  return COUNTDOWN_TRANSLATIONS[finalLang];
 };
 
 /**
