@@ -221,8 +221,47 @@ let aboutTranslations = ABOUT_TRANSLATIONS;
 
 // 获取当前语言
 function getCurrentLang() {
-  // 从全局设置或window._forceLang获取语言
-  return window._forceLang || 'zh-cn';
+  // 优先检查URL参数中的lang参数
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('lang')) {
+    const langParam = urlParams.get('lang');
+    // 确认语言参数是有效的
+    if (langParam && Object.keys(ABOUT_TRANSLATIONS).includes(langParam)) {
+      return langParam;
+    }
+  }
+
+  // 其次检查全局设置或window._forceLang
+  if (window._forceLang) {
+    return window._forceLang;
+  }
+
+  // 尝试从lang.js获取语言设置（如果已经通过IP地理位置或浏览器语言设置了）
+  if (window.PHOSOFTWEB_LANG_MAP && typeof window.getPhosoftwebLang === 'function') {
+    const phosoftLang = window.getPhosoftwebLang();
+    if (phosoftLang && Object.keys(ABOUT_TRANSLATIONS).includes(phosoftLang)) {
+      return phosoftLang;
+    }
+  }
+
+  // 最后尝试从浏览器语言设置判断
+  const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  if (browserLang.startsWith('zh-tw')) {
+    return 'zh-tw';
+  } else if (browserLang.startsWith('zh-hk') || browserLang.startsWith('zh-mo')) {
+    return 'zh-hk';
+  } else if (browserLang.startsWith('zh')) {
+    return 'zh-cn';
+  } else if (browserLang.startsWith('ja')) {
+    return 'ja';
+  } else if (browserLang === 'en-sg') {
+    return 'en-sg';
+  } else if (browserLang.startsWith('en')) {
+    return 'en';
+  }
+
+  // 默认返回中文
+  return 'zh-cn';
 }
 
 // 应用内容翻译
@@ -321,10 +360,46 @@ function setupLanguageChangeListener() {
 
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
+  // 首先检查URL参数中是否有lang参数
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('lang')) {
+    const langParam = urlParams.get('lang');
+    if (langParam && Object.keys(ABOUT_TRANSLATIONS).includes(langParam)) {
+      window._forceLang = langParam;
+      console.log(`从URL参数检测到语言: ${langParam}`);
+    }
+  }
+
+  // 尝试使用主站的IP地理位置检测功能
+  if (typeof window.applyGeoIpLang === 'function') {
+    try {
+      window.applyGeoIpLang();
+      console.log('正在使用主站IP地理位置检测功能...');
+    } catch (error) {
+      console.warn('无法使用主站IP地理位置检测功能:', error);
+    }
+  }
+
   // 确保页面完全加载后才应用翻译
   setTimeout(function() {
     applyContentTranslations();
     setupLanguageChangeListener();
+
+    // 如果主站已经有语言设置，尝试同步
+    if (window.PHOSOFTWEB_LANG_MAP && !window._forceLang) {
+      // 检查是否有来自主站的语言设置
+      if (typeof window.getPhosoftwebLang === 'function') {
+        const phosoftLang = window.getPhosoftwebLang();
+        if (phosoftLang && Object.keys(ABOUT_TRANSLATIONS).includes(phosoftLang)) {
+          window._forceLang = phosoftLang;
+          applyContentTranslations();
+          console.log(`从主站同步语言设置: ${phosoftLang}`);
+        }
+      }
+    }
+
+    // 记录当前语言
+    console.log(`当前使用的语言: ${getCurrentLang()}`);
   }, 300);
 });
 
