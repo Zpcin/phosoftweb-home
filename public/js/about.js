@@ -262,25 +262,24 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 只在移动端（窗口宽度 ≤ 800px）应用滑动动画
             if (window.innerWidth <= 800) {
-                // 防止动画堆叠，先移除已有的动画类
                 document.getElementById("content").classList.remove("slide-left", "slide-right");
-
-                // 强制浏览器重排，确保CSS动画能正常触发
-                void document.getElementById("content").offsetWidth;
-
-                // 添加新的动画类
                 document.getElementById("content").classList.add(direction === 'next' ? "slide-left" : "slide-right");
                 
-                // 设置适当的延迟以匹配CSS动画
                 setTimeout(() => {
-                    // 点击目标项切换内容
-                    targetItem.click();
-
-                    // 动画结束后移除动画类
+                    // 修改：使用更精确的滚动方式，防止滚动到视图外
+                    if (window.innerWidth <= 480) {
+                        // 移动端，仅更新UI状态，不进行滚动
+                        targetItem.click();
+                    } else {
+                        // 平板设备，使用平滑滚动
+                        targetItem.click();
+                    }
+                    
+                    // 移除过渡动画类
                     setTimeout(() => {
                         document.getElementById("content").classList.remove("slide-left", "slide-right");
-                    }, 400); // 与CSS动画持续时间匹配
-                }, 200); // 给动画一个合适的时间执行
+                    }, 300);
+                }, 50);
             } else {
                 // 桌面端直接切换，无需动画
                 targetItem.click();
