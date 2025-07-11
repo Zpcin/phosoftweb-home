@@ -28,6 +28,7 @@ const PHOSOFTWEB_LANG_MAP = {
       'pigeon': '鸽子的屑网站',
       'grassdev': '生草開發組',
       'grasstheme': '生草主题官方博客',
+      'awesome': 'Awesome IWB',
       'chenxinlei': '陈鑫磊的博客'
     },
     footer: '版权所有',
@@ -80,6 +81,7 @@ ____  _                      __ _
       'pigeon': '鴿子嘅屑網站',
       'grassdev': '生草開發組',
       'grasstheme': '生草主題官方博客',
+      'awesome': 'Awesome IWB',
       'chenxinlei': '陳鑫磊嘅博客'
     },
     footer: '版權所有',
@@ -132,6 +134,7 @@ ____  _                      __ _
       'pigeon': '鴿子的垃圾網站',
       'grassdev': '生草開發組',
       'grasstheme': '生草主題官方部落格',
+      'awesome': 'Awesome IWB',
       'chenxinlei': '陳鑫磊的部落格'
     },
     footer: '版權所有',
@@ -184,6 +187,7 @@ ____  _                      __ _
       'pigeon': "Pigeon's Humble Website",
       'grassdev': 'Grass Development Group',
       'grasstheme': 'Grass Theme Official Blog',
+      'awesome': 'Awesome IWB',
       'chenxinlei': "Chen Xinlei's Blog"
     },
     footer: 'All rights reserved',
@@ -236,6 +240,7 @@ ____  _                      __ _
       'pigeon': "Pigeon's Simple Website lah",
       'grassdev': 'Grass Dev Group ah',
       'grasstheme': 'Grass Theme Blog',
+      'awesome': 'Awesome IWB',
       'chenxinlei': "Chen Xinlei Blog"
     },
     footer: 'All rights reserved',
@@ -288,6 +293,7 @@ ____  _                      __ _
       'pigeon': '鳩の簡素なサイト',
       'grassdev': '草開発グループ',
       'grasstheme': '草テーマ公式ブログ',
+      'awesome': 'Awesome IWB',
       'chenxinlei': '陳鑫磊のブログ'
     },
     footer: '著作権所有',
@@ -345,6 +351,7 @@ ____  _                      __ _
       'pigeon': '鴿者之陋址',
       'grassdev': '草生之工坊',
       'grasstheme': '草題之官志',
+      'awesome': '妙筆教板錦集',
       'chenxinlei': '陳鑫磊之文苑'
     },
     footer: '版權所屬',
@@ -391,6 +398,7 @@ ____  _                      __ _
       'pigeon': 'Gēzi de xiè wǎngzhàn',
       'grassdev': 'Shēngcǎo kāifā zǔ',
       'grasstheme': 'Shēngcǎo zhǔtí guānfāng bókè',
+      'awesome': 'Awesome IWB',
       'chenxinlei': 'Chén Xīnlěi de bókè'
     },
     footer: 'Bǎnquán suǒyǒu',
@@ -716,6 +724,8 @@ function applyPhosoftwebLang() {
           link.textContent = map.linkTexts.game;
         } else if (href.includes('ugly-standby')) {
           link.textContent = map.linkTexts.ugly;
+        } else if (href.includes('awesome-iwb')) {
+          link.textContent = map.linkTexts.awesome;
         }
         // 添加个人网站链接翻译
         else if (href.includes('about.phosoft.cn')) {
@@ -734,6 +744,8 @@ function applyPhosoftwebLang() {
           link.textContent = map.linkTexts.grasstheme;
         } else if (href.includes('cxl2020mc')) {
           link.textContent = map.linkTexts.chenxinlei;
+        } else if (href.includes('awesome-iwb')) {
+          link.textContent = map.linkTexts.awesome;
         }
       });
     }
