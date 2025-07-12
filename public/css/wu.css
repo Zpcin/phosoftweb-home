@@ -272,17 +272,15 @@ body {
     /* 移动设备额外优化 */
     .wu-block {
         margin: 5px 0;
-        width: 100% !important; /* 强制单列布局 */
     }
 
     .wu-hw {
-        width: 100% !important;
+        width: 100%;
     }
 
     .wu-box {
         border-radius: 10px;
         padding: 12px;
-        width: 100%;
     }
 
     .wu-links a {
@@ -291,7 +289,6 @@ body {
         font-size: 13px;
     }
 
-    /* 移动设备最小边距 */
     .wu-content {
         width: calc(100% - 16px);
         padding: 8px;
@@ -303,13 +300,24 @@ body {
     overflow: hidden;
 }
 
-/* 页脚版权信息链接样式 - 使其看起来像普通文本 */
+/* 页脚版权信息链接样式 */
 .wu-box p.no-wrap a {
     text-decoration: none;
     color: inherit;
 }
 
-/* 添加页面载入动画效果 */
+/* 友情链接区样式 */
+.wu-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/* 基础动画 */
+.wu-content {
+    animation: fadeIn 0.3s ease-out;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -319,15 +327,4 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.wu-content {
-    animation: fadeIn 0.5s ease-out;
-}
-
-/* 为友情链接区添加悬浮效果 */
-.wu-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
 }

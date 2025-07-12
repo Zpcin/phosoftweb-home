@@ -93,6 +93,7 @@ phosoftweb-home/
 │   │   ├── countdown.css # 倒计时功能样式
 │   │   ├── lang-responsive.css # 多语言响应式样式
 │   │   └── wu.css       # 公共样式
+│   │   └── sponsor.css  # 页内赞助样式
 │   ├── js/              # JavaScript文件
 │   │   ├── about.js     # 关于页面脚本
 │   │   ├── countdown.js # 考试倒计时脚本
@@ -100,6 +101,7 @@ phosoftweb-home/
 │   │   ├── lang.js      # 多语言切换脚本
 │   │   ├── about-lang.js # 关于页面多语言脚本
 │   │   └── watermark.js # 水印效果脚本
+│   │   └── sponsor.js   # 页内赞助脚本
 │   ├── img/             # 图片资源
 │   │   ├── A-logo.svg   # Phosoft图标
 │   │   └── bilibili.svg # 哔哩哔哩图标
@@ -165,5 +167,7 @@ phosoftweb-home/
 ## 版权与免责声明
 
 本网站由原罪_超凡开发，GitHub Copilot 优化，部分内容可能含有作者不知情被用于模型训练的代码，仅供交流学习，不可商用。
+
+本版本的代码由Lz's Studio进行过优化。特此说明。
 
 ai生成导致可能含有无用的人类无法理解的代码。

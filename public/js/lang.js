@@ -8,6 +8,9 @@ const PHOSOFTWEB_LANG_MAP = {
     notice: '公告',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', '这是公告'],
+    sponsor: '赞助支持',
+    sponsorEn: 'Sponsor',
+    sponsorContent: '欢迎您的无私赞助与支持！',
     friends: '友情链接',
     friendsTip: '以下链接均有可能挂掉，请谅解！',
     // 链接文字翻译
@@ -29,7 +32,8 @@ const PHOSOFTWEB_LANG_MAP = {
       'grassdev': '生草開發組',
       'grasstheme': '生草主题官方博客',
       'awesome': 'Awesome IWB',
-      'chenxinlei': '陈鑫磊的博客'
+      'chenxinlei': '陈鑫磊的博客',
+      'lezao': '乐造工作室'
     },
     footer: '版权所有',
     powered: '此网站由 <a href="https://vercel.com/">Vercel</a>&nbsp;强力驱动',
@@ -61,6 +65,9 @@ ____  _                      __ _
     notice: '公告',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', '呢個係公告'],
+    sponsor: '贊助支持',
+    sponsorEn: 'Sponsor',
+    sponsorContent: '歡迎您嘅無私贊助同支持！',
     friends: '友情連結',
     friendsTip: '以下連結可能會死，請見諒！',
     // 链接文字翻译
@@ -82,7 +89,8 @@ ____  _                      __ _
       'grassdev': '生草開發組',
       'grasstheme': '生草主題官方博客',
       'awesome': 'Awesome IWB',
-      'chenxinlei': '陳鑫磊嘅博客'
+      'chenxinlei': '陳鑫磊嘅博客',
+      'lezao': '樂造工作室'
     },
     footer: '版權所有',
     powered: '呢個網站由 <a href="https://vercel.com/">Vercel</a>&nbsp;強力驅動',
@@ -114,6 +122,9 @@ ____  _                      __ _
     notice: '公告',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', '這是公告'],
+    sponsor: '贊助支持',
+    sponsorEn: 'Sponsor',
+    sponsorContent: '歡迎您的無私贊助與支持！',
     friends: '友情連結',
     friendsTip: '以下連結可能無法訪問，請見諒！',
     // 链接文字翻译
@@ -135,7 +146,8 @@ ____  _                      __ _
       'grassdev': '生草開發組',
       'grasstheme': '生草主題官方部落格',
       'awesome': 'Awesome IWB',
-      'chenxinlei': '陳鑫磊的部落格'
+      'chenxinlei': '陳鑫磊的部落格',
+      'lezao': '樂造工作室'
     },
     footer: '版權所有',
     powered: '本網站由 <a href="https://vercel.com/">Vercel</a>&nbsp;強力驅動',
@@ -167,6 +179,9 @@ ____  _                      __ _
     notice: 'Announcement',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', 'This is an announcement'],
+    sponsor: 'Sponsor',
+    sponsorEn: 'Support',
+    sponsorContent: 'Welcome your generous sponsorship and support!',
     friends: 'Links',
     friendsTip: 'The following links may be unavailable at times, please understand!',
     // 链接文字翻译
@@ -188,7 +203,8 @@ ____  _                      __ _
       'grassdev': 'Grass Development Group',
       'grasstheme': 'Grass Theme Official Blog',
       'awesome': 'Awesome IWB',
-      'chenxinlei': "Chen Xinlei's Blog"
+      'chenxinlei': "Chen Xinlei's Blog",
+      'lezao': 'LeZao Studio'
     },
     footer: 'All rights reserved',
     powered: 'Powered by <a href="https://vercel.com/">Vercel</a>',
@@ -220,6 +236,9 @@ ____  _                      __ _
     notice: 'Announcement',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', 'Got announcement here'],
+    sponsor: 'Sponsor lah',
+    sponsorEn: 'Support',
+    sponsorContent: 'Welcome your support ah, thank you lah!',
     friends: 'Friend Links',
     friendsTip: 'These links sometimes die one, please understand!',
     // 链接文字翻译
@@ -241,7 +260,8 @@ ____  _                      __ _
       'grassdev': 'Grass Dev Group ah',
       'grasstheme': 'Grass Theme Blog',
       'awesome': 'Awesome IWB',
-      'chenxinlei': "Chen Xinlei Blog"
+      'chenxinlei': "Chen Xinlei Blog",
+      'lezao': 'LeZao Studio lah'
     },
     footer: 'All rights reserved',
     powered: 'Powered by <a href="https://vercel.com/">Vercel</a> one',
@@ -273,6 +293,9 @@ ____  _                      __ _
     notice: 'お知らせ',
     noticeEn: 'Nōtisu',
     noticeContent: ['QwQ~', 'これはお知らせです'],
+    sponsor: '支援',
+    sponsorEn: 'サポート',
+    sponsorContent: 'ご支援ありがとうございます！',
     friends: 'サイトリンクス',
     friendsTip: '以下のリンクは利用できない場合があります。ご了承ください。',
     // 链接文字翻译
@@ -294,7 +317,8 @@ ____  _                      __ _
       'grassdev': '草開発グループ',
       'grasstheme': '草テーマ公式ブログ',
       'awesome': 'Awesome IWB',
-      'chenxinlei': '陳鑫磊のブログ'
+      'chenxinlei': '陳鑫磊のブログ',
+      'lezao': 'レザオスタジオ'
     },
     footer: '著作権所有',
     powered: '<a href="https://vercel.com/">Vercel</a> により強力に提供',
@@ -332,6 +356,9 @@ ____  _                      __ _
     notice: '示',
     noticeEn: 'Notitia',
     noticeContent: ['嗟乎', '是爲告示'],
+    sponsor: '贊襄',
+    sponsorEn: 'Subsidium',
+    sponsorContent: '感君贊襄之情！',
     friends: '友朋之址',
     friendsTip: '諸址或有不通者，望君恕之！',
     linkTexts: {
@@ -352,7 +379,8 @@ ____  _                      __ _
       'grassdev': '草生之工坊',
       'grasstheme': '草題之官志',
       'awesome': '妙筆教板錦集',
-      'chenxinlei': '陳鑫磊之文苑'
+      'chenxinlei': '陳鑫磊之文苑',
+      'lezao': '樂造之室'
     },
     footer: '版權所屬',
     powered: '賴 <a href="https://vercel.com/">Vercel</a> 之力而行',
@@ -378,6 +406,9 @@ ____  _                      __ _
     notice: 'Gōnggào',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', 'Zhè shì gōnggào'],
+    sponsor: 'Zànzhù zhīchí',
+    sponsorEn: 'Sponsor',
+    sponsorContent: 'Huānyíng nín de wúsī zànzhù yǔ zhīchí!',
     friends: 'Yǒuqíng liánjiē',
     friendsTip: 'Yǐxià liánjiē jūn yǒu kěnéng guà diào, qǐng liàngjiě!',
     // 链接文字翻译
@@ -399,7 +430,8 @@ ____  _                      __ _
       'grassdev': 'Shēngcǎo kāifā zǔ',
       'grasstheme': 'Shēngcǎo zhǔtí guānfāng bókè',
       'awesome': 'Awesome IWB',
-      'chenxinlei': 'Chén Xīnlěi de bókè'
+      'chenxinlei': 'Chén Xīnlěi de bókè',
+      'lezao': 'Lèzào gōngzuò shì'
     },
     footer: 'Bǎnquán suǒyǒu',
     powered: 'Cǐ wǎngzhàn yóu <a href="https://vercel.com/">Vercel</a>&nbsp;qiánglì qūdòng',
@@ -431,6 +463,9 @@ ____  _                      __ _
     notice: 'ㄍㄨㄥ ㄍㄠˋ',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', 'ㄓㄜˋ ㄕˋ ㄍㄨㄥ ㄍㄠˋ'],
+    sponsor: 'ㄗㄢˋ ㄓㄨˋ ㄓ ㄔˊ',
+    sponsorEn: 'Sponsor',
+    sponsorContent: 'ㄏㄨㄢ ㄧㄥˊ ㄋㄧㄣˊ ㄉㄜ˙ ㄨˊ ㄙ ㄗㄢˋ ㄓㄨˋ ㄩˇ ㄓ ㄔˊ！',
     friends: 'ㄧㄡˇ ㄑㄧㄥˊ ㄌㄧㄢˊ ㄐㄧㄝ',
     friendsTip: 'ㄧˇ ㄒㄧㄚˋ ㄌㄧㄢˊ ㄐㄧㄝ ㄐㄩㄣ ㄧㄡˇ ㄎㄜˇ ㄋㄥˊ ㄍㄨㄚˋ ㄉㄧㄠˋ，ㄑㄧㄥˇ ㄌㄧㄤˋ ㄐㄧㄝˇ！',
     // 链接文字翻译
@@ -451,7 +486,8 @@ ____  _                      __ _
       'pigeon': 'ㄍㄜ ㄗ˙ ㄉㄜ˙ ㄒㄧㄝˋ ㄨㄤˇ ㄓㄢˋ',
       'grassdev': 'ㄕㄥ ㄘㄠˇ ㄎㄞ ㄈㄚ ㄗㄨˇ',
       'grasstheme': 'ㄕㄥ ㄘㄠˇ ㄓㄨˇ ㄊㄧˊ ㄍㄨㄢ ㄈㄤ ㄅㄛˊ ㄎㄜˋ',
-      'chenxinlei': 'ㄔㄣˊ ㄒㄧㄣ ㄌㄟˇ ㄉㄜ˙ ㄅㄛˊ ㄎㄜˋ'
+      'chenxinlei': 'ㄔㄣˊ ㄒㄧㄣ ㄌㄟˇ ㄉㄜ˙ ㄅㄛˊ ㄎㄜˋ',
+      'lezao': 'ㄌㄜˋ ㄗㄠˋ ㄍㄨㄥ ㄗㄨㄛˋ ㄕˋ'
     },
     footer: 'ㄅㄢˇ ㄑㄩㄢˊ ㄙㄨㄛˇ ㄧㄡˇ',
     powered: 'ㄘˊ ㄨㄤˇ ㄓㄢˋ ㄧㄡˇ <a href="https://vercel.com/">Vercel</a>&nbsp;ㄑㄧㄤˊ ㄌㄧˋ ㄑㄩˋ ㄉㄨㄥˋ',
@@ -685,6 +721,14 @@ function applyPhosoftwebLang() {
     noticeContent[1].textContent = map.noticeContent[1];
   }
 
+  // 赞助板块
+  const sponsor = document.querySelector('#sponsor .wu-h2');
+  if (sponsor) sponsor.textContent = map.sponsor;
+  const sponsorEn = document.querySelector('#sponsor .wu-h3');
+  if (sponsorEn) sponsorEn.textContent = map.sponsorEn;
+  const sponsorContent = document.querySelector('#sponsor .wu-not p');
+  if (sponsorContent) sponsorContent.textContent = map.sponsorContent;
+
   // 友情链接区
   // 使用 ID 选择器直接定位友情链接区块
   const friendsBlock = document.getElementById('friendLinks');
@@ -746,6 +790,10 @@ function applyPhosoftwebLang() {
           link.textContent = map.linkTexts.chenxinlei;
         } else if (href.includes('awesome-iwb')) {
           link.textContent = map.linkTexts.awesome;
+        }
+        // 添加乐造工作室链接翻译
+        else if (href.includes('lezao.phosoft.cn')) {
+          link.textContent = map.linkTexts.lezao;
         }
       });
     }

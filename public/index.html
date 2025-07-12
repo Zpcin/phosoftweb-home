@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="./css/lang-responsive.css">
         <link rel="stylesheet" href="./css/countdown.css">
         <link rel="stylesheet" href="./css/loading.css">
+        <link rel="stylesheet" href="./css/sponsor.css">
         <link rel="icon" href="./img/A-logo.svg">
         <!-- 老图标
         <link rel="icon" href="https://gitlab.com/uploads/-/system/group/avatar/15493510/QQ%E5%9B%BE%E7%89%8720220117233528.jpg?width=512">
@@ -27,6 +28,7 @@
         <script src="./js/lang-countdown-connector.js"></script>
         <script src="./js/watermark.js" defer></script>
         <script src="./js/countdown.js" defer></script>
+        <script src="./js/sponsor.js" defer></script>
 
         <!-- 第三方服务集成 -->
         <script src="https://code.tidio.co/bowhirwyldd4f4z8ebab0dsupl375oim.js" async></script>
@@ -86,51 +88,81 @@
                 </div>
             </div>
 
-            <!-- 视频展示区块 -->
-            <div class="wu-block" id="video" style="width: calc(65% - 23px);">
-                <div class="wu-box wu-shadow">
-                    <b class="wu-h2 no-wrap">下面是 PhosoftWeb Line 宣传片</b>
-                    <div class="wu-divide" style="height: 10px;"></div>
-                    <video width="100%" src="./video/video.mp4" controls></video>
-                    <a href="https://www.bilibili.com/video/av522186335" class="bilibili-link">
-                        <img src="./img/bilibili.svg" alt="bilibili logo">
-                        <span id="bilibili-text">进入bilibili，一起交流！</span>
-                    </a>
+       <!-- 视频展示区块（左侧65%） -->
+<div class="wu-block" id="video" style="width: calc(65% - 23px); float: left;">
+    <div class="wu-box wu-shadow">
+        <b class="wu-h2 no-wrap">下面是 PhosoftWeb Line 宣传片</b>
+        <div class="wu-divide" style="height: 10px;"></div>
+        <video width="100%" src="./video/video.mp4" controls></video>
+        <a href="https://www.bilibili.com/video/av522186335" class="bilibili-link">
+            <img src="./img/bilibili.svg" alt="bilibili logo">
+            <span id="bilibili-text">进入bilibili，一起交流！</span>
+        </a>
+    </div>
+</div>
+
+<!-- 公告区块（右侧35%） -->
+<div class="wu-block" style="width: calc(35% - 23px); float: right;" id="notice">
+    <div class="wu-box wu-shadow">
+        <div class="wu-divide" style="height: 40px;"></div>
+        <b class="wu-h1">公告</b>
+        <p class="wu-h3">Notice</p>
+        <div class="wu-divide" style="height: 10px;"></div>
+        <div class="wu-block wu-mw wu-not">
+            <p>QwQ~</p>
+            <p>这是公告</p>
+        </div>
+    </div>
+</div>
+
+<!-- 赞助支持区块 -->
+<div class="wu-block" style="width: calc(35% - 23px); float: right; margin-top: 20px;" id="sponsor">
+    <div class="wu-box wu-shadow">
+        <div class="wu-divide" style="height: 40px;"></div>
+        <b class="wu-h1">赞助支持</b>
+        <p class="wu-h3">Sponsor</p>
+        <div class="wu-divide" style="height: 10px;"></div>
+        <div class="wu-block wu-mw wu-not">
+            <p>欢迎您的无私赞助与支持！</p>
+            <div style="display: flex; justify-content: center; gap: 20px; margin: 15px 0;">
+                <div class="payment-method">
+                    <img src="https://sponsor.psoft.eu.org/static/img/alipay.svg" class="payment-btn" alt="支付宝支付" title="点击查看支付宝二维码">
+                </div>
+                <div class="payment-method">
+                    <img src="https://sponsor.psoft.eu.org/static/img/wechat-pay.svg" class="payment-btn" alt="微信支付" title="点击查看微信支付二维码">
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- 公告区块 -->
-            <div class="wu-block" style="width: calc(35% - 23px);" id="notice">
-                <div class="wu-box wu-shadow">
-                    <div class="wu-divide" style="height: 40px;"></div>
-                    <b class="wu-h1">公告</b>
-                    <p class="wu-h3">Notice</p>
-                    <div class="wu-divide" style="height: 10px;"></div>
-                    <div class="wu-block wu-mw wu-not">
-                        <p>QwQ~</p>
-                        <p>这是公告</p>
-                    </div>
-                </div>
-            </div>
-
+<!-- 二维码弹窗容器 -->
+<div id="qrcode-modal" class="qrcode-modal">
+    <div class="qrcode-content">
+        <span class="close-btn">&times;</span>
+        <img id="qrcode-image" src="" alt="支付二维码">
+        <p id="qrcode-text"></p>
+    </div>
+</div>
             <!-- 友情链接区块 -->
-            <div class="wu-block wu-mw" id="friendLinks">
+
+         <div class="wu-block wu-mw" id="friendLinks">
                 <div class="wu-box wu-shadow">
                     <div class="wu-divide" style="height: 20px;"></div>
                     <b class="wu-h2">友情链接</b>
                     <div class="wu-notice wu-mw">以下链接均有可能挂掉，请谅解！</div>
                     <div class="wu-links">
-                        <a href="https://about.phosoft.cn/">PhosoftStudio 官方网站</a> <a href="https://suulnnka.github.io/BullshitGenerator/index.html">狗屁不通文章生成器</a><a href="https://hitokoto.cn/">Hitokoto - 一言</a><a href="https://github.com/soimort/you-get/">视频解析下载工具</a><a href="https://aurorast.cn/">AuroraStudio</a><a href="https://chenzr.xn--0tr.top/">ChenZR的小破站</a><a href="https://damon233.js.org/">What_Damon的窝</a><a href="https://psoft.eu.org/about.html">Zpcin个人网站</a><a href="https://www.imfmkli.top/">鸽子的屑网站</a><a href="https://mystu.net/">生草開發組</a><a href="https://theme.estu.site/">生草主题官方博客</a><a href="https://www.cxl2020mc.top">陈鑫磊的博客</a><a href="https://github.com/awesome-iwb/awesome-iwb">awesome-iwb</a><a href="https://sponsor.psoft.eu.org/">赞助我们</a><a href="./dsp.html">Phosoft搜索页</a><a href="https://forum.phosoft.cn/">Phosoft论坛页</a><a href="https://game.phosoft.cn/">Phosoft游戏页-扫草</a><a href="https://ugly-standby.666forum.com/">丑备用论坛页</a>
+                        <a href="https://about.phosoft.cn/">PhosoftStudio 官方网站</a> <a href="https://suulnnka.github.io/BullshitGenerator/index.html">狗屁不通文章生成器</a><a href="https://hitokoto.cn/">Hitokoto - 一言</a><a href="https://github.com/soimort/you-get/">视频解析下载工具</a><a href="https://aurorast.cn/">AuroraStudio</a><a href="https://chenzr.xn--0tr.top/">ChenZR的小破站</a><a href="https://damon233.js.org/">What_Damon的窝</a><a href="https://psoft.eu.org/about.html">Zpcin个人网站</a><a href="https://www.imfmkli.top/">鸽子的屑网站</a><a href="https://mystu.net/">生草開發組</a><a href="https://theme.estu.site/">生草主题官方博客</a><a href="https://www.cxl2020mc.top">陈鑫磊的博客</a><a href="https://github.com/awesome-iwb/awesome-iwb">awesome-iwb</a><a href="https://sponsor.psoft.eu.org/">赞助我们</a><a href="./dsp.html">Phosoft搜索页</a><a href="https://forum.phosoft.cn/">Phosoft论坛页</a><a href="https://game.phosoft.cn/">Phosoft游戏页-扫草</a><a href="https://ugly-standby.666forum.com/">丑备用论坛页</a><a href="https://www.lz-s.cn">乐造工作室</a>
                     </div>
                 </div>
-            </div>
+            </div> 
 
             <!-- 页脚区块 -->
             <div class="wu-block wu-mw">
                 <div class="wu-box wu-shadow">
-                    <p class="no-wrap"><a href="./about.html">&copy;<script type="text/javascript">
-    document.write(new Date().getFullYear().toString());
-</script> - 张一&amp;Phosoft 版权所有</a></p>
+                    <p class="no-wrap"><a href="./about.html">&copy;
+                        <script>document.write(new Date().getFullYear())</script>
+                        - 张一&amp;Phosoft 版权所有</a></p>
                     <p class="no-wrap">此网站由 <a href="https://vercel.com/">Vercel</a>&nbsp;强力驱动</p>
                     <a href="https://111111.eu.org/" style="text-decoration: none; color: rgb(20, 20, 20);"><img src="https://111111.eu.org/assets/img/ICS.svg" style="float: left; height: 23px; margin-right: 5px;" alt="ICS"><p class="no-wrap">认ISC-20220807-01</p></a>
                 </div>
@@ -139,102 +171,67 @@
 
         <!-- 响应式布局脚本 -->
         <script>
-           function sizeEvent(){
-               let video = document.getElementById("video");
-               let notice = document.getElementById("notice");
-               if(window.innerWidth < 800){
-                   video.style.width = "100%";
-                   notice.style.width = "100%";
-               }
-               else if(window.innerWidth >= 800){
-                   video.style.width = "calc(65% - 23px)";
-                   notice.style.width = "calc(35% - 23px)";
-               }
-           }
-           function init(){
-               sizeEvent();
-           }
-           init();
-           window.addEventListener("resize", sizeEvent);
+            function sizeEvent(){
+    let video = document.getElementById("video");
+    let notice = document.getElementById("notice");
+    let sponsor = document.getElementById("sponsor");
+    
+    if(window.innerWidth < 800){
+        video.style.width = "100%";
+        notice.style.width = "100%";
+        sponsor.style.width = "100%";
+    }
+    else if(window.innerWidth >= 800){
+        video.style.width = "calc(65% - 23px)";
+        notice.style.width = "calc(35% - 23px)";
+        sponsor.style.width = "calc(35% - 23px)";
+    }
+}
+
+            function sizeEvent(){
+                let video = document.getElementById("video");
+                let notice = document.getElementById("notice");
+                if(window.innerWidth < 800){
+                    video.style.width = "100%";
+                    notice.style.width = "100%";
+                }
+                else if(window.innerWidth >= 800){
+                    video.style.width = "calc(65% - 23px)";
+                    notice.style.width = "calc(35% - 23px)";
+                }
+            }
+            function init(){
+                sizeEvent();
+            }
+            init();
+            window.addEventListener("resize", sizeEvent);
         </script>
 
-        <!-- 浏览器兼容性检测与重定向 - 使用更安全的方法检测浏览器 -->
+        <!-- 浏览器兼容性检测与重定向 -->
         <script>
             (function() {
-                // 初始化检测结果变量
-                var isOldBrowser = false;
-                var match; // 声明一个共用的匹配变量，避免重复声明
+                var ua = navigator.userAgent;
+                var isOldBrowser = 
+                    ua.indexOf('MSIE') !== -1 || 
+                    ua.indexOf('Trident/') !== -1 || 
+                    (ua.indexOf('Firefox/') !== -1 && parseInt(ua.match(/Firefox\/(\d+)/)?.[1] || '0') < 60) ||
+                    (ua.indexOf('Chrome/') !== -1 && parseInt(ua.match(/Chrome\/(\d+)/)?.[1] || '0') < 60) ||
+                    (ua.indexOf('Safari/') !== -1 && ua.indexOf('Chrome/') === -1 && 
+                     parseInt(ua.match(/Version\/(\d+)/)?.[1] || '0') < 10);
 
-                // 安全地检查对象属性，避免未定义错误
-                function safeCheck(obj, prop) {
-                    return obj && prop in obj;
-                }
-
-                // 检测IE浏览器 - 避免直接引用documentMode
-                try {
-                    isOldBrowser = isOldBrowser || (navigator.userAgent.indexOf('MSIE') !== -1);
-                    isOldBrowser = isOldBrowser || (navigator.userAgent.indexOf('Trident/') !== -1);
-                    isOldBrowser = isOldBrowser || safeCheck(document, 'documentMode');
-                } catch(e) {}
-
-                // 检测Edge旧版本 - 避免直接引用StyleMedia
-                try {
-                    isOldBrowser = isOldBrowser ||
-                        (navigator.userAgent.indexOf('Edge/') !== -1);
-                    isOldBrowser = isOldBrowser || safeCheck(window, 'StyleMedia');
-                } catch(e) {}
-
-                // 检测旧版Firefox - 避免直接引用InstallTrigger
-                try {
-                    if (navigator.userAgent.indexOf('Firefox/') !== -1) {
-                        match = navigator.userAgent.match(/Firefox\/(\d+)/);
-                        if (match && parseInt(match[1]) < 60) {
-                            isOldBrowser = true;
-                        }
-                    }
-                } catch(e) {}
-
-                // 检测旧版Chrome - 避免直接引用chrome
-                try {
-                    if (navigator.userAgent.indexOf('Chrome/') !== -1) {
-                        match = navigator.userAgent.match(/Chrome\/(\d+)/);
-                        if (match && parseInt(match[1]) < 60) {
-                            isOldBrowser = true;
-                        }
-                    }
-                } catch(e) {}
-
-                // 检测旧版Opera - 避免直接引用opera和opr
-                try {
-                    isOldBrowser = isOldBrowser ||
-                        (navigator.userAgent.indexOf('Opera') !== -1) ||
-                        (navigator.userAgent.indexOf('OPR/') !== -1);
-                } catch(e) {}
-
-                // 检测旧版Safari - 避免直接引用safari
-                try {
-                    if (navigator.userAgent.indexOf('Safari/') !== -1 &&
-                        navigator.userAgent.indexOf('Chrome/') === -1 &&
-                        navigator.userAgent.indexOf('Chromium/') === -1) {
-                        match = navigator.userAgent.match(/Version\/(\d+)/);
-                        if (match && parseInt(match[1]) < 10) {
-                            isOldBrowser = true;
-                        }
-                    }
-                } catch(e) {}
-
-                // 如果检测到旧浏览器，则重定向
                 if (isOldBrowser) {
                     window.location.href = "/IE303.html";
                 }
             })();
         </script>
 
-        <!-- IE浏览器重定向（保留作为后备方案） -->
+        <!-- IE浏览器重定向（可以删除，但保留以防万一） -->
         <!--[if IE]>
         <script>
             location.replace("/IE303.html");
         </script>
         <![endif]-->
     </body>
+
+    <!-- 神人代码   这都是啥   BillW 2025-07-12-->
 </html>

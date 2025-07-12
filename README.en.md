@@ -2,11 +2,11 @@
 
 ## Project Introduction
 
-This is a personal website project built with pure HTML, CSS, and JavaScript, including a homepage, about page, and other content. The project supports responsive layout, adapting to different device screen sizes.
+This is a personal website project built with pure HTML, CSS, and JavaScript, including homepage, about page and other content. The project supports responsive layout, adapting to different device screen sizes.
 
 ## Localization and Multilingual Support
 
-This project supports automatic language switching with the following languages built in:
+This project supports automatic language switching with the following built-in languages:
 - Simplified Chinese (zh-cn)
 - Traditional Chinese (zh-tw, zh-hk)
 - English (en, en-sg)
@@ -16,86 +16,110 @@ This project supports automatic language switching with the following languages 
 - Zhuyin (zhuyin)
 
 ### Language Switching Methods
-- Automatically switches based on browser language by default.
-- Some regions will automatically switch to the corresponding language based on IP.
-- Languages can be forced via URL parameter `?lang=xx`, e.g., `?lang=en`.
-- Use `setLang('xx')` in the console to dynamically switch languages.
+- Automatically switches based on browser language by default
+- Some regions will auto-switch based on IP location
+- Force language via URL parameter `?lang=xx` (e.g. `?lang=en`)
+- Use `setLang('xx')` in console to dynamically switch languages
 
 ### Related Files
-- `public/js/lang.js`: Main site homepage multilingual script, responsible for language detection and content switching.
-- `public/css/lang-responsive.css`: Responsive style optimization for multiple languages.
-- `set/public/lang.js`: Multilingual package for the admin system.
+- `public/js/lang.js`: Main multilingual script for homepage
+- `public/css/lang-responsive.css`: Responsive styles for multilingual support
+- `public/js/about-lang.js`: About page multilingual content
+- `set/public/lang.js`: Admin system language pack
 
 ## Exam Countdown Feature
 
-The website integrates an exam countdown feature that displays different countdown information based on the user's geographic location:
+The website integrates exam countdowns that display differently based on user location:
 
-### Feature Highlights
-- Users in Jilin Province see middle school/high school entrance exam countdowns
-- Automatically displays countdown to 2025 middle school or 2028 high school entrance exams based on time
-- Different display positions and animation effects for mobile and desktop
-- Automatically disappears after brief display to avoid distracting users
+### Features
+- Shows middle school/college entrance exam countdowns
+- Different display positions and animations for mobile/desktop
+- Automatically disappears after brief display
 
 ### Technical Implementation
-- Detects user's region through IP address API
-- Calculates remaining days accurate to 5 decimal places
-- Responsive design, positioned at the bottom of the page on mobile devices
+- Detects user region via IP API
+- Calculates remaining days with 5 decimal precision
+- Responsive design (bottom position on mobile)
 
 ### Debug Commands
-- `setRegion('region name')` - Set user region
-- `setJilin()` - Quickly set to Jilin Province
-- `setNonJilin()` - Quickly set to non-Jilin area
-- `testZhongkaoOver()` - Test post-middle school exam time scenario
-- `testBeforeZhongkao()` - Test pre-middle school exam time scenario
+- `setRegion('region')` - Set user region
+- `setJilin()` - Set to Jilin Province
+- `setNonJilin()` - Set to non-Jilin region
+- `testZhongkaoOver()` - Test post-exam scenario
+- `testBeforeZhongkao()` - Test pre-exam scenario
 - `resetTestDate()` - Reset to real time
-- `resetRegion()` - Reset to automatic detection
-- `showRegionStatus()` - Display current status
+- `resetRegion()` - Reset auto-detection
+- `showRegionStatus()` - Show current status
 
 ### Related Files
 - `public/js/countdown.js`: Countdown core logic
-- `public/css/countdown.css`: Countdown stylesheet
+- `public/css/countdown.css`: Countdown styles
+
+## Special Memorial Dates
+
+The website automatically applies grayscale mode on memorial days and shows tribute messages.
+
+### Supported Memorial Dates
+- Qingming Festival (Apr 3-6)
+- COVID-19 Memorial Day (Apr 4)
+- Yushu Earthquake (Apr 14)
+- Wenchuan Earthquake (May 12)
+- Lidice Massacre (Jun 10)
+- July 7 Incident (Jul 7)
+- Comfort Women Day (Aug 14)
+- Chairman Mao's Death (Sep 9)
+- September 18 Incident (Sep 18)
+- Martyrs' Day (Sep 30)
+- Korean War (Oct 25)
+- Nanjing Massacre (Dec 13)
+
+### Features
+- Auto-detects current date
+- Applies site-wide grayscale filter
+- Adds memorial info to page title
+- Shows console tribute message
+
+### Related Files
+- `public/js/grayscale.js`: Date detection and grayscale filter
 
 ## Directory Structure
-
 ```
 phosoftweb-home/
-├── public/              # Main website files
-│   ├── css/             # Stylesheets
-│   │   ├── 404.css      # 404 error page style
-│   │   ├── about.css    # About page style
-│   │   ├── countdown.css # Countdown feature style
-│   │   ├── lang-responsive.css # Multilingual responsive style
-│   │   └── wu.css       # Common styles
-│   ├── js/              # JavaScript files
-│   │   ├── about.js     # About page script
-│   │   ├── countdown.js # Exam countdown script
-│   │   ├── grayscale.js # Grayscale filter script
-│   │   ├── lang.js      # Multilingual switching script
-│   │   └── watermark.js # Watermark effect script
-│   ├── img/             # Image resources
-│   │   ├── A-logo.svg   # Phosoft icon
-│   │   └── bilibili.svg # Bilibili icon
-│   ├── fonts/           # Font files
-│   │   └── HarmonyOS_Sans_Medium.ttf
-│   ├── video/           # Video resources
-│   │   └── video.mp4    # Video
-│   ├── index.html       # Website homepage
-│   ├── about.html       # About page
-│   ├── IE303.html       # IE browser incompatibility notice page
-│   ├── 404.html         # 404 error page
-│   ├── robots.txt       # Crawler protocol
-│   ├── sitemap.xml      # Site map
-│   └── config.yaml      # Site configuration
-├── set/                 # Content Management System
-│   ├── public/          # Admin system frontend
-│   │   ├── index.html   # Admin system homepage
-│   │   ├── styles.css   # Admin system styles
-│   │   ├── script.js    # Admin system script
-│   │   └── lang.js      # Admin system language package
-│   ├── package.json     # Admin system dependencies
-│   └── server.js        # Admin system backend
-├── README.md            # Project documentation (Chinese)
-├── README.en.md         # Project documentation (English)
+├── public/
+│ ├── css/
+│ │ ├── 404.css
+│ │ ├── about.css
+│ │ ├── countdown.css
+│ │ ├── lang-responsive.css
+│ │ ├── sponsor.css
+│ │ └── wu.css
+│ ├── js/
+│ │ ├── about.js
+│ │ ├── about-lang.js
+│ │ ├── countdown.js
+│ │ ├── grayscale.js
+│ │ ├── lang.js
+│ │ ├── sponsor.js
+│ │ └── watermark.js
+│ ├── img/
+│ ├── fonts/
+│ ├── video/
+│ ├── index.html
+│ ├── about.html
+│ ├── IE303.html
+│ ├── 404.html
+│ ├── robots.txt
+│ ├── sitemap.xml
+│ └── config.yaml
+├── set/
+│ ├── public/
+│ │ ├── index.html
+│ │ ├── styles.css
+│ │ ├── script.js
+│ │ └── lang.js
+│ ├── package.json
+│ └── server.js
+└── README.md
 ```
 
 ## Technology Stack
@@ -106,35 +130,37 @@ phosoftweb-home/
 
 ## Features
 
-- Responsive design, adapting to desktop and mobile devices
-- Animation transition effects enhance user experience
-- Automatic grayscale filter application on specific memorial days
-- Touch screen swipe operation support
-- Exam countdown feature with region-specific personalized display
-- Built-in content management system for easy maintenance of about page content
+- Responsive design
+- Animation transitions
+- Automatic grayscale on memorial days
+- Touchscreen support
+- Regional exam countdowns
+- Built-in CMS for content management
 
-## Deployment Methods
+## Deployment
 
-1. Static deployment: Deploy the `public` directory to any static website hosting service
-2. Use GitLab Pages or Vercel platforms for automatic deployment
+1. Static: Deploy `public` folder
+2. Use GitLab Pages/Vercel
 
-## Using the Content Management System
+## CMS Usage
 
-1. Install dependencies: `npm install`
-2. Start management service: `node set/server.js`
+1. Install: `npm install`
+2. Start: `node set/server.js`
 3. Access: `http://localhost:3000`
-4. Edit the about page content through the interface, click save to update the website
 
-## Development and Extension
+## Development
 
-- Add new pages: Create HTML files in the `public` directory
-- Modify styles: Edit style files in the `css` directory
-- Add functionality: Add script files to the `js` directory
+- Add pages in `public`
+- Modify styles in `css`
+- Add scripts in `js`
 
 ## Compatibility
 
-The website supports modern browsers and displays special prompt pages for incompatible browsers (such as IE).
+Supports modern browsers (shows special page for IE)
 
-## Copyright and Disclaimer
+## Copyright
 
-This website was developed by 原罪_超凡 (YuanZui_ChaoFan), optimized with GitHub Copilot. Some content may contain code unknowingly used for model training. For learning and communication purposes only, not for commercial use.
+Developed by YuanZui_ChaoFan, optimized with GitHub Copilot. For learning only, not commercial use.
+Code optimized by Lz's Studio.
+
+May contain AI-generated code segments.

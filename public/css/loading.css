@@ -5,14 +5,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(255, 255, 255); /* 完全不透明的背景 */
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: auto; /* 确保元素可以接收点击事件 */
-    user-select: none; /* 防止用户选择文本 */
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+    user-select: none;
+    will-change: opacity;
 }
 
 /* 三个跳动的圆点容器 */
@@ -20,6 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: translateZ(0);
 }
 
 /* 每个圆点的基本样式 */
@@ -27,42 +29,21 @@
     width: 20px;
     height: 20px;
     margin: 0 10px;
-    background-color: #4a89dc; /* 蓝色圆点 */
+    background-color: #4a89dc;
     border-radius: 50%;
     display: inline-block;
-    animation: bounce 1.4s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
-    /* 使用更柔和的贝塞尔曲线让动画更Q弹 */
+    will-change: transform;
+    animation: bounce 1s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
-/* 为每个圆点设置不同的动画延迟，创造跳动效果 */
-.dot:nth-child(1) {
-    animation-delay: -0.32s;
-}
+/* 为每个圆点设置不同的动画延迟 */
+.dot:nth-child(1) { animation-delay: -0.3s; }
+.dot:nth-child(2) { animation-delay: -0.15s; }
 
-.dot:nth-child(2) {
-    animation-delay: -0.16s;
-}
-
-/* 更Q弹的跳动动画 */
+/* 优化跳动动画 */
 @keyframes bounce {
-    0% {
-        transform: translateY(0) scale(1);
-    }
-    20% {
-        transform: translateY(-5px) scale(0.9); /* 起跳时稍微压缩 */
-    }
-    40% {
-        transform: translateY(-25px) scale(1.1); /* 最高点稍微膨胀 */
-    }
-    60% {
-        transform: translateY(-12px) scale(1);
-    }
-    80% {
-        transform: translateY(0) scale(0.95); /* 落地时压缩效果 */
-    }
-    100% {
-        transform: translateY(0) scale(1);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 
 .loading-text {
@@ -73,7 +54,7 @@
     font-size: 16px;
 }
 
-/* 媒体查询适配移动设备 */
+/* 移动端优化 */
 @media (max-width: 768px) {
     .dot {
         width: 15px;
@@ -87,23 +68,7 @@
     }
 
     @keyframes bounce {
-        0% {
-            transform: translateY(0) scale(1);
-        }
-        20% {
-            transform: translateY(-3px) scale(0.9);
-        }
-        40% {
-            transform: translateY(-15px) scale(1.1);
-        }
-        60% {
-            transform: translateY(-8px) scale(1);
-        }
-        80% {
-            transform: translateY(0) scale(0.95);
-        }
-        100% {
-            transform: translateY(0) scale(1);
-        }
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
     }
 }
