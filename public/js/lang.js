@@ -738,7 +738,7 @@ function applyPhosoftwebLang() {
           link.textContent = map.linkTexts.zpcin;
         } else if (href.includes('imfmkli')) {
           link.textContent = map.linkTexts.pigeon;
-        } else if (href.includes('mystu.net')) {
+        } else if (href.includes('gdt.im')) {
           link.textContent = map.linkTexts.grassdev;
         } else if (href.includes('theme.estu.site')) {
           link.textContent = map.linkTexts.grasstheme;
