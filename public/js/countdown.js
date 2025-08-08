@@ -2,6 +2,7 @@
  * 考试倒计时脚本
  * 显示2025年中考或2028年高考的倒计时
  * 支持多语言显示
+ * 修改为仅在控制台输出倒计时信息
  */
 (function() {
     // 是否在吉林省（仅用于调试信息）
@@ -21,9 +22,6 @@
 
     // 初始化函数
     function initialize() {
-        // 设置设备类型标识
-        detectDeviceType();
-
         // 获取当前语言并加载翻译
         loadTranslations();
 
@@ -37,11 +35,6 @@
 
             // 每秒更新一次倒计时
             setInterval(updateExamCountdown, 1000);
-        });
-
-        // 监听窗口大小变化，重新检测设备类型
-        window.addEventListener('resize', function() {
-            detectDeviceType();
         });
 
         // 监听语言变化事件
@@ -89,65 +82,6 @@
         }
 
         console.log('[倒计时] 当前语言:', currentLang);
-    }
-
-    // 检测设备类型并应用相应样式
-    function detectDeviceType() {
-        const countdownElement = document.getElementById('examCountdown');
-        if (!countdownElement) return;
-
-        // 使用原生媒体查询判断设备类型
-        window._isMobileDevice = window.matchMedia('(max-width: 768px)').matches;
-
-        // 不再输出设备类型日志
-    }
-
-    // 计算并应用倒计时元素的精确位置
-    function positionCountdownElement(isFirstTime = false) {
-        const countdownElement = document.getElementById('examCountdown');
-        if (!countdownElement) return;
-
-        // 确定设备类型
-        const isMobile = window.innerWidth <= 768;
-        window._isMobileDevice = isMobile;
-
-        // 设置样式
-        if (isFirstTime) {
-            // 首次定位时，先隐藏元素，确保尺寸计算准确
-            countdownElement.style.opacity = '0';
-            countdownElement.style.visibility = 'hidden';
-            countdownElement.style.display = 'block'; // 必须先显示才能计算尺寸
-
-            // 根据设备类型设置字体大小和内边距
-            if (isMobile) {
-                countdownElement.style.fontSize = '12px';
-                countdownElement.style.padding = '6px 10px';
-            } else {
-                countdownElement.style.fontSize = '14px';
-                countdownElement.style.padding = '8px 15px';
-            }
-
-            // 强制浏览器重新计算布局
-            void countdownElement.offsetWidth;
-        }
-
-        // 根据设备类型设置位置
-        if (isMobile) {
-            countdownElement.style.top = 'auto';
-            countdownElement.style.bottom = '10px';
-            countdownElement.style.right = '10px';
-            countdownElement.style.left = 'auto';
-        } else {
-            countdownElement.style.top = '10px';
-            countdownElement.style.bottom = 'auto';
-            countdownElement.style.right = '10px';
-            countdownElement.style.left = 'auto';
-        }
-
-        // 强制应用样式
-        countdownElement.style.transform = 'none !important';
-
-        return countdownElement;
     }
 
     // 注册控制台调试命令
@@ -255,66 +189,13 @@
             return `当前地区: ${userRegion} (${isInJilin ? '吉林' : '非吉林'})`;
         };
 
-        // 添加显示考试倒计时五秒调试命令
-        window.showCountdownFiveSeconds = function() {
-            console.log('[倒计时调试] 开始显示当前考试倒计时五秒...');
-
-            // 获取倒计时元素
-            const countdownElement = document.getElementById('examCountdown');
-            if (!countdownElement) {
-                console.error('[倒计时调试] 找不到倒计时元素');
-                return '找不到倒计时元素';
-            }
-
-            // 重置任何可能影响显示的标志
-            window._countdownShown = false;
-            window._countdownAnimationPending = false;
-            window._countdownAnimationAdded = false;
-
-            // 确保倒计时元素可见
-            countdownElement.style.transition = '';
-            countdownElement.style.transform = 'none';
-            countdownElement.style.display = 'block';
-            countdownElement.style.opacity = '1';
-            countdownElement.style.visibility = 'visible';
-
-            // 重新定位倒计时元素
-            positionCountdownElement();
-
-            // 立即更新倒计时内容
-            updateExamCountdown();
-
-            // 强制显示5秒
-            console.log('[倒计时调试] 倒计时将显示5秒钟');
-
-            // 5秒后自动隐藏
-            setTimeout(() => {
-                // 添加过渡效果
-                countdownElement.style.transition = 'all 1.5s ease-in-out';
-
-                // 检查是否为移动端
-                const isMobile = window.innerWidth <= 768;
-
-                // 根据设备设置不同的移出方向
-                if (isMobile) {
-                    // 移动端向下移出
-                    countdownElement.style.transform = 'translateY(150%)';
-                } else {
-                    // 桌面端向上移出
-                    countdownElement.style.transform = 'translateY(-150%)';
-                }
-
-                countdownElement.style.opacity = '0';
-                countdownElement.style.visibility = 'hidden';
-
-                // 动画完成后隐藏元素
-                setTimeout(() => {
-                    countdownElement.style.display = 'none';
-                    console.log('[倒计时调试] 倒计时五秒显示结束');
-                }, 1500);
-            }, 5000);
-
-            return '考试倒计时已显示，将在5秒后自动隐藏';
+        // 添加显示考试倒计时控制台输出命令
+        window.showConsoleCountdown = function() {
+            console.log('[倒计时] 当前考试倒计时信息:');
+            const countdownInfo = getCountdownInfo();
+            console.log(`[倒计时] ${countdownInfo.title}: ${countdownInfo.days}天 ${countdownInfo.hours}时 ${countdownInfo.minutes}分 ${countdownInfo.seconds}秒`);
+            console.log(`[倒计时] 精确天数: ${countdownInfo.formattedDays}天`);
+            return `已在控制台显示当前倒计时信息`;
         };
 
         // 输出帮助信息
@@ -328,7 +209,7 @@
         console.log('resetTestDate() - 重置为真实时间');
         console.log('resetRegion() - 重置为自动检测');
         console.log('showRegionStatus() - 显示当前状态');
-        console.log('showCountdownFiveSeconds() - 显示当前考试倒计时五秒');
+        console.log('showConsoleCountdown() - 在控制台显示当前倒计时详细信息');
         console.log('-----------------------------------------------------');
     }
 
@@ -347,9 +228,9 @@
 
                 // 判断是否在吉林省
                 isInJilin = ipData &&
-                           ((ipData.region && ipData.region.includes('Jilin')) ||
-                            (ipData.region_code && ipData.region_code === 'JL') ||
-                            (ipData.region && ipData.region.includes('吉林')));
+                    ((ipData.region && ipData.region.includes('Jilin')) ||
+                        (ipData.region_code && ipData.region_code === 'JL') ||
+                        (ipData.region && ipData.region.includes('吉林')));
 
                 // 保存用户地区信息用于调试
                 userRegion = ipData ? (ipData.region || ipData.region_name || '未知') : '未知';
@@ -376,9 +257,9 @@
 
                 // 判断是否在吉林省
                 isInJilin = data &&
-                           ((data.region && data.region.includes('Jilin')) ||
-                            (data.region_code && data.region_code === 'JL') ||
-                            (data.region && data.region.includes('吉林')));
+                    ((data.region && data.region.includes('Jilin')) ||
+                        (data.region_code && data.region_code === 'JL') ||
+                        (data.region && data.region.includes('吉林')));
 
                 // 保存用户地区信息用于调试
                 userRegion = data ? (data.region || data.region_name || '未知') : '未知';
@@ -417,16 +298,8 @@
         }
     }
 
-    // 更新考试倒计时显示
-    function updateExamCountdown() {
-        const countdownElement = document.getElementById('examCountdown');
-        const daysElement = document.getElementById('examDays');
-        const loadingOverlay = document.getElementById('loadingOverlay');
-
-        if (!countdownElement || !daysElement) return;
-
-        const titleElement = countdownElement.querySelector('.exam-title');
-
+    // 获取倒计时信息的函数 - 只生成数据，不涉及DOM操作
+    function getCountdownInfo() {
         // 使用真实时间或测试时间
         const now = window._testDate || new Date();
         let targetDate, examTitle;
@@ -438,26 +311,25 @@
             // 如果2025年中考已过，显示2028年高考倒计时
             targetDate = futureGaokaoDate;
             examTitle = translations.gaokao;
-
-            // 使用标准字体大小
-            titleElement.style.fontSize = '1em';
         } else {
             // 如果2025年中考还没过，显示2025年中考倒计时
             targetDate = jilinZhongkaoDate;
             examTitle = translations.zhongkao;
-
-            // 非吉林地区使用较小字体
-            titleElement.style.fontSize = '0.85em';
         }
 
         // 计算剩余时间
         const diffTime = targetDate - now;
 
-        // 如果考试已经过去，显示相应信息
+        // 如果考试已经过去，返回相应信息
         if (diffTime < 0) {
-            titleElement.textContent = examTitle + translations.over;
-            daysElement.textContent = "0.00000";
-            return;
+            return {
+                title: examTitle + translations.over,
+                days: 0,
+                hours: 0,
+                minutes: 0,
+                seconds: 0,
+                formattedDays: "0.00000"
+            };
         }
 
         // 计算天、小时、分钟和秒
@@ -475,134 +347,28 @@
         // 格式化为5位小数
         const formattedDays = diffDays.toFixed(5);
 
-        // 更新倒计时显示
-        titleElement.textContent = examTitle;
-        daysElement.textContent = formattedDays;
+        return {
+            title: examTitle,
+            days,
+            hours,
+            minutes,
+            seconds,
+            formattedDays
+        };
+    }
 
-        // 添加详细时间显示，仅精确到秒
-        const detailsElement = countdownElement.querySelector('.exam-details') || createDetailsElement(countdownElement);
-        detailsElement.innerHTML = `
-            <span>${days}${translations.days} ${hours}${translations.hours} ${minutes}${translations.minutes} ${seconds}${translations.seconds}</span>
-        `;
+    // 更新考试倒计时 - 仅在控制台输出
+    function updateExamCountdown() {
+        const countdownInfo = getCountdownInfo();
 
-        // 根据地区设置样式
-        if (!isInJilin) {
-            // 修改为：非吉林地区也显示普通倒计时，不再显示水印
-            countdownElement.style.display = 'block';
-
-            // 非吉林地区也需要隐藏加载动画
-            if (loadingOverlay && !window._loadingHidden) {
-                hideLoading();
-            }
-
-            // 检查是否需要显示倒计时
-            if (document.readyState === 'complete' && !window._countdownShown && !window._countdownAnimationPending) {
-                // 标记动画处理中，避免重复触发
-                window._countdownAnimationPending = true;
-
-                // 延迟显示，确保页面布局已经稳定
-                setTimeout(() => {
-                    // 再次检查页面是否已经完全稳定
-                    if (document.readyState === 'complete') {
-                        // 先隐藏加载动画
-                        hideLoading();
-
-                        // 再显示倒计时
-                        setTimeout(() => {
-                            showCountdown();
-                        }, 300);
-                    }
-                }, 1000); // 增加延迟时间，确保页面布局稳定
-            }
-
-            // 仅在页面加载后首次添加退出动画
-            if (window._countdownShown && !window._countdownAnimationAdded) {
-                window._countdownAnimationAdded = true;
-
-                // 5秒后开始退出动画
-                setTimeout(() => {
-                    // 添加过渡效果
-                    countdownElement.style.transition = 'all 1.5s ease-in-out';
-
-                    // 检查是否为移动端
-                    const isMobile = window.innerWidth <= 768;
-
-                    // 根据设备设置不同的移出方向
-                    if (isMobile) {
-                        // 移动端向下移出
-                        countdownElement.style.transform = 'translateY(150%)';
-                    } else {
-                        // 桌面端向上移出
-                        countdownElement.style.transform = 'translateY(-150%)';
-                    }
-
-                    countdownElement.style.opacity = '0';
-                    countdownElement.style.visibility = 'hidden';
-
-                    // 动画完成后隐藏元素
-                    setTimeout(() => {
-                        countdownElement.style.display = 'none';
-                    }, 1500);
-                }, 5000);
-            }
-        } else {
-            // 吉林地区显示正常倒计时
-            countdownElement.style.display = 'block';
-
-            // 检查是否需要显示倒计时
-            if (document.readyState === 'complete' && !window._countdownShown && !window._countdownAnimationPending) {
-                // 标记动画处理中，避免重复触发
-                window._countdownAnimationPending = true;
-
-                // 延迟显示，确保页面布局已经稳定
-                setTimeout(() => {
-                    // 再次检查页面是否已经完全稳定
-                    if (document.readyState === 'complete') {
-                        // 先隐藏加载动画
-                        hideLoading();
-
-                        // 再显示倒计时
-                        setTimeout(() => {
-                            showCountdown();
-                        }, 300);
-                    }
-                }, 1000); // 增加延迟时间，确保页面布局稳定
-            }
-
-            // 仅在页面加载后首次添加退出动画
-            if (window._countdownShown && !window._countdownAnimationAdded) {
-                window._countdownAnimationAdded = true;
-
-                // 5秒后开始退出动画
-                setTimeout(() => {
-                    // 添加过渡效果
-                    countdownElement.style.transition = 'all 1.5s ease-in-out';
-
-                    // 检查是否为移动端（宽度小于等于768px）
-                    const isMobile = window.innerWidth <= 768;
-
-                    // 根据设备设置不同的移出方向
-                    if (isMobile) {
-                        // 移动端向下移出
-                        countdownElement.style.transform = 'translateY(150%)';
-                      } else {
-                        // 桌面端向上移出
-                        countdownElement.style.transform = 'translateY(-150%)';
-                      }
-
-                    countdownElement.style.opacity = '0';
-                    countdownElement.style.visibility = 'hidden';
-
-                    // 动画完成后隐藏元素
-                    setTimeout(() => {
-                        countdownElement.style.display = 'none';
-                    }, 1500);
-                }, 5000);
-            }
+        // 每10秒在控制台输出一次倒计时信息
+        const seconds = new Date().getSeconds();
+        if (seconds % 10 === 0) {
+            console.log(`[倒计时] ${countdownInfo.title}: ${countdownInfo.days}${translations.days} ${countdownInfo.hours}${translations.hours} ${countdownInfo.minutes}${translations.minutes} ${countdownInfo.seconds}${translations.seconds} (${countdownInfo.formattedDays}${translations.days})`);
         }
 
-        // 不再更新页面标题显示倒计时
-        // document.title = `${examTitle}: ${days}天 ${hours}时 - PhosoftWebPages`;
+        // 将倒计时数据存储到window对象中，以便其他脚本可以访问
+        window._countdownData = countdownInfo;
     }
 
     // 隐藏加载动画
@@ -617,50 +383,16 @@
         }
     }
 
-    // 显示倒计时元素
-    function showCountdown() {
-        // 先进行位置计算，传入true表示这是首次定位
-        const element = positionCountdownElement(true);
-
-        // 等待DOM更新并重新计算位置
-        setTimeout(() => {
-            // 再显示倒计时
-            window._countdownShown = true;
-
-            // 简单的淡入效果
-            element.style.transition = 'opacity 0.5s ease-in-out';
-            element.style.opacity = '1';
-            element.style.visibility = 'visible';
-            element.style.display = 'block';
-
-            // 确保位置锁定
-            if (window._isMobileDevice) {
-                element.style.top = 'auto';
-                element.style.bottom = '10px';
-            } else {
-                element.style.top = '10px';
-                element.style.bottom = 'auto';
-            }
-            element.style.right = '10px';
-            element.style.transform = 'none';
-        }, 50); // 短暂延迟确保DOM更新
-    }
-
-    // 创建详细倒计时显示元素
-    function createDetailsElement(parentElement) {
-        const detailsElement = document.createElement('div');
-        detailsElement.className = 'exam-details';
-        detailsElement.style.fontSize = '0.9rem';
-        detailsElement.style.marginTop = '5px';
-        detailsElement.style.color = '#666';
-        parentElement.appendChild(detailsElement);
-        return detailsElement;
-    }
-
     // 页面加载完成后执行初始化
     if (document.readyState === 'complete') {
         initialize();
+        // 确保加载动画会隐藏
+        hideLoading();
     } else {
-        window.addEventListener('load', initialize);
+        window.addEventListener('load', function() {
+            initialize();
+            // 确保加载动画会隐藏
+            hideLoading();
+        });
     }
 })();
