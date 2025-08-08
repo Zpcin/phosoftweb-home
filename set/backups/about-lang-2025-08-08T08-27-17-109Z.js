@@ -1,5 +1,5 @@
 // 关于页面多语言内容切换脚本
-// 最后更新时间: 2025-08-08T08:30:20.730Z
+// 最后更新时间: 2025-08-08T08:27:00.165Z
 // 最后更新语言: zh-cn
 
 // 关于页面多语言内容配置
@@ -145,7 +145,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "My School",
-      "content": "I'm currently at the Second Senior High School of Qian Gorlos Mongol Autonomous County,<br>Elementary school: Qianguo Drilling (two days) -> No.5 Elementary (one year) -> Hada<br><br>"
+      "content": "I'm currently at the Second Senior High School of Qian Gorlos Mongol Autonomous County,<br>Elementary school: Qianguo Drilling (two days) -> No.5 Elementary (one year) -> Hada<br><br><br>"
     },
     {
       "title": "My Health",
@@ -187,7 +187,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "私の学校",
-      "content": "現在、前郭爾羅斯モンゴル族自治県第二高等学校に在学中です。<br>小学校：前郭 鑽井小学校（二日間）→五小（一年間）→哈達<br><br>"
+      "content": "現在、前郭爾羅斯モンゴル族自治県第二高等学校に在学中です。<br>小学校：前郭 鑽井小学校（二日間）→五小（一年間）→哈達<br><br><br>"
     },
     {
       "title": "私の健康",

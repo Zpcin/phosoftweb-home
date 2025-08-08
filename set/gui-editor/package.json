@@ -1,0 +1,46 @@
+{
+  "name": "about-lang-gui-editor",
+  "version": "1.0.0",
+  "description": "About-lang.js 图形界面编辑工具",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder"
+  },
+  "keywords": [
+    "editor",
+    "multilingual",
+    "markdown",
+    "html",
+    "gui"
+  ],
+  "author": "Zpcin",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^26.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "marked": "^9.0.0",
+    "fs-extra": "^11.0.0"
+  },
+  "build": {
+    "appId": "com.zpcin.about-lang-editor",
+    "productName": "About-lang Editor",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "renderer.js",
+      "index.html",
+      "styles.css",
+      "preload.js"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    }
+  }
+}

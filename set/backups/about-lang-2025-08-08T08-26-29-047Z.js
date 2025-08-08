@@ -1,5 +1,5 @@
 // 关于页面多语言内容切换脚本
-// 最后更新时间: 2025-08-08T08:30:20.730Z
+// 最后更新时间: 2025-08-08T08:26:21.815Z
 // 最后更新语言: zh-cn
 
 // 关于页面多语言内容配置
@@ -19,7 +19,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我的学校",
-      "content": "现在在前郭尔罗斯蒙古族自治县第二高级中学，<br>小学：前郭 钻井（两天）—>五小（一年）——>哈达<br>"
+      "content": "现在在前郭尔罗斯蒙古族自治县第二高级中学，<br>                小学：前郭 钻井（两天）—>五小（一年）——>哈达<br><br>               <br>"
     },
     {
       "title": "我的身体",
@@ -61,7 +61,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我嘅學校",
-      "content": "而家喺前郭爾羅斯蒙古族自治縣第二高級中學，<br>小學：前郭 鑽井（兩日）—>五小（一年）——>哈達"
+      "content": "而家喺前郭爾羅斯蒙古族自治縣第二高級中學，<br>小學：前郭 鑽井（兩日）—>五小（一年）——>哈達<br>"
     },
     {
       "title": "我嘅身體",
@@ -103,7 +103,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我的學校",
-      "content": "現在在前郭爾羅斯蒙古族自治縣第二高級中學，<br>小學：前郭 鑽井（兩天）—>五小（一年）——>哈達<br>"
+      "content": "現在在前郭爾羅斯蒙古族自治縣第二高級中學，<br>小學：前郭 鑽井（兩天）—>五小（一年）——>哈達<br><br><br>"
     },
     {
       "title": "我的身體",
@@ -145,7 +145,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "My School",
-      "content": "I'm currently at the Second Senior High School of Qian Gorlos Mongol Autonomous County,<br>Elementary school: Qianguo Drilling (two days) -> No.5 Elementary (one year) -> Hada<br><br>"
+      "content": "I'm currently at the Second Senior High School of Qian Gorlos Mongol Autonomous County,<br>Elementary school: Qianguo Drilling (two days) -> No.5 Elementary (one year) -> Hada<br><br><br>"
     },
     {
       "title": "My Health",
@@ -187,7 +187,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "私の学校",
-      "content": "現在、前郭爾羅斯モンゴル族自治県第二高等学校に在学中です。<br>小学校：前郭 鑽井小学校（二日間）→五小（一年間）→哈達<br><br>"
+      "content": "現在、前郭爾羅斯モンゴル族自治県第二高等学校に在学中です。<br>小学校：前郭 掘削（二日間）→五小（一年間）→哈達<br><br><br>"
     },
     {
       "title": "私の健康",

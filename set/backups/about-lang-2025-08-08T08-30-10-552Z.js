@@ -1,6 +1,8 @@
-// about页面多语言内容配置
-// 最后更新时间: 2025-07-07T04:05:58.557Z
-// 最后更新语言: en
+// 关于页面多语言内容切换脚本
+// 最后更新时间: 2025-08-08T08:27:43.159Z
+// 最后更新语言: zh-cn
+
+// 关于页面多语言内容配置
 const ABOUT_TRANSLATIONS = {
   "zh-cn": [
     {
@@ -17,7 +19,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我的学校",
-      "content": "现在在前郭尔罗斯蒙古族自治县第三中学，<br>                小学：前郭 钻井（两天）—>五小（一年）——>哈达<br><br>               <br>"
+      "content": "现在在前郭尔罗斯蒙古族自治县第二高级中学，<br>小学：前郭 钻井（两天）—>五小（一年）——>哈达<br>"
     },
     {
       "title": "我的身体",
@@ -59,7 +61,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我嘅學校",
-      "content": "而家喺前郭爾羅斯蒙古族自治縣第三中學，<br>小學：前郭 鑽井（兩日）—>五小（一年）——>哈達<br><br><br>"
+      "content": "而家喺前郭爾羅斯蒙古族自治縣第二高級中學，<br>小學：前郭 鑽井（兩日）—>五小（一年）——>哈達"
     },
     {
       "title": "我嘅身體",
@@ -101,7 +103,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "我的學校",
-      "content": "現在在前郭爾羅斯蒙古族自治縣第三中學，<br>小學：前郭 鑽井（兩天）—>五小（一年）——>哈達<br><br><br>"
+      "content": "現在在前郭爾羅斯蒙古族自治縣第二高級中學，<br>小學：前郭 鑽井（兩天）—>五小（一年）——>哈達<br>"
     },
     {
       "title": "我的身體",
@@ -143,7 +145,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "My School",
-      "content": "I'm currently at the Third Middle School of Qian Gorlos Mongol Autonomous County,<br>Elementary school: Qianguo Drilling (two days) -> No.5 Elementary (one year) -> Hada<br><br><br>"
+      "content": "I'm currently at the Second Senior High School of Qian Gorlos Mongol Autonomous County,<br>Elementary school: Qianguo Drilling (two days) -> No.5 Elementary (one year) -> Hada<br><br>"
     },
     {
       "title": "My Health",
@@ -185,7 +187,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "私の学校",
-      "content": "現在、前郭爾羅斯モンゴル族自治県第三中学校に在学中です。<br>小学校：前郭 掘削（二日間）→五小（一年間）→哈達<br><br><br>"
+      "content": "現在、前郭爾羅斯モンゴル族自治県第二高等学校に在学中です。<br>小学校：前郭 鑽井小学校（二日間）→五小（一年間）→哈達<br><br>"
     },
     {
       "title": "私の健康",
@@ -214,7 +216,204 @@ const ABOUT_TRANSLATIONS = {
   ]
 };
 
-// 导出模块
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { ABOUT_TRANSLATIONS };
+// 从已有的翻译对象获取多语言内容
+let aboutTranslations = ABOUT_TRANSLATIONS;
+
+// 获取当前语言
+function getCurrentLang() {
+  // 优先检查URL参数中的lang参数
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('lang')) {
+    const langParam = urlParams.get('lang');
+    // 确认语言参数是有效的
+    if (langParam && Object.keys(ABOUT_TRANSLATIONS).includes(langParam)) {
+      return langParam;
+    }
+  }
+
+  // 其次检查全局设置或window._forceLang
+  if (window._forceLang) {
+    return window._forceLang;
+  }
+
+  // 尝试从lang.js获取语言设置（如果已经通过IP地理位置或浏览器语言设置了）
+  if (window.PHOSOFTWEB_LANG_MAP && typeof window.getPhosoftwebLang === 'function') {
+    const phosoftLang = window.getPhosoftwebLang();
+    if (phosoftLang && Object.keys(ABOUT_TRANSLATIONS).includes(phosoftLang)) {
+      return phosoftLang;
+    }
+  }
+
+  // 最后尝试从浏览器语言设置判断
+  const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+  if (browserLang.startsWith('zh-tw')) {
+    return 'zh-tw';
+  } else if (browserLang.startsWith('zh-hk') || browserLang.startsWith('zh-mo')) {
+    return 'zh-hk';
+  } else if (browserLang.startsWith('zh')) {
+    return 'zh-cn';
+  } else if (browserLang.startsWith('ja')) {
+    return 'ja';
+  } else if (browserLang === 'en-sg') {
+    return 'en-sg';
+  } else if (browserLang.startsWith('en')) {
+    return 'en';
+  }
+
+  // 默认返回中文
+  return 'zh-cn';
 }
+
+// 应用内容翻译
+function applyContentTranslations() {
+  // 获取当前语言
+  const currentLang = getCurrentLang();
+
+  // 获取当前语言的翻译数据，如果没有则使用中文
+  const translations = aboutTranslations[currentLang] || aboutTranslations['zh-cn'];
+
+  if (!translations) {
+    console.warn(`未找到 ${currentLang} 语言的翻译数据`);
+    return;
+  }
+
+  // 先保存当前活动项，以便后续恢复
+  const currentActiveSection = document.querySelector('.active-content');
+  let activeIndex = 0;
+  if (currentActiveSection) {
+    const sections = Array.from(document.querySelectorAll('#content .info-section'));
+    activeIndex = sections.indexOf(currentActiveSection);
+    if (activeIndex < 0) activeIndex = 0;
+  }
+
+  // 获取所有信息板块
+  const sections = document.querySelectorAll('#content .info-section');
+
+  // 应用翻译
+  sections.forEach((section, index) => {
+    // 只处理存在的翻译项
+    if (translations[index]) {
+      const titleEl = section.querySelector('.info-title');
+      const contentEl = section.querySelector('.info-content');
+
+      if (titleEl && contentEl) {
+        // 保存原始标题供侧边栏使用
+        const originalTitle = translations[index].title;
+        section.setAttribute('data-original-title', originalTitle);
+
+        // 应用翻译的标题和内容
+        titleEl.innerHTML = translations[index].title;
+        contentEl.innerHTML = translations[index].content;
+      }
+    }
+  });
+
+  // 更新左侧导航标题
+  updateSidebarTitles();
+
+  // 确保预设的动画类被应用
+  setTimeout(function() {
+    // 如果prepareTextAnimations函数存在，则调用它
+    if (typeof prepareTextAnimations === 'function') {
+      prepareTextAnimations();
+
+      // 恢复当前活动的内容和动画
+      const newActiveSections = document.querySelectorAll('#content .info-section');
+      if (newActiveSections.length > 0) {
+        const newActiveSection = newActiveSections[activeIndex < newActiveSections.length ? activeIndex : 0];
+        if (newActiveSection && typeof playTextAnimations === 'function') {
+          playTextAnimations(newActiveSection);
+        }
+      }
+    }
+  }, 100);
+}
+
+// 更新侧边栏标题
+function updateSidebarTitles() {
+  const sidebarItems = document.querySelectorAll("#sidebar .info-section");
+  const contentSections = document.querySelectorAll("#content .info-section");
+  const currentLang = getCurrentLang();
+  const langData = ABOUT_LANG_MAP[currentLang] || ABOUT_LANG_MAP['zh-cn'];
+  const aboutText = langData?.about || '关于';
+
+  sidebarItems.forEach((item, index) => {
+    if (contentSections[index]) {
+      const titleText = contentSections[index].getAttribute('data-original-title') ||
+                       contentSections[index].querySelector('.info-title')?.textContent || '';
+      item.innerText = aboutText + titleText + "...";
+    }
+  });
+}
+
+// 监听语言变更事件
+function setupLanguageChangeListener() {
+  // 创建一个自定义事件监听器，当语言改变时更新内容
+  document.addEventListener('language-changed', function() {
+    applyContentTranslations();
+    // 应用UI元素翻译（来自about.js中的applyAboutLang函数）
+    if (typeof applyAboutLang === 'function') {
+      applyAboutLang();
+    }
+  });
+}
+
+// 初始化
+document.addEventListener('DOMContentLoaded', function() {
+  // 首先检查URL参数中是否有lang参数
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('lang')) {
+    const langParam = urlParams.get('lang');
+    if (langParam && Object.keys(ABOUT_TRANSLATIONS).includes(langParam)) {
+      window._forceLang = langParam;
+      console.log(`从URL参数检测到语言: ${langParam}`);
+    }
+  }
+
+  // 尝试使用主站的IP地理位置检测功能
+  if (typeof window.applyGeoIpLang === 'function') {
+    try {
+      window.applyGeoIpLang();
+      console.log('正在使用主站IP地理位置检测功能...');
+    } catch (error) {
+      console.warn('无法使用主站IP地理位置检测功能:', error);
+    }
+  }
+
+  // 确保页面完全加载后才应用翻译
+  setTimeout(function() {
+    applyContentTranslations();
+    setupLanguageChangeListener();
+
+    // 如果主站已经有语言设置，尝试同步
+    if (window.PHOSOFTWEB_LANG_MAP && !window._forceLang) {
+      // 检查是否有来自主站的语言设置
+      if (typeof window.getPhosoftwebLang === 'function') {
+        const phosoftLang = window.getPhosoftwebLang();
+        if (phosoftLang && Object.keys(ABOUT_TRANSLATIONS).includes(phosoftLang)) {
+          window._forceLang = phosoftLang;
+          applyContentTranslations();
+          console.log(`从主站同步语言设置: ${phosoftLang}`);
+        }
+      }
+    }
+
+    // 记录当前语言
+    console.log(`当前使用的语言: ${getCurrentLang()}`);
+  }, 300);
+});
+
+// 提供全局方法以便从其他脚本调用
+window.changeAboutLanguage = function(lang) {
+  if (lang && typeof lang === 'string') {
+    window._forceLang = lang;
+    applyContentTranslations();
+    // 触发语言变更事件
+    document.dispatchEvent(new CustomEvent('language-changed'));
+
+    // 记录到控制台
+    console.log(`语言已切换到: ${lang}`);
+    return true;
+  }
+  return false;
+};
