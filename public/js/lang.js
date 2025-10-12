@@ -751,16 +751,23 @@ function applyPhosoftwebLang() {
     }
   }
 
-  // 页脚
-  const footer = document.querySelector('.wu-block.wu-mw:last-child .wu-box.wu-shadow p.no-wrap a');
-  if (footer) footer.innerHTML = `&copy;${map.year} - 张一&Phosoft ${map.footer}`;
-  const powered = document.querySelectorAll('.wu-block.wu-mw:last-child .wu-box.wu-shadow p.no-wrap')[1];
-  if (powered) powered.innerHTML = map.powered;
+  // 页脚 - 使用ID选择器确保准确找到元素
+  const footerElement = document.getElementById('main-footer');
+  if (footerElement) {
+    const footerLink = footerElement.querySelector('p.no-wrap a');
+    if (footerLink) footerLink.innerHTML = `&copy;${map.year} - 张一&Phosoft ${map.footer}`;
+    
+    const poweredText = footerElement.querySelectorAll('p.no-wrap')[1];
+    if (poweredText) poweredText.innerHTML = map.powered;
+  }
 
-  // 页脚关于
-  const about = document.querySelector('.wu-block.wu-mw:last-child .wu-box.wu-shadow p.no-wrap a');
-  if (about && about.textContent.includes('版权所有')) {
-    about.textContent = about.textContent.replace('版权所有', map.footer);
+  // 页脚关于 - 使用ID选择器确保准确找到元素
+  const aboutElement = document.getElementById('main-footer');
+  if (aboutElement) {
+    const aboutLink = aboutElement.querySelector('p.no-wrap a');
+    if (aboutLink && aboutLink.textContent.includes('版权所有')) {
+      aboutLink.textContent = aboutLink.textContent.replace('版权所有', map.footer);
+    }
   }
 
   // 控制台输出

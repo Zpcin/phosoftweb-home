@@ -2,46 +2,34 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
-        <title>PhosoftStudio WebPages</title>
+        <title>溪夏坡Zpcin - 个人网站</title>
         <!-- SEO 元标签 -->
         <meta name="msvalidate.01" content="93B7BB0E96BAC477F6402852111B6680" />
-        <meta name="keywords" content="PhosoftStudio">
-        <meta name="description" content="PhosoftWebPages 是 PhosoftStudio 开发的一些网页">
-        <meta name="author" content="yuanzui_cf">
-        <meta name="refresh" content="3">
+        <meta name="keywords" content="溪夏坡,Zpcin,个人网站,学生,兴趣爱好">
+        <meta name="description" content="溪夏坡Zpcin的个人网站，展示我的个人信息、兴趣爱好和生活经历">
+        <meta name="author" content="溪夏坡Zpcin">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- 样式和网站图标 -->
         <link rel="stylesheet" href="./css/wu.css">
         <link rel="stylesheet" href="./css/lang-responsive.css">
-        <link rel="stylesheet" href="./css/countdown.css">
         <link rel="stylesheet" href="./css/loading.css">
         <link rel="icon" href="./img/A-logo.svg">
-        <!-- 老图标
-        <link rel="icon" href="https://gitlab.com/uploads/-/system/group/avatar/15493510/QQ%E5%9B%BE%E7%89%8720220117233528.jpg?width=512">
-        -->
 
         <!-- 特效脚本 -->
         <script src="./js/grayscale.js"></script>
         <script src="./js/lang.js"></script>
-        <script src="./js/lang-countdown-connector.js"></script>
         <script src="./js/watermark.js" defer></script>
-        <script src="./js/countdown.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+        <script src="./js/animations.js"></script>
+        <script src="./debug-footer.js" defer></script>
 
         <!-- 第三方服务集成 -->
-        <script src="https://code.tidio.co/bowhirwyldd4f4z8ebab0dsupl375oim.js" async></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9614412023637049"
      crossorigin="anonymous"></script>
 
-        <!-- 统计和性能监控 -->
-        <script charset="UTF-8" id="LA_COLLECT" src="https://sdk.51.la/js-sdk-pro.min.js"></script>
-        <script>LA.init({id: "JlNLVSQScJkH113J",ck: "JlNLVSQScJkH113J",autoTrack:true})</script>
-        <script src="https://sdk.51.la/perf/js-sdk-perf.min.js" crossorigin="anonymous"></script>
-        <script>
-            new LingQue.Monitor().init({id:"JlNWsmTFj3QOaARK",sendSuspicious:true});
-        </script>
+        <!-- 统计和性能监控已暂时移除 -->
 
-        <!-- 控制台输出信息由lang.js处理 -->
         <style>
             .watermark {
                 position: absolute;
@@ -52,12 +40,266 @@
                 color: rgba(0,0,0,0.01);
                 font-size: 1px;
             }
+            
+            /* 粒子背景容器 */
+            #particles-js {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+            
+            .intro-section {
+                text-align: left;
+                padding: 40px;
+                background: #f8f9fa;
+                border-radius: 12px;
+                margin-bottom: 30px;
+                border-left: 4px solid #3a95e4;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                position: relative;
+                overflow: hidden;
+            }
+            
+            /* 背景装饰元素 */
+            .intro-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 300px;
+                height: 300px;
+                background: radial-gradient(circle, rgba(58,149,228,0.05) 0%, rgba(58,149,228,0) 70%);
+                border-radius: 50%;
+                transform: translate(50%, -50%);
+                z-index: 0;
+            }
+            
+            .intro-content {
+                position: relative;
+                z-index: 1;
+            }
+            
+            .intro-section h1 {
+                margin: 0 0 10px 0;
+                color: #2c3e50;
+                font-size: 2.5rem;
+                font-weight: 700;
+                letter-spacing: -0.5px;
+            }
+            
+            .intro-section p {
+                margin: 0 0 20px 0;
+                color: #6c757d;
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+            
+            .social-links {
+                display: flex;
+                gap: 15px;
+                margin-top: 25px;
+            }
+            
+            .social-link {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                background: white;
+                color: #3a95e4;
+                font-size: 18px;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            
+            .social-link:hover {
+                background: #3a95e4;
+                color: white;
+                transform: translateY(-3px);
+                box-shadow: 0 4px 12px rgba(58,149,228,0.3);
+            }
+            
+            /* 响应式调整 */
+            @media (max-width: 768px) {
+                .intro-section {
+                    padding: 30px 20px;
+                }
+                
+                .intro-section h1 {
+                    font-size: 2rem;
+                }
+                
+                .intro-section p {
+                    font-size: 1rem;
+                }
+            }
+            
+            .skill-tag {
+                display: inline-block;
+                padding: 8px 16px;
+                background-color: #e9ecef;
+                border-radius: 20px;
+                margin: 5px;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+            
+            .skill-tag:hover {
+                background-color: #3a95e4;
+                color: white;
+                transform: translateY(-2px);
+            }
+            
+            /* 兴趣卡片样式 */
+            .interest-cards {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+            
+            .interest-card {
+                flex: 1 1 300px;
+                max-width: 300px;
+                padding: 20px;
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .interest-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            }
+            
+            .interest-icon {
+                font-size: 48px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            
+            .interest-card h3 {
+                text-align: center;
+                margin: 0 0 10px 0;
+                color: #3a95e4;
+            }
+            
+            .interest-desc {
+                text-align: center;
+                font-size: 14px;
+                color: #666;
+            }
+            
+            .interest-detail {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                margin-top: 10px;
+                font-size: 14px;
+                color: #555;
+            }
+            
+            .interest-detail.show {
+                max-height: 200px;
+            }
+            
+            /* 地图样式 */
+            .map-container {
+                position: relative;
+                height: 300px;
+                background: #f0f0f0;
+                border-radius: 10px;
+                overflow: hidden;
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMjAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0iI2YwZjBmMCIvPjxyZWN0IHg9IjAiIHk9IjIwIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIGZpbGw9IiNmMGYwZjAiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=');
+            }
+            
+            .map-point {
+                position: absolute;
+                width: 15px;
+                height: 15px;
+                background-color: #3a95e4;
+                border-radius: 50%;
+                cursor: pointer;
+                animation: pulse 2s infinite;
+            }
+            
+            @keyframes pulse {
+                0% { transform: scale(1); opacity: 1; }
+                50% { transform: scale(1.5); opacity: 0.7; }
+                100% { transform: scale(1); opacity: 1; }
+            }
+            
+            .city-info {
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                background: rgba(255,255,255,0.9);
+                padding: 10px;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            
+            .city-info.show {
+                opacity: 1;
+            }
+            
+            /* 小测试样式 */
+            .quiz-options {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin: 20px 0;
+            }
+            
+            .quiz-option {
+                flex: 1 1 200px;
+                padding: 12px 20px;
+                background-color: #e9ecef;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: 16px;
+            }
+            
+            .quiz-option:hover {
+                background-color: #3a95e4;
+                color: white;
+                transform: translateY(-2px);
+            }
+            
+            .quiz-result {
+                padding: 10px;
+                background-color: #e8f4fd;
+                border-left: 4px solid #3a95e4;
+                border-radius: 0 5px 5px 0;
+                display: none;
+            }
+            
+            .quiz-result.show {
+                display: block;
+            }
         </style>
     </head>
     <body>
         <!-- 原罪_超凡开发 -->
         <div class="watermark">原罪_超凡开发</div>
 
+        <!-- 粒子背景容器 -->
+        <div id="particles-js"></div>
+        
         <!-- 加载动画覆盖层 -->
         <div id="loadingOverlay" class="loading-overlay">
             <div class="loading-dots">
@@ -68,97 +310,387 @@
             <div class="loading-text">正在加载页面...</div>
         </div>
 
-        <!-- 考试倒计时 -->
-        <div id="examCountdown" class="exam-countdown">
-            <div class="exam-title">距吉林中考</div>
-            <div class="exam-days" id="examDays">加载中...</div>
-        </div>
-
         <!-- 主要内容区域 -->
         <div class="wu-content">
-            <!-- 网站标题块 -->
+            <!-- 介绍区域 -->
+            <div class="wu-block wu-mw intro-section">
+                <div class="intro-content">
+                    <h1 class="wu-h1">溪夏坡Zpcin</h1>
+                    <p class="wu-h3">学生 | 科技爱好者 | 轨道交通迷</p>
+                    
+                    <p>你好！我是溪夏坡Zpcin，欢迎来到我的个人网站。这里展示了我的兴趣爱好、学习经历和生活点滴。</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.bilibili.com/video/av522186335" class="social-link" title="哔哩哔哩">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 3.5L14 5.5V11.5L22 14.5V3.5H20.5Z" fill="currentColor"/><path d="M10 5.5L3.5 3.5V14.5L12 11.5V5.5H10Z" fill="currentColor"/><path d="M10 13.5V19.5L3.5 21.5V10.5L12 7.5V13.5H10Z" fill="currentColor"/><path d="M14 13.5V7.5L20.5 9.5V20.5L12 17.5V13.5H14Z" fill="currentColor"/></svg>
+                        </a>
+                        <a href="mailto:yi3677@qq.com" class="social-link" title="邮箱">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 6H3C1.89543 6 1 6.89543 1 8V16C1 17.1046 1.89543 18 3 18H21C22.1046 18 23 17.1046 23 16V8C23 6.89543 22.1046 6 21 6ZM3 8L12 13L21 8M3 16V10L12 15L21 10V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 兴趣爱好 -->
             <div class="wu-block wu-mw">
-                <div class="wu-box wu-shadow">
-                    <div class="wu-divide" style="height: 90px;"></div>
-                    <b class="wu-h2 no-wrap">欢迎来到</b><br>
-                    <b class="wu-h1 no-wrap">PhosoftWebPages</b>
-                    <h1></h1>
+                <div class="wu-box wu-shadow" style="width: 100%;">
+                    <b class="wu-h2">我的兴趣</b>
+                    <div class="wu-divide" style="height: 10px;"></div>
+                    <div>
+                        <span class="skill-tag">轨道交通</span>
+                        <span class="skill-tag">银行卡</span>
+                        <span class="skill-tag">公交卡</span>
+                        <span class="skill-tag">纸币收藏</span>
+                        <span class="skill-tag">计算机技术</span>
+                        <span class="skill-tag">旅行</span>
+                    </div>
+                    <div class="wu-divide" style="height: 15px;"></div>
+                    <p>我对轨道交通有着浓厚的兴趣，喜欢收集各种交通卡和银行卡。2019年我注册了B站账号，这对我影响很大，让我接触到了更多知识。我喜欢加入各种QQ群进行交流，但现实中不太爱说话。我不太喜欢短视频和打打杀杀的游戏。</p>
                 </div>
             </div>
 
-            <!-- 视频展示区块 -->
-            <div class="wu-block" id="video" style="width: calc(65% - 23px);">
-                <div class="wu-box wu-shadow">
-                    <b class="wu-h2 no-wrap">下面是 PhosoftWeb Line 宣传片</b>
+            <!-- 学习经历 -->
+            <div class="wu-block wu-mw">
+                <div class="wu-box wu-shadow" style="width: 100%;">
+                    <b class="wu-h2">学习经历</b>
                     <div class="wu-divide" style="height: 10px;"></div>
-                    <video width="100%" src="./video/video.mp4" controls></video>
-                    <a href="https://www.bilibili.com/video/av522186335" class="bilibili-link">
-                        <img src="./img/bilibili.svg" alt="bilibili logo">
-                        <span id="bilibili-text">进入bilibili，一起交流！</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 公告区块 -->
-            <div class="wu-block" style="width: calc(35% - 23px);" id="notice">
-                <div class="wu-box wu-shadow">
-                    <div class="wu-divide" style="height: 40px;"></div>
-                    <b class="wu-h1">公告</b>
-                    <p class="wu-h3">Notice</p>
-                    <div class="wu-divide" style="height: 10px;"></div>
-                    <div class="wu-block wu-mw wu-not">
-                        <p>QwQ~</p>
-                        <p>这是公告</p>
+                    <div class="project-item">
+                        <h3>前郭尔罗斯蒙古族自治县第三中学</h3>
+                        <p>目前就读于此，努力学习中。</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>小学经历</h3>
+                        <p>前郭 钻井（两天）—&gt;五小（一年）——&gt;哈达</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 友情链接区块 -->
-            <div class="wu-block wu-mw" id="friendLinks">
-                <div class="wu-box wu-shadow">
-                    <div class="wu-divide" style="height: 20px;"></div>
-                    <b class="wu-h2">友情链接</b>
-                    <div class="wu-notice wu-mw">以下链接均有可能挂掉，请谅解！</div>
-                    <div class="wu-links">
-                        <a href="https://about.phosoft.cn/">PhosoftStudio 官方网站</a> <a href="https://suulnnka.github.io/BullshitGenerator/index.html">狗屁不通文章生成器</a><a href="https://hitokoto.cn/">Hitokoto - 一言</a><a href="https://github.com/soimort/you-get/">视频解析下载工具</a><a href="https://aurorast.cn/">AuroraStudio</a><a href="https://chenzr.xn--0tr.top/">ChenZR的小破站</a><a href="https://damon233.js.org/">What_Damon的窝</a><a href="https://psoft.eu.org/about.html">Zpcin个人网站</a><a href="https://www.imfmkli.top/">鸽子的屑网站</a><a href="https://gdt.im/">生草開發組</a><a href="https://theme.estu.site/">生草主题官方博客</a><a href="https://www.cxl2020mc.top">陈鑫磊的博客</a><a href="https://github.com/awesome-iwb/awesome-iwb">awesome-iwb</a><a href="https://sponsor.psoft.eu.org/">赞助我们</a><a href="./dsp.html">Phosoft搜索页</a><a href="https://forum.phosoft.cn/">Phosoft论坛页</a><a href="https://game.phosoft.cn/">Phosoft游戏页-扫草</a><a href="https://ugly-standby.666forum.com/">丑备用论坛页</a>
+            <!-- 个人特点 -->
+            <div class="wu-block wu-mw">
+                <div class="wu-box wu-shadow" style="width: 100%;">
+                    <b class="wu-h2">个人特点</b>
+                    <div class="wu-divide" style="height: 10px;"></div>
+                    <ul style="padding-left: 20px;">
+                        <li>我闻到烟味身体会很难受，脑袋疼，全身痒，忍不了，没法学习。</li>
+                        <li>在学习方面，我认为自己的表现比大部分人好。</li>
+                        <li>我喜欢通过网络获取知识，特别是通过B站和各种技术社区。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 兴趣互动卡片 -->
+            <div class="wu-block wu-mw">
+                <div class="wu-box wu-shadow" style="width: 100%;">
+                    <b class="wu-h2">兴趣探索</b>
+                    <div class="wu-divide" style="height: 10px;"></div>
+                    <div class="interest-cards">
+                        <div class="interest-card" onclick="toggleInterest('railway')">
+                            <div class="interest-icon">🚇</div>
+                            <h3>轨道交通</h3>
+                            <p class="interest-desc">点击了解更多</p>
+                            <div class="interest-detail" id="railway-detail">
+                                <p>我对轨道交通有着浓厚的兴趣，尤其是地铁系统。去过香港和上海的地铁后，被其发达的网络深深吸引。我喜欢收集各地的交通卡，研究不同城市的地铁线路图和运营模式。</p>
+                            </div>
+                        </div>
+                        <div class="interest-card" onclick="toggleInterest('cards')">
+                            <div class="interest-icon">💳</div>
+                            <h3>卡片收藏</h3>
+                            <p class="interest-desc">点击了解更多</p>
+                            <div class="interest-detail" id="cards-detail">
+                                <p>我喜欢收集各种银行卡和公交卡。每种卡片都有独特的设计和背后的故事，它们不仅是支付工具，更是一种文化载体。我特别欣赏一些设计精美的限量版卡片。</p>
+                            </div>
+                        </div>
+                        <div class="interest-card" onclick="toggleInterest('travel')">
+                            <div class="interest-icon">✈️</div>
+                            <h3>旅行</h3>
+                            <p class="interest-desc">点击了解更多</p>
+                            <div class="interest-detail" id="travel-detail">
+                                <p>虽然生活在小县城，但我有幸去过朝鲜、俄罗斯、香港和上海等地。旅行让我开阔了眼界，了解了不同的文化和生活方式。每一次旅行都给我带来新的思考和体验。</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 互动地图 -->
+            <div class="wu-block wu-mw">
+                <div class="wu-box wu-shadow" style="width: 100%;">
+                    <b class="wu-h2">我的足迹</b>
+                    <div class="wu-divide" style="height: 10px;"></div>
+                    <div id="map-container" class="map-container">
+                        <div class="map-point" data-city="松原" style="left: 43%; top: 38%;" onmouseover="showCityInfo('松原')"></div>
+                        <div class="map-point" data-city="上海" style="left: 58%; top: 48%;" onmouseover="showCityInfo('上海')"></div>
+                        <div class="map-point" data-city="香港" style="left: 68%; top: 70%;" onmouseover="showCityInfo('香港')"></div>
+                        <div class="map-point" data-city="朝鲜" style="left: 72%; top: 35%;" onmouseover="showCityInfo('朝鲜')"></div>
+                        <div class="map-point" data-city="俄罗斯" style="left: 30%; top: 15%;" onmouseover="showCityInfo('俄罗斯')"></div>
+                        <div id="city-info" class="city-info"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 互动小测试 -->
+            <div class="wu-block wu-mw">
+                <div class="wu-box wu-shadow" style="width: 100%;">
+                    <b class="wu-h2">猜一猜</b>
+                    <div class="wu-divide" style="height: 10px;"></div>
+                    <p id="quiz-question">加载问题中...</p>
+                    <div class="quiz-options" id="quiz-options"></div>
+                    <p id="quiz-result" class="quiz-result"></p>
+                    <p style="margin-top: 10px; font-size: 12px; color: #666; text-align: right;">刷新页面可获取新问题</p>
+                </div>
+            </div>
+
+            <!-- 联系方式 -->
+            <div class="wu-block wu-mw" style="opacity: 1; transform: translateY(0);">
+                <div class="wu-box wu-shadow" style="width: 100%;">
+                    <b class="wu-h2">联系方式</b>
+                    <div class="wu-divide" style="height: 10px;"></div>
+                    <div class="contact-methods">
+                        <p>邮箱：yi3677@qq.com</p>
+                        <p>欢迎通过以上方式联系我，分享你的想法和建议！</p>
+                    </div>
+                </div>
+            </div>
             <!-- 页脚区块 -->
-            <div class="wu-block wu-mw">
-                <div class="wu-box wu-shadow">
-                    <p class="no-wrap"><a href="./about.html">&copy;<script type="text/javascript">
+            <div id="main-footer" class="wu-block wu-mw" style="
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-left: 20px;
+                margin-right: auto;
+                text-align: left;
+                opacity: 1 !important;
+                visibility: visible !important;
+                display: block !important;
+                position: relative;
+                z-index: 100;
+                background-color: #fff !important;
+                padding: 20px !important;
+                border-radius: 12px !important;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1) !important;
+                border: 1px solid rgba(0, 0, 0, 0.03) !important;
+                transform: none !important;
+                transition: none !important;
+            ">
+                    <p><a href="./about.html">&copy;<script type="text/javascript">
     document.write(new Date().getFullYear().toString());
-</script> - 张一&amp;Phosoft 版权所有</a></p>
-                    <p class="no-wrap">此网站由 <a href="https://vercel.com/">Vercel</a>&nbsp;强力驱动</p>
-                    <a href="https://111111.eu.org/" style="text-decoration: none; color: rgb(20, 20, 20);"><img src="https://111111.eu.org/assets/img/ICS.svg" style="float: left; height: 23px; margin-right: 5px;" alt="ICS"><p class="no-wrap">认ISC-20220807-01</p></a>
-                </div>
+</script> - 张一&Phosoft 版权所有</a></p>
+                    <p>此网站由 <a href="https://vercel.com/" style="color: #333; text-decoration: none;">Vercel</a>&nbsp;强力驱动</p>
+                    <div style="margin-top: 15px; display: flex; align-items: center; justify-content: flex-start;">
+                        <img src="./img/A-logo.svg" alt="ICS认证" style="height: 24px; margin-right: 8px;">
+                        <span style="color: #6c757d; font-size: 14px;">认ISC-20220807-01</span>
+                    </div>
             </div>
         </div>
 
         <!-- 响应式布局脚本 -->
         <script>
-           function sizeEvent(){
-               let video = document.getElementById("video");
-               let notice = document.getElementById("notice");
-               if(window.innerWidth < 800){
-                   video.style.width = "100%";
-                   notice.style.width = "100%";
-               }
-               else if(window.innerWidth >= 800){
-                   video.style.width = "calc(65% - 23px)";
-                   notice.style.width = "calc(35% - 23px)";
-               }
-           }
+           // 移除了原有的resize事件，因为新布局是完全响应式的
            function init(){
-               sizeEvent();
+               // 页面初始化代码
+               setTimeout(function() {
+                   document.getElementById('loadingOverlay').style.display = 'none';
+               }, 1000);
+               
+               // 初始化简约粒子效果（已简化）
+               if (typeof particlesJS !== 'undefined') {
+                   particlesJS('particles-js', {
+                       'particles': {
+                           'number': {
+                               'value': 20,  // 大幅减少粒子数量
+                               'density': {
+                                   'enable': true,
+                                   'value_area': 1000
+                               }
+                           },
+                           'color': {
+                               'value': '#3a95e4'
+                           },
+                           'shape': {
+                               'type': 'circle',
+                           },
+                           'opacity': {
+                               'value': 0.2,  // 降低透明度
+                               'random': false,
+                               'anim': {
+                                   'enable': false  // 禁用透明度动画
+                               }
+                           },
+                           'size': {
+                               'value': 2,
+                               'random': false,
+                               'anim': {
+                                   'enable': false  // 禁用大小动画
+                               }
+                           },
+                           'line_linked': {
+                               'enable': true,
+                               'distance': 200,
+                               'color': '#3a95e4',
+                               'opacity': 0.1,  // 降低连接线透明度
+                               'width': 1
+                           },
+                           'move': {
+                               'enable': true,
+                               'speed': 0.5,  // 降低移动速度
+                               'direction': 'none',
+                               'random': true,
+                               'straight': false,
+                               'out_mode': 'out',
+                               'bounce': false,
+                               'attract': {
+                                   'enable': false,
+                                   'rotateX': 600,
+                                   'rotateY': 1200
+                               }
+                           }
+                       },
+                       'interactivity': {
+                           'detect_on': 'canvas',
+                           'events': {
+                               'onhover': {
+                                'enable': false
+                            },
+                            'onclick': {
+                                'enable': false
+                            },
+                            'resize': true
+                        },
+                        'modes': {}
+                       },
+                       'retina_detect': true
+                   });
+               }
            }
            init();
-           window.addEventListener("resize", sizeEvent);
+            
+            // 兴趣卡片交互函数
+            function toggleInterest(id) {
+                const detail = document.getElementById(id + '-detail');
+                detail.classList.toggle('show');
+            }
+            
+            // 地图城市信息显示
+            function showCityInfo(city) {
+                const cityInfo = document.getElementById('city-info');
+                
+                const cityDescriptions = {
+                    '松原': '我的家乡，位于吉林省，这里有美丽的查干湖和热情好客的人们。',
+                    '上海': '中国的经济中心，我喜欢这里发达的地铁系统和现代化的城市景观。',
+                    '香港': '特别行政区，我对这里的八达通卡和高效率的公共交通印象深刻。',
+                    '朝鲜': '邻国，有着独特的文化和历史，是一次难忘的旅行体验。',
+                    '俄罗斯': '世界上面积最大的国家，我欣赏其丰富的文化遗产和自然景观。'
+                };
+                
+                cityInfo.textContent = city + ': ' + cityDescriptions[city];
+                cityInfo.classList.add('show');
+                
+                // 3秒后自动隐藏
+                setTimeout(() => {
+                    cityInfo.classList.remove('show');
+                }, 3000);
+            }
+            
+            // 互动小测试问题库
+            const quizQuestions = [
+                {
+                    question: "你知道我最喜欢的交通卡是哪个城市的吗？",
+                    options: [
+                        {text: "香港八达通", isCorrect: true, message: "正确！我特别喜欢香港的八达通卡，设计简洁实用。"},
+                        {text: "上海交通卡", isCorrect: false, message: "不错的选择，但不是我的最爱。"},
+                        {text: "北京一卡通", isCorrect: false, message: "这也是个很好的选择，但不是我最喜欢的。"}
+                    ]
+                },
+                {
+                    question: "我在2019年注册了哪个视频平台的账号？",
+                    options: [
+                        {text: "爱奇艺", isCorrect: false, message: "不是哦，我不太常用这个平台。"},
+                        {text: "B站", isCorrect: true, message: "正确！B站对我影响很大，让我接触到了更多知识。"},
+                        {text: "优酷", isCorrect: false, message: "不是哦，我不常用这个平台。"},
+                        {text: "腾讯视频", isCorrect: false, message: "不是哦，我很少看这个平台的内容。"}
+                    ]
+                },
+                {
+                    question: "以下哪个不是我的兴趣爱好？",
+                    options: [
+                        {text: "轨道交通", isCorrect: false, message: "这是我的兴趣爱好之一！"},
+                        {text: "银行卡收藏", isCorrect: false, message: "这是我的兴趣爱好之一！"},
+                        {text: "短视频", isCorrect: true, message: "正确！我讨厌短视频和打打杀杀的游戏。"},
+                        {text: "纸币收藏", isCorrect: false, message: "这是我的兴趣爱好之一！"}
+                    ]
+                },
+                {
+                    question: "我去过以下哪个国家或地区？",
+                    options: [
+                        {text: "美国", isCorrect: false, message: "还没去过呢，希望将来有机会。"},
+                        {text: "朝鲜", isCorrect: true, message: "正确！我去过朝鲜、俄罗斯、香港和上海等地。"},
+                        {text: "日本", isCorrect: false, message: "还没去过呢，希望将来有机会。"},
+                        {text: "欧洲", isCorrect: false, message: "还没去过呢，希望将来有机会。"}
+                    ]
+                },
+                {
+                    question: "我来自哪个省份？",
+                    options: [
+                        {text: "吉林省", isCorrect: true, message: "正确！我是吉林省松原市前郭尔罗斯蒙古族自治县人。"},
+                        {text: "黑龙江省", isCorrect: false, message: "不是，但离我的家乡很近。"},
+                        {text: "辽宁省", isCorrect: false, message: "不是，但离我的家乡不远。"},
+                        {text: "内蒙古自治区", isCorrect: false, message: "不是，但我的家乡有很多蒙古族同胞。"}
+                    ]
+                }
+            ];
+            
+            // 随机选择一个问题并显示
+            function loadRandomQuiz() {
+                const randomIndex = Math.floor(Math.random() * quizQuestions.length);
+                const selectedQuestion = quizQuestions[randomIndex];
+                
+                // 显示问题
+                document.getElementById('quiz-question').textContent = selectedQuestion.question;
+                
+                // 清空并重新生成选项按钮
+                const optionsContainer = document.getElementById('quiz-options');
+                optionsContainer.innerHTML = '';
+                
+                // 打乱选项顺序
+                const shuffledOptions = [...selectedQuestion.options].sort(() => Math.random() - 0.5);
+                
+                shuffledOptions.forEach(option => {
+                    const button = document.createElement('button');
+                    button.className = 'quiz-option';
+                    button.textContent = option.text;
+                    button.onclick = () => checkAnswer(button, option.message);
+                    optionsContainer.appendChild(button);
+                });
+                
+                // 重置结果显示
+                const result = document.getElementById('quiz-result');
+                result.textContent = '';
+                result.classList.remove('show');
+            }
+            
+            // 页面加载时加载随机问题
+            loadRandomQuiz();
+            
+            // 小测试答案检查
+            function checkAnswer(button, message) {
+                const result = document.getElementById('quiz-result');
+                result.textContent = message;
+                result.classList.add('show');
+                
+                // 重置所有按钮样式
+                const options = document.querySelectorAll('.quiz-option');
+                options.forEach(opt => {
+                    opt.style.backgroundColor = '#e9ecef';
+                    opt.style.color = '#000';
+                });
+                
+                // 设置选中按钮样式
+                button.style.backgroundColor = '#3a95e4';
+                button.style.color = 'white';
+            }
         </script>
 
-        <!-- 浏览器兼容性检测与重定向 - 使用更安全的方法检测浏览器 -->
+        <!-- 浏览器兼容性检测与重定向 -->
         <script>
             (function() {
                 // 初始化检测结果变量
@@ -204,37 +736,22 @@
                     }
                 } catch(e) {}
 
-                // 检测旧版Opera - 避免直接引用opera和opr
+                // 检测旧版Safari - 避免直接引用 safari
                 try {
-                    isOldBrowser = isOldBrowser ||
-                        (navigator.userAgent.indexOf('Opera') !== -1) ||
-                        (navigator.userAgent.indexOf('OPR/') !== -1);
-                } catch(e) {}
-
-                // 检测旧版Safari - 避免直接引用safari
-                try {
-                    if (navigator.userAgent.indexOf('Safari/') !== -1 &&
-                        navigator.userAgent.indexOf('Chrome/') === -1 &&
-                        navigator.userAgent.indexOf('Chromium/') === -1) {
+                    if (navigator.userAgent.indexOf('Safari/') !== -1 && 
+                        navigator.userAgent.indexOf('Chrome/') === -1) {
                         match = navigator.userAgent.match(/Version\/(\d+)/);
-                        if (match && parseInt(match[1]) < 10) {
+                        if (match && parseInt(match[1]) < 12) {
                             isOldBrowser = true;
                         }
                     }
                 } catch(e) {}
 
-                // 如果检测到旧浏览器，则重定向
+                // 如果检测到旧浏览器，重定向到旧版浏览器提示页面
                 if (isOldBrowser) {
-                    window.location.href = "/IE303.html";
+                    window.location.href = './IE303.html';
                 }
             })();
         </script>
-
-        <!-- IE浏览器重定向（保留作为后备方案） -->
-        <!--[if IE]>
-        <script>
-            location.replace("/IE303.html");
-        </script>
-        <![endif]-->
     </body>
 </html>
