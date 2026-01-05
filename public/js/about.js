@@ -108,8 +108,8 @@
         }
 
         // 打开模态框
-        btn.onclick = function(e) {
-            e.preventDefault();
+        function openModal(e) {
+            if (e) e.preventDefault();
             modal.classList.add('show');
             applyAboutLang(); // 应用语言
             // 重新触发当前激活项的动画
@@ -117,6 +117,14 @@
             if (activeContent) {
                 playTextAnimations(activeContent);
             }
+        }
+
+        btn.onclick = openModal;
+
+        // 绑定 Zpcin个人网站 链接
+        const zpcinLink = document.getElementById('zpcinLink');
+        if (zpcinLink) {
+            zpcinLink.onclick = openModal;
         }
 
         // 关闭模态框
