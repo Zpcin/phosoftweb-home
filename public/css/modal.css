@@ -172,6 +172,10 @@
     box-shadow: none;
 }
 
+.close-modal-btn-mobile {
+    display: none;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -185,13 +189,14 @@
     
     .about-sidebar {
         width: 100%;
-        height: 120px; /* Show a few items */
+        height: 60px; /* Show a few items */
         border-right: none;
         border-bottom: 1px solid #eee;
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
         padding: 10px;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
     
     .about-sidebar .info-section {
@@ -203,10 +208,53 @@
         justify-content: center;
         text-align: center;
         height: 100%;
+        font-size: 12px; /* Smaller font for mobile */
+        padding: 5px;
+        white-space: nowrap; /* Prevent text wrapping */
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .modal-content {
         width: 95%;
         height: 90vh;
+        max-height: 90vh; /* Ensure it doesn't exceed viewport */
+    }
+
+    .about-main-content {
+        padding: 15px; /* Reduce padding on mobile */
+    }
+
+    .info-title {
+        font-size: 20px; /* Smaller title on mobile */
+    }
+
+    .info-content {
+        font-size: 14px; /* Smaller content on mobile */
+    }
+
+    /* 移动端关闭按钮优化 */
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 32px;
+        padding: 10px; /* 增大点击区域 */
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        color: #333;
+    }
+
+    /* 移动端底部关闭按钮 */
+    .close-modal-btn-mobile {
+        display: block !important;
+        background-color: #f8f9fa;
+        color: #666;
+        border: 1px solid #ddd;
     }
 }

@@ -123,6 +123,14 @@
             modal.classList.remove('show');
         }
 
+        // 移动端底部关闭按钮
+        const mobileCloseBtn = document.getElementById('modal-close-btn-mobile');
+        if (mobileCloseBtn) {
+            mobileCloseBtn.onclick = function() {
+                modal.classList.remove('show');
+            }
+        }
+
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.classList.remove('show');
@@ -155,6 +163,37 @@
             }
         });
 
+        // 触摸滑动支持 (移动端)
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const minSwipeDistance = 50;
+
+        mainContent.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: false});
+
+        mainContent.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe(e);
+        }, {passive: false});
+
+        function handleSwipe(e) {
+            const swipeDistance = touchEndX - touchStartX;
+            if (Math.abs(swipeDistance) < minSwipeDistance) return;
+
+            // 阻止默认行为 (如页面滚动) 如果是水平滑动
+            // 注意：这里可能需要更复杂的逻辑来判断是垂直滚动还是水平滑动
+            // 简单起见，如果检测到滑动，我们尝试导航
+
+            if (swipeDistance > 0) {
+                // 右滑 -> 上一条 (Previous)
+                navigateTo('prev');
+            } else {
+                // 左滑 -> 下一条 (Next)
+                navigateTo('next');
+            }
+        }
+
         isInitialized = true;
     }
 
@@ -174,6 +213,17 @@
 
         const nextBtn = document.getElementById('modal-next-btn');
         if (nextBtn) nextBtn.textContent = langData.next;
+
+        const closeBtnMobile = document.getElementById('modal-close-btn-mobile');
+        if (closeBtnMobile) {
+            // 简单的关闭翻译，或者直接用 "Close" / "关闭"
+            // 这里我们可以扩展 ABOUT_LANG_MAP 或者简单处理
+            const closeText = {
+                'zh-cn': '关闭', 'zh-hk': '關閉', 'zh-tw': '關閉',
+                'en': 'Close', 'en-sg': 'Close lah', 'ja': '閉じる', 'wenyan': '閉'
+            };
+            closeBtnMobile.textContent = closeText[lang] || '关闭';
+        }
 
         // 更新内容翻译
         if (typeof ABOUT_TRANSLATIONS !== 'undefined') {
@@ -262,7 +312,7 @@
         navItem.scrollIntoView({
             behavior: "smooth",
             block: "nearest",
-            inline: "nearest"
+            inline: "center" // 移动端横向滚动时居中显示
         });
     }
 
