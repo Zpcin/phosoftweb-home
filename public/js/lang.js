@@ -20,7 +20,7 @@ const PHOSOFTWEB_LANG_MAP = {
       'forum': 'Phosoft论坛页',
       'game': 'Phosoft游戏页-扫草',
       'ugly': '丑备用论坛页',
-      // 添加个人网站链接翻译
+      // 个人网站链接翻译
       'official': 'PhosoftStudio 官方网站',
       'chensite': 'ChenZR的小破站',
       'damonsite': 'What_Damon的窝',
@@ -84,7 +84,7 @@ ____  _                      __ _
       'forum': 'Phosoft論壇頁',
       'game': 'Phosoft遊戲頁-掃草',
       'ugly': '醜備用論壇頁',
-      // 添加个人网站链接翻译
+      // 个人网站链接翻译
       'official': 'PhosoftStudio 官方網站',
       'chensite': 'ChenZR嘅小破站',
       'damonsite': 'What_Damon嘅窩',
@@ -148,7 +148,7 @@ ____  _                      __ _
       'forum': 'Phosoft論壇頁',
       'game': 'Phosoft遊戲頁-掃草',
       'ugly': '備用論壇頁',
-      // 添加个人网站链接翻译
+      // 个人网站链接翻译
       'official': 'PhosoftStudio 官方網站',
       'chensite': 'ChenZR的小破站',
       'damonsite': 'What_Damon的窩',
@@ -212,7 +212,7 @@ ____  _                      __ _
       'forum': 'Phosoft Forum',
       'game': 'Phosoft Game - Scan Grass',
       'ugly': 'Ugly Backup Forum',
-      // 添加个人网站链接翻译
+      // 个人网站链接翻译
       'official': 'PhosoftStudio Official Website',
       'chensite': "ChenZR's Little Site",
       'damonsite': "What_Damon's Home",
@@ -276,7 +276,7 @@ ____  _                      __ _
       'forum': 'Phosoft Forum',
       'game': 'Phosoft Game - Scan Grass',
       'ugly': 'Backup Forum Page lah',
-      // 添加个人网站链接翻译
+      // 个人网站链接翻译
       'official': 'PhosoftStudio Official Website lah',
       'chensite': "ChenZR's Small Site one",
       'damonsite': "What_Damon's Crib",
@@ -340,7 +340,7 @@ ____  _                      __ _
       'forum': 'フォソフトフォーラム',
       'game': 'フォソフトゲーム-草スキャン',
       'ugly': 'バックアップフォーラム',
-      // 添加个人网站链接翻译
+      // 个人网站链接翻译
       'official': 'フォソフトスタジオ公式サイト',
       'chensite': 'ChenZRの小さなサイト',
       'damonsite': 'What_Damonの巣',
@@ -409,7 +409,7 @@ ____  _                      __ _
       'forum': '鳳梭論壇',
       'game': '鳳梭遊戲-掃草',
       'ugly': '備用論壇',
-      // 添加个人网站链接翻译
+      // 个人网站链接翻译
       'official': '鳳梭軟閣正室',
       'chensite': '臣贈儒之陋室',
       'damonsite': '何大夢之居所',
@@ -467,7 +467,7 @@ ____  _                      __ _
       'forum': 'Phosoft lùntán yè',
       'game': 'Phosoft yóuxì yè - Sǎocǎo',
       'ugly': 'Chǒu bèiyòng lùntán yè',
-      // 添加个人网站链接翻译
+      // 个人网站链接翻译
       'official': 'PhosoftStudio guānfāng wǎngzhàn',
       'chensite': 'ChenZR de xiǎopò zhàn',
       'damonsite': 'What_Damon de wō',
@@ -531,7 +531,7 @@ ____  _                      __ _
       'forum': 'Phosoft ㄌㄨㄣˊ ㄊㄢˊ ㄧㄝˋ',
       'game': 'Phosoft ㄧㄡˊ ㄒㄧˋ ㄧㄝˋ - ㄙㄠˇ ㄘㄠˇ',
       'ugly': 'ㄔㄡˇ ㄅㄟˋ ㄩㄥˋ ㄌㄨㄣˊ ㄊㄢˊ ㄧㄝˋ',
-      // 添加个人网站链接翻译
+      // 个人网站链接翻译
       'official': 'PhosoftStudio ㄍㄨㄢ ㄈㄤ ㄨㄤˇ ㄓㄢˋ',
       'chensite': 'ChenZR ㄉㄜ˙ ㄒㄧㄠˇ ㄆㄛˋ ㄓㄢˋ',
       'damonsite': 'What_Damon ㄉㄜ˙ ㄨㄛ',
@@ -869,7 +869,7 @@ function applyPhosoftwebLang() {
         } else if (href.includes('awesome-iwb')) {
           link.textContent = map.linkTexts.awesome;
         }
-        // 添加个人网站链接翻译
+        // 个人网站链接翻译
         else if (href.includes('about.phosoft.cn')) {
           link.textContent = map.linkTexts.official;
         } else if (href.includes('chenzr')) {
@@ -939,7 +939,7 @@ window.setLang = function(lang) {
   applyPhosoftwebLang();
 };
 
-// 额外添加直接调用，以防DOMContentLoaded已经触发过
+// 直接调用，以防DOMContentLoaded已经触发过
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
   setTimeout(applyGeoIpLang, 10);
 }
