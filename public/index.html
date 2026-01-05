@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="./css/lang-responsive.css">
         <link rel="stylesheet" href="./css/countdown.css">
         <link rel="stylesheet" href="./css/loading.css">
+        <link rel="stylesheet" href="./css/modal.css">
         <link rel="icon" href="./img/A-logo.svg">
         <!-- 老图标
         <link rel="icon" href="https://gitlab.com/uploads/-/system/group/avatar/15493510/QQ%E5%9B%BE%E7%89%8720220117233528.jpg?width=512">
@@ -25,6 +26,8 @@
         <script src="./js/grayscale.js"></script>
         <script src="./js/lang.js"></script>
         <script src="./js/countdown.js" defer></script>
+        <script src="./js/about-lang.js" defer></script>
+        <script src="./js/about.js" defer></script>
 
         <!-- 第三方服务集成 -->
         <script src="https://code.tidio.co/bowhirwyldd4f4z8ebab0dsupl375oim.js" async></script>
@@ -112,7 +115,7 @@
             <!-- 页脚区块 -->
             <div class="wu-block wu-mw">
                 <div class="wu-box wu-shadow">
-                    <p class="no-wrap"><a href="./about.html" data-i18n-html="footer"></a></p>
+                    <p class="no-wrap"><a href="javascript:void(0)" id="aboutLink" data-i18n-html="footer"></a></p>
                     <p class="no-wrap" data-i18n-html="powered"></p>
                     <a href="https://111111.eu.org/" style="text-decoration: none; color: rgb(20, 20, 20);"><img src="https://111111.eu.org/assets/img/ICS.svg" style="float: left; height: 23px; margin-right: 5px;" alt="ICS"><p class="no-wrap">认ISC-20220807-01</p></a>
                 </div>
@@ -139,6 +142,74 @@
            init();
            window.addEventListener("resize", sizeEvent);
         </script>
+
+        <!-- About Modal -->
+        <div id="aboutModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <div class="about-container">
+                    <div id="aboutSidebar" class="about-sidebar"></div>
+                    <div id="aboutMainContent" class="about-main-content">
+                        <!-- Content Source (Hidden initially, items will be shown one by one) -->
+                        <div id="aboutContentSource">
+                            <div class="info-section">
+                                <div class="info-title">网站介绍</div>
+                                <div class="info-content">这是一个个人网站，弄着玩的，基于人脉和AI编写<br></div>
+                            </div>
+                        
+                            <div class="info-section">
+                                <div class="info-title">我的名字</div>
+                                <div class="info-content">我是溪夏坡Zpcin，这个名字中"Zpcin"读作 /ˈzɪpsɪn/，<br>                源于我姓氏首字母(Z)加PC(个人电脑)再加in，<br>                溪夏坡我妈开玩笑是农村西下坡的地方是新加坡，<br>                然后有我想要的感觉。<br>                <br></div>
+                            </div>
+                        
+                            <div class="info-section">
+                                <div class="info-title">所在地</div>
+                                <div class="info-content">我是吉林省松原市前郭尔罗斯<br>                蒙古族自治县人，一个小县城。<br></div>
+                            </div>
+                        
+                            <div class="info-section">
+                                <div class="info-title">我的学校</div>
+                                <div class="info-content">现在在前郭尔罗斯蒙古族自治县第三中学，<br>                小学：前郭 钻井（两天）—&gt;五小（一年）——&gt;哈达<br><br>               <br></div>
+                            </div>
+                        
+                            <div class="info-section">
+                                <div class="info-title">我的身体</div>
+                                <div class="info-content">我闻到yān身体会很难受，脑袋疼，全身痒，<br>忍不了，没法学习，没有办法。<br></div>
+                            </div>
+                        
+                            <div class="info-section">
+                                <div class="info-title">我的学习</div>
+                                <div class="info-content">没办法的事情，比大部分人好<br></div>
+                            </div>
+                        
+                            <div class="info-section">
+                                <div class="info-title">旅游经历</div>
+                                <div class="info-content">尽管生活在小县城，但我去过不少地方，<br>                包括朝鲜、俄罗斯、香港和上海等地。<br>                香港和上海是初中时期妈妈为鼓励我而安排的<br>                香港印象最深我喜欢刷卡和地铁<br><br><br></div>
+                            </div>
+                        
+                            <div class="info-section">
+                                <div class="info-title">我的兴趣</div>
+                                <div class="info-content">我喜欢轨道交通，银行卡，公交卡，其他地区纸币<br><br><br></div>
+                            </div>
+                        
+                            <div class="info-section">
+                                <div class="info-title">我和网络</div>
+                                <div class="info-content">2019年我注册了B站账号，这对我影响很大，让我接触到了更多知识，<br>                然后我加了很多QQ群现实中没人说话，<br>                讨厌短视频和打打杀杀的游戏<br></div>
+                            </div>
+                        
+                            <div class="info-section">
+                                <div class="info-title">联系方式</div>
+                                <div class="info-content">如果您有任何问题或建议，可以通过以下方式联系我：<br><br>                邮箱：yi3677@qq.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-nav-buttons">
+                    <button class="modal-btn btn-disabled" id="modal-prev-btn">上一条</button>
+                    <button class="modal-btn" id="modal-next-btn">下一条</button>
+                </div>
+            </div>
+        </div>
 
         <!-- 浏览器兼容性检测与重定向 - 使用更安全的方法检测浏览器 -->
         <script>

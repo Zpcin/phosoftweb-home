@@ -1,141 +1,244 @@
-// about页面多语言支持
-const ABOUT_LANG_MAP = {
-  'zh-cn': {
-    about: '关于',
-    prev: '上一条',
-    next: '下一条',
-    pageTitle: '关于 - Zpcin'
-  },
-  'zh-hk': {
-    about: '關於',
-    prev: '上一條',
-    next: '下一條',
-    pageTitle: '關於 - Zpcin'
-  },
-  'zh-tw': {
-    about: '關於',
-    prev: '上一則',
-    next: '下一則',
-    pageTitle: '關於 - Zpcin'
-  },
-  'en': {
-    about: 'About',
-    prev: 'Previous',
-    next: 'Next',
-    pageTitle: 'About - Zpcin'
-  },
-  'en-sg': {
-    about: 'About',
-    prev: 'Previous one',
-    next: 'Next one lah',
-    pageTitle: 'About - Zpcin ah'
-  },
-  'ja': {
-    about: 'について',
-    prev: '前へ',
-    next: '次へ',
-    pageTitle: 'Zpcinについて'
-  },
-  'wenyan': {
-    about: '論',
-    prev: '前章',
-    next: '後章',
-    pageTitle: '論Zpcin'
-  }
-};
+// About Modal Logic
+(function() {
+    // 多语言配置
+    const ABOUT_LANG_MAP = {
+        'zh-cn': { about: '关于', prev: '上一条', next: '下一条', pageTitle: '关于 - Zpcin' },
+        'zh-hk': { about: '關於', prev: '上一條', next: '下一條', pageTitle: '關於 - Zpcin' },
+        'zh-tw': { about: '關於', prev: '上一則', next: '下一則', pageTitle: '關於 - Zpcin' },
+        'en': { about: 'About', prev: 'Previous', next: 'Next', pageTitle: 'About - Zpcin' },
+        'en-sg': { about: 'About', prev: 'Previous one', next: 'Next one lah', pageTitle: 'About - Zpcin ah' },
+        'ja': { about: 'について', prev: '前へ', next: '次へ', pageTitle: 'Zpcinについて' },
+        'wenyan': { about: '論', prev: '前章', next: '後章', pageTitle: '論Zpcin' }
+    };
 
-// 应用about页面的多语言设置
-function applyAboutLang() {
-  // 获取当前语言
-  const lang = window._forceLang || 'zh-cn';
-  const langData = ABOUT_LANG_MAP[lang] || ABOUT_LANG_MAP['zh-cn'];
+    let isInitialized = false;
 
-  // 设置页面标题
-  document.title = langData.pageTitle;
+    // 初始化模态框
+    function initAboutModal() {
+        if (isInitialized) return;
 
-  // 设置导航按钮文字
-  const prevBtn = document.getElementById('prev-btn');
-  if (prevBtn) prevBtn.textContent = langData.prev;
+        const modal = document.getElementById('aboutModal');
+        const btn = document.getElementById('aboutLink');
+        const span = document.getElementsByClassName('close-btn')[0];
+        const contentSource = document.getElementById('aboutContentSource');
+        const mainContent = document.getElementById('aboutMainContent');
+        const sidebar = document.getElementById('aboutSidebar');
 
-  const nextBtn = document.getElementById('next-btn');
-  if (nextBtn) nextBtn.textContent = langData.next;
-}
+        if (!modal || !btn || !contentSource || !mainContent || !sidebar) return;
 
-document.addEventListener('DOMContentLoaded', function() {
-    // 应用多语言设置
-    applyAboutLang();
-
-    // 初始化文本动画元素
-    setTimeout(function() {
-        prepareTextAnimations();
-    }, 200);
-
-    // 跟踪当前按下的键
-    const keysPressed = new Set();
-
-    // 生成左侧目录
-    for (let i = 0; i < document.getElementById("content").children.length; i += 1) {
-        let elem = document.getElementById("content").children[i];
-        let sideItem = document.createElement("div");
-
-        sideItem.classList.add("info-section");
-
-        // 使用多语言版本的"关于"文本
-        let aboutText = window._forceLang ? ABOUT_LANG_MAP[window._forceLang]?.about || '关于' : '关于';
-        sideItem.innerText = aboutText + elem.children[0].innerText + "...";
-
-        // 防止内容初始化后被再次修改
-        if (!elem.getAttribute('data-original-title')) {
-            elem.setAttribute('data-original-title', elem.children[0].innerText);
-            elem.children[0].innerText = aboutText + "「" + elem.children[0].innerText + "」";
-        }
-
-        if (i === 0) {
-            sideItem.classList.add("active-item");
-            elem.classList.add("active-content");
-            // 初始激活的内容立即播放动画
-            setTimeout(function() {
-                playTextAnimations(elem);
-            }, 300);
-        }
-
-        sideItem.addEventListener("click", (e) => {
-            // 阻止默认行为和事件冒泡
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // 找到当前活动元素并移除活动状态
-            const currentActive = document.getElementsByClassName("active-content")[0];
-            if (currentActive) {
-                currentActive.classList.remove("active-content");
-                // 移除当前活动元素的所有动画类
-                resetTextAnimations(currentActive);
-            }
-
-            // 左侧导航状态更新
-            const activeItem = document.getElementsByClassName("active-item")[0];
-            if (activeItem) {
-                activeItem.classList.remove("active-item");
-            }
-            sideItem.classList.add("active-item");
-            
-            // 确保激活的导航项可见
-            ensureNavItemVisible(sideItem);
-            
-            // 延迟添加新活动元素的类，创建平滑过渡
-            setTimeout(() => {
-                elem.classList.add("active-content");
-                // 播放新活动元素的文本动画
-                playTextAnimations(elem);
-            }, 50);
-            
-            updateButtonStates();
+        // 移动内容到主容器
+        const sections = Array.from(contentSource.children);
+        sections.forEach(section => {
+            section.classList.add('about-content-item');
+            mainContent.appendChild(section);
         });
 
-        document.getElementById("sidebar").appendChild(sideItem);
+        // 生成侧边栏
+        sections.forEach((elem, i) => {
+            let sideItem = document.createElement("div");
+            sideItem.classList.add("info-section");
+
+            // 获取标题
+            let titleElem = elem.querySelector('.info-title');
+            let originalTitle = titleElem ? titleElem.innerText : '';
+            
+            // 保存原始标题以便多语言切换
+            elem.setAttribute('data-original-title', originalTitle);
+
+            // 设置侧边栏文本
+            updateSidebarText(sideItem, originalTitle);
+
+            // 点击事件
+            sideItem.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // 移除旧的激活状态
+                const currentActiveContent = mainContent.querySelector(".active-content");
+                if (currentActiveContent) {
+                    currentActiveContent.classList.remove("active-content");
+                    resetTextAnimations(currentActiveContent);
+                }
+
+                const currentActiveSidebar = sidebar.querySelector(".active-item");
+                if (currentActiveSidebar) {
+                    currentActiveSidebar.classList.remove("active-item");
+                }
+
+                // 激活新状态
+                sideItem.classList.add("active-item");
+                elem.classList.add("active-content");
+                
+                ensureNavItemVisible(sideItem);
+                
+                // 播放动画
+                setTimeout(() => {
+                    playTextAnimations(elem);
+                }, 50);
+                
+                updateButtonStates();
+            });
+
+            sidebar.appendChild(sideItem);
+
+            // 默认激活第一个
+            if (i === 0) {
+                sideItem.click();
+            }
+        });
+
+        // 打开模态框
+        btn.onclick = function(e) {
+            e.preventDefault();
+            modal.classList.add('show');
+            applyAboutLang(); // 应用语言
+            // 重新触发当前激活项的动画
+            const activeContent = mainContent.querySelector(".active-content");
+            if (activeContent) {
+                playTextAnimations(activeContent);
+            }
+        }
+
+        // 关闭模态框
+        span.onclick = function() {
+            modal.classList.remove('show');
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        // 导航按钮
+        document.getElementById("modal-prev-btn").addEventListener("click", (e) => {
+            e.preventDefault();
+            navigateTo('prev');
+        });
+
+        document.getElementById("modal-next-btn").addEventListener("click", (e) => {
+            e.preventDefault();
+            navigateTo('next');
+        });
+
+        // 键盘支持
+        document.addEventListener('keydown', function(e) {
+            if (!modal.classList.contains('show')) return;
+            
+            if (e.key === 'Escape') {
+                modal.classList.remove('show');
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                navigateTo('prev');
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                navigateTo('next');
+            }
+        });
+
+        isInitialized = true;
     }
 
-    // 确保导航项在侧边栏中可见
+    function updateSidebarText(sideItem, originalTitle) {
+        const lang = window._forceLang || 'zh-cn';
+        const langData = ABOUT_LANG_MAP[lang] || ABOUT_LANG_MAP['zh-cn'];
+        sideItem.innerText = langData.about + originalTitle + "...";
+    }
+
+    function applyAboutLang() {
+        const lang = window._forceLang || 'zh-cn';
+        const langData = ABOUT_LANG_MAP[lang] || ABOUT_LANG_MAP['zh-cn'];
+
+        // 更新按钮文字
+        const prevBtn = document.getElementById('modal-prev-btn');
+        if (prevBtn) prevBtn.textContent = langData.prev;
+
+        const nextBtn = document.getElementById('modal-next-btn');
+        if (nextBtn) nextBtn.textContent = langData.next;
+
+        // 更新内容翻译
+        if (typeof ABOUT_TRANSLATIONS !== 'undefined') {
+            const translations = ABOUT_TRANSLATIONS[lang] || ABOUT_TRANSLATIONS['zh-cn'];
+            const contentItems = document.querySelectorAll('#aboutMainContent .about-content-item');
+            
+            if (translations && contentItems.length > 0) {
+                contentItems.forEach((item, index) => {
+                    if (translations[index]) {
+                        const titleElem = item.querySelector('.info-title');
+                        const contentElem = item.querySelector('.info-content');
+                        
+                        if (titleElem) titleElem.innerHTML = translations[index].title;
+                        if (contentElem) contentElem.innerHTML = translations[index].content;
+                        
+                        // 更新原始标题属性，供侧边栏使用
+                        item.setAttribute('data-original-title', translations[index].title);
+                    }
+                });
+            }
+        }
+
+        // 更新侧边栏和标题文字
+        const sidebarItems = document.querySelectorAll('#aboutSidebar .info-section');
+        const contentItems = document.querySelectorAll('#aboutMainContent .about-content-item');
+        
+        sidebarItems.forEach((item, index) => {
+            const contentItem = contentItems[index];
+            if (contentItem) {
+                const originalTitle = contentItem.getAttribute('data-original-title');
+                if (originalTitle) {
+                    item.innerText = langData.about + originalTitle + "...";
+                    
+                    const titleElem = contentItem.querySelector('.info-title');
+                    if (titleElem) {
+                        // 如果已经通过 ABOUT_TRANSLATIONS 更新了标题，这里就不需要再加 "关于" 前缀了
+                        // 或者保持原样，看设计需求。原设计是 "关于[标题]"
+                        // 检查一下原逻辑：
+                        // sideItem.innerText = aboutText + elem.children[0].innerText + "...";
+                        // elem.children[0].innerText = aboutText + "「" + elem.children[0].innerText + "」";
+                        
+                        // 这里我们保持一致
+                        titleElem.innerText = langData.about + "「" + originalTitle + "」";
+                    }
+                }
+            }
+        });
+    }
+
+    function navigateTo(direction) {
+        const sidebar = document.getElementById('aboutSidebar');
+        let currentItem = sidebar.querySelector(".active-item");
+        if (!currentItem) return;
+
+        let targetItem = direction === 'next' ? 
+                        currentItem.nextElementSibling : 
+                        currentItem.previousElementSibling;
+        
+        if (targetItem) {
+            targetItem.click();
+        }
+    }
+
+    function updateButtonStates() {
+        const sidebar = document.getElementById('aboutSidebar');
+        const currentItem = sidebar.querySelector(".active-item");
+        if (!currentItem) return;
+
+        const prevBtn = document.getElementById("modal-prev-btn");
+        const nextBtn = document.getElementById("modal-next-btn");
+
+        if (!currentItem.previousElementSibling) {
+            prevBtn.classList.add("btn-disabled");
+        } else {
+            prevBtn.classList.remove("btn-disabled");
+        }
+
+        if (!currentItem.nextElementSibling) {
+            nextBtn.classList.add("btn-disabled");
+        } else {
+            nextBtn.classList.remove("btn-disabled");
+        }
+    }
+
     function ensureNavItemVisible(navItem) {
         navItem.scrollIntoView({
             behavior: "smooth",
@@ -144,246 +247,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 为所有内容区域准备文本动画
-    function prepareTextAnimations() {
-        if (window.innerWidth <= 800) return; // 只在桌面端应用
-        
-        // 处理所有info-section
-        const sections = document.querySelectorAll('#content .info-section');
-        sections.forEach(section => {
-            // 为标题添加动画类
-            const title = section.querySelector('.info-title');
-            if (title) {
-                title.classList.add('title-animate');
-            }
-            
-            // 为内容文本添加动画类
-            const content = section.querySelector('.info-content');
-            if (content) {
-                // 拆分段落和其他元素以便分别设置动画
-                const children = Array.from(content.children);
-                if (children.length > 0) {
-                    // 如果内容有子元素(如<p>, <a>等)
-                    children.forEach((child, index) => {
-                        child.classList.add('text-block');
-                        child.style.transitionDelay = `${(index + 1) * 0.1}s`;
-                    });
-                } else {
-                    // 如果内容是纯文本，将文本按行分割
-                    const textBlocks = content.innerHTML.split('<br>');
-                    content.innerHTML = '';
-                    textBlocks.forEach((block, index) => {
-                        if (block.trim()) {
-                            const blockElem = document.createElement('div');
-                            blockElem.innerHTML = block;
-                            blockElem.classList.add('text-block');
-                            blockElem.style.transitionDelay = `${(index + 1) * 0.1}s`;
-                            content.appendChild(blockElem);
-                        } else {
-                            // 保留空行
-                            content.appendChild(document.createElement('br'));
-                        }
-                    });
-                }
-                content.classList.add('text-animate');
-            }
-        });
-    }
-
-    // 播放文本动画
+    // 动画相关函数 (简化版)
     function playTextAnimations(element) {
-        if (window.innerWidth <= 800) return; // 只在桌面端应用
+        // 简单淡入效果，如果需要复杂动画可以恢复之前的逻辑
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(10px)';
+        element.style.transition = 'all 0.5s ease';
         
-        const title = element.querySelector('.title-animate');
-        if (title) {
-            setTimeout(() => {
-                title.classList.add('animate-in');
-            }, 100);
-        }
-        
-        const content = element.querySelector('.text-animate');
-        if (content) {
-            setTimeout(() => {
-                content.classList.add('animate-in');
-                
-                // 依次播放文本块动画
-                const blocks = content.querySelectorAll('.text-block');
-                blocks.forEach((block, index) => {
-                    setTimeout(() => {
-                        block.classList.add('animate-in');
-                    }, 200 + index * 100);
-                });
-            }, 300);
-        }
+        setTimeout(() => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }, 50);
     }
-    
-    // 重置动画元素状态
+
     function resetTextAnimations(element) {
-        if (window.innerWidth <= 800) return; // 只在桌面端应用
-        
-        const title = element.querySelector('.title-animate');
-        if (title) {
-            title.classList.remove('animate-in');
-        }
-        
-        const content = element.querySelector('.text-animate');
-        if (content) {
-            content.classList.remove('animate-in');
-            
-            const blocks = content.querySelectorAll('.text-block');
-            blocks.forEach(block => {
-                block.classList.remove('animate-in');
-            });
-        }
+        element.style.opacity = '0';
     }
 
-    // 上一条按钮事件
-    document.getElementById("prev-btn").addEventListener("click", (e) => {
-        e.preventDefault(); // 阻止默认行为
-        navigateTo('prev');
-    });
+    // 监听 DOM 加载
+    document.addEventListener('DOMContentLoaded', initAboutModal);
 
-    // 下一条按钮事件
-    document.getElementById("next-btn").addEventListener("click", (e) => {
-        e.preventDefault(); // 阻止默认行为
-        navigateTo('next');
-    });
-
-    // 导航到上一个或下一个内容
-    function navigateTo(direction) {
-        let currentItem = document.getElementsByClassName("active-item")[0];
-        let targetItem = direction === 'next' ? 
-                        currentItem.nextElementSibling : 
-                        currentItem.previousElementSibling;
-        
-        if (targetItem) {
-            // 确保导航项在侧边栏中可见
-            ensureNavItemVisible(targetItem);
-            
-            // 只在移动端（窗口宽度 ≤ 800px）应用滑动动画
-            if (window.innerWidth <= 800) {
-                document.getElementById("content").classList.remove("slide-left", "slide-right");
-                document.getElementById("content").classList.add(direction === 'next' ? "slide-left" : "slide-right");
-                
-                setTimeout(() => {
-                    // 修改：使用更精确的滚动方式，防止滚动到视图外
-                    if (window.innerWidth <= 480) {
-                        // 移动端，仅更新UI状态，不进行滚动
-                        targetItem.click();
-                    } else {
-                        // 平板设备，使用平滑滚动
-                        targetItem.click();
-                    }
-                    
-                    // 移除过渡动画类
-                    setTimeout(() => {
-                        document.getElementById("content").classList.remove("slide-left", "slide-right");
-                    }, 300);
-                }, 50);
-            } else {
-                // 桌面端直接切换，无需动画
-                targetItem.click();
-            }
-        }
-    }
-
-    // 刷新按钮状态
-    function updateButtonStates() {
-        if (document.getElementsByClassName("active-item")[0].previousElementSibling === undefined) {
-            document.getElementById("prev-btn").classList.add("btn-disabled");
-        } else {
-            document.getElementById("prev-btn").classList.remove("btn-disabled");
-        }
-
-        if (document.getElementsByClassName("active-item")[0].nextElementSibling === undefined) {
-            document.getElementById("next-btn").classList.add("btn-disabled");
-        } else {
-            document.getElementById("next-btn").classList.remove("btn-disabled");
-        }
-    }
-
-    // 初始化按钮状态
-    updateButtonStates();
-
-    // 添加触摸滑动支持
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const minSwipeDistance = 50;
-
-    document.getElementById("content").addEventListener('touchstart', function(e) {
-        touchStartX = e.changedTouches[0].screenX;
-    }, {passive: false});
-
-    document.getElementById("content").addEventListener('touchend', function(e) {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe(e);
-    }, {passive: false});
-
-    function handleSwipe(e) {
-        const swipeDistance = touchEndX - touchStartX;
-        if (Math.abs(swipeDistance) < minSwipeDistance) return; // 滑动距离太小，忽略
-
-        // 阻止默认行为
-        if (e) e.preventDefault();
-
-        if (swipeDistance > 0) {
-            // 右滑，显示上一项
-            navigateTo('prev');
-        } else {
-            // 左滑，显示下一项
-            navigateTo('next');
-        }
-    }
-
-    // 添加键盘方向键支持
-    document.addEventListener('keydown', function(e) {
-        // 记录按下的键
-        keysPressed.add(e.key);
-
-        if (e.key === 'ArrowUp') {
-            e.preventDefault(); // 防止页面滚动
-            navigateTo('prev'); // 上方向键 -> 上一条
-        } else if (e.key === 'ArrowDown') {
-            e.preventDefault(); // 防止页面滚动
-            navigateTo('next'); // 下方向键 -> 下一条
-        } else if (/^[1-9]$/.test(e.key)) {
-            // 检查是否按下了1-9的数字键
-            e.preventDefault();
-            const index = parseInt(e.key) - 1; // 将键值转换为索引（从0开始）
-            const sidebarItems = document.querySelectorAll("#sidebar .info-section");
-
-            // 确保索引在有效范围内
-            if (index < sidebarItems.length) {
-                // 直接触发对应索引项的点击事件
-                sidebarItems[index].click();
-            }
-        }
-
-        // 检查是否同时按下了"1"和"0"键
-        if (keysPressed.has('1') && keysPressed.has('0')) {
-            e.preventDefault();
-            const sidebarItems = document.querySelectorAll("#sidebar .info-section");
-            // 如果有第10个板块，跳转到它
-            if (sidebarItems.length >= 10) {
-                sidebarItems[9].click(); // 索引为9的是第10个元素
-
-                // 清除按键状态，防止重复触发
-                keysPressed.clear();
-            }
+    // 监听语言变化
+    document.addEventListener('languageChanged', function() {
+        const modal = document.getElementById('aboutModal');
+        if (modal && modal.classList.contains('show')) {
+            applyAboutLang();
         }
     });
-
-    // 清除按键记录
-    document.addEventListener('keyup', function(e) {
-        keysPressed.delete(e.key);
-    });
-
-    // 防止拖拽和右键
-    document.addEventListener("contextmenu", (e) => {
-        e.preventDefault();
-    });
-
-    document.addEventListener("dragstart", (e) => {
-        e.preventDefault();
-    });
-});
+})();
