@@ -2,6 +2,8 @@
 const PHOSOFTWEB_LANG_MAP = {
   'zh-cn': {
     welcome: '欢迎来到',
+    loadingPage: '正在加载页面...',
+    loading: '加载中...',
     site: 'PhosoftWebPages',
     promo: '下面是 PhosoftWeb Line 宣传片',
     bilibili: '进入bilibili，一起交流！',
@@ -67,6 +69,8 @@ ____  _                      __ _
   },
   'zh-hk': {
     welcome: '歡迎來到',
+    loadingPage: '正在加載頁面...',
+    loading: '加載中...',
     site: 'PhosoftWebPages',
     promo: '呢度係 PhosoftWeb Line 嘅宣傳片',
     bilibili: '入去bilibili，一齊交流啦！',
@@ -132,6 +136,8 @@ ____  _                      __ _
   },
   'zh-tw': {
     welcome: '歡迎來到',
+    loadingPage: '正在加載頁面...',
+    loading: '加載中...',
     site: 'PhosoftWebPages',
     promo: '下面是 PhosoftWeb Line 宣傳片',
     bilibili: '進入bilibili，一起交流！',
@@ -197,6 +203,8 @@ ____  _                      __ _
   },
   'en': {
     welcome: 'Welcome to',
+    loadingPage: 'Loading page...',
+    loading: 'Loading...',
     site: 'PhosoftWebPages',
     promo: 'Here is the PhosoftWeb Line promo video',
     bilibili: 'Go to Bilibili and let’s interact!',
@@ -521,6 +529,8 @@ ____  _                      __ _
   },
   'zhuyin': {
     welcome: 'ㄏㄨㄢ ㄧㄥˊ ㄌㄞˊ ㄉㄠˋ',
+    loadingPage: 'ㄓㄥˋ ㄗㄞˋ ㄐㄧㄚ ㄗㄞˋ ㄧㄝˋ ㄇㄧㄢˋ...',
+    loading: 'ㄐㄧㄚ ㄗㄞˋ ㄓㄨㄥ...',
     site: 'PhosoftWebPages',
     promo: 'ㄒㄧㄚˋ ㄇㄧㄢˋ ㄕˋ PhosoftWeb Line ㄒㄩㄢ ㄔㄨㄢˊ ㄆㄧㄢˋ',
     bilibili: 'ㄐㄧㄣˋ ㄖㄨˋ bilibili，ㄧˊ ㄑㄧˇ ㄐㄧㄠ ㄌㄧㄡˊ！',
