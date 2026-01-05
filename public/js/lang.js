@@ -804,106 +804,35 @@ function applyPhosoftwebLang() {
 
   document.documentElement.lang = lang;
 
-  // 标题区
-  const welcome = document.querySelector('.wu-h2.no-wrap');
-  if (welcome) welcome.textContent = map.welcome;
-  const site = document.querySelector('.wu-h1.no-wrap');
-  if (site) site.textContent = map.site;
-
-  // 宣传片区
-  const promo = document.querySelector('#video .wu-h2.no-wrap');
-  if (promo) promo.textContent = map.promo;
-  const bilibili = document.querySelector('#video a span');
-  if (bilibili) bilibili.textContent = map.bilibili;
-
-  // 公告区
-  const notice = document.querySelector('#notice .wu-h1');
-  if (notice) notice.textContent = map.notice;
-  const noticeEn = document.querySelector('#notice .wu-h3');
-  if (noticeEn) noticeEn.textContent = map.noticeEn;
-  const noticeContent = document.querySelectorAll('#notice .wu-not p');
-  if (noticeContent.length >= 2) {
-    noticeContent[0].textContent = map.noticeContent[0];
-    noticeContent[1].textContent = map.noticeContent[1];
-  }
-
-  // 友情链接区
-  // 使用 ID 选择器直接定位友情链接区块
-  const friendsBlock = document.getElementById('friendLinks');
-  if (friendsBlock) {
-    const friendsTitle = friendsBlock.querySelector('.wu-h2');
-    if (friendsTitle) {
-      friendsTitle.textContent = map.friends;
+  // 使用 data-i18n 属性更新文本内容
+  const elements = document.querySelectorAll('[data-i18n]');
+  elements.forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    const keys = key.split('.');
+    let value = map;
+    for (const k of keys) {
+      if (value && value[k]) {
+        value = value[k];
+      } else {
+        value = null;
+        break;
+      }
     }
-
-    // 友情链接提示文本
-    const friendsTip = friendsBlock.querySelector('.wu-notice.wu-mw');
-    if (friendsTip) {
-      friendsTip.textContent = map.friendsTip;
+    if (value) {
+      element.textContent = value;
     }
+  });
 
-    // 链接文字翻译
-    if (map.linkTexts) {
-      const links = friendsBlock.querySelectorAll('.wu-links a');
-      links.forEach(link => {
-        // 获取链接URL
-        const href = link.getAttribute('href');
-
-        // 根据URL判断链接类型并应用对应翻译
-        if (href.includes('BullshitGenerator')) {
-          link.textContent = map.linkTexts.bullshit;
-        } else if (href.includes('hitokoto.cn')) {
-          link.textContent = map.linkTexts.hitokoto;
-        } else if (href.includes('you-get')) {
-          link.textContent = map.linkTexts.youget;
-        } else if (href.includes('sponsor.phosoft.cn')) {
-          link.textContent = map.linkTexts.sponsor;
-        } else if (href.includes('dsp.html')) {
-          link.textContent = map.linkTexts.search;
-        } else if (href.includes('forum.phosoft.cn')) {
-          link.textContent = map.linkTexts.forum;
-        } else if (href.includes('game.phosoft.cn')) {
-          link.textContent = map.linkTexts.game;
-        } else if (href.includes('ugly-standby')) {
-          link.textContent = map.linkTexts.ugly;
-        } else if (href.includes('awesome-iwb')) {
-          link.textContent = map.linkTexts.awesome;
-        }
-        // 个人网站链接翻译
-        else if (href.includes('about.phosoft.cn')) {
-          link.textContent = map.linkTexts.official;
-        } else if (href.includes('chenzr')) {
-          link.textContent = map.linkTexts.chensite;
-        } else if (href.includes('damon233')) {
-          link.textContent = map.linkTexts.damonsite;
-        } else if (href.includes('zhang2333')) {
-          link.textContent = map.linkTexts.zpcin;
-        } else if (href.includes('imfmkli')) {
-          link.textContent = map.linkTexts.pigeon;
-        } else if (href.includes('gdt.im')) {
-          link.textContent = map.linkTexts.grassdev;
-        } else if (href.includes('theme.estu.site')) {
-          link.textContent = map.linkTexts.grasstheme;
-        } else if (href.includes('cxl2020mc')) {
-          link.textContent = map.linkTexts.chenxinlei;
-        } else if (href.includes('awesome-iwb')) {
-          link.textContent = map.linkTexts.awesome;
-        }
-      });
+  // 使用 data-i18n-html 属性更新HTML内容
+  const htmlElements = document.querySelectorAll('[data-i18n-html]');
+  htmlElements.forEach(element => {
+    const key = element.getAttribute('data-i18n-html');
+    if (key === 'footer') {
+      element.innerHTML = `&copy;${map.year} - 张一&Phosoft ${map.footer}`;
+    } else if (key === 'powered') {
+      element.innerHTML = map.powered;
     }
-  }
-
-  // 页脚
-  const footer = document.querySelector('.wu-block.wu-mw:last-child .wu-box.wu-shadow p.no-wrap a');
-  if (footer) footer.innerHTML = `&copy;${map.year} - 张一&Phosoft ${map.footer}`;
-  const powered = document.querySelectorAll('.wu-block.wu-mw:last-child .wu-box.wu-shadow p.no-wrap')[1];
-  if (powered) powered.innerHTML = map.powered;
-
-  // 页脚关于
-  const about = document.querySelector('.wu-block.wu-mw:last-child .wu-box.wu-shadow p.no-wrap a');
-  if (about && about.textContent.includes('版权所有')) {
-    about.textContent = about.textContent.replace('版权所有', map.footer);
-  }
+  });
 
   // 控制台输出
   const consoleInfo = map.console;
