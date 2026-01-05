@@ -51,6 +51,17 @@ ____  _                      __ _
       `,
       slogan: '不断创新，永不停息',
       intro: 'We always innovate, never stop!，我们是 PhosoftStudio，点击链接加入群聊【Phosoft 工作室官方公开】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    },
+    // 倒计时翻译
+    countdown: {
+      jilinZhongkao: '距吉林中考',
+      zhongkao: '距Zpcin中考',
+      gaokao: '距Zpcin高考',
+      days: '天',
+      hours: '时',
+      minutes: '分',
+      seconds: '秒',
+      over: '已过'
     }
   },
   'zh-hk': {
@@ -104,6 +115,17 @@ ____  _                      __ _
       `,
       slogan: '不斷創新，永不停息',
       intro: 'We always innovate, never stop!，我哋係 PhosoftStudio，撳連結加入群聊【Phosoft 工作室官方公開】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    },
+    // 倒计时翻译
+    countdown: {
+      jilinZhongkao: '距吉林中考',
+      zhongkao: '距Zpcin中考',
+      gaokao: '距Zpcin高考',
+      days: '日',
+      hours: '時',
+      minutes: '分',
+      seconds: '秒',
+      over: '已過'
     }
   },
   'zh-tw': {
@@ -157,6 +179,17 @@ ____  _                      __ _
       `,
       slogan: '不斷創新，永不停息',
       intro: 'We always innovate, never stop!，我們是 PhosoftStudio，點擊連結加入群聊【Phosoft 工作室官方公開】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    },
+    // 倒计时翻译
+    countdown: {
+      jilinZhongkao: '距吉林中考',
+      zhongkao: '距Zpcin中考',
+      gaokao: '距Zpcin高考',
+      days: '天',
+      hours: '時',
+      minutes: '分',
+      seconds: '秒',
+      over: '已過'
     }
   },
   'en': {
@@ -210,6 +243,17 @@ ____  _                      __ _
       `,
       slogan: 'Constant Innovation, Never Stopping',
       intro: 'We always innovate, never stop! We are PhosoftStudio, click the link to join our QQ group [Phosoft Studio Official]: https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    },
+    // 倒计时翻译
+    countdown: {
+      jilinZhongkao: 'Until Jilin ZhongKao',
+      zhongkao: 'Until Zpcin ZhongKao',
+      gaokao: 'Until Zpcin GaoKao',
+      days: 'd',
+      hours: 'h',
+      minutes: 'm',
+      seconds: 's',
+      over: 'Past'
     }
   },
   'en-sg': {
@@ -263,6 +307,17 @@ ____  _                      __ _
       `,
       slogan: 'Always Innovating lah, Never Stopping one',
       intro: 'We always innovate, never stop! We are PhosoftStudio, click link to join our QQ group [Phosoft Studio Official] can?: https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    },
+    // 倒计时翻译
+    countdown: {
+      jilinZhongkao: 'Until Jilin ZhongKao lah',
+      zhongkao: 'Until Zpcin ZhongKao lor',
+      gaokao: 'Until Zpcin GaoKao ah',
+      days: 'd',
+      hours: 'h',
+      minutes: 'm',
+      seconds: 's',
+      over: 'Already past'
     }
   },
   'ja': {
@@ -322,6 +377,17 @@ ____  _                      __ _
       `,
       slogan: '絶え間ない革新、決して止まらない',
       intro: '常に革新し、決して止まりません！私たちはPhosoftStudioです。リンクをクリックしてQQグループ【Phosoft スタジオ公式】に参加してください：https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    },
+    // 倒计时翻译
+    countdown: {
+      jilinZhongkao: '吉林中考まで',
+      zhongkao: 'Zpcin年中考まで',
+      gaokao: 'Zpcin年高考まで',
+      days: '日',
+      hours: '時',
+      minutes: '分',
+      seconds: '秒',
+      over: '過ぎた'
     }
   },
   'wenyan': {
@@ -368,6 +434,17 @@ ____  _                      __ _
       logoStyle: 'font-size: 60px; font-weight: bold; color: #000;',
       slogan: '創新不息，行進不止',
       intro: '吾輩日新又新，未嘗稍歇。鳳梭工坊是也，按此入群【鳳梭工坊官方】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    },
+    // 倒计时翻译
+    countdown: {
+      jilinZhongkao: '距吉林中試',
+      zhongkao: '距Zpcin中試',
+      gaokao: '距Zpcin高試',
+      days: '日',
+      hours: '時',
+      minutes: '刻',
+      seconds: '秒',
+      over: '已逾'
     }
   },
   'pinyin': {
@@ -421,6 +498,17 @@ ____  _                      __ _
       `,
       slogan: 'Bùduàn chuàngxīn, yǒngbù tíngxī',
       intro: 'We always innovate, never stop!, wǒmen shì PhosoftStudio, diǎnjī liánjiē jiārù qúnliáo [Phosoft gōngzuòshì guānfāng gōngkāi]: https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    },
+    // 倒计时翻译
+    countdown: {
+      jilinZhongkao: 'Jù Jílín Zhōngkǎo',
+      zhongkao: 'Jù Zpcin Zhōngkǎo',
+      gaokao: 'Jù Zpcin Gāokǎo',
+      days: 'tiān',
+      hours: 'shí',
+      minutes: 'fēn',
+      seconds: 'miǎo',
+      over: 'Yǐ guò'
     }
   },
   'zhuyin': {
@@ -473,6 +561,17 @@ ____  _                      __ _
       `,
       slogan: 'ㄅㄨˋ ㄉㄨㄢˋ ㄔㄨㄤˋ ㄒㄧㄣ，ㄩㄥˇ ㄅㄨˋ ㄊㄧㄥˊ ㄒㄧ',
       intro: 'We always innovate, never stop!, ㄨㄛˇ ㄇㄣˊ ㄕˋ PhosoftStudio，ㄉㄧㄢˇ ㄐㄧ ㄌㄧㄢˊ ㄐㄧㄝ ㄐㄧㄚ ㄖㄨˋ ㄑㄩㄣˊ ㄌㄧㄠˊ【Phosoft ㄍㄨㄥ ㄗㄨㄛˋ ㄕˋ ㄍㄨㄢ ㄈㄤ ㄍㄨㄥ ㄎㄞ】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
+    },
+    // 倒计时翻译
+    countdown: {
+      jilinZhongkao: 'ㄐㄩˋ ㄐㄧˊ ㄌㄧㄣˊ ㄓㄨㄥ ㄎㄠˇ',
+      zhongkao: 'ㄐㄩˋ Zpcin ㄓㄨㄥ ㄎㄠˇ',
+      gaokao: 'ㄐㄩˋ Zpcin ㄍㄠ ㄎㄠˇ',
+      days: 'ㄊㄧㄢ',
+      hours: 'ㄕˊ',
+      minutes: 'ㄈㄣ',
+      seconds: 'ㄇㄧㄠˇ',
+      over: 'ㄧˇ ㄍㄨㄛˋ'
     }
   },
 };
@@ -496,6 +595,46 @@ function getLangConfig(lang) {
   const defaultConfig = { enableGeoIp: false };
   if (!lang || !PHOSOFTWEB_LANG_MAP[lang]) return defaultConfig;
   return PHOSOFTWEB_LANG_MAP[lang].config || defaultConfig;
+}
+
+/**
+ * 获取当前语言的倒计时翻译
+ * @param {string} lang - 语言代码
+ * @returns {Object} 翻译对象
+ */
+window.getCountdownTranslation = function(lang) {
+  // 检查 URL 参数中是否有语言设置
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+
+  // 优先使用 URL 参数中的语言
+  const finalLang = urlLang || lang || 'zh-cn';
+
+  // 如果提供的语言不存在，则使用英语作为默认语言
+  if (!PHOSOFTWEB_LANG_MAP[finalLang] || !PHOSOFTWEB_LANG_MAP[finalLang].countdown) {
+    console.log('[倒计时多语言] 未找到语言:', finalLang, '使用默认语言:zh-cn');
+    return PHOSOFTWEB_LANG_MAP['zh-cn'].countdown;
+  }
+
+  console.log('[倒计时多语言] 使用语言:', finalLang);
+  return PHOSOFTWEB_LANG_MAP[finalLang].countdown;
+};
+
+/**
+ * 立即更新倒计时语言
+ * @param {string} lang - 语言代码
+ */
+function updateCountdownLanguage(lang) {
+  if (!lang) return;
+
+  console.log('[倒计时多语言] 更新倒计时语言:', lang);
+  window.currentLang = lang;
+
+  // 触发自定义事件通知倒计时组件更新语言
+  const event = new CustomEvent('languageChanged', {
+    detail: { lang: lang }
+  });
+  document.dispatchEvent(event);
 }
 
 // 检查URL参数
@@ -660,6 +799,9 @@ function applyPhosoftwebLang() {
   const map = PHOSOFTWEB_LANG_MAP[lang];
   if (!map) return;
 
+  // 更新倒计时语言
+  updateCountdownLanguage(lang);
+
   document.documentElement.lang = lang;
 
   // 标题区
@@ -782,6 +924,12 @@ function applyPhosoftwebLang() {
 
 // 确保DOM完全加载后应用语言，使用IP检测
 document.addEventListener('DOMContentLoaded', function() {
+  // 初始化时，从全局获取当前语言
+  if (window.getPhosoftwebLang) {
+    const currentLang = window.getPhosoftwebLang();
+    window.currentLang = currentLang;
+    console.log('[倒计时多语言] 初始语言:', currentLang);
+  }
   setTimeout(applyGeoIpLang, 50); // 增加短暂延迟确保DOM完全准备好
 });
 

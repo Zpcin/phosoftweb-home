@@ -25,7 +25,6 @@
         <script src="./js/grayscale.js"></script>
         <script src="./js/lang.js"></script>
         <script src="./js/lang-countdown-connector.js"></script>
-        <script src="./js/watermark.js" defer></script>
         <script src="./js/countdown.js" defer></script>
 
         <!-- 第三方服务集成 -->
@@ -42,22 +41,8 @@
         </script>
 
         <!-- 控制台输出信息由lang.js处理 -->
-        <style>
-            .watermark {
-                position: absolute;
-                opacity: 0.01;
-                pointer-events: none;
-                user-select: none;
-                z-index: -1000;
-                color: rgba(0,0,0,0.01);
-                font-size: 1px;
-            }
-        </style>
     </head>
     <body>
-        <!-- 原罪_超凡开发 -->
-        <div class="watermark">原罪_超凡开发</div>
-
         <!-- 加载动画覆盖层 -->
         <div id="loadingOverlay" class="loading-overlay">
             <div class="loading-dots">
