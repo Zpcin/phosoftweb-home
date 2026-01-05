@@ -31,7 +31,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "旅游经历",
-      "content": "尽管生活在小县城，但我去过不少地方，<br>                包括朝鲜、俄罗斯、香港和上海等地。<br>                香港和上海是初中时期妈妈为鼓励我而安排的<br>                香港印象最深我喜欢刷卡和地铁<br><br><br><br>"
+      "content": "尽管生活在小县城，但我去过不少地方，<br>                包括朝鲜、俄罗斯、香港、上海和新加坡等地。<br>                香港和上海是初中时期妈妈为鼓励我而安排的<br>                香港印象最深我喜欢刷卡和地铁<br>                新加坡也很好<br><br><br><br>"
     },
     {
       "title": "我的兴趣",
@@ -73,7 +73,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "旅遊經歷",
-      "content": "雖然住喺小縣城，但我去過唔少地方，<br>包括朝鮮、俄羅斯、香港同上海等地。<br>香港同上海係初中時期媽媽為鼓勵我而安排嘅<br>香港印象最深我鍾意刷卡同地鐵<br><br><br><br>"
+      "content": "雖然住喺小縣城，但我去過唔少地方，<br>包括朝鮮、俄羅斯、香港、上海同新加坡等地。<br>香港同上海係初中時期媽媽為鼓勵我而安排嘅<br>香港印象最深我鍾意刷卡同地鐵<br>新加坡都好好<br><br><br><br>"
     },
     {
       "title": "我嘅興趣",
@@ -115,7 +115,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "旅遊經歷",
-      "content": "儘管生活在小縣城，但我去過不少地方，<br>包括朝鮮、俄羅斯、香港和上海等地。<br>香港和上海是初中時期媽媽為鼓勵我而安排的<br>香港印象最深我喜歡刷卡和地鐵<br><br><br><br>"
+      "content": "儘管生活在小縣城，但我、上海和新加坡等地。<br>香港和上海是初中時期媽媽為鼓勵我而安排的<br>香港印象最深我喜歡刷卡和地鐵<br>新加坡也很好勵我而安排的<br>香港印象最深我喜歡刷卡和地鐵<br><br><br><br>"
     },
     {
       "title": "我的興趣",
@@ -157,7 +157,7 @@ const ABOUT_TRANSLATIONS = {
     },
     {
       "title": "Travel Experiences",
-      "content": "Despite living in a small county, I've been to many places,<br>including North Korea, Russia, Hong Kong, and Shanghai.<br>Hong Kong and Shanghai were arranged by my mom during middle school to encourage me.<br>Hong Kong left the deepest impression; I like using cards and the subway there.<br><br><br><br>"
+      "content": "Despite living in a small county, I've been to many places,<br>including North Korea, Russia, Hong Kong, Shanghai, and Singapore.<br>Hong Kong and Shanghai were arranged by my mom during middle school to encourage me.<br>Hong Kong left the deepest impression; I like using cards and the subway there.<br>Singapore was also very good.<br><br><br><br>"
     },
     {
       "title": "My Interests",
@@ -198,8 +198,8 @@ const ABOUT_TRANSLATIONS = {
       "content": "どうしようもない状況で、それはほとんどの人より優れている。<br>"
     },
     {
-      "title": "旅行経験",
-      "content": "小さな県に住んでいるにもかかわらず、多くの場所を訪れました。<br>北朝鮮、ロシア、香港、上海などを含みます。<br>香港と上海は中学校時代に母が私を励ますために手配してくれました。<br>香港が最も印象深く、カードの使用や地下鉄が好きです。<br><br><br><br>"
+      "title": "旅行経験、シンガポールなどを含みます。",
+      "content": "香港と上海は中学校時代に母が私を励ますために手配してくれました。<br>香港が最も印象深く、カードの使用や地下鉄が好きです。<br>シンガポールもとても良かった<br>香港と上海は中学校時代に母が私を励ますために手配してくれました。<br>香港が最も印象深く、カードの使用や地下鉄が好きです。<br><br><br><br>"
     },
     {
       "title": "私の趣味",

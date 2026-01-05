@@ -33,9 +33,10 @@
 
 ## 旅游经历
 尽管生活在小县城，但我去过不少地方，
-                包括朝鲜、俄罗斯、香港和上海等地。
+                包括朝鲜、俄罗斯、香港、上海和新加坡等地。
                 香港和上海是初中时期妈妈为鼓励我而安排的
                 香港印象最深我喜欢刷卡和地铁
+                新加坡也很好
 
 
 
@@ -93,9 +94,10 @@
 
 ## 旅遊經歷
 雖然住喺小縣城，但我去過唔少地方，
-包括朝鮮、俄羅斯、香港同上海等地。
+包括朝鮮、俄羅斯、香港、上海同新加坡等地。
 香港同上海係初中時期媽媽為鼓勵我而安排嘅
 香港印象最深我鍾意刷卡同地鐵
+新加坡都好好
 
 
 
@@ -153,9 +155,10 @@
 
 
 ## 旅遊經歷
-儘管生活在小縣城，但我去過不少地方，
-包括朝鮮、俄羅斯、香港和上海等地。
+儘管生活在小縣城，但我、上海和新加坡等地。
 香港和上海是初中時期媽媽為鼓勵我而安排的
+香港印象最深我喜歡刷卡和地鐵
+新加坡也很好勵我而安排的
 香港印象最深我喜歡刷卡和地鐵
 
 
@@ -216,9 +219,10 @@ It's a hopeless situation, it's better than most people.
 
 ## Travel Experiences
 Despite living in a small county, I've been to many places,
-including North Korea, Russia, Hong Kong, and Shanghai.
+including North Korea, Russia, Hong Kong, Shanghai, and Singapore.
 Hong Kong and Shanghai were arranged by my mom during middle school to encourage me.
 Hong Kong left the deepest impression; I like using cards and the subway there.
+Singapore was also very good.
 
 
 
@@ -275,9 +279,10 @@ Email: yi3677@qq.com
 ## 私の勉強
 どうしようもない状況で、それはほとんどの人より優れている。
 
-## 旅行経験
-小さな県に住んでいるにもかかわらず、多くの場所を訪れました。
-北朝鮮、ロシア、香港、上海などを含みます。
+## 旅行経験、シンガポールなどを含みます。
+香港と上海は中学校時代に母が私を励ますために手配してくれました。
+香港が最も印象深く、カードの使用や地下鉄が好きです。
+シンガポールもとても良かった
 香港と上海は中学校時代に母が私を励ますために手配してくれました。
 香港が最も印象深く、カードの使用や地下鉄が好きです。
 
