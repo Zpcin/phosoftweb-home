@@ -99,12 +99,13 @@
             });
 
             sidebar.appendChild(sideItem);
-
-            // 默认激活第一个
-            if (i === 0) {
-                sideItem.click();
-            }
         });
+
+        // 循环结束后，激活第一个项目，确保 updateButtonStates 能正确识别后续兄弟元素
+        const firstItem = sidebar.querySelector('.info-section');
+        if (firstItem) {
+            firstItem.click();
+        }
 
         // 打开模态框
         btn.onclick = function(e) {
@@ -119,21 +120,33 @@
         }
 
         // 关闭模态框
+        function closeModal() {
+            if (!modal.classList.contains('show')) return;
+            
+            modal.classList.add('closing');
+            
+            // 等待动画结束
+            setTimeout(() => {
+                modal.classList.remove('show');
+                modal.classList.remove('closing');
+            }, 300); // 与 CSS 动画时间一致
+        }
+
         span.onclick = function() {
-            modal.classList.remove('show');
+            closeModal();
         }
 
         // 移动端底部关闭按钮
         const mobileCloseBtn = document.getElementById('modal-close-btn-mobile');
         if (mobileCloseBtn) {
             mobileCloseBtn.onclick = function() {
-                modal.classList.remove('show');
+                closeModal();
             }
         }
 
         window.onclick = function(event) {
             if (event.target == modal) {
-                modal.classList.remove('show');
+                closeModal();
             }
         }
 
@@ -153,7 +166,7 @@
             if (!modal.classList.contains('show')) return;
             
             if (e.key === 'Escape') {
-                modal.classList.remove('show');
+                closeModal();
             } else if (e.key === 'ArrowUp') {
                 e.preventDefault();
                 navigateTo('prev');
