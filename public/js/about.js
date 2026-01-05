@@ -20,33 +20,52 @@
         const modal = document.getElementById('aboutModal');
         const btn = document.getElementById('aboutLink');
         const span = document.getElementsByClassName('close-btn')[0];
-        const contentSource = document.getElementById('aboutContentSource');
         const mainContent = document.getElementById('aboutMainContent');
         const sidebar = document.getElementById('aboutSidebar');
 
-        if (!modal || !btn || !contentSource || !mainContent || !sidebar) return;
+        if (!modal || !btn || !mainContent || !sidebar) return;
 
-        // 移动内容到主容器
-        const sections = Array.from(contentSource.children);
-        sections.forEach(section => {
-            section.classList.add('about-content-item');
-            mainContent.appendChild(section);
-        });
+        // 从 ABOUT_TRANSLATIONS 加载默认内容 (zh-cn)
+        // 确保 about-lang.js 已加载
+        if (typeof ABOUT_TRANSLATIONS === 'undefined') {
+            console.error('ABOUT_TRANSLATIONS not found. Make sure about-lang.js is loaded.');
+            return;
+        }
 
-        // 生成侧边栏
-        sections.forEach((elem, i) => {
+        const defaultLang = 'zh-cn';
+        const defaultContent = ABOUT_TRANSLATIONS[defaultLang] || [];
+
+        // 生成内容和侧边栏
+        defaultContent.forEach((itemData, i) => {
+            // 创建内容项
+            const contentItem = document.createElement('div');
+            contentItem.classList.add('info-section', 'about-content-item');
+            
+            const titleDiv = document.createElement('div');
+            titleDiv.classList.add('info-title');
+            titleDiv.innerHTML = itemData.title;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.classList.add('info-content');
+            contentDiv.innerHTML = itemData.content;
+            
+            contentItem.appendChild(titleDiv);
+            contentItem.appendChild(contentDiv);
+            
+            // 保存原始标题以便多语言切换 (这里直接用 zh-cn 作为原始标题)
+            // 注意：itemData.title 可能包含 HTML，我们这里假设它主要是文本，或者我们提取纯文本
+            // 为了简单起见，我们假设 title 字段是纯文本或者简单的 HTML
+            // 实际上 about-lang.js 里的 title 看起来是纯文本
+            contentItem.setAttribute('data-original-title', itemData.title);
+            
+            mainContent.appendChild(contentItem);
+
+            // 创建侧边栏项
             let sideItem = document.createElement("div");
             sideItem.classList.add("info-section");
 
-            // 获取标题
-            let titleElem = elem.querySelector('.info-title');
-            let originalTitle = titleElem ? titleElem.innerText : '';
-            
-            // 保存原始标题以便多语言切换
-            elem.setAttribute('data-original-title', originalTitle);
-
             // 设置侧边栏文本
-            updateSidebarText(sideItem, originalTitle);
+            updateSidebarText(sideItem, itemData.title);
 
             // 点击事件
             sideItem.addEventListener("click", (e) => {
@@ -67,13 +86,13 @@
 
                 // 激活新状态
                 sideItem.classList.add("active-item");
-                elem.classList.add("active-content");
+                contentItem.classList.add("active-content");
                 
                 ensureNavItemVisible(sideItem);
                 
                 // 播放动画
                 setTimeout(() => {
-                    playTextAnimations(elem);
+                    playTextAnimations(contentItem);
                 }, 50);
                 
                 updateButtonStates();
