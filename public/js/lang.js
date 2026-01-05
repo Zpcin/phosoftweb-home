@@ -15,6 +15,7 @@ const PHOSOFTWEB_LANG_MAP = {
       'bullshit': '狗屁不通文章生成器',
       'hitokoto': 'Hitokoto - 一言',
       'youget': '视频解析下载工具',
+      'aurora': 'AuroraStudio',
       'sponsor': '赞助我们',
       'search': 'Phosoft搜索页',
       'forum': 'Phosoft论坛页',
@@ -79,6 +80,7 @@ ____  _                      __ _
       'bullshit': '垃圾文章生成器',
       'hitokoto': 'Hitokoto - 一言',
       'youget': '影片下載工具',
+      'aurora': 'AuroraStudio',
       'sponsor': '贊助我哋',
       'search': 'Phosoft搜索頁',
       'forum': 'Phosoft論壇頁',
@@ -143,6 +145,7 @@ ____  _                      __ _
       'bullshit': '無意義文章生成器',
       'hitokoto': 'Hitokoto - 一言',
       'youget': '影片下載工具',
+      'aurora': 'AuroraStudio',
       'sponsor': '贊助我們',
       'search': 'Phosoft搜索頁',
       'forum': 'Phosoft論壇頁',
@@ -207,6 +210,7 @@ ____  _                      __ _
       'bullshit': 'Bullshit Generator',
       'hitokoto': 'Hitokoto - One Sentence',
       'youget': 'Video Download Tool',
+      'aurora': 'AuroraStudio',
       'sponsor': 'Sponsor Us',
       'search': 'Phosoft Search',
       'forum': 'Phosoft Forum',
@@ -271,6 +275,7 @@ ____  _                      __ _
       'bullshit': 'Nonsense Generator lor',
       'hitokoto': 'Hitokoto - One Word ah',
       'youget': 'Video Downloader Tool',
+      'aurora': 'AuroraStudio',
       'sponsor': 'Support Us lah',
       'search': 'Phosoft Search Page',
       'forum': 'Phosoft Forum',
@@ -335,6 +340,7 @@ ____  _                      __ _
       'bullshit': 'ナンセンス文章ジェネレーター',
       'hitokoto': 'ヒトコト - 一言',
       'youget': '動画ダウンロードツール',
+      'aurora': 'AuroraStudio',
       'sponsor': '私たちを支援する',
       'search': 'フォソフト検索ページ',
       'forum': 'フォソフトフォーラム',
@@ -404,6 +410,7 @@ ____  _                      __ _
       'bullshit': '妄言生成之術',
       'hitokoto': '一言堂',
       'youget': '影像擷取之器',
+      'aurora': 'AuroraStudio',
       'sponsor': '贊襄吾輩',
       'search': '鳳梭搜索',
       'forum': '鳳梭論壇',
@@ -462,6 +469,7 @@ ____  _                      __ _
       'bullshit': 'Gǒupì bùtōng wénzhāng shēngchéngqì',
       'hitokoto': 'Hitokoto - Yīyán',
       'youget': 'Shìpín jiěxī xiàzǎi gōngjù',
+      'aurora': 'AuroraStudio',
       'sponsor': 'Zànzhù wǒmen',
       'search': 'Phosoft sōusuǒ yè',
       'forum': 'Phosoft lùntán yè',
@@ -526,6 +534,7 @@ ____  _                      __ _
       'bullshit': 'ㄍㄡˇ ㄆㄧˊ ㄅㄨˋ ㄊㄨㄥ ㄨㄣˊ ㄓㄤ ㄕㄥ ㄔㄥˊ ㄑㄧˋ',
       'hitokoto': 'Hitokoto - ㄧˊ ㄧㄢˊ',
       'youget': 'ㄕˋ ㄆㄧㄣˊ ㄐㄧㄝˇ ㄒㄧ ㄒㄧㄚˋ ㄗㄞˇ ㄍㄨㄥ ㄐㄩˋ',
+      'aurora': 'AuroraStudio',
       'sponsor': 'ㄗㄢˋ ㄓㄨˋ ㄨㄛˇ ㄇㄣˊ',
       'search': 'Phosoft ㄙㄡ ㄙㄨㄛˇ ㄧㄝˋ',
       'forum': 'Phosoft ㄌㄨㄣˊ ㄊㄢˊ ㄧㄝˋ',
@@ -560,7 +569,7 @@ ____  _                      __ _
 |_|   |_| |_|\\___/|___/\\___/|_|  \\__|
       `,
       slogan: 'ㄅㄨˋ ㄉㄨㄢˋ ㄔㄨㄤˋ ㄒㄧㄣ，ㄩㄥˇ ㄅㄨˋ ㄊㄧㄥˊ ㄒㄧ',
-      intro: 'We always innovate, never stop!, ㄨㄛˇ ㄇㄣˊ ㄕˋ PhosoftStudio，ㄉㄧㄢˇ ㄐㄧ ㄌㄧㄢˊ ㄐㄧㄝ ㄐㄧㄚ ㄖㄨˋ ㄑㄩㄣˊ ㄌㄧㄠˊ【Phosoft ㄍㄨㄥ ㄗㄨㄛˋ ㄕˋ ㄍㄨㄢ ㄈㄤ ㄍㄨㄥ ㄎㄞ】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
+      intro: 'We always innovate, never stop!, ㄨㄛˇ ㄇㄣˊ ㄕˋ PhosoftStudio，ㄉㄧㄢˇ ㄐㄧ ㄌㄧㄢˊ ㄐㄧㄚ ㄖㄨˋ ㄑㄩㄣˊ ㄌㄧㄠˊ【Phosoft ㄍㄨㄥ ㄗㄨㄛˋ ㄕˋ ㄍㄨㄢ ㄈㄤ ㄍㄨㄥ ㄎㄞ】：https://jq.qq.com/?_wv=1027&k=STqaquQz'
     },
     // 倒计时翻译
     countdown: {
@@ -849,6 +858,47 @@ function applyPhosoftwebLang() {
     console.log(`%c${consoleInfo.slogan}`, 'font-size: 16px; font-weight: bold;');
     console.log(consoleInfo.intro);
   }
+
+  // 更新导航链接文本
+  const navLinks = document.querySelectorAll('nav a');
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href.includes('bullshit')) {
+      link.textContent = map.linkTexts.bullshit;
+    } else if (href.includes('hitokoto')) {
+      link.textContent = map.linkTexts.hitokoto;
+    } else if (href.includes('you-get')) {
+      link.textContent = map.linkTexts.youget;
+    } else if (href.includes('aurorast.cn')) {
+      link.textContent = map.linkTexts.aurora;
+    } else if (href.includes('sponsor.phosoft.cn')) {
+      link.textContent = map.linkTexts.sponsor;
+    } else if (href.includes('search.phosoft.cn')) {
+      link.textContent = map.linkTexts.search;
+    } else if (href.includes('forum.phosoft.cn')) {
+      link.textContent = map.linkTexts.forum;
+    } else if (href.includes('game.phosoft.cn')) {
+      link.textContent = map.linkTexts.game;
+    } else if (href.includes('ugly.phosoft.cn')) {
+      link.textContent = map.linkTexts.ugly;
+    } else if (href.includes('chenzr.site')) {
+      link.textContent = map.linkTexts.chensite;
+    } else if (href.includes('what_damon.site')) {
+      link.textContent = map.linkTexts.damonsite;
+    } else if (href.includes('zpcin')) {
+      link.textContent = map.linkTexts.zpcin;
+    } else if (href.includes('pigeon')) {
+      link.textContent = map.linkTexts.pigeon;
+    } else if (href.includes('grassdev')) {
+      link.textContent = map.linkTexts.grassdev;
+    } else if (href.includes('grasstheme')) {
+      link.textContent = map.linkTexts.grasstheme;
+    } else if (href.includes('awesome')) {
+      link.textContent = map.linkTexts.awesome;
+    } else if (href.includes('chenxinlei')) {
+      link.textContent = map.linkTexts.chenxinlei;
+    }
+  });
 }
 
 // 确保DOM完全加载后应用语言，使用IP检测
