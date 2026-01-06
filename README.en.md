@@ -1,70 +1,65 @@
 
+
 # PhosoftWeb Personal Homepage
 
 ## Project Introduction
 
-PhosoftWeb is a personal website project built with pure HTML, CSS, and JavaScript. It features a homepage, a dynamic About modal, exam countdown, memorial grayscale mode, and more. The site is fully responsive and supports multiple languages.
-
-## Features
-
-- Responsive design for desktop and mobile
-- Dynamic About modal (not a separate page), content managed via Markdown and multi-language
-- Exam countdown with region-specific display
-- Automatic grayscale filter and console message on memorial days
-- Touch/swipe navigation for About modal on mobile
-- Bilibili video block, friend links, and more
-- Built-in content management system for About content (Markdown-driven)
-- Modern browser compatibility with fallback for legacy browsers
+This is a personal website project built with pure HTML, CSS, and JavaScript, featuring a homepage, About modal, and more. The site is fully responsive and adapts to different device screens.
 
 ## Localization and Multilingual Support
 
-The site supports automatic language switching and the following built-in languages:
+The project supports automatic language switching and includes the following built-in languages:
 - Simplified Chinese (zh-cn)
 - Traditional Chinese (zh-tw, zh-hk)
 - English (en, en-sg)
 - Japanese (ja)
-- Literary Chinese (wenyan)
+- Classical Chinese (wenyan)
 - Pinyin (pinyin)
 - Zhuyin (zhuyin)
 
-### Language Switching
-- Auto-detects browser language
-- Some regions auto-switch by IP
-- Force language via `?lang=xx` URL parameter (e.g. `?lang=en`)
-- Use `setLang('xx')` in the console to switch dynamically
+### Language Switching Methods
+- Automatically switches based on browser language by default.
+- Some regions will automatically switch to the corresponding language based on IP.
+- You can force a language via the URL parameter `?lang=xx`, e.g., `?lang=en`.
+- Use `setLang('xx')` in the console to switch languages dynamically.
 
-### Key Files
-- `public/js/lang.js`: Homepage multilingual logic
-- `public/css/lang-responsive.css`: Responsive styles for multiple languages
-- `public/js/about-lang.js`: About modal multilingual content (auto-generated)
-- `set/about-content.md`: Markdown source for About modal content (edit here)
-- `set/update-about.js`: Node.js tool to sync Markdown to JS
+### Related Files
+- `public/js/lang.js`: Main homepage multilingual script, responsible for language detection and content switching.
+- `public/css/lang-responsive.css`: Responsive style optimization for multiple languages.
+- `public/js/about-lang.js`: About modal multilingual content and switching logic (auto-generated).
+- `set/public/lang.js`: Multilingual package for the admin system.
 
 ## Exam Countdown Feature
 
-Displays personalized exam countdowns based on user region:
-- Jilin users see middle/high school exam countdowns
-- Automatically switches between 2025/2028 exams by date
-- Responsive position and animation for mobile/desktop
-- Auto-hides after a short time
+The website integrates an exam countdown feature that displays different countdown information based on the user's geographic location:
+
+### Feature Highlights
+- Displays countdowns for high school/college entrance exams
+- Different display positions and animation effects for mobile and desktop
+- Automatically disappears after a short display to avoid distracting users
+
+### Technical Implementation
+- Detects user region via IP address API
+- Calculates remaining days accurate to 5 decimal places
+- Responsive design, positioned at the bottom of the page on mobile devices
 
 ### Debug Commands
 - `setRegion('region name')` - Set user region
-- `setJilin()` - Set to Jilin
-- `setNonJilin()` - Set to non-Jilin
-- `testZhongkaoOver()` - Simulate post-exam
-- `testBeforeZhongkao()` - Simulate pre-exam
+- `setJilin()` - Quickly set to Jilin Province
+- `setNonJilin()` - Quickly set to non-Jilin area
+- `testZhongkaoOver()` - Test post-exam scenario
+- `testBeforeZhongkao()` - Test pre-exam scenario
 - `resetTestDate()` - Reset to real time
-- `resetRegion()` - Reset region detection
-- `showRegionStatus()` - Show current status
+- `resetRegion()` - Reset to automatic detection
+- `showRegionStatus()` - Display current status
 
 ### Related Files
-- `public/js/countdown.js`: Countdown logic
-- `public/css/countdown.css`: Countdown styles
+- `public/js/countdown.js`: Countdown core logic
+- `public/css/countdown.css`: Countdown stylesheet
 
 ## Memorial Day Grayscale Feature
 
-On specific memorial days, the site automatically applies a grayscale filter and displays a message in the browser console and page title to commemorate historical events.
+The site automatically switches to grayscale mode on specific memorial days, and displays a message in the page title and browser console to commemorate major historical events and figures.
 
 ### Supported Memorial Days
 - Qingming Festival (April 3-6)
@@ -80,8 +75,14 @@ On specific memorial days, the site automatically applies a grayscale filter and
 - Korean War Memorial (October 25)
 - Nanjing Massacre National Memorial (December 13)
 
+### Feature Highlights
+- Automatically detects the current date and compares with memorial days
+- Applies grayscale filter to the entire site on memorial days
+- Adds the memorial day info to the page title
+- Displays a memorial message in the browser console with black background and white text
+
 ### Related Files
-- `public/js/grayscale.js`: Memorial day detection and grayscale logic
+- `public/js/grayscale.js`: Memorial day detection and grayscale filter
 
 ## Directory Structure
 
@@ -89,57 +90,91 @@ On specific memorial days, the site automatically applies a grayscale filter and
 phosoftweb-home/
 ├── public/              # Main website files
 │   ├── css/             # Stylesheets
+│   │   ├── 404.css      # 404 error page style
+│   │   ├── countdown.css # Countdown feature style
+│   │   ├── lang-responsive.css # Multilingual responsive style
+│   │   ├── modal.css    # About modal style
+│   │   └── wu.css       # Common styles
 │   ├── js/              # JavaScript files
+│   │   ├── about.js     # About modal script
+│   │   ├── countdown.js # Exam countdown script
+│   │   ├── grayscale.js # Grayscale filter script
+│   │   ├── lang.js      # Multilingual switching script
+│   │   └── about-lang.js # About modal multilingual script
 │   ├── img/             # Image resources
+│   │   ├── A-logo.svg   # Phosoft icon
+│   │   ├── ISC.svg      # ISC icon
+│   │   └── bilibili.svg # Bilibili icon
 │   ├── fonts/           # Font files
+│   │   └── HarmonyOS_Sans_Medium.ttf
 │   ├── video/           # Video resources
+│   │   └── video.mp4    # Video
 │   ├── index.html       # Website homepage
-│   ├── IE303.html       # IE browser warning
+│   ├── IE303.html       # Legacy browser warning page
 │   ├── 404.html         # 404 error page
 │   ├── robots.txt       # Crawler protocol
 │   ├── sitemap.xml      # Site map
 │   └── config.yaml      # Site config
 ├── set/                 # Content management system
-│   ├── about-content.md # About modal content (Markdown, multi-language)
-│   ├── update-about.js  # Markdown <-> JS sync tool
-│   ├── gui/             # GUI for content management
-│   ├── gui-editor/      # GUI editor
-│   └── ...
-├── README.md            # Project documentation (Chinese)
-├── README.en.md         # Project documentation (English)
+│   ├── public/          # Admin system frontend
+│   │   ├── index.html   # Admin homepage
+│   │   ├── styles.css   # Admin styles
+│   │   ├── script.js    # Admin script
+│   │   └── lang.js      # Admin multilingual package
+│   ├── package.json     # Admin dependencies
+│   ├── update-about.js  # Content update tool
+│   └── server.js        # Admin backend
+└── README.md            # Project documentation (Chinese)
 ```
 
 ## Technology Stack
 
 - Frontend: HTML5, CSS3, JavaScript
 - Font: HarmonyOS Sans
-- Content Management: Node.js, Express.js, Cheerio
+- Admin System: Node.js
+
+## Features
+
+- Responsive design for desktop and mobile
+- Animation transitions for enhanced user experience
+- Automatic grayscale filter on specific memorial days
+- Touch screen swipe support
+- Exam countdown with region-specific display
+- Built-in content management system for easy About modal maintenance
 
 ## Deployment
 
-1. Static deployment: Upload the `public` directory to any static hosting service
-2. Use GitLab Pages, Vercel, or similar platforms for automatic deployment
+1. Static deployment: Upload the `public` directory to any static website hosting service
+2. Use GitLab Pages or Vercel for automatic deployment
 
-## Using the Content Management System
+## Content Update Guide
 
-1. Install dependencies: `npm install`
-2. Start the management service: `node set/server.js`
-3. Visit: `http://localhost:3000`
-4. Edit About modal content via the web interface or directly in `set/about-content.md`, then run `node set/update-about.js update` to sync
+The About modal content is stored in `set/about-content.md`. To update the content, follow these steps:
+1. **Export from JS (optional):** If you manually modified `public/js/about-lang.js`, you can sync it back to Markdown with:
+	```bash
+	node set/update-about.js extract
+	```
+2. **Edit Content:** Directly edit the `set/about-content.md` file.
+3. **Sync to JS:** In the project root, run:
+	```bash
+	node set/update-about.js update
+	```
 
 ## Development & Extension
 
-- Add new pages: Create HTML files in `public/`
-- Modify styles: Edit files in `public/css/`
-- Add features: Add scripts to `public/js/`
+- Add new pages: Create HTML files in the `public` directory
+- Modify styles: Edit files in the `css` directory
+- Add features: Add scripts to the `js` directory
 
 ## Compatibility
 
-Supports all modern browsers. Shows a warning page for incompatible browsers (e.g., IE).
+The site supports modern browsers and will show a special prompt page for incompatible browsers (such as IE).
 
 ## Copyright & Disclaimer
 
-Developed by YuanZui_ChaoFan, optimized with GitHub Copilot. Some content/code may have been used for model training without the author's knowledge. For learning and communication only, not for commercial use.
+This website was developed by YuanZui_ChaoFan and optimized with GitHub Copilot. Some content may have been used for model training without the author's knowledge. For learning and communication only, not for commercial use.
+
+AI-generated code may contain useless or incomprehensible code for humans.
 
 ## Technology Stack
 

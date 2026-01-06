@@ -89,27 +89,26 @@ phosoftweb-home/
 ├── public/              # 网站主要文件
 │   ├── css/             # 样式表文件
 │   │   ├── 404.css      # 404错误页面样式
-│   │   ├── about.css    # 关于页面样式
 │   │   ├── countdown.css # 倒计时功能样式
 │   │   ├── lang-responsive.css # 多语言响应式样式
+│   │   ├── modal.css    # 关于弹窗样式
 │   │   └── wu.css       # 公共样式
 │   ├── js/              # JavaScript文件
 │   │   ├── about.js     # 关于页面脚本
 │   │   ├── countdown.js # 考试倒计时脚本
 │   │   ├── grayscale.js # 灰度滤镜脚本
 │   │   ├── lang.js      # 多语言切换脚本
-│   │   ├── about-lang.js # 关于页面多语言脚本
-│   │   └── watermark.js # 水印效果脚本
+│   │   └── about-lang.js # 关于页面多语言脚本
 │   ├── img/             # 图片资源
 │   │   ├── A-logo.svg   # Phosoft图标
+│   │   ├── ISC.svg      # ISC图标
 │   │   └── bilibili.svg # 哔哩哔哩图标
 │   ├── fonts/           # 字体文件
 │   │   └── HarmonyOS_Sans_Medium.ttf
 │   ├── video/           # 视频资源
 │   │   └── video.mp4    # 视频
 │   ├── index.html       # 网站首页
-│   ├── about.html       # 关于页面
-│   ├── IE303.html       # IE浏览器不兼容提示页
+│   ├── IE303.html       # 老旧浏览器不兼容提示页
 │   ├── 404.html         # 404错误页面
 │   ├── robots.txt       # 爬虫协议
 │   ├── sitemap.xml      # 网站地图
@@ -121,6 +120,7 @@ phosoftweb-home/
 │   │   ├── script.js    # 管理系统脚本
 │   │   └── lang.js      # 管理系统多语言包
 │   ├── package.json     # 管理系统依赖
+│   ├── update-about.js  # 内容更新工具
 │   └── server.js        # 管理系统后端
 └── README.md            # 项目说明文档
 ```
@@ -130,7 +130,7 @@ phosoftweb-home/
 
 - 前端：HTML5、CSS3、JavaScript
 - 字体：HarmonyOS Sans
-- 管理系统：Express.js、Cheerio
+- 管理系统：Node.js
 
 ## 功能特点
 
@@ -146,12 +146,19 @@ phosoftweb-home/
 1. 静态部署：将`public`目录部署到任意静态网站托管服务
 2. 使用GitLab Pages或Vercel等平台自动部署
 
-## 使用内容管理系统
+## 内容更新指南
 
-1. 安装依赖：`npm install`
-2. 启动管理服务：`node set/server.js`
-3. 访问：`http://localhost:3000`
-4. 通过界面编辑关于页内容，点击保存即可更新网站
+本项目的“关于”弹窗内容存储在 `set/about-content.md` 中。如需更新内容，请遵循以下步骤：
+1. **从网页导出**（可选）：如果你手动修改了 `public/js/about-lang.js`，可以使用以下命令将其同步回 Markdown 文件：
+   ```bash
+   node set/update-about.js extract
+   ```
+2. **编辑内容**：直接修改 `set/about-content.md` 文件。
+3. **同步生效**：在项目根目录下运行脚本：
+   ```bash
+   node set/update-about.js update
+   ```
+
 
 ## 开发与扩展
 
