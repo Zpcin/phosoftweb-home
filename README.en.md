@@ -1,59 +1,87 @@
+
 # PhosoftWeb Personal Homepage
 
 ## Project Introduction
 
-This is a personal website project built with pure HTML, CSS, and JavaScript, including a homepage, about page, and other content. The project supports responsive layout, adapting to different device screen sizes.
+PhosoftWeb is a personal website project built with pure HTML, CSS, and JavaScript. It features a homepage, a dynamic About modal, exam countdown, memorial grayscale mode, and more. The site is fully responsive and supports multiple languages.
+
+## Features
+
+- Responsive design for desktop and mobile
+- Dynamic About modal (not a separate page), content managed via Markdown and multi-language
+- Exam countdown with region-specific display
+- Automatic grayscale filter and console message on memorial days
+- Touch/swipe navigation for About modal on mobile
+- Bilibili video block, friend links, and more
+- Built-in content management system for About content (Markdown-driven)
+- Modern browser compatibility with fallback for legacy browsers
 
 ## Localization and Multilingual Support
 
-This project supports automatic language switching with the following languages built in:
+The site supports automatic language switching and the following built-in languages:
 - Simplified Chinese (zh-cn)
 - Traditional Chinese (zh-tw, zh-hk)
 - English (en, en-sg)
 - Japanese (ja)
-- Classical Chinese (wenyan)
+- Literary Chinese (wenyan)
 - Pinyin (pinyin)
 - Zhuyin (zhuyin)
 
-### Language Switching Methods
-- Automatically switches based on browser language by default.
-- Some regions will automatically switch to the corresponding language based on IP.
-- Languages can be forced via URL parameter `?lang=xx`, e.g., `?lang=en`.
-- Use `setLang('xx')` in the console to dynamically switch languages.
+### Language Switching
+- Auto-detects browser language
+- Some regions auto-switch by IP
+- Force language via `?lang=xx` URL parameter (e.g. `?lang=en`)
+- Use `setLang('xx')` in the console to switch dynamically
 
-### Related Files
-- `public/js/lang.js`: Main site homepage multilingual script, responsible for language detection and content switching.
-- `public/css/lang-responsive.css`: Responsive style optimization for multiple languages.
-- `set/public/lang.js`: Multilingual package for the admin system.
+### Key Files
+- `public/js/lang.js`: Homepage multilingual logic
+- `public/css/lang-responsive.css`: Responsive styles for multiple languages
+- `public/js/about-lang.js`: About modal multilingual content (auto-generated)
+- `set/about-content.md`: Markdown source for About modal content (edit here)
+- `set/update-about.js`: Node.js tool to sync Markdown to JS
 
 ## Exam Countdown Feature
 
-The website integrates an exam countdown feature that displays different countdown information based on the user's geographic location:
-
-### Feature Highlights
-- Users in Jilin Province see middle school/high school entrance exam countdowns
-- Automatically displays countdown to 2025 middle school or 2028 high school entrance exams based on time
-- Different display positions and animation effects for mobile and desktop
-- Automatically disappears after brief display to avoid distracting users
-
-### Technical Implementation
-- Detects user's region through IP address API
-- Calculates remaining days accurate to 5 decimal places
-- Responsive design, positioned at the bottom of the page on mobile devices
+Displays personalized exam countdowns based on user region:
+- Jilin users see middle/high school exam countdowns
+- Automatically switches between 2025/2028 exams by date
+- Responsive position and animation for mobile/desktop
+- Auto-hides after a short time
 
 ### Debug Commands
 - `setRegion('region name')` - Set user region
-- `setJilin()` - Quickly set to Jilin Province
-- `setNonJilin()` - Quickly set to non-Jilin area
-- `testZhongkaoOver()` - Test post-middle school exam time scenario
-- `testBeforeZhongkao()` - Test pre-middle school exam time scenario
+- `setJilin()` - Set to Jilin
+- `setNonJilin()` - Set to non-Jilin
+- `testZhongkaoOver()` - Simulate post-exam
+- `testBeforeZhongkao()` - Simulate pre-exam
 - `resetTestDate()` - Reset to real time
-- `resetRegion()` - Reset to automatic detection
-- `showRegionStatus()` - Display current status
+- `resetRegion()` - Reset region detection
+- `showRegionStatus()` - Show current status
 
 ### Related Files
-- `public/js/countdown.js`: Countdown core logic
-- `public/css/countdown.css`: Countdown stylesheet
+- `public/js/countdown.js`: Countdown logic
+- `public/css/countdown.css`: Countdown styles
+
+## Memorial Day Grayscale Feature
+
+On specific memorial days, the site automatically applies a grayscale filter and displays a message in the browser console and page title to commemorate historical events.
+
+### Supported Memorial Days
+- Qingming Festival (April 3-6)
+- COVID-19 Memorial Day (April 4)
+- Yushu Earthquake Memorial (April 14)
+- Wenchuan Earthquake Memorial (May 12)
+- Lidice Massacre Memorial (June 10)
+- July 7 Incident Memorial (July 7)
+- World Comfort Women Memorial (August 14)
+- Mao Zedong Memorial (September 9)
+- September 18 Incident Memorial (September 18)
+- Martyrs' Memorial Day (September 30)
+- Korean War Memorial (October 25)
+- Nanjing Massacre National Memorial (December 13)
+
+### Related Files
+- `public/js/grayscale.js`: Memorial day detection and grayscale logic
 
 ## Directory Structure
 
@@ -61,42 +89,57 @@ The website integrates an exam countdown feature that displays different countdo
 phosoftweb-home/
 ├── public/              # Main website files
 │   ├── css/             # Stylesheets
-│   │   ├── 404.css      # 404 error page style
-│   │   ├── about.css    # About page style
-│   │   ├── countdown.css # Countdown feature style
-│   │   ├── lang-responsive.css # Multilingual responsive style
-│   │   └── wu.css       # Common styles
 │   ├── js/              # JavaScript files
-│   │   ├── about.js     # About page script
-│   │   ├── countdown.js # Exam countdown script
-│   │   ├── grayscale.js # Grayscale filter script
-│   │   ├── lang.js      # Multilingual switching script
-│   │   └── watermark.js # Watermark effect script
 │   ├── img/             # Image resources
-│   │   ├── A-logo.svg   # Phosoft icon
-│   │   └── bilibili.svg # Bilibili icon
 │   ├── fonts/           # Font files
-│   │   └── HarmonyOS_Sans_Medium.ttf
 │   ├── video/           # Video resources
-│   │   └── video.mp4    # Video
 │   ├── index.html       # Website homepage
-│   ├── about.html       # About page
-│   ├── IE303.html       # IE browser incompatibility notice page
+│   ├── IE303.html       # IE browser warning
 │   ├── 404.html         # 404 error page
 │   ├── robots.txt       # Crawler protocol
 │   ├── sitemap.xml      # Site map
-│   └── config.yaml      # Site configuration
-├── set/                 # Content Management System
-│   ├── public/          # Admin system frontend
-│   │   ├── index.html   # Admin system homepage
-│   │   ├── styles.css   # Admin system styles
-│   │   ├── script.js    # Admin system script
-│   │   └── lang.js      # Admin system language package
-│   ├── package.json     # Admin system dependencies
-│   └── server.js        # Admin system backend
+│   └── config.yaml      # Site config
+├── set/                 # Content management system
+│   ├── about-content.md # About modal content (Markdown, multi-language)
+│   ├── update-about.js  # Markdown <-> JS sync tool
+│   ├── gui/             # GUI for content management
+│   ├── gui-editor/      # GUI editor
+│   └── ...
 ├── README.md            # Project documentation (Chinese)
 ├── README.en.md         # Project documentation (English)
 ```
+
+## Technology Stack
+
+- Frontend: HTML5, CSS3, JavaScript
+- Font: HarmonyOS Sans
+- Content Management: Node.js, Express.js, Cheerio
+
+## Deployment
+
+1. Static deployment: Upload the `public` directory to any static hosting service
+2. Use GitLab Pages, Vercel, or similar platforms for automatic deployment
+
+## Using the Content Management System
+
+1. Install dependencies: `npm install`
+2. Start the management service: `node set/server.js`
+3. Visit: `http://localhost:3000`
+4. Edit About modal content via the web interface or directly in `set/about-content.md`, then run `node set/update-about.js update` to sync
+
+## Development & Extension
+
+- Add new pages: Create HTML files in `public/`
+- Modify styles: Edit files in `public/css/`
+- Add features: Add scripts to `public/js/`
+
+## Compatibility
+
+Supports all modern browsers. Shows a warning page for incompatible browsers (e.g., IE).
+
+## Copyright & Disclaimer
+
+Developed by YuanZui_ChaoFan, optimized with GitHub Copilot. Some content/code may have been used for model training without the author's knowledge. For learning and communication only, not for commercial use.
 
 ## Technology Stack
 
