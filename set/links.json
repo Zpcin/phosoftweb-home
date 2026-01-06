@@ -1,0 +1,261 @@
+[
+  {
+    "id": "official",
+    "url": "https://about.phosoft.cn/",
+    "translations": {
+      "zh-cn": "PhosoftStudio 官方网站",
+      "zh-hk": "PhosoftStudio 官方網站",
+      "zh-tw": "PhosoftStudio 官方網站",
+      "en": "PhosoftStudio Official Website",
+      "en-sg": "PhosoftStudio Official Website lah",
+      "ja": "フォソフトスタジオ公式サイト",
+      "wenyan": "鳳梭軟閣正室",
+      "pinyin": "PhosoftStudio guānfāng wǎngzhàn",
+      "zhuyin": "PhosoftStudio ㄍㄨㄢ ㄈㄤ ㄨㄤˇ ㄓㄢˋ"
+    }
+  },
+  {
+    "id": "bullshit",
+    "url": "https://suulnnka.github.io/BullshitGenerator/index.html",
+    "translations": {
+      "zh-cn": "狗屁不通文章生成器",
+      "zh-hk": "垃圾文章生成器",
+      "zh-tw": "無意義文章生成器",
+      "en": "Bullshit Generator",
+      "en-sg": "Nonsense Generator lor",
+      "ja": "ナンセンス文章ジェネレーター",
+      "wenyan": "妄言生成之術",
+      "pinyin": "Gǒupì bùtōng wénzhāng shēngchéngqì",
+      "zhuyin": "ㄍㄡˇ ㄆㄧˊ ㄅㄨˋ ㄊㄨㄥ ㄨㄣˊ ㄓㄤ ㄕㄥ ㄔㄥˊ ㄑㄧˋ"
+    }
+  },
+  {
+    "id": "hitokoto",
+    "url": "https://hitokoto.cn/",
+    "translations": {
+      "zh-cn": "Hitokoto - 一言",
+      "zh-hk": "Hitokoto - 一言",
+      "zh-tw": "Hitokoto - 一言",
+      "en": "Hitokoto - One Sentence",
+      "en-sg": "Hitokoto - One Word ah",
+      "ja": "ヒトコト - 一言",
+      "wenyan": "一言堂",
+      "pinyin": "Hitokoto - Yīyán",
+      "zhuyin": "Hitokoto - ㄧˊ ㄧㄢˊ"
+    }
+  },
+  {
+    "id": "youget",
+    "url": "https://github.com/soimort/you-get/",
+    "translations": {
+      "zh-cn": "视频解析下载工具",
+      "zh-hk": "影片下載工具",
+      "zh-tw": "影片下載工具",
+      "en": "Video Download Tool",
+      "en-sg": "Video Downloader Tool",
+      "ja": "動画ダウンロードツール",
+      "wenyan": "影像擷取之器",
+      "pinyin": "Shìpín jiěxī xiàzǎi gōngjù",
+      "zhuyin": "ㄕˋ ㄆㄧㄣˊ ㄐㄧㄝˇ ㄒㄧ ㄒㄧㄚˋ ㄗㄞˇ ㄍㄨㄥ ㄐㄩˋ"
+    }
+  },
+  {
+    "id": "aurora",
+    "url": "https://aurorast.cn/",
+    "translations": {
+      "zh-cn": "AuroraStudio",
+      "zh-hk": "AuroraStudio",
+      "zh-tw": "AuroraStudio",
+      "en": "AuroraStudio",
+      "en-sg": "AuroraStudio",
+      "ja": "AuroraStudio",
+      "wenyan": "AuroraStudio",
+      "pinyin": "AuroraStudio",
+      "zhuyin": "AuroraStudio"
+    }
+  },
+  {
+    "id": "chensite",
+    "url": "https://chenzr.xn--0tr.top/",
+    "translations": {
+      "zh-cn": "ChenZR的小破站",
+      "zh-hk": "ChenZR嘅小破站",
+      "zh-tw": "ChenZR的小破站",
+      "ja": "ChenZRの小さなサイト",
+      "wenyan": "臣贈儒之陋室",
+      "pinyin": "ChenZR de xiǎopò zhàn",
+      "zhuyin": "ChenZR ㄉㄜ˙ ㄒㄧㄠˇ ㄆㄛˋ ㄓㄢˋ"
+    }
+  },
+  {
+    "id": "damonsite",
+    "url": "https://damon233.js.org/",
+    "translations": {
+      "zh-cn": "What_Damon的窝",
+      "zh-hk": "What_Damon嘅窩",
+      "zh-tw": "What_Damon的窩",
+      "ja": "What_Damonの巣",
+      "wenyan": "何大夢之居所",
+      "pinyin": "What_Damon de wō",
+      "zhuyin": "What_Damon ㄉㄜ˙ ㄨㄛ"
+    }
+  },
+  {
+    "id": "zpcin",
+    "url": "javascript:void(0)",
+    "translations": {
+      "zh-cn": "Zpcin个人网站",
+      "zh-hk": "Zpcin個人網站",
+      "zh-tw": "Zpcin個人網站",
+      "ja": "Zpcinの個人サイト",
+      "wenyan": "志平臣之私居",
+      "pinyin": "Zpcin gèrén wǎngzhàn",
+      "zhuyin": "Zpcin ㄍㄜˋ ㄖㄣˊ ㄨㄤˇ ㄓㄢˋ"
+    }
+  },
+  {
+    "id": "pigeon",
+    "url": "https://www.imfmkli.top/",
+    "translations": {
+      "zh-cn": "鸽子的屑网站",
+      "zh-hk": "鴿子嘅屑網站",
+      "zh-tw": "鴿子的垃圾網站",
+      "ja": "鳩の簡素なサイト",
+      "wenyan": "鴿者之陋址",
+      "pinyin": "Gēzi de xiè wǎngzhàn",
+      "zhuyin": "ㄍㄜ ㄗ˙ ㄉㄜ˙ ㄒㄧㄝˋ ㄨㄤˇ ㄓㄢˋ"
+    }
+  },
+  {
+    "id": "grassdev",
+    "url": "https://gdt.im/",
+    "translations": {
+      "zh-cn": "生草開發組",
+      "zh-hk": "生草開發組",
+      "zh-tw": "生草開發組",
+      "en": "Grass Development Group",
+      "en-sg": "Grass Dev Group ah",
+      "ja": "草開発グループ",
+      "wenyan": "草生之工坊",
+      "pinyin": "Shēngcǎo kāifā zǔ",
+      "zhuyin": "ㄕㄥ ㄘㄠˇ ㄎㄞ ㄈㄚ ㄗㄨˇ"
+    }
+  },
+  {
+    "id": "grasstheme",
+    "url": "https://theme.estu.site/",
+    "translations": {
+      "zh-cn": "生草主题官方博客",
+      "zh-hk": "生草主題官方博客",
+      "zh-tw": "生草主題官方部落格",
+      "en": "Grass Theme Official Blog",
+      "en-sg": "Grass Theme Blog",
+      "ja": "草テーマ公式ブログ",
+      "wenyan": "草題之官志",
+      "pinyin": "Shēngcǎo zhǔtí guānfāng bókè",
+      "zhuyin": "ㄕㄥ ㄘㄠˇ ㄓㄨˇ ㄊㄧˊ ㄍㄨㄢ ㄈㄤ ㄅㄛˊ ㄎㄜˋ"
+    }
+  },
+  {
+    "id": "chenxinlei",
+    "url": "https://www.cxl2020mc.top",
+    "translations": {
+      "zh-cn": "陈鑫磊的博客",
+      "zh-hk": "陳鑫磊嘅博客",
+      "zh-tw": "陳鑫磊的部落格",
+      "ja": "陳鑫磊のブログ",
+      "wenyan": "陳鑫磊之文苑",
+      "pinyin": "Chén Xīnlěi de bókè",
+      "zhuyin": "ㄔㄣˊ ㄒㄧㄣ ㄌㄟˇ ㄉㄜ˙ ㄅㄛˊ ㄎㄜˋ"
+    }
+  },
+  {
+    "id": "awesome",
+    "url": "https://github.com/awesome-iwb/awesome-iwb",
+    "translations": {
+      "zh-cn": "Awesome IWB",
+      "zh-hk": "Awesome IWB",
+      "zh-tw": "Awesome IWB",
+      "en": "Awesome IWB",
+      "en-sg": "Awesome IWB",
+      "ja": "Awesome IWB",
+      "wenyan": "妙筆教板錦集",
+      "pinyin": "Awesome IWB"
+    }
+  },
+  {
+    "id": "sponsor",
+    "url": "https://sponsor.psoft.eu.org/",
+    "translations": {
+      "zh-cn": "赞助我们",
+      "zh-hk": "贊助我哋",
+      "zh-tw": "贊助我們",
+      "en": "Sponsor Us",
+      "en-sg": "Support Us lah",
+      "ja": "私たちを支援する",
+      "wenyan": "贊襄吾輩",
+      "pinyin": "Zànzhù wǒmen",
+      "zhuyin": "ㄗㄢˋ ㄓㄨˋ ㄨㄛˇ ㄇㄣˊ"
+    }
+  },
+  {
+    "id": "search",
+    "url": "./dsp.html",
+    "translations": {
+      "zh-cn": "Phosoft搜索页",
+      "zh-hk": "Phosoft搜索頁",
+      "zh-tw": "Phosoft搜索頁",
+      "en": "Phosoft Search",
+      "en-sg": "Phosoft Search Page",
+      "ja": "フォソフト検索ページ",
+      "wenyan": "鳳梭搜索",
+      "pinyin": "Phosoft sōusuǒ yè",
+      "zhuyin": "Phosoft ㄙㄡ ㄙㄨㄛˇ ㄧㄝˋ"
+    }
+  },
+  {
+    "id": "forum",
+    "url": "https://forum.phosoft.cn/",
+    "translations": {
+      "zh-cn": "Phosoft论坛页",
+      "zh-hk": "Phosoft論壇頁",
+      "zh-tw": "Phosoft論壇頁",
+      "en": "Phosoft Forum",
+      "en-sg": "Phosoft Forum",
+      "ja": "フォソフトフォーラム",
+      "wenyan": "鳳梭論壇",
+      "pinyin": "Phosoft lùntán yè",
+      "zhuyin": "Phosoft ㄌㄨㄣˊ ㄊㄢˊ ㄧㄝˋ"
+    }
+  },
+  {
+    "id": "game",
+    "url": "https://game.phosoft.cn/",
+    "translations": {
+      "zh-cn": "Phosoft游戏页-扫草",
+      "zh-hk": "Phosoft遊戲頁-掃草",
+      "zh-tw": "Phosoft遊戲頁-掃草",
+      "en": "Phosoft Game - Scan Grass",
+      "en-sg": "Phosoft Game - Scan Grass",
+      "ja": "フォソフトゲーム-草スキャン",
+      "wenyan": "鳳梭遊戲-掃草",
+      "pinyin": "Phosoft yóuxì yè - Sǎocǎo",
+      "zhuyin": "Phosoft ㄧㄡˊ ㄒㄧˋ ㄧㄝˋ - ㄙㄠˇ ㄘㄠˇ"
+    }
+  },
+  {
+    "id": "ugly",
+    "url": "https://ugly-standby.666forum.com/",
+    "translations": {
+      "zh-cn": "丑备用论坛页",
+      "zh-hk": "醜備用論壇頁",
+      "zh-tw": "備用論壇頁",
+      "en": "Ugly Backup Forum",
+      "en-sg": "Backup Forum Page lah",
+      "ja": "バックアップフォーラム",
+      "wenyan": "備用論壇",
+      "pinyin": "Chǒu bèiyòng lùntán yè",
+      "zhuyin": "ㄔㄡˇ ㄅㄟˋ ㄩㄥˋ ㄌㄨㄣˊ ㄊㄢˊ ㄧㄝˋ"
+    }
+  }
+]

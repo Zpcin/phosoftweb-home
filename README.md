@@ -146,6 +146,24 @@ phosoftweb-home/
 1. 静态部署：将`public`目录部署到任意静态网站托管服务
 2. 使用GitLab Pages或Vercel等平台自动部署
 
+
+## 友情链接管理指南
+
+本项目的友情链接由 `set/links.json` 统一管理，支持多语言和排序。
+
+### 操作步骤
+1. **提取现有链接配置**（首次使用或手动修改代码后）：
+   ```bash
+   node set/update-links.js extract
+   ```
+   这会生成 `set/links.json` 文件。
+2. **编辑链接**：直接修改 `set/links.json`，可增删、排序、修改 url 和多语言名称。
+3. **应用更改**：
+   ```bash
+   node set/update-links.js update
+   ```
+   这会自动同步到 `public/index.html` 和 `public/js/lang.js`。
+
 ## 内容更新指南
 
 本项目的“关于”弹窗内容存储在 `set/about-content.md` 中。如需更新内容，请遵循以下步骤：
