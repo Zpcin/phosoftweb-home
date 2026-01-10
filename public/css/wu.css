@@ -331,3 +331,24 @@ body {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+
+/* 移动端点击优化：移除蓝色点击高亮与焦点外框 */
+@media (hover: none) and (pointer: coarse) {
+    a,
+    button,
+    .modal-btn,
+    [role="button"],
+    input,
+    textarea {
+        -webkit-tap-highlight-color: transparent; /* 移除Android/Chrome点击高亮 */
+    }
+
+    a:focus,
+    button:focus,
+    .modal-btn:focus,
+    [role="button"]:focus,
+    input:focus,
+    textarea:focus {
+        outline: none; /* 移除iOS/Safari默认焦点外框 */
+    }
+}
