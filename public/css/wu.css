@@ -352,3 +352,36 @@ body {
         outline: none; /* 移除iOS/Safari默认焦点外框 */
     }
 }
+
+/* Spacing helpers */
+.h-10 { height: 10px; }
+.h-20 { height: 20px; }
+.h-40 { height: 40px; }
+.h-90 { height: 90px; }
+
+/* Styles moved from inline styles in index.html */
+#video {
+    width: calc(65% - 23px);
+}
+
+#notice {
+    width: calc(35% - 23px);
+}
+
+@media (max-width: 800px) {
+    #video,
+    #notice {
+        width: 100%;
+    }
+}
+
+.footer-link-img {
+    text-decoration: none; 
+    color: rgb(20, 20, 20);
+}
+
+.footer-link-img img {
+    float: left; 
+    height: 23px; 
+    margin-right: 5px;
+}
