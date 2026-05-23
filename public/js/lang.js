@@ -32,7 +32,8 @@ const PHOSOFTWEB_LANG_MAP = {
       'grassdev': '生草開發組',
       'grasstheme': '生草主题官方博客',
       'awesome': 'Awesome IWB',
-      'chenxinlei': '陈鑫磊的博客'
+      'chenxinlei': '陈鑫磊的博客',
+      'apanzinc': 'apanzinc'
     },
     footer: '版权所有',
     powered: '此网站由 <a href="https://vercel.com/">Vercel</a>&nbsp;强力驱动',
@@ -99,7 +100,8 @@ ____  _                      __ _
       'grassdev': '生草開發組',
       'grasstheme': '生草主題官方博客',
       'awesome': 'Awesome IWB',
-      'chenxinlei': '陳鑫磊嘅博客'
+      'chenxinlei': '陳鑫磊嘅博客',
+      'apanzinc': 'apanzinc'
     },
     footer: '版權所有',
     powered: '呢個網站由 <a href="https://vercel.com/">Vercel</a>&nbsp;強力驅動',
@@ -166,7 +168,8 @@ ____  _                      __ _
       'grassdev': '生草開發組',
       'grasstheme': '生草主題官方部落格',
       'awesome': 'Awesome IWB',
-      'chenxinlei': '陳鑫磊的部落格'
+      'chenxinlei': '陳鑫磊的部落格',
+      'apanzinc': 'apanzinc'
     },
     footer: '版權所有',
     powered: '本網站由 <a href="https://vercel.com/">Vercel</a>&nbsp;強力驅動',
@@ -233,7 +236,8 @@ ____  _                      __ _
       'grassdev': 'Grass Development Group',
       'grasstheme': 'Grass Theme Official Blog',
       'awesome': 'Awesome IWB',
-      'chenxinlei': "Chen Xinlei's Blog"
+      'chenxinlei': "Chen Xinlei's Blog",
+      'apanzinc': 'apanzinc'
     },
     footer: 'All rights reserved',
     powered: 'Powered by <a href="https://vercel.com/">Vercel</a>',
@@ -298,7 +302,8 @@ ____  _                      __ _
       'grassdev': 'Grass Dev Group ah',
       'grasstheme': 'Grass Theme Blog',
       'awesome': 'Awesome IWB',
-      'chenxinlei': "Chen Xinlei Blog"
+      'chenxinlei': "Chen Xinlei Blog",
+      'apanzinc': 'apanzinc'
     },
     footer: 'All rights reserved',
     powered: 'Powered by <a href="https://vercel.com/">Vercel</a> one',
@@ -348,7 +353,7 @@ ____  _                      __ _
       'bullshit': 'ナンセンス文章ジェネレーター',
       'hitokoto': 'ヒトコト - 一言',
       'youget': '動画ダウンロードツール',
-      'aurora': 'AuroraStudio',
+      'aurora': 'オーロラスタジオ',
       'sponsor': '私たちを支援する',
       'search': 'フォソフト検索ページ',
       'forum': 'フォソフトフォーラム',
@@ -363,7 +368,8 @@ ____  _                      __ _
       'grassdev': '草開発グループ',
       'grasstheme': '草テーマ公式ブログ',
       'awesome': 'Awesome IWB',
-      'chenxinlei': '陳鑫磊のブログ'
+      'chenxinlei': '陳鑫磊のブログ',
+      'apanzinc': 'アパンジンク'
     },
     footer: '著作権所有',
     powered: '<a href="https://vercel.com/">Vercel</a> により強力に提供',
@@ -418,7 +424,7 @@ ____  _                      __ _
       'bullshit': '妄言生成之術',
       'hitokoto': '一言堂',
       'youget': '影像擷取之器',
-      'aurora': 'AuroraStudio',
+      'aurora': '奧羅拉工坊',
       'sponsor': '贊襄吾輩',
       'search': '鳳梭搜索',
       'forum': '鳳梭論壇',
@@ -433,7 +439,8 @@ ____  _                      __ _
       'grassdev': '草生之工坊',
       'grasstheme': '草題之官志',
       'awesome': '妙筆教板錦集',
-      'chenxinlei': '陳鑫磊之文苑'
+      'chenxinlei': '陳鑫磊之文苑',
+      'apanzinc': '阿潘津克'
     },
     footer: '版權所屬',
     powered: '賴 <a href="https://vercel.com/">Vercel</a> 之力而行',
@@ -492,7 +499,8 @@ ____  _                      __ _
       'grassdev': 'Shēngcǎo kāifā zǔ',
       'grasstheme': 'Shēngcǎo zhǔtí guānfāng bókè',
       'awesome': 'Awesome IWB',
-      'chenxinlei': 'Chén Xīnlěi de bókè'
+      'chenxinlei': 'Chén Xīnlěi de bókè',
+      'apanzinc': 'apanzinc'
     },
     footer: 'Bǎnquán suǒyǒu',
     powered: 'Cǐ wǎngzhàn yóu <a href="https://vercel.com/">Vercel</a>&nbsp;qiánglì qūdòng',
@@ -558,7 +566,8 @@ ____  _                      __ _
       'pigeon': 'ㄍㄜ ㄗ˙ ㄉㄜ˙ ㄒㄧㄝˋ ㄨㄤˇ ㄓㄢˋ',
       'grassdev': 'ㄕㄥ ㄘㄠˇ ㄎㄞ ㄈㄚ ㄗㄨˇ',
       'grasstheme': 'ㄕㄥ ㄘㄠˇ ㄓㄨˇ ㄊㄧˊ ㄍㄨㄢ ㄈㄤ ㄅㄛˊ ㄎㄜˋ',
-      'chenxinlei': 'ㄔㄣˊ ㄒㄧㄣ ㄌㄟˇ ㄉㄜ˙ ㄅㄛˊ ㄎㄜˋ'
+      'chenxinlei': 'ㄔㄣˊ ㄒㄧㄣ ㄌㄟˇ ㄉㄜ˙ ㄅㄛˊ ㄎㄜˋ',
+      'apanzinc': 'apanzinc'
     },
     footer: 'ㄅㄢˇ ㄑㄩㄢˊ ㄙㄨㄛˇ ㄧㄡˇ',
     powered: 'ㄘˊ ㄨㄤˇ ㄓㄢˋ ㄧㄡˇ <a href="https://vercel.com/">Vercel</a>&nbsp;ㄑㄧㄤˊ ㄌㄧˋ ㄑㄩˋ ㄉㄨㄥˋ',
