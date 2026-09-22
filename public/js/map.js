@@ -10,14 +10,22 @@
         { name: '哈尔滨', lat: 45.803, lng: 126.535, note: '' },
         { name: '长春', lat: 43.817, lng: 125.324, note: '' },
         { name: '沈阳', lat: 41.803, lng: 123.431, note: '' },
+        { name: '秦皇岛', lat: 39.935, lng: 119.605, note: '早忘了' },
         { name: '北京', lat: 39.904, lng: 116.407, note: '' },
+        { name: '大连', lat: 38.914, lng: 121.615, note: '' },
         { name: '成都', lat: 30.572, lng: 104.066, note: '' },
         { name: '重庆', lat: 29.563, lng: 106.551, note: '' },
         { name: '上海', lat: 31.230, lng: 121.474, note: '' },
+        { name: '苏州', lat: 31.299, lng: 120.585, note: '' },
+        { name: '桐乡', lat: 30.629, lng: 120.565, note: '乌镇坑人' },
+        { name: '杭州', lat: 30.274, lng: 120.155, note: '' },
+        { name: '广州', lat: 23.129, lng: 113.264, note: '' },
+        { name: '珠海', lat: 22.271, lng: 113.577, note: '' },
         { name: '香港', lat: 22.320, lng: 114.169, note: '印象最深：刷卡和地铁' },
         { name: '新加坡', lat: 1.352, lng: 103.820, note: '很好' },
         { name: '朝鲜 · 罗先', lat: 42.25, lng: 130.29, note: '毗邻俄罗斯' },
-        { name: '俄罗斯', lat: 43.116, lng: 131.885, note: '' },
+        { name: '俄罗斯 · 海参崴', lat: 43.116, lng: 131.885, note: '' },
+        { name: '韩国 · 济州岛', lat: 33.500, lng: 126.531, note: '' },
     ];
 
     function initMap() {
