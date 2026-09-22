@@ -165,7 +165,7 @@ function PublicSacrificeDay(){
     let currentdate = new Date();
     let str = "";
     let mm = currentdate.getMonth() + 1;
-    if(currentdate.getMonth()>9){
+    if(mm>9){
         str += mm;
     }else{
         str += "0" + mm;
