@@ -565,6 +565,13 @@ body {
     z-index: 0; /* 低于弹窗与倒计时层级 */
 }
 
+/* 高分屏（Windows 125%/150% 缩放）下瓦片落在半像素位置会产生接缝网格线。
+   把瓦片窗格提升为独立合成层，浏览器会将整层对齐到整数像素网格，缝隙从根源消除 */
+.travel-map .leaflet-tile-pane {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
 @media (max-width: 800px) {
     /* 移动端隐藏头像，与桌面端一致：文字靠左 */
     .hero-avatar {
