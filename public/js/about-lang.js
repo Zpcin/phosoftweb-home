@@ -329,6 +329,20 @@ function applyContentTranslations() {
   }, 100);
 }
 
+// 各语言"关于"前缀（供侧边栏条目拼接标题使用）
+// ABOUT_LANG_MAP[lang].about + 条目标题 + "..."
+const ABOUT_LANG_MAP = {
+  'zh-cn':   { about: '关于' },
+  'zh-hk':   { about: '關於' },
+  'zh-tw':   { about: '關於' },
+  'en':      { about: 'About ' },
+  'en-sg':   { about: 'About ' },
+  'ja':      { about: '私について・' },
+  'wenyan':  { about: '關於' },
+  'pinyin':  { about: 'Guānyú ' },
+  'zhuyin':  { about: 'ㄍㄨㄢ ㄩˊ ' },
+};
+
 // 更新侧边栏标题
 function updateSidebarTitles() {
   const sidebarItems = document.querySelectorAll("#sidebar .info-section");

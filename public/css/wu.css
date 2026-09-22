@@ -216,11 +216,6 @@ body {
         font-size: 22px; /* 调整 .wu-h2 元素的字体大小 */
     }
 
-    /* 视频标题特别处理 */
-    #video .wu-h2.no-wrap {
-        font-size: 20px;
-    }
-
     /* 平板设备特别优化 */
     .wu-block {
         margin: 8px 0;
@@ -239,10 +234,6 @@ body {
 }
 
 @media (max-width: 600px) {
-    #video .wu-h2.no-wrap {
-        font-size: 18px;
-    }
-
     .wu-links a {
         margin: 4px 2px;
         font-size: 14px;
@@ -262,10 +253,6 @@ body {
 
     .nav-item {
         padding: 12px;
-        font-size: 16px;
-    }
-
-    #video .wu-h2.no-wrap {
         font-size: 16px;
     }
 
@@ -298,9 +285,14 @@ body {
     }
 }
 
-/* 特别处理视频区块的标题 */
-#video .wu-box {
-    overflow: hidden;
+/* 特别处理地图区块：禁用悬停位移，避免影响地图交互 */
+#travelMapBlock .wu-box:hover {
+    transform: none;
+}
+
+#travelMapBlock.wu-shadow:hover {
+    transform: none;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* 页脚版权信息链接样式 - 使其看起来像普通文本 */
@@ -360,7 +352,7 @@ body {
 .h-90 { height: 90px; }
 
 /* Styles moved from inline styles in index.html */
-#video {
+#travelMapBlock {
     width: calc(65% - 23px);
 }
 
@@ -487,7 +479,7 @@ body {
 }
 
 @media (max-width: 800px) {
-    #video,
+    #travelMapBlock,
     #notice {
         width: 100%;
     }
@@ -502,4 +494,88 @@ body {
     float: left; 
     height: 23px; 
     margin-right: 5px;
+}
+
+/* 个人 Hero 区布局 */
+.hero-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 0; /* 允许长文本正常截断 */
+}
+
+.hero-avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f0f2f5;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+/* Hero 标题排版：突出姓名（选择器带 .wu-content 以压过 lang-responsive.css 的语言覆写） */
+.wu-content .hero-text .wu-h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.wu-content .hero-text .wu-h1 {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0;
+}
+
+.hero-intro {
+    margin-top: 14px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+    max-width: 680px;
+}
+
+@media (max-width: 600px) {
+    .wu-content .hero-text .wu-h2 {
+        font-size: 17px;
+    }
+
+    .wu-content .hero-text .wu-h1 {
+        font-size: 30px;
+    }
+
+    .hero-intro {
+        font-size: 16px;
+    }
+}
+
+/* 我去过的地方（地图） */
+.travel-map {
+    width: 100%;
+    height: 340px;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 0; /* 低于弹窗与倒计时层级 */
+}
+
+@media (max-width: 800px) {
+    /* 移动端隐藏头像，与桌面端一致：文字靠左 */
+    .hero-avatar {
+        display: none;
+    }
+
+    .hero-intro {
+        max-width: 100%;
+    }
+
+    .travel-map {
+        height: 260px;
+    }
 }

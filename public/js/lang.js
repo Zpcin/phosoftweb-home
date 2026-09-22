@@ -1,12 +1,12 @@
 // phosoftweb-home 主站首页多语言脚本
 const PHOSOFTWEB_LANG_MAP = {
   'zh-cn': {
-    welcome: '欢迎来到',
+    welcome: '你好，我是',
     loadingPage: '正在加载页面...',
     loading: '加载中...',
-    site: 'PhosoftWebPages',
-    promo: '下面是 PhosoftWeb Line 宣传片',
-    bilibili: '进入bilibili，一起交流！',
+    site: '溪夏坡Zpcin',
+    intro: '不知道写什么（）',
+    mapTitle: '我去过的地方',
     notice: '公告',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', '这是公告'],
@@ -69,12 +69,12 @@ ____  _                      __ _
     }
   },
   'zh-hk': {
-    welcome: '歡迎來到',
+    welcome: '你好，我係',
     loadingPage: '正在加載頁面...',
     loading: '加載中...',
-    site: 'PhosoftWebPages',
-    promo: '呢度係 PhosoftWeb Line 嘅宣傳片',
-    bilibili: '入去bilibili，一齊交流啦！',
+    site: '溪夏坡Zpcin',
+    intro: '唔知寫咩好（）',
+    mapTitle: '我去過嘅地方',
     notice: '公告',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', '呢個係公告'],
@@ -137,12 +137,12 @@ ____  _                      __ _
     }
   },
   'zh-tw': {
-    welcome: '歡迎來到',
+    welcome: '你好，我是',
     loadingPage: '正在加載頁面...',
     loading: '加載中...',
-    site: 'PhosoftWebPages',
-    promo: '下面是 PhosoftWeb Line 宣傳片',
-    bilibili: '進入bilibili，一起交流！',
+    site: '溪夏坡Zpcin',
+    intro: '不知道寫什麼（）',
+    mapTitle: '我去過的地方',
     notice: '公告',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', '這是公告'],
@@ -205,12 +205,12 @@ ____  _                      __ _
     }
   },
   'en': {
-    welcome: 'Welcome to',
+    welcome: "Hi, I'm",
     loadingPage: 'Loading page...',
     loading: 'Loading...',
-    site: 'PhosoftWebPages',
-    promo: 'Here is the PhosoftWeb Line promo video',
-    bilibili: 'Go to Bilibili and let’s interact!',
+    site: '溪夏坡Zpcin',
+    intro: "Don't know what to write here ()",
+    mapTitle: "Places I've Been",
     notice: 'Announcement',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', 'This is an announcement'],
@@ -273,10 +273,10 @@ ____  _                      __ _
     }
   },
   'en-sg': {
-    welcome: 'Welcome lah to',
-    site: 'PhosoftWebPages',
-    promo: 'Here got PhosoftWeb Line promo video lor',
-    bilibili: 'Go Bilibili together can?',
+    welcome: "Hello lah, I'm",
+    site: '溪夏坡Zpcin',
+    intro: "Don't know what to write here lah ()",
+    mapTitle: "Places I've been",
     notice: 'Announcement',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', 'Got announcement here'],
@@ -339,10 +339,10 @@ ____  _                      __ _
     }
   },
   'ja': {
-    welcome: 'ようこそ',
-    site: 'フォソフトウェブページズ',
-    promo: 'フォソフトウェブ Line 紹介映像',
-    bilibili: 'Bilibiliで一緒に交流しましょう！',
+    welcome: 'こんにちは、',
+    site: '渓夏坡ズプシン',
+    intro: '何を書けばいいか分からない（）',
+    mapTitle: '行ったことのある場所',
     notice: 'お知らせ',
     noticeEn: 'Nōtisu',
     noticeContent: ['QwQ~', 'これはお知らせです'],
@@ -411,10 +411,10 @@ ____  _                      __ _
     }
   },
   'wenyan': {
-    welcome: '有客至',
-    site: '鳳梭軟閣',
-    promo: '觀鳳梭線焉',
-    bilibili: '入哔哩哔哩，與諸君共語矣！',
+    welcome: '吾乃',
+    site: '溪夏坡Zpcin',
+    intro: '不知所云（）',
+    mapTitle: '吾所至之處',
     notice: '示',
     noticeEn: 'Notitia',
     noticeContent: ['嗟乎', '是爲告示'],
@@ -470,10 +470,10 @@ ____  _                      __ _
     }
   },
   'pinyin': {
-    welcome: 'Huānyíng lái dào',
-    site: 'PhosoftWebPages',
-    promo: 'Xiàmiàn shì PhosoftWeb Line xuānchuánpiàn',
-    bilibili: 'Jìnrù bilibili, yìqǐ jiāoliú!',
+    welcome: 'Nǐ hǎo, wǒ shì',
+    site: '溪夏坡Zpcin',
+    intro: 'Bù zhīdào xiě shénme ()',
+    mapTitle: 'Wǒ qùguò de dìfang',
     notice: 'Gōnggào',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', 'Zhè shì gōnggào'],
@@ -536,12 +536,12 @@ ____  _                      __ _
     }
   },
   'zhuyin': {
-    welcome: 'ㄏㄨㄢ ㄧㄥˊ ㄌㄞˊ ㄉㄠˋ',
+    welcome: 'ㄋㄧˇ ㄏㄠˇ，ㄨㄛˇ ㄕˋ',
     loadingPage: 'ㄓㄥˋ ㄗㄞˋ ㄐㄧㄚ ㄗㄞˋ ㄧㄝˋ ㄇㄧㄢˋ...',
     loading: 'ㄐㄧㄚ ㄗㄞˋ ㄓㄨㄥ...',
-    site: 'PhosoftWebPages',
-    promo: 'ㄒㄧㄚˋ ㄇㄧㄢˋ ㄕˋ PhosoftWeb Line ㄒㄩㄢ ㄔㄨㄢˊ ㄆㄧㄢˋ',
-    bilibili: 'ㄐㄧㄣˋ ㄖㄨˋ bilibili，ㄧˊ ㄑㄧˇ ㄐㄧㄠ ㄌㄧㄡˊ！',
+    site: '溪夏坡Zpcin',
+    intro: 'ㄅㄨˋ ㄓ ㄉㄠˋ ㄒㄧㄝˇ ㄕㄣˊ ˙ㄇㄜ（）',
+    mapTitle: 'ㄨㄛˇ ㄑㄩˋ ㄍㄨㄛˋ ˙ㄉㄜ ㄉㄧˋ ㄈㄤ',
     notice: 'ㄍㄨㄥ ㄍㄠˋ',
     noticeEn: 'Notice',
     noticeContent: ['QwQ~', 'ㄓㄜˋ ㄕˋ ㄍㄨㄥ ㄍㄠˋ'],
@@ -847,7 +847,8 @@ function applyPhosoftwebLang() {
       }
     }
     if (value) {
-      element.textContent = value;
+      // 页面标题保留站点名后缀，凸显个人品牌
+      element.textContent = element.tagName === 'TITLE' ? `${value} | PhosoftWebPages` : value;
     }
   });
 
@@ -856,7 +857,7 @@ function applyPhosoftwebLang() {
   htmlElements.forEach(element => {
     const key = element.getAttribute('data-i18n-html');
     if (key === 'footer') {
-      element.innerHTML = `&copy;${map.year} - 张一&Phosoft ${map.footer}`;
+      element.innerHTML = `&copy;${map.year} - 溪夏坡&Phosoft ${map.footer}`;
     } else if (key === 'powered') {
       element.innerHTML = map.powered;
     }

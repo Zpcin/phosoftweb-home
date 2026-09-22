@@ -2,11 +2,11 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
-        <title data-i18n="site">PhosoftWebPages</title>
+        <title data-i18n="site">溪夏坡Zpcin | PhosoftWebPages</title>
         <!-- SEO 元标签 -->
         <meta name="msvalidate.01" content="93B7BB0E96BAC477F6402852111B6680" />
-        <meta name="keywords" content="PhosoftStudio">
-        <meta name="description" content="PhosoftWebPages 是 PhosoftStudio 开发的一些网页">
+        <meta name="keywords" content="溪夏坡,Zpcin,个人主页,PhosoftWebPages">
+        <meta name="description" content="溪夏坡（Zpcin）的个人主页 —— PhosoftWebPages，记录我的作品、项目与想法。">
         <meta name="author" content="yuanzui_cf">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="./css/countdown.css">
         <link rel="stylesheet" href="./css/loading.css">
         <link rel="stylesheet" href="./css/modal.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
         <link rel="icon" href="./img/A-logo.svg">
         <!-- 老图标
         <link rel="icon" href="https://gitlab.com/uploads/-/system/group/avatar/15493510/QQ%E5%9B%BE%E7%89%8720220117233528.jpg?width=512">
@@ -27,6 +28,28 @@
         <script src="./js/countdown.js" defer></script>
         <script src="./js/about-lang.js" defer></script>
         <script src="./js/about.js" defer></script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+        <script src="./js/map.js" defer></script>
+
+        <!-- 社交分享卡片（Open Graph / Twitter） -->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="PhosoftWebPages">
+        <meta property="og:title" content="溪夏坡Zpcin的个人主页">
+        <meta property="og:description" content="你好，我是溪夏坡Zpcin，欢迎来到我的个人主页 PhosoftWebPages。">
+        <meta property="og:url" content="https://phosoft.cn/">
+        <meta property="og:image" content="https://phosoft.cn/img/g.jpeg">
+        <meta name="twitter:card" content="summary">
+
+        <!-- 结构化数据：个人 -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "溪夏坡",
+            "alternateName": "Zpcin",
+            "url": "https://phosoft.cn/"
+        }
+        </script>
 
         <!-- 第三方服务集成 -->
         <script src="https://code.tidio.co/bowhirwyldd4f4z8ebab0dsupl375oim.js" async></script>
@@ -62,26 +85,28 @@
 
         <!-- 主要内容区域 -->
         <div class="wu-content">
-            <!-- 网站标题块 -->
+            <!-- 网站标题块（个人 Hero） -->
             <div class="wu-block wu-mw">
                 <div class="wu-box wu-shadow">
-                    <div class="wu-divide h-90"></div>
-                    <b class="wu-h2 no-wrap" data-i18n="welcome"></b><br>
-                    <b class="wu-h1 no-wrap" data-i18n="site"></b>
-                    <h1></h1>
+                    <div class="wu-divide h-30"></div>
+                    <div class="hero-layout">
+                        <div class="hero-text">
+                            <b class="wu-h2 no-wrap" data-i18n="welcome"></b><br>
+                            <b class="wu-h1 no-wrap" data-i18n="site"></b>
+                            <h1></h1>
+                            <p class="hero-intro" data-i18n="intro"></p>
+                        </div>
+                        <img class="hero-avatar" src="./img/g.jpeg" alt="溪夏坡Zpcin头像">
+                    </div>
                 </div>
             </div>
 
-            <!-- 视频展示区块 -->
-            <div class="wu-block" id="video">
+            <!-- 我去过的地方（地图） -->
+            <div class="wu-block" id="travelMapBlock">
                 <div class="wu-box wu-shadow">
-                    <b class="wu-h2 no-wrap" data-i18n="promo"></b>
+                    <b class="wu-h2 no-wrap" data-i18n="mapTitle"></b>
                     <div class="wu-divide h-10"></div>
-                    <video width="100%" src="./video/video.mp4" controls></video>
-                    <a href="https://www.bilibili.com/video/av522186335" class="bilibili-link">
-                        <img src="./img/bilibili.svg" alt="bilibili logo">
-                        <span id="bilibili-text" data-i18n="bilibili"></span>
-                    </a>
+                    <div id="travelMap" class="travel-map"></div>
                 </div>
             </div>
 
