@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin:0">
+<iframe id="f" style="border:0;width:390px;height:844px" src="http://localhost:8080/index.html"></iframe>
+<pre id="out">pending</pre>
+<script>
+setTimeout(function () {
+  var d = document.getElementById('f').contentDocument;
+  if (!d) { document.getElementById('out').textContent = 'RESULT no-doc'; return; }
+  var de = d.documentElement;
+  var vw = de.clientWidth;
+  var offenders = [];
+  var els = d.querySelectorAll('*');
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    var r = el.getBoundingClientRect();
+    if (r.width > 0 && r.right > vw + 1) {
+      offenders.push(el.tagName + '#' + (el.id || '-') + '.' + String(el.className).slice(0, 50) + ' L=' + Math.round(r.left) + ' R=' + Math.round(r.right) + ' W=' + Math.round(r.width));
+    }
+  }
+  var out = { vw: vw, deSW: de.scrollWidth, bodySW: d.body ? d.body.scrollWidth : 0, n: offenders.length, off: offenders.slice(0, 20) };
+  document.getElementById('out').textContent = 'RESULT ' + JSON.stringify(out);
+}, 9000);
+</script>
+</body>
+</html>

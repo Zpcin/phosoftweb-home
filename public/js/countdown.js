@@ -39,9 +39,25 @@
             setInterval(updateExamCountdown, 1000);
         });
 
-        // 监听窗口大小变化，重新检测设备类型
+        // 监听窗口大小变化：更新设备类型，并在卡片可见时重新定位
+        // （旋转屏幕或视口宽度跨过 768px 断点时，此前写入的内联定位停留在旧分支）
+        let resizeTimer = null;
         window.addEventListener('resize', function() {
             detectDeviceType();
+
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                const countdownElement = document.getElementById('examCountdown');
+                if (!countdownElement) return;
+
+                // 退出动画进行中（带 1.5s 过渡滑出）不干预，避免打断动画
+                if (countdownElement.style.transition.indexOf('1.5s') !== -1) return;
+
+                const computedStyle = getComputedStyle(countdownElement);
+                if (computedStyle.display === 'none' || computedStyle.visibility === 'hidden') return;
+
+                positionCountdownElement();
+            }, 150);
         });
 
         // 监听语言变化事件
@@ -118,17 +134,17 @@
             countdownElement.style.visibility = 'hidden';
             countdownElement.style.display = 'block'; // 必须先显示才能计算尺寸
 
-            // 根据设备类型设置字体大小和内边距
-            if (isMobile) {
-                countdownElement.style.fontSize = '12px';
-                countdownElement.style.padding = '6px 10px';
-            } else {
-                countdownElement.style.fontSize = '14px';
-                countdownElement.style.padding = '8px 15px';
-            }
-
             // 强制浏览器重新计算布局
             void countdownElement.offsetWidth;
+        }
+
+        // 根据设备类型设置字体大小和内边距（与 CSS 移动端适配保持一致）
+        if (isMobile) {
+            countdownElement.style.fontSize = '12px';
+            countdownElement.style.padding = '6px 10px';
+        } else {
+            countdownElement.style.fontSize = '14px';
+            countdownElement.style.padding = '8px 15px';
         }
 
         // 根据设备类型设置位置
@@ -144,8 +160,8 @@
             countdownElement.style.left = 'auto';
         }
 
-        // 强制应用样式
-        countdownElement.style.transform = 'none !important';
+        // 强制清除可能残留的位移（注意：CSSOM 不支持在赋值中写 !important）
+        countdownElement.style.transform = 'none';
 
         return countdownElement;
     }
@@ -270,6 +286,7 @@
             window._countdownShown = false;
             window._countdownAnimationPending = false;
             window._countdownAnimationAdded = false;
+            window._countdownExited = false;
 
             // 确保倒计时元素可见
             countdownElement.style.transition = '';
@@ -488,7 +505,7 @@
         // 根据地区设置样式
         if (!isInJilin) {
             // 修改为：非吉林地区也显示普通倒计时，不再显示水印
-            countdownElement.style.display = 'block';
+            if (!window._countdownExited) countdownElement.style.display = 'block';
 
             // 非吉林地区也需要隐藏加载动画
             if (loadingOverlay && !window._loadingHidden) {
@@ -539,15 +556,16 @@
                     countdownElement.style.opacity = '0';
                     countdownElement.style.visibility = 'hidden';
 
-                    // 动画完成后隐藏元素
+                    // 动画完成后隐藏元素，并标记已退出（防止每秒刷新把元素带残留位移重新显示）
                     setTimeout(() => {
                         countdownElement.style.display = 'none';
+                        window._countdownExited = true;
                     }, 1500);
                 }, 5000);
             }
         } else {
             // 吉林地区显示正常倒计时
-            countdownElement.style.display = 'block';
+            if (!window._countdownExited) countdownElement.style.display = 'block';
 
             // 检查是否需要显示倒计时
             if (document.readyState === 'complete' && !window._countdownShown && !window._countdownAnimationPending) {
@@ -593,9 +611,10 @@
                     countdownElement.style.opacity = '0';
                     countdownElement.style.visibility = 'hidden';
 
-                    // 动画完成后隐藏元素
+                    // 动画完成后隐藏元素，并标记已退出（防止每秒刷新把元素带残留位移重新显示）
                     setTimeout(() => {
                         countdownElement.style.display = 'none';
+                        window._countdownExited = true;
                     }, 1500);
                 }, 5000);
             }

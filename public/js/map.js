@@ -37,8 +37,15 @@
             minZoom: 3, // 高德瓦片在 z<=2 的低缩放级别返回空白图，禁止缩到更小
         });
 
-        // 重置默认前缀：去掉 Leaflet 自带的"支持乌克兰"旗帜链接，仅保留 Leaflet 署名
-        map.attributionControl.setPrefix('<a href="https://leafletjs.com" title="A JavaScript library for interactive maps">Leaflet</a>');
+        // 地图角上只保留瓦片版权；Leaflet 为 BSD-2 协议不强制页面展示，
+        // 引擎署名保留在上方的控制台输出中
+        map.attributionControl.setPrefix('');
+
+        // 署名同步输出到开发者工具控制台（高德条款要求署名展示在地图上，此处仅为开发者友好补充）
+        console.log(
+            '%c[地图] %c瓦片 © 高德地图 https://www.amap.com/ · 引擎 Leaflet https://leafletjs.com',
+            'font-weight:bold;', 'color:#888;'
+        );
 
         // 高德瓦片（国内访问稳定；底图为 GCJ-02，市级标记偏差可忽略）
         L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {

@@ -6,6 +6,11 @@
 /* 为繁体中文和日语添加更好的字体支持 */
 html {
     font-family: 'HarmonyOS_Sans_Medium', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    /* 禁止横向平移：任何意外横向溢出都不再产生可滚动区域。
+       否则页面可左右拖动时，position:fixed 元素（如考试倒计时卡片）
+       仍锚定在布局视口上，会随平移漂出屏幕 */
+    overflow-x: hidden; /* 兼容不支持 clip 的旧浏览器 */
+    overflow-x: clip;
 }
 
 /* 繁体中文专用字体设置 */
@@ -37,14 +42,14 @@ body {
 /* 主页面内容的主要容器类 */
 .wu-content {
     position: absolute;
-    left: 50%;
+    left: 0;
+    right: 0;
     top: 0;
     width: calc(100% - 40px);
     height: auto;
     min-height: calc(100% - 40px);
     padding: 20px;
-    margin: 0;
-    transform: translateX(-50%); /* 使容器水平居中 */
+    margin: 0 auto; /* 通过 auto 边距水平居中（不依赖 transform，避免被 fadeIn 动画覆盖导致溢出） */
 }
 
 .wu-divide {
@@ -335,6 +340,11 @@ body {
         -webkit-tap-highlight-color: transparent; /* 移除Android/Chrome点击高亮 */
     }
 
+    /* 触屏设备无悬停交互：避免点按链接触发粘滞 hover 时弹出悬浮卡遮挡内容 */
+    .wu-links .apanzinc-link .apanzinc-tooltip {
+        display: none;
+    }
+
     a:focus,
     button:focus,
     .modal-btn:focus,
@@ -396,26 +406,35 @@ body {
     position: absolute;
     bottom: calc(100% + 12px);
     left: 50%;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%);
     background: #fff;
     border-radius: 12px;
     padding: 12px 16px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-    display: flex;
+    /* 隐藏时不参与布局：visibility/opacity 隐藏的绝对定位元素仍会撑宽页面
+       滚动区域，使移动端可横向平移，导致 fixed 倒计时卡片漂出屏幕 */
+    display: none;
     align-items: center;
     gap: 12px;
     min-width: 280px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
     z-index: 1000;
     pointer-events: none;
 }
 
 .wu-links .apanzinc-link:hover .apanzinc-tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    display: flex;
+    animation: apanzinc-tooltip-in 0.3s ease;
+}
+
+@keyframes apanzinc-tooltip-in {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
 }
 
 .wu-links .apanzinc-link .apanzinc-tooltip::after {
